@@ -191,7 +191,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586328927053061110
+    m_lastTime: -8586328920148744860
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -207,20 +207,20 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586328928097789708
+    m_lastTime: -8586328920148815021
     List:
-    - name: Play_New_Random_Container
-      guid: ccf6489df8b4004fa37391e4244ef983
-      id: 2236244990
+    - name: Play_desert
+      guid: 70b7c7f07f96904496403e342e0b274d
+      id: 3303490701
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Play_New_Random_Container
+      - ElementName: Play_desert
         ObjectType: 3
-      Path: Default Work Unit\Play_New_Random_Container
+      Path: Default Work Unit\Play_desert
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 48.99069
+      minDuration: 48.99069
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -433,7 +433,5 @@ MonoBehaviour:
   - /MG2_WwiseProject
   - /MG2_WwiseProject/Events
   - /MG2_WwiseProject/Events/Default Work Unit
-  - /MG2_WwiseProject/SoundBanks
-  - /MG2_WwiseProject/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
