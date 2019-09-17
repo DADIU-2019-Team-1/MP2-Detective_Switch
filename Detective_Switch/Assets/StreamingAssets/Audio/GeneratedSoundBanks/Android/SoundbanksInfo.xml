@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Android" BasePlatform="Android" SchemaVersion="11" SoundbankVersion="134">
+	<RootPaths>
+		<ProjectRoot>C:\Users\jonas\Documents\WwiseProjects\MG2_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\jonas\Documents\WwiseProjects\MG2_WwiseProject\.cache\Android\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\jonas\Documents\GitHub\MP2-Detective_Switch\Detective_Switch\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Android\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\jonas\Documents\WwiseProjects\MG2_WwiseProject\GeneratedSoundBanks\Android</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="4056684167" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Master</ObjectPath>
+			<ShortName>Master</ShortName>
+			<Path>Master.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3303490701" Name="Play_desert" ObjectPath="\Events\Default Work Unit\Play_desert" DurationType="OneShot" DurationMin="48.990688" DurationMax="48.990688"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="146336685" Language="SFX">
+					<ShortName>chainsaw_engine start_3 revs_4 long humming and buzzing cuts_idle_11.wav</ShortName>
+					<Path>SFX\chainsaw_engine start_3 revs_4 long humming and buzzing cuts_idle_11_11697732.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
