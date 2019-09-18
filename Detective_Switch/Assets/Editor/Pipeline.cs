@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -6,11 +7,18 @@ namespace UnityEditor
 {
     public class Pipeline
     {
-        private string folder;
+        [MenuItem("Pipeline/Debug")]
+        public static void JDebug()
+        {
+            UpdateBuildNumberIdentifier();
+            Directory.CreateDirectory(pathname);
+        }
 
         [MenuItem("Pipeline/Build_Master: Android")]
         public static void BuildMasterAndroid()
         {
+            UpdateBuildNumberIdentifier(); //update our build number file
+            Directory.CreateDirectory(masterPathname);
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 locationPathName = Path.Combine(masterPathname, filename),
@@ -19,12 +27,14 @@ namespace UnityEditor
                 target = BuildTarget.Android
             });
 
-            Debug.Log(report);
+            UnityEngine.Debug.Log(report);
         }
 
         [MenuItem("Pipeline/Build_Release: Android")]
         public static void BuildReleaseAndroid()
         {
+            UpdateBuildNumberIdentifier(); //update our build number file
+            Directory.CreateDirectory(releasePathname);
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 locationPathName = Path.Combine(releasePathname, filename),
@@ -33,11 +43,13 @@ namespace UnityEditor
                 target = BuildTarget.Android
             });
 
-            Debug.Log(report);
+            UnityEngine.Debug.Log(report);
         }
         [MenuItem("Pipeline/Build_Development: Android")]
         public static void BuildDevelopmentAndroid()
         {
+            UpdateBuildNumberIdentifier(); //update our build number file
+            Directory.CreateDirectory(developmentPathname);
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 locationPathName = Path.Combine(developmentPathname, filename),
@@ -46,7 +58,7 @@ namespace UnityEditor
                 target = BuildTarget.Android
             });
 
-            Debug.Log(report);
+            UnityEngine.Debug.Log(report);
         }
 
         /*
@@ -56,6 +68,15 @@ namespace UnityEditor
         * desktop, so it's easier to find but you can change the string to any
         * path really. Path combine is used, for better cross platform support
         */
+        public static string pathname
+        {
+            get
+            {
+                return
+               (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+               @"Builds\" + repoBranchName));
+            }
+        }
         public static string masterPathname
         {
             get
@@ -95,9 +116,80 @@ namespace UnityEditor
         {
             get
             {
-                return (DateTime.Now.ToString("yyyyMMddHHmm") + ".apk");
+                return (DateTime.Now.ToString("yyyyMMddHHmm") + repoBranchName + ".apk");
             }
         }
-    }
 
+
+        public static string repoBranchName
+        {
+            get
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo("git.exe");
+
+                startInfo.UseShellExecute = false;
+                startInfo.WorkingDirectory = @"C:\Users\Dadiu student\Documents\GitHub\MP2-Detective_Switch\Detective_Switch";
+                startInfo.RedirectStandardInput = true;
+                startInfo.RedirectStandardOutput = true;
+                startInfo.Arguments = "rev-parse --abbrev-ref HEAD";
+
+                Process process = new Process();
+                process.StartInfo = startInfo;
+                process.Start();
+
+                string branchname = process.StandardOutput.ReadLine();
+                return branchname;
+            }
+        }
+
+        public static void UpdateBuildNumberIdentifier()
+        {
+            int buildNum = 0;
+            string text = "";
+            string number = "";
+            string buildNumFilePath = Application.dataPath + "/Resources/buildNumbers.txt";
+            FileStream file = File.Open(buildNumFilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            file.Close();
+
+            TextAsset buildNRFile = Resources.Load("buildNumbers") as TextAsset;
+            string allLines = buildNRFile.text;
+            string[] everyLine = new string[2];
+            if (allLines.Count<Char>() > 0)
+            {
+                everyLine = allLines.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            }
+            //string[] everyLine = File.ReadAllLines(buildNumFilePath);
+            if (everyLine.Length > 0)
+            {
+                UnityEngine.Debug.Log("The build number file contains: \n" + everyLine[0] + " " + everyLine[1]);
+                text = everyLine[0];
+                number = everyLine[1];
+            }
+            try
+            {
+                buildNum = int.Parse(number);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            int curBuildNum = buildNum + 1;
+
+            if (number == "")
+            {
+                buildNum = 1;
+            }
+
+            string[] debugString = new string[2];
+            debugString[0] = "The current build number of the project is";
+            debugString[1] = curBuildNum.ToString();
+
+            UnityEngine.Debug.Log("Cur build nr = " + curBuildNum);
+
+            File.WriteAllLines(buildNumFilePath, debugString);
+
+            UnityEngine.Debug.Log("I have updated the build number");
+        }
+    }
 }
