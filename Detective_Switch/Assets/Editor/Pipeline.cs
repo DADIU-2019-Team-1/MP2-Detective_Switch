@@ -23,53 +23,6 @@ namespace UnityEditor
             UnityEngine.Debug.Log(report);
         }
 
-        [MenuItem("Pipeline/Build_Master: Android")]
-        public static void BuildMasterAndroid()
-        {
-            UpdateBuildNumberIdentifier(); //update our build number file
-            Directory.CreateDirectory(masterPathname);
-            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
-            {
-                locationPathName = Path.Combine(masterPathname, filename),
-                scenes = EditorBuildSettings.scenes.Where(n =>
-               n.enabled).Select(n => n.path).ToArray(),
-                target = BuildTarget.Android
-            });
-
-            UnityEngine.Debug.Log(report);
-        }
-
-        [MenuItem("Pipeline/Build_Release: Android")]
-        public static void BuildReleaseAndroid()
-        {
-            UpdateBuildNumberIdentifier(); //update our build number file
-            Directory.CreateDirectory(releasePathname);
-            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
-            {
-                locationPathName = Path.Combine(releasePathname, filename),
-                scenes = EditorBuildSettings.scenes.Where(n =>
-               n.enabled).Select(n => n.path).ToArray(),
-                target = BuildTarget.Android
-            });
-
-            UnityEngine.Debug.Log(report);
-        }
-        [MenuItem("Pipeline/Build_Development: Android")]
-        public static void BuildDevelopmentAndroid()
-        {
-            UpdateBuildNumberIdentifier(); //update our build number file
-            Directory.CreateDirectory(developmentPathname);
-            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
-            {
-                locationPathName = Path.Combine(developmentPathname, filename),
-                scenes = EditorBuildSettings.scenes.Where(n =>
-               n.enabled).Select(n => n.path).ToArray(),
-                target = BuildTarget.Android
-            });
-
-            UnityEngine.Debug.Log(report);
-        }
-
         /*
         * This is a static property which will return a string, representing a
         * build folder on the desktop. This does not create the folder when it
@@ -84,33 +37,6 @@ namespace UnityEditor
                 return
                (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                @"Builds\" + repoBranchName));
-            }
-        }
-        public static string masterPathname
-        {
-            get
-            {
-                return
-               (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-               "Builds/master"));
-            }
-        }
-        public static string releasePathname
-        {
-            get
-            {
-                return
-               (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-               "Builds/release"));
-            }
-        }
-        public static string developmentPathname
-        {
-            get
-            {
-                return
-               (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-               "Builds/development"));
             }
         }
 
@@ -137,7 +63,7 @@ namespace UnityEditor
                 ProcessStartInfo startInfo = new ProcessStartInfo("git.exe");
 
                 startInfo.UseShellExecute = false;
-                startInfo.WorkingDirectory = @"C:\Users\Dadiu student\Documents\GitHub\MP2-Detective_Switch\Detective_Switch";
+                startInfo.WorkingDirectory = @"C:\Users\Dadiu student\.jenkins\workspace\DADIU MP2 by Team 1\All Branches\Detective_Switch";
                 startInfo.RedirectStandardInput = true;
                 startInfo.RedirectStandardOutput = true;
                 startInfo.Arguments = "rev-parse --abbrev-ref HEAD";
