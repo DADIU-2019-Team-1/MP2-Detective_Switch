@@ -7,11 +7,20 @@ namespace UnityEditor
 {
     public class Pipeline
     {
-        [MenuItem("Pipeline/Debug")]
-        public static void JDebug()
+        [MenuItem("Pipeline/Build: Android")]
+        public static void BuildAndroid()
         {
             UpdateBuildNumberIdentifier();
             Directory.CreateDirectory(pathname);
+            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                locationPathName = Path.Combine(pathname, filename),
+                scenes = EditorBuildSettings.scenes.Where(n =>
+               n.enabled).Select(n => n.path).ToArray(),
+                target = BuildTarget.Android
+            });
+
+            UnityEngine.Debug.Log(report);
         }
 
         [MenuItem("Pipeline/Build_Master: Android")]
@@ -83,7 +92,7 @@ namespace UnityEditor
             {
                 return
                (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-               "Builds/Master"));
+               "Builds/master"));
             }
         }
         public static string releasePathname
@@ -92,7 +101,7 @@ namespace UnityEditor
             {
                 return
                (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-               "Builds/Release"));
+               "Builds/release"));
             }
         }
         public static string developmentPathname
@@ -101,7 +110,7 @@ namespace UnityEditor
             {
                 return
                (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-               "Builds/Development"));
+               "Builds/development"));
             }
         }
 
