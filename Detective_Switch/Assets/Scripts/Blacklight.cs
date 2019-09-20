@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Blacklight : MonoBehaviour
 {
-
+    public Vector2 initSize;
     public Transform effector;
     Renderer rend;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
+        if (initSize == new Vector2(0,0))
+        {
+            initSize = rend.sharedMaterial.GetVector("_size");
+        }
+        Debug.Log(initSize);
     }
 
     void Update()
@@ -19,17 +24,18 @@ public class Blacklight : MonoBehaviour
         Ray ray = new Ray(effector.position, effector.forward);
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.collider.gameObject);
+            //Debug.Log(hit.collider.gameObject);
             if (hit.collider.gameObject == gameObject)
             {
                 rend.sharedMaterial.SetVector("_blacklightpos", hit.point);
+                rend.sharedMaterial.SetVector("_size", new Vector4(initSize.x, initSize.y, 0, 0));
                 Debug.Log("Hit the plane");
             }
-        }
-        else
-        {
-            Debug.Log("Didn't hit plane");
-            rend.sharedMaterial.SetVector("_blacklightpos", new Vector3(0, 0, 0));
+            else
+            {
+                Debug.Log("Didn't hit plane");
+                rend.sharedMaterial.SetVector("_size", new Vector4(0, 0, 0, 0));
+            }
         }
     }
 
