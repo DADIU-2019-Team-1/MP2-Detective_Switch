@@ -8,6 +8,11 @@ public class Blacklight : MonoBehaviour
     public Transform effector;
     Renderer rend;
 
+    /* Static setting of AlphaClipThreshold in the appropriate shader is required,
+     * depending on size of circle. For 0.5, a threshold of 1.5 is suitable
+     * There might be a correlation, like 1 from size, but this is yet untested.
+     */
+
     void Start()
     {
         rend = GetComponent<Renderer>();
