@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class MM : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /* Main script for handling Motion Matching.
+     * Load the feature list from the preprocesser,
+     * and the desired trajectory from the TrajectoryCalculator,
+     * and applies motion matching to the character.
+     */
     void Start()
     {
         
