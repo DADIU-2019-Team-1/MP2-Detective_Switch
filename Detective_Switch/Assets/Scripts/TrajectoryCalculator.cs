@@ -18,6 +18,8 @@ public class TrajectoryCalculator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /// Find current player direction from movement (depends on input method)
+        Vector3 mov = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        Quaternion playerDirection = Quaternion.LookRotation(mov, Vector3.up);
     }
 }
