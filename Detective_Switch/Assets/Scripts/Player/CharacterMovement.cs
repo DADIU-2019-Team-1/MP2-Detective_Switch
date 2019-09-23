@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private Rigidbody playerRB;
-    public float maxPlayerSpeed = 25, minDragToMove = 70, maxDragToMove = 500, maxPressTime = 0.5f;
+    public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, moveReactionTime = 0.3f;
     private Vector2 joyAnchor;
     private bool canMove;
     
@@ -36,8 +36,9 @@ public class CharacterMovement : MonoBehaviour
         }
         if(Input.GetMouseButton(0)) {
             Vector2 joyDragVector = GetJoyDragVector(joyAnchor, Input.mousePosition);
+            //Vector2 joyDragVector = GetJoyDragVector(new Vector2(Screen.width/2, Screen.height/2), Input.mousePosition);
             //print(joyDragVector);
-            if(joyDragVector.magnitude > minDragToMove) {
+            if(joyDragVector.magnitude > minDragToMove || Time.time - timeAtTouchDown > maxPressTime) {
                 canMove = true;
             }
             if(canMove) {
@@ -75,7 +76,21 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void MovePlayer(Vector3 moVector) {
-        playerRB.AddForce(moVector * playerSpeedInterval * Time.deltaTime);
-        print("Move vector is: " + moVector);
+/*         Vector3 poelse = moVector;
+        if(poelse.magnitude  * playerSpeedInterval < minPlayerSpeed) {
+            poelse = moVector.normalized * minPlayerSpeed;
+        }
+        print("Can move: " + canMove + ", speed" + poelse.magnitude);
+        playerRB.AddForce(poelse * playerSpeedInterval * Time.deltaTime); */
+        //print("Move vector is: " + moVector);
+        Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
+        if(speedMove.magnitude < minPlayerSpeed) {
+            speedMove = speedMove.normalized * minPlayerSpeed;
+        }
+        //playerRB.AddForce(speedMove * Time.deltaTime * 100);
+        playerRB.velocity = Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
+        print(speedMove);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), 2.5f * Time.deltaTime);
     }
 }
