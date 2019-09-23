@@ -105,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894e9b471fe64b549bfe534144056066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerSpeed: 25
+  maxPlayerSpeed: 10
   minDragToMove: 70
-  maxDragToMove: 500
-  maxPressTime: 0.5
+  maxDragToMove: 150
+  maxPressTime: 0.15
+  minPlayerSpeed: 7
 --- !u!54 &3653083261744341170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -118,8 +119,8 @@ Rigidbody:
   m_GameObject: {fileID: 3653083261744341172}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 10
-  m_AngularDrag: 10
+  m_Drag: 2.5
+  m_AngularDrag: 2.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
