@@ -237,33 +237,19 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586323654211634910
+    m_lastTime: -8586323608549815119
     List:
-    - name: Play_Amb_Basic_Room
+    - name: Play_Amb
       guid: 823f6d9e76dce0498759e240da23b7fe
-      id: 1643668981
+      id: 2959533290
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
       - ElementName: 3_Ambience
         ObjectType: 4
-      - ElementName: Play_Amb_Basic_Room
+      - ElementName: Play_Amb
         ObjectType: 3
-      Path: Default Work Unit\3_Ambience\Play_Amb_Basic_Room
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Play_Clues
-      guid: 9b07c6776f20074c832e533d3b7f4c1b
-      id: 4102857472
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: 5_SFX
-        ObjectType: 4
-      - ElementName: Play_Clues
-        ObjectType: 3
-      Path: Default Work Unit\5_SFX\Play_Clues
+      Path: Default Work Unit\3_Ambience\Play_Amb
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -383,26 +369,12 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.89695
       minDuration: 0.620004
-    - name: Play_Wall_Hit
-      guid: a561402a95fc3f47a309830910a76bb9
-      id: 625690868
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: 5_SFX
-        ObjectType: 4
-      - ElementName: Play_Wall_Hit
-        ObjectType: 3
-      Path: Default Work Unit\5_SFX\Play_Wall_Hit
-      maxAttenuation: 0
-      maxDuration: 1.274646
-      minDuration: 0.972466
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: e693f946ea321a498ea501e6176c3a19
     GuidInternal: 
-    m_lastTime: -8586323620342240328
+    m_lastTime: -8586323609902493454
     List:
     - name: Day_Night_Rain
       guid: ae2f0969ebec6840943228caf82b3765
