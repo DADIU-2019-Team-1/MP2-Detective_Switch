@@ -10,6 +10,7 @@ public class MM : MonoBehaviour
      * and applies motion matching to the character.
      */
     private MMPreProcessing preprocces;
+    private FeaturePoseVector featurePoseVector;
     private TrajectoryTest trajectory;
     private TrajectoryCalculator trajectoryCalc;
     public AnimationClip currentClip;

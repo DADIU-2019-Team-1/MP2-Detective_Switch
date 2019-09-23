@@ -7,27 +7,26 @@ using UnityEngine.Events;
 using UnityEditor;
 #endif
 
-public class EventManager : MonoBehaviour
+public class UserInterfaceManager : MonoBehaviour
 {
-
-    public ThisEventSystem[] events;
+    public ThisUISystem[] eventsUI;
 
     void Start()
     {
-        for (int i = 0; i < events.Length; i++)
+        for (int i = 0; i < eventsUI.Length; i++)
         {
-            if (events[i].eventName != "" || events[i].eventToFire != null)
+            if (eventsUI[i].eventName != "" || eventsUI[i].eventToFire != null)
             {
-                events[i].attachedManager = this.gameObject;
-                StartClassCoroutine(i, (int)events[i].function);
+                eventsUI[i].attachedManager = this.gameObject;
+                StartClassCoroutine(i, (int)eventsUI[i].function);
             }
             else
             {
-                Debug.Log("EventManager Notice: event number " + i + " is not set up correctly!");
+                Debug.Log("UI Manager Notice: UI event number " + i + " is not set up correctly!");
             }
 
         }
-        
+
     }
 
     void Update()
@@ -39,18 +38,18 @@ public class EventManager : MonoBehaviour
     {
         bool isFound = false;
 
-        for (int i = 0; i < events.Length; i++)
+        for (int i = 0; i < eventsUI.Length; i++)
         {
-            if (eventName == events[i].eventName)
+            if (eventName == eventsUI[i].eventName)
             {
                 isFound = true;
-                StartCoroutine(events[i].ExternalFire());
+                StartCoroutine(eventsUI[i].ExternalFire());
             }
         }
 
         if (isFound == false)
         {
-            Debug.LogError("EventManager Error: " + eventName + " not found in events! Please note that event names are case sensitive.");
+            Debug.LogError("UI Manager Error: " + eventName + " not found in UI events! Please note that event names are case sensitive.");
         }
     }
 
@@ -62,19 +61,19 @@ public class EventManager : MonoBehaviour
                 // ExternalFire selected, no need to run any functions
                 break;
             case 1:
-                events[eventNum].OnCollision();
+                //
                 break;
             case 2:
-                events[eventNum].OnCollisionWithTag();
+                //
                 break;
             case 3:
-                StartCoroutine(events[eventNum].OnObjectDestroy());
+                //
                 break;
             case 4:
-                StartCoroutine(events[eventNum].TimedEvent());
+                //
                 break;
             case 5:
-                StartCoroutine(events[eventNum].OnObjectMoving());
+                //
                 break;
             default:
                 break;
@@ -84,7 +83,7 @@ public class EventManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class ThisEventSystem
+public class ThisUISystem
 {
     [HideInInspector]
     public GameObject attachedManager;
@@ -99,11 +98,11 @@ public class ThisEventSystem
     public enum myFuncEnum
     {
         ExternalFire,
-        OnCollision,
-        OnCollisionWithTag,
-        OnObjectDestroy,
-        TimedEvent,
-        OnObjectMoving
+        YYY1,
+        YYY2,
+        YYY3,
+        YYY4,
+        YYY5
     };
 
     [HideInInspector]
@@ -209,7 +208,8 @@ public class ThisEventSystem
         if (hasFired)
         {
             Debug.Log(eventName + " event already fired");
-        } else
+        }
+        else
         {
             eventToFire.Invoke();
             Debug.Log(eventName + " event fired!");
@@ -270,83 +270,83 @@ public class ThisEventSystem
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(EventManager))]
-public class EventManager_Editor : Editor
+[CustomEditor(typeof(UserInterfaceManager))]
+public class UIManager_Editor : Editor
 {
     public override void OnInspectorGUI()
     {
-        EditorGUILayout.HelpBox("IMPORTANT! - The ColliderChecker.cs script must also be located in the script folder for this event system to work", MessageType.None);
+        EditorGUILayout.HelpBox("UI Event Manager - Not functional yet!", MessageType.None);
         DrawDefaultInspector(); // for other non-HideInInspector fields
 
-        var script = target as EventManager;
+        var script = target as UserInterfaceManager;
 
-        for (int i = 0; i < script.events.Length; i++)
+        for (int i = 0; i < script.eventsUI.Length; i++)
         {
-            script.events[i].activeInInspector = EditorGUILayout.Foldout(script.events[i].activeInInspector, script.events[i].eventName);
+            script.eventsUI[i].activeInInspector = EditorGUILayout.Foldout(script.eventsUI[i].activeInInspector, script.eventsUI[i].eventName);
 
             EditorGUI.indentLevel = EditorGUI.indentLevel + 1;
 
-            if (script.events[i].activeInInspector)
+            if (script.eventsUI[i].activeInInspector)
             {
-                script.events[i].eventName = EditorGUILayout.TextField("Event Name:", script.events[i].eventName);
+                script.eventsUI[i].eventName = EditorGUILayout.TextField("Event Name:", script.eventsUI[i].eventName);
 
-                SerializedProperty functionProp = serializedObject.FindProperty("events.Array.data[" + i + "].function");
+                SerializedProperty functionProp = serializedObject.FindProperty("eventsUI.Array.data[" + i + "].function");
                 EditorGUILayout.PropertyField(functionProp);
 
-                script.events[i].delayForFire = EditorGUILayout.FloatField("Fire Delay", script.events[i].delayForFire);
+                script.eventsUI[i].delayForFire = EditorGUILayout.FloatField("Fire Delay", script.eventsUI[i].delayForFire);
 
 
-                if ((int)script.events[i].function == 0)
+                if ((int)script.eventsUI[i].function == 0)
                 {
                     // External fire //
                     EditorGUILayout.LabelField("Fire cooldown, if 0 then can only be fired once:");
-                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
+                    script.eventsUI[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.eventsUI[i].fireCooldown);
                     EditorGUILayout.HelpBox("This is an event you need to call from a script.\n" +
                         "You simply do that by calling the ExternalFire function in the EventManager script and give the specific event name as argument. " +
                         "If more events have the same name, they will also be fired. NOTICE, the names are case sensitive!", MessageType.Info);
                 }
-                if ((int)script.events[i].function == 1) // if bool is true, show other fields
+                if ((int)script.eventsUI[i].function == 1) // if bool is true, show other fields
                 {
                     // Collision // 
                     EditorGUILayout.LabelField("Fire cooldown, if 0 then can only be fired once:");
-                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
-                    script.events[i].isTrigger = EditorGUILayout.Toggle("Is Trigger?", script.events[i].isTrigger);
-                    script.events[i].thisGameObject = EditorGUILayout.ObjectField("Collider Object", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
+                    script.eventsUI[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.eventsUI[i].fireCooldown);
+                    script.eventsUI[i].isTrigger = EditorGUILayout.Toggle("Is Trigger?", script.eventsUI[i].isTrigger);
+                    script.eventsUI[i].thisGameObject = EditorGUILayout.ObjectField("Collider Object", script.eventsUI[i].thisGameObject, typeof(GameObject), true) as GameObject;
                     EditorGUILayout.HelpBox("This fires an event when the selected object collides with anything. Please use 'is trigger' depending on the nature of the collision. Not fully tested yet.", MessageType.Warning);
                 }
-                if ((int)script.events[i].function == 2)
+                if ((int)script.eventsUI[i].function == 2)
                 {
                     // Collision with tag //
                     EditorGUILayout.LabelField("Fire cooldown, if 0 then can only be fired once:");
-                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
-                    script.events[i].collisionTag = EditorGUILayout.TextField("Collision Tag Name", script.events[i].collisionTag);
-                    script.events[i].isTrigger = EditorGUILayout.Toggle("Is Trigger?", script.events[i].isTrigger);
-                    script.events[i].thisGameObject = EditorGUILayout.ObjectField("Collider Object", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
+                    script.eventsUI[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.eventsUI[i].fireCooldown);
+                    script.eventsUI[i].collisionTag = EditorGUILayout.TextField("Collision Tag Name", script.eventsUI[i].collisionTag);
+                    script.eventsUI[i].isTrigger = EditorGUILayout.Toggle("Is Trigger?", script.eventsUI[i].isTrigger);
+                    script.eventsUI[i].thisGameObject = EditorGUILayout.ObjectField("Collider Object", script.eventsUI[i].thisGameObject, typeof(GameObject), true) as GameObject;
                     EditorGUILayout.HelpBox("This fires an event when the selected object collides with a specific tag. NOTICE, the names are case sensitive!. Please use 'is trigger' depending on the nature of the collision. Not fully tested yet.", MessageType.Warning);
                 }
-                if ((int)script.events[i].function == 3)
+                if ((int)script.eventsUI[i].function == 3)
                 {
                     // Check if object destroyed //
-                    script.events[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
+                    script.eventsUI[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.eventsUI[i].thisGameObject, typeof(GameObject), true) as GameObject;
                     EditorGUILayout.HelpBox("Attach the GameObject you want to listen to. When this specific object is destroyed, the event will fire.", MessageType.Info);
                 }
 
-                if ((int)script.events[i].function == 4)
+                if ((int)script.eventsUI[i].function == 4)
                 {
                     // Timed event //
                     EditorGUILayout.LabelField("Fire cooldown, if 0 then can only be fired once:");
-                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
+                    script.eventsUI[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.eventsUI[i].fireCooldown);
                     EditorGUILayout.HelpBox("Specify the time interval for when the event should be fired", MessageType.Info);
                 }
-                if ((int)script.events[i].function == 5)
+                if ((int)script.eventsUI[i].function == 5)
                 {
                     // Object moving // 
-                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
-                    script.events[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
+                    script.eventsUI[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.eventsUI[i].fireCooldown);
+                    script.eventsUI[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.eventsUI[i].thisGameObject, typeof(GameObject), true) as GameObject;
                     EditorGUILayout.HelpBox("Fires an event when the selected gameobject is moving. Not fully tested yet", MessageType.Warning);
                 }
 
-                SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
+                SerializedProperty fireProp = serializedObject.FindProperty("eventsUI.Array.data[" + i + "].eventToFire");
                 EditorGUILayout.PropertyField(fireProp);
                 serializedObject.ApplyModifiedProperties();
             }
