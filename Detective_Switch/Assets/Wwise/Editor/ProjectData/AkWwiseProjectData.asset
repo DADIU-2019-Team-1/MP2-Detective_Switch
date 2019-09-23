@@ -184,14 +184,44 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 6f0215d87963454cb77c37e1cdd774dc
     GuidInternal: 
-    m_lastTime: -8586328956275474414
-    List: []
+    m_lastTime: -8586323762775962894
+    List:
+    - name: Non_World_Verb
+      guid: aa0eb7215c869d44b38dbd9845ad2ce2
+      id: 4264461689
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: SoundFX
+        ObjectType: 2
+      - ElementName: Non-World
+        ObjectType: 2
+      - ElementName: Non_World_Verb
+        ObjectType: 1
+      Path: Default Work Unit\Master Audio Bus\SoundFX\Non-World\Non_World_Verb
+    - name: World_Verb
+      guid: f3d784edefb76f498a617d3f16232554
+      id: 2667095749
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: SoundFX
+        ObjectType: 2
+      - ElementName: World
+        ObjectType: 2
+      - ElementName: World_Verb
+        ObjectType: 1
+      Path: Default Work Unit\Master Audio Bus\SoundFX\World\World_Verb
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586328920148744860
+    m_lastTime: -8586323766359820759
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -207,27 +237,145 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586328920148815021
+    m_lastTime: -8586323763672628028
     List:
-    - name: Play_desert
-      guid: 70b7c7f07f96904496403e342e0b274d
-      id: 3303490701
+    - name: Play_Amb_Basic_Room
+      guid: 823f6d9e76dce0498759e240da23b7fe
+      id: 1643668981
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Play_desert
+      - ElementName: 3_Ambience
+        ObjectType: 4
+      - ElementName: Play_Amb_Basic_Room
         ObjectType: 3
-      Path: Default Work Unit\Play_desert
+      Path: Default Work Unit\3_Ambience\Play_Amb_Basic_Room
       maxAttenuation: 0
-      maxDuration: 48.99069
-      minDuration: 48.99069
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Clues
+      guid: 9b07c6776f20074c832e533d3b7f4c1b
+      id: 4102857472
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 5_SFX
+        ObjectType: 4
+      - ElementName: Play_Clues
+        ObjectType: 3
+      Path: Default Work Unit\5_SFX\Play_Clues
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_Flashlight_On_Off
+      guid: 034b30d842587d40badb8e205cc6a8d6
+      id: 4064524182
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 4_Player
+        ObjectType: 4
+      - ElementName: Play_Flashlight_On_Off
+        ObjectType: 3
+      Path: Default Work Unit\4_Player\Play_Flashlight_On_Off
+      maxAttenuation: 0
+      maxDuration: 0.900915
+      minDuration: 0.790204
+    - name: Play_Flashlight_Switch
+      guid: 7c7dc24b834d334cbe06cb0b7ddf2dfe
+      id: 784840363
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 4_Player
+        ObjectType: 4
+      - ElementName: Play_Flashlight_Switch
+        ObjectType: 3
+      Path: Default Work Unit\4_Player\Play_Flashlight_Switch
+      maxAttenuation: 0
+      maxDuration: 4.001041
+      minDuration: 2.884395
+    - name: Play_Footstep_Surface
+      guid: c1afc499c9e1d34094cd7183899ace79
+      id: 709824872
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 4_Player
+        ObjectType: 4
+      - ElementName: Play_Footstep_Surface
+        ObjectType: 3
+      Path: Default Work Unit\4_Player\Play_Footstep_Surface
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_GameFlow_Music
+      guid: a8fcaab4c89e9d44893e76960af3c011
+      id: 2096200520
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 1_Music
+        ObjectType: 4
+      - ElementName: Play_GameFlow_Music
+        ObjectType: 3
+      Path: Default Work Unit\1_Music\Play_GameFlow_Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Menu_Button
+      guid: 72ce0b1666ddc74b8de3ae3cddec1054
+      id: 1109058446
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 2_UI
+        ObjectType: 4
+      - ElementName: Play_Menu_Button
+        ObjectType: 3
+      Path: Default Work Unit\2_UI\Play_Menu_Button
+      maxAttenuation: 0
+      maxDuration: 0.553774
+      minDuration: 0.43198
+    - name: Play_Presence
+      guid: 773cbb9e64baf54aa5b19aab235cf130
+      id: 4155730121
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: 3_Ambience
+        ObjectType: 4
+      - ElementName: Play_Presence
+        ObjectType: 3
+      Path: Default Work Unit\3_Ambience\Play_Presence
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: e693f946ea321a498ea501e6176c3a19
     GuidInternal: 
-    m_lastTime: -8586328956767873840
-    List: []
+    m_lastTime: -8586328080327243198
+    List:
+    - name: Music_Slider
+      guid: 8cccdfed0377cb448e541d1e7639f511
+      id: 1127857866
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_Slider
+        ObjectType: 13
+      Path: Default Work Unit\Music_Slider
+    - name: SFX_Slider
+      guid: bdd5564f7f787840badf5d28353581bf
+      id: 4140634290
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Slider
+        ObjectType: 13
+      Path: Default Work Unit\SFX_Slider
   - PhysicalPath: Game Parameters\Factory Motion.wwu
     ParentPhysicalPath: 
     guid: 225213d7dbd1d042adc0930743567776
