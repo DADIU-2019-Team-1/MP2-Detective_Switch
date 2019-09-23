@@ -47,7 +47,49 @@ public class MMPreProcessing
     {
         return jointPositions;
     }
-    
+   
+
     /// Trajectory references
     
+}
+
+public class FeaturePoseVector
+{
+    private List<Vector3> leftFoot;
+    private List<Vector3> rightFoot;
+    private List<Vector3> spine;
+    private List<float> footVelocity;
+
+    public FeaturePoseVector(List<Vector3> _leftFoot, List<Vector3> _rightFoot, List<Vector3> _spine, List<float> _footVelocity)
+    {
+        leftFoot = _leftFoot;
+        rightFoot = _rightFoot;
+        spine = _spine;
+        footVelocity = _footVelocity;
+    }
+
+    public List<Vector3> GetLeftFoot()
+    {
+        return leftFoot;
+    }
+
+    public List<Vector3> GetRightFoot()
+    {
+        return rightFoot;
+    }
+
+    public List<Vector3> GetSpine()
+    {
+        return spine;
+    }
+
+    public List<float> GetFootVelocity()
+    {
+        return footVelocity;
+    }
+
+    public FeaturePoseVector GetFeaturePoseVector()
+    {
+        return this;    // Don't know if you can do this?
+    }
 }
