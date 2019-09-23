@@ -55,7 +55,45 @@ ModelImporter:
     optimizeGameObjects: 1
     motionNodeName: Root
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'LeftThigh' : position error =
+      8030.768555 mm\n\t'LeftShin' : position error = 42830.789063 mm\n\t'LeftFoot'
+      : position error = 42929.933594 mm\n\t'LeftToe' : position error = 14429.169922
+      mm\n\t'RightThigh' : position error = 8030.768555 mm\n\t'RightShin' : position
+      error = 42830.789063 mm\n\t'RightFoot' : position error = 42929.937500 mm\n\t'RightToe'
+      : position error = 14429.177734 mm\n\t'Spine1' : position error = 9277.666016
+      mm\n\t'Spine2' : position error = 7528.334473 mm\n\t'Spine3' : position error
+      = 7528.342285 mm\n\t'Spine4' : position error = 12712.158203 mm\n\t'LeftShoulder'
+      : position error = 14297.399414 mm\n\t'LeftArm' : position error = 13344.887695
+      mm\n\t'LeftForeArm' : position error = 25876.933594 mm\n\t'LeftHand' : position
+      error = 28494.365234 mm\n\t'LeftFinger1Metacarpal' : position error = 3494.317383
+      mm\n\t'LeftFinger1Proximal' : position error = 4009.871582 mm\n\t'LeftFinger1Distal'
+      : position error = 3043.563965 mm\n\t'LeftFinger2Metacarpal' : position error
+      = 3111.364258 mm\n\t'LeftFinger2Proximal' : position error = 5442.000977 mm\n\t'LeftFinger2Medial'
+      : position error = 4523.402344 mm\n\t'LeftFinger3Metacarpal' : position error
+      = 2837.098389 mm\n\t'LeftFinger3Proximal' : position error = 5392.879395 mm\n\t'LeftFinger3Medial'
+      : position error = 4724.448242 mm\n\t'LeftFinger4Metacarpal' : position error
+      = 2813.554932 mm\n\t'LeftFinger4Proximal' : position error = 5058.706055 mm\n\t'LeftFinger4Medial'
+      : position error = 4322.387207 mm\n\t'LeftFinger5Metacarpal' : position error
+      = 2915.616699 mm\n\t'LeftFinger5Proximal' : position error = 4771.000000 mm\n\t'LeftFinger5Medial'
+      : position error = 3518.219727 mm\n\t'Neck' : position error = 20092.533203
+      mm\n\t'Head' : position error = 10362.690430 mm\n\t'HeadVertex' : position error
+      = 15655.189453 mm\n\t'RightShoulder' : position error = 14297.399414 mm\n\t'RightArm'
+      : position error = 13344.871094 mm\n\t'RightForeArm' : position error = 25876.933594
+      mm\n\t'RightHand' : position error = 28494.357422 mm\n\t'RightFinger1Metacarpal'
+      : position error = 3494.318115 mm\n\t'RightFinger1Proximal' : position error
+      = 4009.872070 mm\n\t'RightFinger1Distal' : position error = 3043.562500 mm\n\t'RightFinger2Metacarpal'
+      : position error = 3111.364990 mm\n\t'RightFinger2Proximal' : position error
+      = 5442.000977 mm\n\t'RightFinger2Medial' : position error = 4523.402832 mm\n\t'RightFinger2Distal'
+      : position error = 2782.905273 mm\n\t'RightFinger3Metacarpal' : position error
+      = 2837.099121 mm\n\t'RightFinger3Proximal' : position error = 5392.880371 mm\n\t'RightFinger3Medial'
+      : position error = 4724.448242 mm\n\t'RightFinger3Distal' : position error =
+      3116.127686 mm\n\t'RightFinger4Metacarpal' : position error = 2813.555664 mm\n\t'RightFinger4Proximal'
+      : position error = 5058.706055 mm\n\t'RightFinger4Medial' : position error =
+      4322.387207 mm\n\t'RightFinger4Distal' : position error = 2787.621582 mm\n\t'RightFinger5Metacarpal'
+      : position error = 2915.617676 mm\n\t'RightFinger5Proximal' : position error
+      = 4771.000488 mm\n\t'RightFinger5Medial' : position error = 3518.219727 mm\n\t'RightFinger5Distal'
+      : position error = 2211.433594 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -82,7 +120,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -111,7 +149,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -140,7 +178,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -169,7 +207,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -198,7 +236,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -227,7 +265,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -256,7 +294,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -285,7 +323,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -328,7 +366,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

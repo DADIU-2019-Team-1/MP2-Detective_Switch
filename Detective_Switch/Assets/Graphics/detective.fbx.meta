@@ -31,7 +31,46 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'Detective1_LeftThigh' : position
+      error = 5736.264160 mm\n\t'Detective1_LeftShin' : position error = 30593.427734
+      mm\n\t'Detective1_LeftFoot' : position error = 30664.246094 mm\n\t'Detective1_LeftToe'
+      : position error = 10306.551758 mm\n\t'Detective1_RightThigh' : position error
+      = 5736.264160 mm\n\t'Detective1_RightShin' : position error = 30593.427734 mm\n\t'Detective1_RightFoot'
+      : position error = 30664.248047 mm\n\t'Detective1_RightToe' : position error
+      = 10306.556641 mm\n\t'Detective1_Spine1' : position error = 6626.906738 mm\n\t'Detective1_Spine2'
+      : position error = 5377.391113 mm\n\t'Detective1_Spine3' : position error =
+      5377.382324 mm\n\t'Detective1_Spine4' : position error = 9080.115234 mm\n\t'Detective1_LeftShoulder'
+      : position error = 10212.428711 mm\n\t'Detective1_LeftArm' : position error
+      = 9532.064453 mm\n\t'Detective1_LeftForeArm' : position error = 18483.525391
+      mm\n\t'Detective1_LeftHand' : position error = 20353.132813 mm\n\t'Detective1_RightFinger4Metacarpal_001'
+      : position error = 2009.685791 mm\n\t'Detective1_RightFinger4Proximal_001' :
+      position error = 8308.153320 mm\n\t'Detective1_RightFinger4Medial_001' : position
+      error = 3507.644287 mm\n\t'Detective1_RightFinger5Metacarpal_001' : position
+      error = 2082.634277 mm\n\t'Detective1_RightFinger5Proximal_001' : position error
+      = 7094.872559 mm\n\t'Detective1_RightFinger5Medial_001' : position error = 2513.014404
+      mm\n\t'Detective1_RightFinger5Distal_001' : position error = 1579.610229 mm\n\t'Detective1_RightFinger2Metacarpal_001'
+      : position error = 2222.315674 mm\n\t'Detective1_RightFinger2Proximal_001' :
+      position error = 7022.401367 mm\n\t'Detective1_RightFinger2Medial_001' : position
+      error = 3098.390137 mm\n\t'Detective1_RightFinger3Metacarpal_001' : position
+      error = 2026.456177 mm\n\t'Detective1_RightFinger3Proximal_001' : position error
+      = 8046.287598 mm\n\t'Detective1_RightFinger3Medial_001' : position error = 3225.715820
+      mm\n\t'Detective1_Neck' : position error = 14351.810547 mm\n\t'Detective1_Head'
+      : position error = 7401.939941 mm\n\t'Detective1_HeadVertex' : position error
+      = 11182.282227 mm\n\t'Detective1_RightShoulder' : position error = 10212.428711
+      mm\n\t'Detective1_RightArm' : position error = 9532.054688 mm\n\t'Detective1_RightForeArm'
+      : position error = 18483.521484 mm\n\t'Detective1_RightHand' : position error
+      = 20353.119141 mm\n\t'Detective1_RightFinger4Metacarpal' : position error =
+      2009.678833 mm\n\t'Detective1_RightFinger4Proximal' : position error = 8308.161133
+      mm\n\t'Detective1_RightFinger4Medial' : position error = 3507.642578 mm\n\t'Detective1_RightFinger5Metacarpal'
+      : position error = 2082.583008 mm\n\t'Detective1_RightFinger5Proximal' : position
+      error = 7094.875000 mm\n\t'Detective1_RightFinger5Medial' : position error =
+      2513.006348 mm\n\t'Detective1_RightFinger5Distal' : position error = 1579.604492
+      mm\n\t'Detective1_RightFinger2Metacarpal' : position error = 2222.401611 mm\n\t'Detective1_RightFinger2Proximal'
+      : position error = 7022.410156 mm\n\t'Detective1_RightFinger2Medial' : position
+      error = 3098.388672 mm\n\t'Detective1_RightFinger3Metacarpal' : position error
+      = 2026.501221 mm\n\t'Detective1_RightFinger3Proximal' : position error = 8046.285645
+      mm\n\t'Detective1_RightFinger3Medial' : position error = 3225.720947 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -45,152 +84,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
-      internalID: 1989289236423521904
-      firstFrame: 0
-      lastFrame: 78
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Detective1_Root_001_Take_001_BaseLayer
-      takeName: Detective1_Root_001_Take_001_BaseLayer
-      internalID: -469799041056674530
-      firstFrame: 0
-      lastFrame: 2000
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Idle
-      takeName: Idle
-      internalID: -3100369314251171874
-      firstFrame: -1
-      lastFrame: 79
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: PoseLib
-      takeName: PoseLib
-      internalID: -7421341624539568328
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Walk
-      takeName: Walk
-      internalID: 2667949614841947897
-      firstFrame: -1
-      lastFrame: 106
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -217,7 +111,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -227,7 +121,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 3
