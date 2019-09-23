@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class MMPreProcessing
+[RequireComponent(typeof(Animator))]
+public class MMPreProcessing : MonoBehaviour
 {
     /* The purpose of this script is to process and store the
      * pose and trajectory in a feature list, which must cached
@@ -16,20 +18,30 @@ public class MMPreProcessing
      * when playing a specific animation. It contains the time steps that is
      * being processed, and the amount of time to look in advance.
      */
-    /// We are supposed to use fbx data, but since i don't know how to do that, ill put it in as rig
+    private Animator animator;
     private AnimationClip clip;
     private int animTime; 
     private List<Vector3> jointPositions;
 
+    private void Start()
+    {
+        LoadAnimationsFromMecanim();
+    }
+
+    public void LoadAnimationsFromMecanim()
+    {
+        // Get a reference to the Animator Controller:
+        animator = GetComponent<Animator>();
+    }
 
     public MMPreProcessing(AnimationClip _clip, int _animTime, List<Vector3> _jointPositions)
     {
-        /// Pose
+        // Pose
         clip = _clip;
         animTime = _animTime;
         jointPositions = _jointPositions;
 
-        /// Trajectory
+        // Trajectory
     }
 
     /// Pose references
@@ -49,7 +61,7 @@ public class MMPreProcessing
     }
    
 
-    /// Trajectory references
+    // Trajectory references
     
 }
 
