@@ -66,8 +66,7 @@ namespace UnityEditor
                 startInfo.WorkingDirectory = @"C:\Users\Dadiu student\.jenkins\workspace\DADIU MP2 by Team 1\All Branches\Detective_Switch";
                 startInfo.RedirectStandardInput = true;
                 startInfo.RedirectStandardOutput = true;
-                //startInfo.Arguments = "rev-parse --abbrev-ref HEAD";
-                startInfo.Arguments = "rev-parse --symbolic-full-name";
+                startInfo.Arguments = "rev-parse --abbrev-ref HEAD";
 
                 Process process = new Process();
                 process.StartInfo = startInfo;
