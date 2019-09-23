@@ -12,7 +12,7 @@ public class MM : MonoBehaviour
      * and applies motion matching to the character.
      */
     private MMPreProcessing preprocces;
-    private FeaturePoseVector featurePoseVector;
+    //private FeaturePoseVector featurePoseVector;
     private TrajectoryTest trajectory;
     private TrajectoryCalculator trajectoryCalc;
     private Animator animator;
@@ -28,18 +28,18 @@ public class MM : MonoBehaviour
         /// Preprocesser does not derive from monobehaviour, and as such does not need
         /// an object reference.
         animator = GetComponent<Animator>();
-        AnimatorController controller = GetComponent<AnimatorController>();
+        //AnimatorController controller = GetComponent<Animator>().runtimeAnimatorController;
 
         AnimatorStateInfo currentAnimatorStateInfo;
         //float playbackTime = currentAnimatorStateInfo.normalizedTime * currentAnimatorStateInfo.length;
 
-        AnimationClip[] manyClips = controller.animationClips;
-        List<AnimationClip> allClips = new List<AnimationClip>();
+        //AnimationClip[] manyClips = controller.animationClips;
+        //List<AnimationClip> allClips = new List<AnimationClip>();
 
         // NEED A SMARTER WAY TO ITERATE THROUGHT THE AMOUNT OF CLIPS (STATES) IN AN ANIMATION
-        for (int i = 0; i < manyClips.Length; i++)
+        //for (int i = 0; i < manyClips.Length; i++)
         {
-            Debug.Log(manyClips[i]);
+            //Debug.Log(manyClips[i].);
             //allClips = controller.animationClips;
             //currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(i);
             //Debug.Log("Name of animation " + i + ": " + currentAnimatorStateInfo.nameHash);
