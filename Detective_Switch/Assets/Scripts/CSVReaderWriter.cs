@@ -4,13 +4,13 @@ using UnityEngine;
 using System.IO;
 using System.Globalization;
 
-public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, need on Awake() for now
+public class CSVReaderWriter // : MonoBehaviour    // Remove MonoBehavior later, need on Awake() for now
 {
     [Header("Tip: right-click and 'Copy Path' in project tab")]
     public string CSVReadPath = null;
-    public string CSVWritePath = null;
+    public string CSVWritePath = "Assets/Resources";
     [Tooltip("Specify the file name without writing .csv - This will be appended automatically")]
-    public string CSVFileName = null;
+    public string CSVFileName = "AnimData";
 
     // Variable holders from reading CSV files:
     private string[] labels;
@@ -19,15 +19,16 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
     private List<Quaternion> rootQuaternions;
     private List<Vector3> leftFootPositions;
     private List<Vector3> rightFootPositions;
-    private List<float> leftFootVelocity;
-    private List<float> rightFootVelocity;
+    private List<Vector3> leftFootVelocity;
+    private List<Vector3> rightFootVelocity;
+    private List<Vector3> rootVelocity;
 
 #if UNITY_EDITOR
     void Awake()
     {
         // ReadCSV();
         // WriteCSV();
-        CalculateColoumns(8, 3, 1);
+        // CalculateColoumns(8, 3, 1);
         // CSVWriteTester();
     }
 #endif
@@ -120,6 +121,21 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
                 Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
                 rootPositions.Add(tempPosition);
             }
+            if (labels[i].Contains("RootV.x"))
+            {
+                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                rootVelocity.Add(tempPosition);
+            }
+            if (labels[i].Contains("FootLeftV.x"))
+            {
+                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                leftFootVelocity.Add(tempPosition);
+            }
+            if (labels[i].Contains("FootLeftV.x"))
+            {
+                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                rightFootVelocity.Add(tempPosition);
+            }
         }
     }
 
@@ -139,16 +155,6 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
     {
         for (int i = 0; i < labels.Length; i++)
         {
-            if (labels[i].Contains("FootLeftVel"))
-            {
-                float tempFloat = data[i];
-                leftFootVelocity.Add(tempFloat);
-            }
-            if (labels[i].Contains("FootRightVel"))
-            {
-                float tempFloat = data[i];
-                rightFootVelocity.Add(tempFloat);
-            }
             if (labels[i].Contains("Frame"))
             {
                 int tempInt = (int)data[i];
@@ -157,7 +163,7 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
         }
     }
 
-    public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Quaternion> _rootRot, List<Vector3> _footLeft, List<Vector3> _footRight, List<float> _footLeftVel, List<float> _footRightVel)
+    public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Quaternion> _rootRot, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
     {
         if (CSVWritePath == null || CSVFileName == null)
         {
@@ -175,16 +181,18 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
 
             using (var file = File.CreateText(CSVWritePath))
             {
-                labels = new string[17] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
-                "FootLeftT.x","FootLeftT.y","FootLeftT.z", "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftVel","FootRightVel"};
+                labels = new string[24] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
+                "FootLeftT.x","FootLeftT.y","FootLeftT.z", "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftV.x","FootLeftV.y",
+                "FootLeftV.z","FootRightV.x","FootRightV.y","FootRightV.z","rootV.x","rootV.x","rootV.x"};
 
                 file.WriteLine(string.Join(",", labels));
 
                 for (int i = 0; i < _frame.Count; i++)
                 {
-                    string[] tempLine = new string[17] {_clipName[i], _frame[i].ToString(), _rootPos[i].x.ToString(), _rootPos[i].y.ToString(), _rootPos[i].z.ToString(), _rootRot[i].x.ToString(),
+                    string[] tempLine = new string[24] {_clipName[i], _frame[i].ToString(), _rootPos[i].x.ToString(), _rootPos[i].y.ToString(), _rootPos[i].z.ToString(), _rootRot[i].x.ToString(),
                     _rootRot[i].y.ToString(), _rootRot[i].z.ToString(), _rootRot[i].w.ToString(), _footLeft[i].x.ToString(), _footLeft[i].y.ToString(), _footLeft[i].z.ToString(),
-                    _footRight[i].x.ToString(), _footRight[i].y.ToString(), _footRight[i].z.ToString(), _footLeftVel[i].ToString(), _footRightVel[i].ToString()};
+                    _footRight[i].x.ToString(), _footRight[i].y.ToString(), _footRight[i].z.ToString(), _footLeftVel[i].x.ToString(), _footLeftVel[i].y.ToString(), _footLeftVel[i].z.ToString(),
+                    _footRightVel[i].x.ToString(), _footRightVel[i].y.ToString(), _footRightVel[i].z.ToString(), _rootVel[i].x.ToString(), _rootVel[i].y.ToString(), _rootVel[i].z.ToString()};
 
                     file.WriteLine(string.Join(",", tempLine));
                 }
@@ -194,7 +202,7 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
 
     }
 
-    public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Vector3> _footLeft, List<Vector3> _footRight, List<float> _footLeftVel, List<float> _footRightVel)
+    public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
     {
         List<Quaternion> _rootRotPlaceholder = new List<Quaternion>();
 
@@ -203,32 +211,25 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
             _rootRotPlaceholder.Add(new Quaternion(0, 0, 0, 0));
         }
 
-        WriteCSV(_clipName, _frame, _rootPos, _rootRotPlaceholder, _footLeft, _footRight, _footLeftVel, _footRightVel);
+        WriteCSV(_clipName, _frame, _rootPos, _rootRotPlaceholder, _footLeft, _footRight, _footLeftVel, _footRightVel, _rootVel);
     }
 
-    /*
-    private void CSVWriteTester()
+
+    /// THIS IS FOR DEBUGGING ///
+    public void CSVWriteTester(List<Vector3> _rootPos, List<Quaternion> _rootRot, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
     {
-        CSVFileName = CSVFileName + ".csv";
-        CSVWritePath = CSVWritePath + "/" + CSVFileName;
-        Debug.Log("CSV Reader/Writer: writing lists to CSV file " + CSVFileName);
 
-        using (var file = File.CreateText(CSVWritePath))
+        List<string> clipNamePlaceholder = new List<string>();
+        List<int> framePlaceholder = new List<int>();
+
+        for (int i = 0; i < _rootPos.Count; i++)
         {
-            labels = new string[17] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","RootQ.x","RootQ.y","RootQ.z","RootQ.w", 
-                "FootLeftT.x","FootLeftT.y","FootLeftT.z", "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftVel","FootRightVel"};
-
-            file.WriteLine(string.Join(",", labels));
-
-            for (int i = 0; i < 5; i++)
-            {
-                // string[] tempLine = new string[columnAmount] { };
-
-                file.WriteLine(string.Join(",","Test","test2"));
-            }
-
+            clipNamePlaceholder.Add("temp");
+            framePlaceholder.Add(1);
         }
-    } */
+
+        WriteCSV(clipNamePlaceholder, framePlaceholder, _rootPos, _rootRot, _footLeft, _footRight, _footLeftVel, _footRightVel, _rootVel);
+    } 
 
     private void InitializeLists()
     {
@@ -236,8 +237,8 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
         rootPositions = new List<Vector3>();
         leftFootPositions = new List<Vector3>();
         rightFootPositions = new List<Vector3>();
-        leftFootVelocity = new List<float>();
-        rightFootVelocity = new List<float>();
+        leftFootVelocity = new List<Vector3>();
+        rightFootVelocity = new List<Vector3>();
         frames = new List<int>();
     }
 
@@ -317,13 +318,23 @@ public class CSVReaderWriter : MonoBehaviour    // Remove MonoBehavior later, ne
         return rootQuaternions;
     }
 
-    public List<float> GetLeftFootVel()
+    public List<Vector3> GetLeftFootVel()
     {
         return leftFootVelocity;
     }
 
-    public List<float> GetRightFootVel()
+    public List<Vector3> GetRightFootVel()
     {
         return rightFootVelocity;
+    }
+
+    public List<Vector3> GetRootVel()
+    {
+        return rootVelocity;
+    }
+
+    public void SetWritePath(string path)
+    {
+        CSVWritePath = path;
     }
 }

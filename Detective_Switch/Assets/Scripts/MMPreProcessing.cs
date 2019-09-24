@@ -36,7 +36,7 @@ public class MMPreProcessing : MonoBehaviour
     public List<Vector3> rFootVel;
     // Note: We are having trouble tracking the position of the neck, since it is in muscle space.
 
-    private void Start()
+    private void Awake()
     {
         // Populate joint- and quaternion lists
         foreach (AnimationClip clip in clips)
@@ -61,6 +61,9 @@ public class MMPreProcessing : MonoBehaviour
                 rFootVel.Add(CalculateVelocityFromVectors(rFootPos[i], new Vector3(0, 0, 0)));
             }
         }
+
+        CSVReaderWriter CSVdata = new CSVReaderWriter();
+        CSVdata.CSVWriteTester(rootPos, rootQ, lFootPos, rFootPos, lFootVel, rFootVel, rootVel);
     }
 
     public List<Vector3> GetJointPositionsFromClipBindings(AnimationClip clip, string jointName)
