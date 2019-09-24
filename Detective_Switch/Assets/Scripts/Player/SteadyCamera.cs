@@ -10,7 +10,7 @@ public class SteadyCamera : MonoBehaviour
 
     void Start()
     {
-        offset = new Vector3(-11, 8, -11);
+        offset = new Vector3(-11, 9, -11);
     }
 
     void Update()
