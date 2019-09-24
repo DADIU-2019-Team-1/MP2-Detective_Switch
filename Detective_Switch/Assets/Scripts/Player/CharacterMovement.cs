@@ -6,18 +6,22 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private Rigidbody playerRB;
-    public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, moveReactionTime = 0.3f, turnReactionTime = 2.5f;
+    public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, moveReactionTime = 0.3f, turnReactionTime = 2.5f, globalPlayerSpeed;
     private Vector2 joyAnchor;
+    private Vector3 oldPos;
     private bool canMove;
+    private bool mouseDown;
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
-    private float playerSpeedInterval, timeAtTouchDown;
+    private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
+    [SerializeField]
+    private InventoryUpdater _invUpdater;
     // Start is called before the first frame update
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
-
+        oldPos = transform.position;
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class CharacterMovement : MonoBehaviour
             joyAnchor = Input.mousePosition;
             //print(joyAnchor);
             timeAtTouchDown = Time.time;
+            mouseDown = true;
         }
         if(Input.GetMouseButton(0)) {
             Vector2 joyDragVector = GetJoyDragVector(joyAnchor, Input.mousePosition);
@@ -47,22 +52,27 @@ public class CharacterMovement : MonoBehaviour
             }
         }
         if(Input.GetMouseButtonUp(0)) {
-            if (!canMove || Time.time - timeAtTouchDown < maxPressTime) {
-                MouseClick();
+            if (mouseDown)
+            {
+                if (!canMove || Time.time - timeAtTouchDown < maxPressTime)
+                {
+                    MouseClick();
+                }
             }
+            mouseDown = false;
             canMove = false;
         }
     }
 
     void MouseClick() {
-        Debug.Log("MOUSE CLICK");
+        //Debug.Log("MOUSE CLICK");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         LayerMask mask = LayerMask.GetMask("Interactable");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-            //int rayShift = 1 << 4;
-            hit.transform.gameObject.SetActive(false);
+            hit.transform.gameObject.GetComponent<Interactable>().Interact();
+            //_invUpdater.AddItemToSlot();
         }
     }
 
@@ -89,8 +99,15 @@ public class CharacterMovement : MonoBehaviour
         }
         //playerRB.AddForce(speedMove * Time.deltaTime * 100);
         playerRB.velocity = Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
-        print(speedMove);
-
+        //print(speedMove);
+        
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), turnReactionTime * Time.deltaTime);
+        //globalPlayerSpeed = playerRB.velocity.magnitude;
+        
+        distanceTravelled = (oldPos - transform.position).magnitude;
+        oldPos = transform.position;
+        GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);
+        //Debug.Log(distanceTravelled);
+        //Debug.Log(globalPlayerSpeed);
     }
 }
