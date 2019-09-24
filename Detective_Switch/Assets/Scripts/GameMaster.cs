@@ -6,7 +6,11 @@ public class GameMaster : MonoBehaviour
 {
     public static GameMaster instance;
     private float moveSpeed;
-    // Start is called before the first frame update
+
+    /// --- Events
+    public delegate void LocalizationDelegate();
+    public event LocalizationDelegate localizationEvent;
+
     public void Awake()
     {
         CreateGameMaster();
@@ -16,9 +20,15 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("b"))
+            if (localizationEvent != null)
+            {
+                Debug.Log("Localization event triggered!");
+                localizationEvent();
+            }
     }
-        void CreateGameMaster()
+
+    void CreateGameMaster()
     {
         if (instance != null)
         {
@@ -31,7 +41,8 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    public void SetMoveSpeed(float _moveSpeed) {
+    public void SetMoveSpeed(float _moveSpeed)
+    {
         moveSpeed = _moveSpeed;
     }
 }
