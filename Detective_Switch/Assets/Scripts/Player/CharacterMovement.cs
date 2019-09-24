@@ -21,7 +21,6 @@ public class CharacterMovement : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
         oldPos = transform.position;
-
     }
 
     // Update is called once per frame
@@ -59,15 +58,14 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void MouseClick() {
-        Debug.Log("MOUSE CLICK");
+        //Debug.Log("MOUSE CLICK");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         LayerMask mask = LayerMask.GetMask("Interactable");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-            //int rayShift = 1 << 4;
-            hit.transform.gameObject.SetActive(false);
-            _invUpdater.AddItemToSlot();
+            hit.transform.gameObject.GetComponent<Interactable>().Interact();
+            //_invUpdater.AddItemToSlot();
         }
     }
 
@@ -94,7 +92,7 @@ public class CharacterMovement : MonoBehaviour
         }
         //playerRB.AddForce(speedMove * Time.deltaTime * 100);
         playerRB.velocity = Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
-        print(speedMove);
+        //print(speedMove);
         
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), turnReactionTime * Time.deltaTime);
         //globalPlayerSpeed = playerRB.velocity.magnitude;
@@ -102,7 +100,7 @@ public class CharacterMovement : MonoBehaviour
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;
         GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);
-        Debug.Log(distanceTravelled);
-        Debug.Log(globalPlayerSpeed);
+        //Debug.Log(distanceTravelled);
+        //Debug.Log(globalPlayerSpeed);
     }
 }
