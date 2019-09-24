@@ -4,11 +4,12 @@ using UnityEngine;
 using System.IO;
 using System.Globalization;
 
-public class CSVReaderWriter // : MonoBehaviour    // Remove MonoBehavior later, need on Awake() for now
+
+public class CSVReaderWriter // : MonoBehaviour
 {
     [Header("Tip: right-click and 'Copy Path' in project tab")]
-    public string CSVReadPath = null;
-    public string CSVWritePath = "Assets/Resources";
+    public string CSVReadPath = "Assets/Resources/CSV/AnimData.csv";
+    public string CSVWritePath = "Assets/Resources/CSV";
     [Tooltip("Specify the file name without writing .csv - This will be appended automatically")]
     public string CSVFileName = "AnimData";
 
@@ -22,12 +23,12 @@ public class CSVReaderWriter // : MonoBehaviour    // Remove MonoBehavior later,
     private List<Vector3> leftFootVelocity;
     private List<Vector3> rightFootVelocity;
     private List<Vector3> rootVelocity;
+    private AnimationClip animClips;
 
 #if UNITY_EDITOR
     void Awake()
     {
         // ReadCSV();
-        // WriteCSV();
         // CalculateColoumns(8, 3, 1);
         // CSVWriteTester();
     }
@@ -80,12 +81,14 @@ public class CSVReaderWriter // : MonoBehaviour    // Remove MonoBehavior later,
 
                 float[] dataValues = new float[tempDataValues.Length];
                 string stateValues = "";
-                for (int i = 0; i < dataValues.Length; i++)
+                for (int i = 1; i < dataValues.Length; i++)
                 {
                     if (i == dataValues.Length - 1)
                         stateValues = tempDataValues[i];
                     else
+                    {
                         dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
+                    }
 
                 }
 
@@ -187,12 +190,18 @@ public class CSVReaderWriter // : MonoBehaviour    // Remove MonoBehavior later,
 
                 file.WriteLine(string.Join(",", labels));
 
+                string spec;
+                CultureInfo cul;
+
+                spec = "G";
+                cul = CultureInfo.CreateSpecificCulture("en-US");
+
                 for (int i = 0; i < _frame.Count; i++)
                 {
-                    string[] tempLine = new string[24] {_clipName[i], _frame[i].ToString(), _rootPos[i].x.ToString(), _rootPos[i].y.ToString(), _rootPos[i].z.ToString(), _rootRot[i].x.ToString(),
-                    _rootRot[i].y.ToString(), _rootRot[i].z.ToString(), _rootRot[i].w.ToString(), _footLeft[i].x.ToString(), _footLeft[i].y.ToString(), _footLeft[i].z.ToString(),
-                    _footRight[i].x.ToString(), _footRight[i].y.ToString(), _footRight[i].z.ToString(), _footLeftVel[i].x.ToString(), _footLeftVel[i].y.ToString(), _footLeftVel[i].z.ToString(),
-                    _footRightVel[i].x.ToString(), _footRightVel[i].y.ToString(), _footRightVel[i].z.ToString(), _rootVel[i].x.ToString(), _rootVel[i].y.ToString(), _rootVel[i].z.ToString()};
+                    string[] tempLine = new string[24] {_clipName[i], _frame[i].ToString(), _rootPos[i].x.ToString(spec, cul), _rootPos[i].y.ToString(spec, cul), _rootPos[i].z.ToString(spec, cul), _rootRot[i].x.ToString(spec, cul),
+                    _rootRot[i].y.ToString(spec, cul), _rootRot[i].z.ToString(spec, cul), _rootRot[i].w.ToString(spec, cul), _footLeft[i].x.ToString(spec, cul), _footLeft[i].y.ToString(spec, cul), _footLeft[i].z.ToString(spec, cul),
+                    _footRight[i].x.ToString(spec, cul), _footRight[i].y.ToString(spec, cul), _footRight[i].z.ToString(spec, cul), _footLeftVel[i].x.ToString(spec, cul), _footLeftVel[i].y.ToString(spec, cul), _footLeftVel[i].z.ToString(spec, cul),
+                    _footRightVel[i].x.ToString(spec, cul), _footRightVel[i].y.ToString(spec, cul), _footRightVel[i].z.ToString(spec, cul), _rootVel[i].x.ToString(spec, cul), _rootVel[i].y.ToString(spec, cul), _rootVel[i].z.ToString(spec, cul)};
 
                     file.WriteLine(string.Join(",", tempLine));
                 }

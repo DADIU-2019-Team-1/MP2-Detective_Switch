@@ -34,6 +34,12 @@ public class MMPreProcessing : MonoBehaviour
     public List<Vector3> rootVel;
     public List<Vector3> lFootVel;
     public List<Vector3> rFootVel;
+
+    // --- Not in Inspector
+    [HideInInspector]
+    public List<string> clipNames;
+    [HideInInspector]
+    public List<int> frames;
     // Note: We are having trouble tracking the position of the neck, since it is in muscle space.
 
     private void Awake()
@@ -45,6 +51,8 @@ public class MMPreProcessing : MonoBehaviour
             rootQ.AddRange(GetJointQuaternionsFromClipBindings(clip, jointNames[1]));
             lFootPos.AddRange(GetJointPositionsFromClipBindings(clip, jointNames[2]));
             rFootPos.AddRange(GetJointPositionsFromClipBindings(clip, jointNames[3]));
+            clipNames.AddRange(GetClipNameFromClip(clip));
+            frames.AddRange(GetFramesFromClip(clip));
         }
         for (int i = 0; i < rootPos.Count; i++)
         {
@@ -63,7 +71,9 @@ public class MMPreProcessing : MonoBehaviour
         }
 
         CSVReaderWriter CSVdata = new CSVReaderWriter();
-        CSVdata.CSVWriteTester(rootPos, rootQ, lFootPos, rFootPos, lFootVel, rFootVel, rootVel);
+        CSVdata.WriteCSV(clipNames, frames, rootPos, rootQ, lFootPos, rFootPos, lFootVel, rFootVel, rootVel);
+        CSVdata.ReadCSV();
+
     }
 
     public List<Vector3> GetJointPositionsFromClipBindings(AnimationClip clip, string jointName)
@@ -121,9 +131,42 @@ public class MMPreProcessing : MonoBehaviour
         return quaternionsToReturn;
     }
 
+    private List<string> GetClipNameFromClip(AnimationClip clip)
+    {
+        List<string> _clipNames = new List<string>();
+
+        for (int i = 0; i < clip.length * clip.frameRate; i++)
+        {
+            _clipNames.Add(clip.name);
+        }
+
+        return _clipNames;
+    }
+
+    private List<int> GetFramesFromClip(AnimationClip clip)
+    {
+        List<int> _frames = new List<int>();
+        int currentFrame = 0;
+        int indexer = 0;
+
+        for (int i = 0; i < clip.length * clip.frameRate; i++)
+        {
+            indexer++;
+            if (indexer == clip.frameRate)
+            {
+                currentFrame++;
+                indexer = 0;
+            }
+
+        _frames.Add(currentFrame);
+        }
+
+        return _frames;
+    }
+
     public Vector3 CalculateVelocityFromVectors(Vector3 currentPos, Vector3 prevPos)
     {
-        return (currentPos - prevPos) / (1 / 30);
+        return (currentPos - prevPos) / 1 / 30;
     }
 
     // Trajectory references
