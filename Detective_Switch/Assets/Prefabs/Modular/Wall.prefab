@@ -12,15 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5bbfe9fbc06084cbee1d14907d58e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallType: 2
-  WallColour: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+  WallType: 1
+  WallVariants: 1
+  WallColour: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   PanelColour: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
-  WallVariants: 3
   TurnIn: 0
   TurnOut: 0
+  HalfLength: 0
   WallStandard: {fileID: 6366116573482200799, guid: 84afd465eb7f3af42a8ae9cfa20a9a4e,
     type: 3}
   WallStandardDoor: {fileID: 4797326050912255436, guid: c23b5898e036e014db7f5123635bc3ff,
+    type: 3}
+  WallStandardDouble: {fileID: 5211952195544498430, guid: 21f53a70bcc9f4d458328c4bbf1008b0,
+    type: 3}
+  WallStandardHalf: {fileID: 2679617679333215107, guid: c7f9713467168af49ac33a4612c3c9ab,
+    type: 3}
+  WallOuterHalf: {fileID: -5504287294727631033, guid: aa9623b03820b1349b0e85e20aeb3b0c,
     type: 3}
   WallOuter: {fileID: -7932268865659461176, guid: 23540f62970b8c147bb6965fc5ac9b7f,
     type: 3}
@@ -36,7 +43,6 @@ MonoBehaviour:
     type: 3}
   WallOuter90Out: {fileID: 5043161819199003685, guid: bcdfa7ec4bafa774bb88b1798ab56411,
     type: 3}
-  Mat1: {fileID: 2100000, guid: 393d5b57abeba4b4588a154fb93c1126, type: 2}
   Mat2: {fileID: 0}
   Mat3: {fileID: 0}
 --- !u!1001 &8910239199228159172
@@ -51,6 +57,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 84afd465eb7f3af42a8ae9cfa20a9a4e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4099b8dfc210944f88024c70d55185f, type: 2}
     - target: {fileID: -4216859302048453862, guid: 84afd465eb7f3af42a8ae9cfa20a9a4e,
         type: 3}
       propertyPath: m_LocalPosition.x
