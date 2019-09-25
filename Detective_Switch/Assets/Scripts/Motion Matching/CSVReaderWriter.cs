@@ -9,7 +9,7 @@ public class CSVReaderWriter // : MonoBehaviour
 {
     // [Header("Tip: right-click and 'Copy Path' in project tab")]
     private string CSVReadPath = "Assets/Resources/CSV/AnimData.csv";
-    private string CSVWritePath = "Assets/Resources/CSV/";
+    private string CSVWritePath = "Assets/Resources/CSV/AnimData.csv";
     // [Tooltip("Specify the file name without writing .csv - This will be appended automatically")]
     private string CSVFileName = "AnimData.csv";
 
@@ -94,7 +94,6 @@ public class CSVReaderWriter // : MonoBehaviour
 
         }
         Debug.Log("CSV Reader/Writer: reading completed");
-
     }
 
     private void PositionCreator(float[] data)
@@ -159,6 +158,52 @@ public class CSVReaderWriter // : MonoBehaviour
         }
     }
 
+    public void WriteCSV(List<MMPose> poseData, List<TrajectoryPoint> trajectoryData)
+    {
+        // Error checking
+        if (CSVWritePath == null || CSVFileName == null)
+        {
+            Debug.LogError("CSV Reader/Writer Error: CSV write path or file name empty!");
+        }
+        else if (poseData.Count == 0 || poseData == null)
+        {
+            Debug.LogError("CSV Reader/Writer Error: attempt to write CSV file using empty lists!");
+        }
+        else
+        {
+            Debug.Log("CSV Reader/Writer: writing lists to CSV file " + CSVFileName);
+
+            using (var file = File.CreateText(CSVWritePath))
+            {
+                labels = new string[24] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","FootLeftT.x","FootLeftT.y","FootLeftT.z",
+                "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftV.x","FootLeftV.y", "FootLeftV.z","FootRightV.x","FootRightV.y",
+                "FootRightV.z","rootV.x","rootV.x","rootV.x","RootQ.x","RootQ.y","RootQ.z","RootQ.w",};
+
+                file.WriteLine(string.Join(",", labels));
+
+                string spec;
+                CultureInfo cul;
+
+                spec = "G";
+                cul = CultureInfo.CreateSpecificCulture("en-US");
+
+                for (int i = 0; i < poseData.Count; i++)
+                {
+                    string[] tempLine = new string[24] {poseData[i].clipName, poseData[i].frame.ToString(),
+                        poseData[i].rootPos.x.ToString(spec, cul),  poseData[i].rootPos.y.ToString(spec, cul),  poseData[i].rootPos.z.ToString(spec, cul),
+                        poseData[i].lFootPos.x.ToString(spec, cul), poseData[i].lFootPos.y.ToString(spec, cul), poseData[i].lFootPos.z.ToString(spec, cul),
+                        poseData[i].rFootPos.x.ToString(spec, cul), poseData[i].rFootPos.y.ToString(spec, cul), poseData[i].rFootPos.z.ToString(spec, cul),
+                        poseData[i].rootVel.x.ToString(spec, cul),  poseData[i].rootVel.y.ToString(spec, cul),  poseData[i].rootVel.z.ToString(spec, cul),
+                        poseData[i].lFootVel.x.ToString(spec, cul), poseData[i].lFootVel.y.ToString(spec, cul), poseData[i].lFootVel.z.ToString(spec, cul),
+                        poseData[i].rFootVel.x.ToString(spec, cul), poseData[i].rFootVel.y.ToString(spec, cul), poseData[i].rFootVel.z.ToString(spec, cul),
+                        poseData[i].rootQ.x.ToString(spec, cul),    poseData[i].rootQ.y.ToString(spec, cul),    poseData[i].rootQ.z.ToString(spec, cul), poseData[i].rootQ.w.ToString(spec, cul)};
+
+                    file.WriteLine(string.Join(",", tempLine));
+                }
+            }
+        }
+    }
+
     public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Quaternion> _rootRot, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
     {
         if (CSVWritePath == null || CSVFileName == null)
@@ -198,10 +243,8 @@ public class CSVReaderWriter // : MonoBehaviour
 
                     file.WriteLine(string.Join(",", tempLine));
                 }
-
             }
         }
-
     }
 
     public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)

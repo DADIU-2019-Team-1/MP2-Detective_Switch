@@ -26,14 +26,10 @@ public class MMPreProcessing : MonoBehaviour
     public List<AnimationClip> clips;
     public List<string> jointNames;
 
-    public List<Vector3> rootPos;
+    private List<MMPose> poses;
+    private List<TrajectoryPoint> trajectoryPoints;
+    public List<Vector3> rootPos, lFootPos, rFootPos;
     public List<Quaternion> rootQ;
-    public List<Vector3> lFootPos;
-    public List<Vector3> rFootPos;
-
-    public List<Vector3> rootVel;
-    public List<Vector3> lFootVel;
-    public List<Vector3> rFootVel;
 
     // --- Not in Inspector
     [HideInInspector]
@@ -44,36 +40,85 @@ public class MMPreProcessing : MonoBehaviour
 
     private void Awake()
     {
-        // Populate joint- and quaternion lists
+        poses = new List<MMPose>(); 
+        trajectoryPoints = new List<TrajectoryPoint>();
+        int uniqueIDIterator = 0;
+
         foreach (AnimationClip clip in clips)
         {
-            rootPos.AddRange(GetJointPositionsFromClipBindings(clip, jointNames[0]));
-            rootQ.AddRange(GetJointQuaternionsFromClipBindings(clip, jointNames[1]));
-            lFootPos.AddRange(GetJointPositionsFromClipBindings(clip, jointNames[2]));
-            rFootPos.AddRange(GetJointPositionsFromClipBindings(clip, jointNames[3]));
-            clipNames.AddRange(GetClipNameFromClip(clip));
-            frames.AddRange(GetFramesFromClip(clip));
-        }
-        for (int i = 0; i < rootPos.Count; i++)
-        {
-            if (i > 0)
+            for (int i = 0; i < clip.length * clip.frameRate; i++)
             {
-                rootVel.Add(CalculateVelocityFromVectors(rootPos[i], rootPos[i - 1]));
-                lFootVel.Add(CalculateVelocityFromVectors(lFootPos[i], lFootVel[i - 1]));
-                rFootVel.Add(CalculateVelocityFromVectors(rFootPos[i], rFootVel[i - 1]));
-            }
-            else
-            {
-                rootVel.Add(CalculateVelocityFromVectors(rootPos[i], new Vector3(0, 0, 0)));
-                lFootVel.Add(CalculateVelocityFromVectors(lFootPos[i], new Vector3(0, 0, 0)));
-                rFootVel.Add(CalculateVelocityFromVectors(rFootPos[i], new Vector3(0, 0, 0)));
-            }
-        }
+                // Adding root data to list
+                rootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[0]));
+                rootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[1]));
 
+                // Creating a root transform matrix, then multiplying its inverse to transform joints to character space
+                Matrix4x4 rootTrans = Matrix4x4.TRS(rootPos[i], rootQ[i], new Vector3(1, 1, 1));
+                lFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[2])));
+                rFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[3])));
+
+                // Add pose data to list
+                if (i > 0)
+                {
+                    poses.Add(new MMPose(clip.name, i,
+                        rootPos[i], lFootPos[i], rFootPos[i],
+                        CalculateVelocityFromVectors(rootPos[i], rootPos[i - 1]),
+                        CalculateVelocityFromVectors(lFootPos[i], lFootPos[i - 1]),
+                        CalculateVelocityFromVectors(rFootPos[i], rFootPos[i - 1])));
+                }
+                else // There is no previous position for velocity calculation at frame 0
+                {
+                    poses.Add(new MMPose(clip.name, i,
+                        rootPos[i], lFootPos[i], rFootPos[i],
+                        CalculateVelocityFromVectors(rootPos[i], new Vector3(0, 0, 0)),
+                        CalculateVelocityFromVectors(lFootPos[i], new Vector3(0, 0, 0)),
+                        CalculateVelocityFromVectors(rFootPos[i], new Vector3(0, 0, 0))));
+                }
+                // Add trajectory to list
+                trajectoryPoints.Add(new TrajectoryPoint(rootPos[i], rootQ[i] * Vector3.forward));
+
+                uniqueIDIterator++;
+            }
+        }
         CSVReaderWriter CSVdata = new CSVReaderWriter();
-        CSVdata.WriteCSV(clipNames, frames, rootPos, rootQ, lFootPos, rFootPos, lFootVel, rFootVel, rootVel);
+        CSVdata.WriteCSV(poses, trajectoryPoints);
         CSVdata.ReadCSV();
+    }
 
+    public Vector3 GetJointPositionAtFrame(AnimationClip clip, int frame, string jointName)
+    {
+        /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
+        AnimationCurve curve;
+        float[] vectorValues = new float[3];
+        int arrayEnumerator = 0;
+        foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
+        {
+            if (binding.propertyName.Contains(jointName))
+            {
+                curve = AnimationUtility.GetEditorCurve(clip, binding);
+                vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
+                arrayEnumerator++;
+            }
+        }
+        return new Vector3(vectorValues[0], vectorValues[1], vectorValues[2]);
+    }
+
+    public Quaternion GetJointQuaternionAtFrame(AnimationClip clip, int frame, string jointName)
+    {
+        /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
+        AnimationCurve curve;
+        float[] vectorValues = new float[4];
+        int arrayEnumerator = 0;
+        foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
+        {
+            if (binding.propertyName.Contains(jointName))
+            {
+                curve = AnimationUtility.GetEditorCurve(clip, binding);
+                vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
+                arrayEnumerator++;
+            }
+        }
+        return new Quaternion(vectorValues[0], vectorValues[1], vectorValues[2], vectorValues[3]);
     }
 
     public List<Vector3> GetJointPositionsFromClipBindings(AnimationClip clip, string jointName)

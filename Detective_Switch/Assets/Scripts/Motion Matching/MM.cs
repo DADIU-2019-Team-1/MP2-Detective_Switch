@@ -13,8 +13,8 @@ public class MM : MonoBehaviour
      */
     private MMPreProcessing preprocces;
     //private FeaturePoseVector featurePoseVector;
-    private TrajectoryTest trajectory;
-    private TrajectoryCalculator trajectoryCalc;
+    private TrajectoryTest movement;
+    private Trajectory trajectory;
     private Animator animator;
     public AnimationClip currentClip;
     public int currentAnimTime;
@@ -23,6 +23,7 @@ public class MM : MonoBehaviour
 
     void Start()
     {
+
         /// This is where the data would be loaded from a file, but for debugging
         /// purposes we simply run the preprocesser script with an input.
         /// Preprocesser does not derive from monobehaviour, and as such does not need
