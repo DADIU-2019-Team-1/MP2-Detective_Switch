@@ -16,6 +16,7 @@ public class InventoryUpdater : MonoBehaviour
 
         // This should get all of the slots in the inventory window. 
         for(int i = 0; i < maxSlots; i++) {
+            // Tweak this one after where the slots are placed
             slot[i] = slotHolder.transform.GetChild(i).gameObject;
             if(slot[i].GetComponent<Slot>().item == null) {
                 slot[i].GetComponent<Slot>().empty = true;
@@ -30,7 +31,6 @@ public class InventoryUpdater : MonoBehaviour
     }
 
     public void AddItemToSlot(Item item) {
-        // Add the Scriptable object to the inventory slot. Called from Interaction.
         Debug.Log("Entered AddItemToSlot");
         
         // Load in the item information.
@@ -39,6 +39,7 @@ public class InventoryUpdater : MonoBehaviour
         string itemText = item.text;
         int itemID = item.id;
         Sprite itemImage = item.clueImage; 
+        // Loop through all the slots, load in item if the slot is empty. 
         for(int i = 0; i < maxSlots; i++) {
              if(slot[i].GetComponent<Slot>().empty) {
 
@@ -58,10 +59,10 @@ public class InventoryUpdater : MonoBehaviour
                 slot[i].GetComponent<Slot>().empty = false;
                 //slot[i].GetComponent<Slot>().item = item.gameObject;
                 break;
-                // Add clue to the slot.
                 // This could be done by placing a scaled sprite in the spot of the item. 
                 
             } 
+             
         }
     }
 }
