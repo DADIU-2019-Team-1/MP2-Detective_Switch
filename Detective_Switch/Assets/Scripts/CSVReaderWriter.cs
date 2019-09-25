@@ -7,11 +7,11 @@ using System.Globalization;
 
 public class CSVReaderWriter // : MonoBehaviour
 {
-    [Header("Tip: right-click and 'Copy Path' in project tab")]
-    public string CSVReadPath = "Assets/Resources/CSV/AnimData.csv";
-    public string CSVWritePath = "Assets/Resources/CSV";
-    [Tooltip("Specify the file name without writing .csv - This will be appended automatically")]
-    public string CSVFileName = "AnimData";
+    // [Header("Tip: right-click and 'Copy Path' in project tab")]
+    private string CSVReadPath = "Assets/Resources/CSV/AnimData.csv";
+    private string CSVWritePath = "Assets/Resources/CSV/";
+    // [Tooltip("Specify the file name without writing .csv - This will be appended automatically")]
+    private string CSVFileName = "AnimData.csv";
 
     // Variable holders from reading CSV files:
     private string[] labels;
@@ -30,7 +30,6 @@ public class CSVReaderWriter // : MonoBehaviour
     {
         // ReadCSV();
         // CalculateColoumns(8, 3, 1);
-        // CSVWriteTester();
     }
 #endif
 
@@ -178,8 +177,8 @@ public class CSVReaderWriter // : MonoBehaviour
         }
         else
         {
-            CSVFileName = CSVFileName + ".csv";
-            CSVWritePath = CSVWritePath + "/" + CSVFileName;
+            // CSVFileName = CSVFileName + ".csv";
+            // CSVWritePath = CSVWritePath + "/" + CSVFileName;
             Debug.Log("CSV Reader/Writer: writing lists to CSV file " + CSVFileName);
 
             using (var file = File.CreateText(CSVWritePath))
@@ -223,22 +222,6 @@ public class CSVReaderWriter // : MonoBehaviour
         WriteCSV(_clipName, _frame, _rootPos, _rootRotPlaceholder, _footLeft, _footRight, _footLeftVel, _footRightVel, _rootVel);
     }
 
-
-    /// THIS IS FOR DEBUGGING ///
-    public void CSVWriteTester(List<Vector3> _rootPos, List<Quaternion> _rootRot, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
-    {
-
-        List<string> clipNamePlaceholder = new List<string>();
-        List<int> framePlaceholder = new List<int>();
-
-        for (int i = 0; i < _rootPos.Count; i++)
-        {
-            clipNamePlaceholder.Add("temp");
-            framePlaceholder.Add(1);
-        }
-
-        WriteCSV(clipNamePlaceholder, framePlaceholder, _rootPos, _rootRot, _footLeft, _footRight, _footLeftVel, _footRightVel, _rootVel);
-    } 
 
     private void InitializeLists()
     {
@@ -342,8 +325,66 @@ public class CSVReaderWriter // : MonoBehaviour
         return rootVelocity;
     }
 
-    public void SetWritePath(string path)
+    public void SetWritePath(string path, string fileName)
     {
-        CSVWritePath = path;
+
+        if (path.Substring(path.Length - 1, 1) != "/")
+        {
+            if (fileName.Substring(fileName.Length - 4, 4) != ".csv")
+            {
+                CSVWritePath = path + "/" + fileName + ".csv";
+            }
+            else
+            {
+                CSVWritePath = path + "/" + fileName;
+            }
+        }
+        else
+        {
+            if (fileName.Substring(fileName.Length - 4, 4) != ".csv")
+            {
+                CSVWritePath = path + fileName + ".csv";
+            }
+            else
+            {
+                CSVWritePath = path + fileName;
+            }
+        }
+
+    }
+
+    public void SetReadPath(string path, string fileName)
+    {
+        if (path.Substring(path.Length - 1, 1) != "/")
+        {
+            if (fileName.Substring(fileName.Length - 4, 4) != ".csv")
+            {
+                CSVReadPath = path + "/" + fileName + ".csv";
+            } else
+            {
+                CSVReadPath = path + "/" + fileName;
+            }
+        }
+        else
+        {
+            if (fileName.Substring(fileName.Length - 4, 4) != ".csv")
+            {
+                CSVReadPath = path + fileName + ".csv";
+            }
+            else
+            {
+                CSVReadPath = path + fileName;
+            }
+        }
+    }
+
+    public string GetWritePath()
+    {
+        return CSVWritePath;
+    }
+
+    public string GetReadPath()
+    {
+        return CSVReadPath;
     }
 }
