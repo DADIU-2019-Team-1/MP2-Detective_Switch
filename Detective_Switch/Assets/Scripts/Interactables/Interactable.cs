@@ -6,7 +6,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     // main
-    public bool reclickable;
+    public bool singleUse;
     private bool hasBeenClicked;
 
     // sound
@@ -45,16 +45,26 @@ public class Interactable : MonoBehaviour
     private Animator anim;
     private bool animationState;
 
+    // test
+    public bool testLog;
+    public string testLogText;
+
     public void Interact()
     {
         // reclickable
-        if (!reclickable)
+        if (singleUse)
         {
             if (hasBeenClicked)
             {
                 return;
             }
             hasBeenClicked = true;
+        }
+
+        // test log
+        if (testLog)
+        {
+            Debug.Log(testLogText);
         }
 
         // play sound
@@ -155,7 +165,7 @@ public class InteractableEditor : Editor
 
         DrawUILine();
 
-        dis.reclickable = GUILayout.Toggle(dis.reclickable, "Reclickable");
+        dis.singleUse = GUILayout.Toggle(dis.singleUse, "Single Use");
 
         DrawUILine();
 
@@ -200,6 +210,12 @@ public class InteractableEditor : Editor
                 dis.animationDefault = EditorGUILayout.TextField("Animation Default:", dis.animationDefault);
             dis.animationAction = EditorGUILayout.TextField("Animation Action:", dis.animationAction);
         }
+
+        DrawUILine();
+
+        dis.testLog = GUILayout.Toggle(dis.testLog, "Debug");
+        if (dis.testLog)
+            dis.testLogText = EditorGUILayout.TextField("Text:", dis.testLogText);
 
         DrawUILine();
     }
