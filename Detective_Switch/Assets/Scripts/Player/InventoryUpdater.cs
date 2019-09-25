@@ -17,6 +17,9 @@ public class InventoryUpdater : MonoBehaviour
         // This should get all of the slots in the inventory window. 
         for(int i = 0; i < maxSlots; i++) {
             slot[i] = slotHolder.transform.GetChild(i).gameObject;
+            if(slot[i].GetComponent<Slot>().item == null) {
+                slot[i].GetComponent<Slot>().empty = true;
+            }
         }
     }
 
@@ -49,6 +52,10 @@ public class InventoryUpdater : MonoBehaviour
                 slot[i].GetComponent<Slot>().id = itemID;
                 slot[i].GetComponent<Slot>().name = itemName;
                 slot[i].GetComponent<Slot>().text = itemText;
+
+                //item.transform.parent = slot[i].transform;
+                slot[i].GetComponent<Slot>().UpdateSlot();
+                slot[i].GetComponent<Slot>().empty = false;
                 //slot[i].GetComponent<Slot>().item = item.gameObject;
                 break;
                 // Add clue to the slot.
