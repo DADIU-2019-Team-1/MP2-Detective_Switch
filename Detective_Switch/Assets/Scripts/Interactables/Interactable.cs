@@ -19,13 +19,13 @@ public class Interactable : MonoBehaviour
     public int rotateDegreesY = 90;
     public int rotateDegreesZ = 0;
     public bool rotateOverTime;
-    public float rotationSpeed = 0.1f;
+    public float rotationDuration = 0.5f;
 
     private bool isRotating;
     private Vector3 oldRotation;
     private Vector3 newRotation;
     private float rotationStartTime;
-    private float rotationJourneyLength;
+    private float rotationEndTime;
 
     // toggle
     public bool toggleGameObject;
@@ -51,6 +51,11 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        if (isRotating)
+        {
+            return;
+        }
+
         // reclickable
         if (singleUse)
         {
@@ -79,23 +84,17 @@ public class Interactable : MonoBehaviour
         // rotate object
         if (rotateOnInteract)
         {
+            oldRotation = transform.eulerAngles;
+            newRotation = transform.eulerAngles + new Vector3(rotateDegreesX, rotateDegreesY, rotateDegreesZ);
             if (rotateOverTime)
             {
-                Debug.Log("ROTATE OVER TIME");
-                isRotating = true;
-                oldRotation = transform.eulerAngles;
-                newRotation = transform.eulerAngles + new Vector3(rotateDegreesX, rotateDegreesY, rotateDegreesZ);
                 rotationStartTime = Time.time;
-                rotationJourneyLength = Vector3.Angle(oldRotation, newRotation);
+                rotationEndTime = rotationStartTime + rotationDuration;
+                isRotating = true;
             }
             else
             {
-                Debug.Log("ROTATE INSTANT");
-                transform.eulerAngles = new Vector3(
-                    transform.eulerAngles.x + rotateDegreesX,
-                    transform.eulerAngles.y + rotateDegreesY,
-                    transform.eulerAngles.z + rotateDegreesZ
-                );
+                transform.eulerAngles = newRotation;
             }
         }
 
@@ -109,8 +108,10 @@ public class Interactable : MonoBehaviour
         }
 
         // item
-        if (hasItem) {
-            if(item != null) {
+        if (hasItem)
+        {
+            if (item != null)
+            {
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             }
         }
@@ -122,7 +123,8 @@ public class Interactable : MonoBehaviour
             {
                 anim.Play(animationState ? animationDefault : animationAction);
                 animationState = !animationState;
-            } else
+            }
+            else
             {
                 anim.Play(animationAction);
             }
@@ -138,11 +140,10 @@ public class Interactable : MonoBehaviour
     {
         if (isRotating)
         {
-            /*float distCovered = (Time.time - rotationStartTime) * rotationSpeed;
-            float fractionOfJourney = distCovered / rotationJourneyLength;
-            transform.eulerAngles = Vector3.Lerp(oldRotation, newRotation, fractionOfJourney);*/
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, turningRate * Time.deltaTime);
-            if (Vector3.Angle(oldRotation, newRotation) < 0.1f)
+            float timeStep = (Time.time - rotationStartTime) / (rotationStartTime - rotationEndTime);
+            Vector3 direction = oldRotation + timeStep * (oldRotation - newRotation);
+            transform.eulerAngles = direction;
+            if (Time.time >= rotationEndTime || (newRotation - transform.eulerAngles).magnitude < 1)
             {
                 isRotating = false;
                 transform.eulerAngles = newRotation;
@@ -178,13 +179,13 @@ public class InteractableEditor : Editor
         dis.rotateOnInteract = GUILayout.Toggle(dis.rotateOnInteract, "Rotate On Interact");
         if (dis.rotateOnInteract)
         {
-            dis.rotateDegreesX = EditorGUILayout.IntSlider("Rotation X Step:", dis.rotateDegreesX, 0, 360);
-            dis.rotateDegreesY = EditorGUILayout.IntSlider("Rotation Y Step:", dis.rotateDegreesY, 0, 360);
-            dis.rotateDegreesZ = EditorGUILayout.IntSlider("Rotation Z Step:", dis.rotateDegreesZ, 0, 360);
+            dis.rotateDegreesX = EditorGUILayout.IntSlider("Rotation X Step:", dis.rotateDegreesX, -180, 180);
+            dis.rotateDegreesY = EditorGUILayout.IntSlider("Rotation Y Step:", dis.rotateDegreesY, -180, 180);
+            dis.rotateDegreesZ = EditorGUILayout.IntSlider("Rotation Z Step:", dis.rotateDegreesZ, -180, 180);
 
-            dis.rotateOverTime = GUILayout.Toggle(dis.rotateOverTime, "Rotate Over Time");
+            dis.rotateOverTime = GUILayout.Toggle(dis.rotateOverTime, "Rotate For Duration");
             if (dis.rotateOverTime)
-                dis.rotationSpeed = EditorGUILayout.Slider(dis.rotationSpeed, 0.0f, 5.0f);
+                dis.rotationDuration = EditorGUILayout.Slider(dis.rotationDuration, 0.0f, 5.0f);
         }
 
         DrawUILine();
