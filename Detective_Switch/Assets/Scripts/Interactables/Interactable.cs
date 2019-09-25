@@ -31,7 +31,9 @@ public class Interactable : MonoBehaviour
 
     // item
     public bool hasItem;
-    public ScriptableObject item;
+    public Item item;
+
+    // animation
 
     public void Interact()
     {
@@ -75,6 +77,13 @@ public class Interactable : MonoBehaviour
                 toggleObject.SetActive(!toggleObject.activeSelf);
             }
         }
+
+        // item
+        if (hasItem) {
+            if(item != null) {
+                GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
+            }
+        }
     }
 
     void Update()
@@ -99,6 +108,11 @@ public class InteractableEditor : Editor
 {
     public override void OnInspectorGUI()
     {
+        if (!Application.isEditor)
+        {
+            return;
+        }
+
         var dis = target as Interactable;
 
         DrawUILine();
@@ -131,7 +145,7 @@ public class InteractableEditor : Editor
 
         dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
         if (dis.hasItem)
-            dis.item = (ScriptableObject)EditorGUILayout.ObjectField("Item:", dis.item, typeof(ScriptableObject), true);
+            dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
 
         DrawUILine();
     }
