@@ -51,9 +51,16 @@ public class MMPreProcessing : MonoBehaviour
                 // Adding root data to list
                 rootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[0]));
                 rootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[1]));
-
+                Debug.Log(rootQ[i]);
                 // Creating a root transform matrix, then multiplying its inverse to transform joints to character space
-                Matrix4x4 rootTrans = Matrix4x4.TRS(rootPos[i], rootQ[i], new Vector3(1, 1, 1));
+                Matrix4x4 rootTrans = Matrix4x4.identity;
+                Debug.Log("Position is: " + rootPos[i] + " - Quaternion is: " + rootQ[i]);
+                Quaternion quart = rootQ[i];
+                quart.eulerAngles = new Vector3(rootQ[i].eulerAngles.x, rootQ[i].eulerAngles.y, rootQ[i].eulerAngles.z);
+                rootTrans.SetTRS(rootPos[i], quart, new Vector3(1, 1, 1));
+                Debug.Log(rootTrans);
+                rootQ[i] = quart;
+                Debug.Log("Just quaternion at position " + i + ": " + rootQ[i]);
                 lFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[2])));
                 rFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[3])));
 
@@ -64,7 +71,8 @@ public class MMPreProcessing : MonoBehaviour
                         rootPos[i], lFootPos[i], rFootPos[i],
                         CalculateVelocityFromVectors(rootPos[i], rootPos[i - 1]),
                         CalculateVelocityFromVectors(lFootPos[i], lFootPos[i - 1]),
-                        CalculateVelocityFromVectors(rFootPos[i], rFootPos[i - 1])));
+                        CalculateVelocityFromVectors(rFootPos[i], rFootPos[i - 1]),
+                        rootQ[i]));
                 }
                 else // There is no previous position for velocity calculation at frame 0
                 {
@@ -72,7 +80,8 @@ public class MMPreProcessing : MonoBehaviour
                         rootPos[i], lFootPos[i], rFootPos[i],
                         CalculateVelocityFromVectors(rootPos[i], new Vector3(0, 0, 0)),
                         CalculateVelocityFromVectors(lFootPos[i], new Vector3(0, 0, 0)),
-                        CalculateVelocityFromVectors(rFootPos[i], new Vector3(0, 0, 0))));
+                        CalculateVelocityFromVectors(rFootPos[i], new Vector3(0, 0, 0)),
+                        rootQ[i]));
                 }
                 // Add trajectory to list
                 trajectoryPoints.Add(new TrajectoryPoint(rootPos[i], rootQ[i] * Vector3.forward));
@@ -88,7 +97,7 @@ public class MMPreProcessing : MonoBehaviour
     public Vector3 GetJointPositionAtFrame(AnimationClip clip, int frame, string jointName)
     {
         /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        AnimationCurve curve;
+        AnimationCurve curve = new AnimationCurve();
         float[] vectorValues = new float[3];
         int arrayEnumerator = 0;
         foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
@@ -106,7 +115,7 @@ public class MMPreProcessing : MonoBehaviour
     public Quaternion GetJointQuaternionAtFrame(AnimationClip clip, int frame, string jointName)
     {
         /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        AnimationCurve curve;
+        AnimationCurve curve = new AnimationCurve();
         float[] vectorValues = new float[4];
         int arrayEnumerator = 0;
         foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))

@@ -175,9 +175,10 @@ public class CSVReaderWriter // : MonoBehaviour
 
             using (var file = File.CreateText(CSVWritePath))
             {
-                labels = new string[24] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","FootLeftT.x","FootLeftT.y","FootLeftT.z",
+                labels = new string[30] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","FootLeftT.x","FootLeftT.y","FootLeftT.z",
                 "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftV.x","FootLeftV.y", "FootLeftV.z","FootRightV.x","FootRightV.y",
-                "FootRightV.z","rootV.x","rootV.x","rootV.x","RootQ.x","RootQ.y","RootQ.z","RootQ.w",};
+                "FootRightV.z","rootV.x","rootV.x","rootV.x","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
+                    "TrajPos.x","TrajPos.y","TrajPos.z","TrajForward.x","TrajForward.y","TrajForward.z"};
 
                 file.WriteLine(string.Join(",", labels));
 
@@ -189,14 +190,16 @@ public class CSVReaderWriter // : MonoBehaviour
 
                 for (int i = 0; i < poseData.Count; i++)
                 {
-                    string[] tempLine = new string[24] {poseData[i].clipName, poseData[i].frame.ToString(),
+                    string[] tempLine = new string[30] {poseData[i].clipName, poseData[i].frame.ToString(),
                         poseData[i].rootPos.x.ToString(spec, cul),  poseData[i].rootPos.y.ToString(spec, cul),  poseData[i].rootPos.z.ToString(spec, cul),
                         poseData[i].lFootPos.x.ToString(spec, cul), poseData[i].lFootPos.y.ToString(spec, cul), poseData[i].lFootPos.z.ToString(spec, cul),
                         poseData[i].rFootPos.x.ToString(spec, cul), poseData[i].rFootPos.y.ToString(spec, cul), poseData[i].rFootPos.z.ToString(spec, cul),
                         poseData[i].rootVel.x.ToString(spec, cul),  poseData[i].rootVel.y.ToString(spec, cul),  poseData[i].rootVel.z.ToString(spec, cul),
                         poseData[i].lFootVel.x.ToString(spec, cul), poseData[i].lFootVel.y.ToString(spec, cul), poseData[i].lFootVel.z.ToString(spec, cul),
                         poseData[i].rFootVel.x.ToString(spec, cul), poseData[i].rFootVel.y.ToString(spec, cul), poseData[i].rFootVel.z.ToString(spec, cul),
-                        poseData[i].rootQ.x.ToString(spec, cul),    poseData[i].rootQ.y.ToString(spec, cul),    poseData[i].rootQ.z.ToString(spec, cul), poseData[i].rootQ.w.ToString(spec, cul)};
+                        poseData[i].rootQ.x.ToString(spec, cul),    poseData[i].rootQ.y.ToString(spec, cul),   poseData[i].rootQ.z.ToString(spec, cul), poseData[i].rootQ.w.ToString(spec, cul),
+                        trajectoryData[i].position.x.ToString(spec, cul), trajectoryData[i].position.y.ToString(spec, cul),trajectoryData[i].position.z.ToString(spec, cul),
+                        trajectoryData[i].forward.x.ToString(spec, cul), trajectoryData[i].forward.y.ToString(spec, cul),trajectoryData[i].forward.z.ToString(spec, cul),};
 
                     file.WriteLine(string.Join(",", tempLine));
                 }
