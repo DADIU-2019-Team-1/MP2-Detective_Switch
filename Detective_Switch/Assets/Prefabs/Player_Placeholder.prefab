@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 9123501957778985896}
   m_Layer: 0
   m_Name: FlashLightSpotNight
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,15 +300,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241599362898867342}
-  m_LocalRotation: {x: 0.14881332, y: 0.000000029802319, z: 0.000000014901159, w: 0.9888654}
-  m_LocalPosition: {x: 0, y: 0.047, z: 0.087}
+  m_LocalRotation: {x: 0.2906073, y: 0.00000023841844, z: -0.00000019371498, w: 0.9568424}
+  m_LocalPosition: {x: 0, y: 0.019, z: 0.213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6014505723782437292}
   - {fileID: 3379976780659323551}
   m_Father: {fileID: 5006512734926325705}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 17.116001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 33.789, y: 0, z: 0}
 --- !u!108 &9123501957778985896
 Light:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ Light:
   m_Color: {r: 0.48235294, g: 0.81960785, b: 0.7972126, a: 1}
   m_Intensity: 7.9
   m_Range: 6.6
-  m_SpotAngle: 35.4
+  m_SpotAngle: 69.96
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -481,7 +481,9 @@ MonoBehaviour:
   maxPressTime: 0.15
   minPlayerSpeed: 5
   moveReactionTime: 0.3
-  turnReactionTime: 8
+  turnReactionTime: 3
+  globalPlayerSpeed: 0
+  _invUpdater: {fileID: 0}
 --- !u!54 &3653083261744341170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -886,7 +888,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.192
+      value: 0.135
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
         type: 3}
@@ -928,6 +930,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5178661895559278292, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3291121562166685594, guid: 70e394c73c85f3d4aa7dfbe225c998b9,
+        type: 3}
     - target: {fileID: -1504981713932161579, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
         type: 3}
       propertyPath: m_CastShadows
@@ -971,7 +979,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 357641806f449114b8bdaef7344ea013,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.479
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 357641806f449114b8bdaef7344ea013,
         type: 3}
@@ -1016,6 +1024,21 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 357641806f449114b8bdaef7344ea013,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8515117791265788729, guid: 357641806f449114b8bdaef7344ea013,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8515117791265788729, guid: 357641806f449114b8bdaef7344ea013,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8515117791265788729, guid: 357641806f449114b8bdaef7344ea013,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 357641806f449114b8bdaef7344ea013,
