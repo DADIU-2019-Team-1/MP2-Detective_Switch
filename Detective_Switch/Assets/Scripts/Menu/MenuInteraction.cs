@@ -46,11 +46,13 @@ public class MenuInteraction : MonoBehaviour
     }
 
     public void RemoveMenuButtons() {
-        GameObject canvasGO = transform.parent.gameObject;
+        GameObject canvasGO = transform.GetChild(1).gameObject;
+        Debug.Log(canvasGO.name);
         // Switch case made to differentiate between a game options press, where OnScreenGUI has to be turned off, and a main menu options press.
         if(canvasGO.transform.GetChild(0).gameObject.activeInHierarchy) {
             canvasGO.transform.GetChild(0).gameObject.SetActive(false);
             canvasGO.transform.GetChild(2).gameObject.SetActive(true);
+            Debug.Log(canvasGO.transform.GetChild(2).gameObject.name);
         }
         else {
             canvasGO.transform.GetChild(1).gameObject.SetActive(false);
