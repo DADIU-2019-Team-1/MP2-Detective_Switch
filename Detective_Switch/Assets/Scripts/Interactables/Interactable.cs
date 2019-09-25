@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    // main
+    public bool singleUse;
+    private bool hasBeenClicked;
+
     // sound
     public bool soundOnInteract;
     public string playSound;
@@ -15,13 +18,13 @@ public class Interactable : MonoBehaviour
     public int rotateDegreesY = 90;
     public int rotateDegreesZ = 0;
     public bool rotateOverTime;
-    public float rotationSpeed = 0.1f;
+    public float rotationDuration = 0.5f;
 
     private bool isRotating;
     private Vector3 oldRotation;
     private Vector3 newRotation;
     private float rotationStartTime;
-    private float rotationJourneyLength;
+    private float rotationEndTime;
 
     // toggle
     public bool toggleGameObject;
@@ -31,10 +34,43 @@ public class Interactable : MonoBehaviour
 
     // item
     public bool hasItem;
-    public ScriptableObject item;
+    public Item item;
+
+    // animation
+    public bool hasAnimation;
+    public bool switchBetweenAnimations;
+    public string animationDefault;
+    public string animationAction;
+    private Animator anim;
+    private bool animationState;
+
+    // test
+    public bool testLog;
+    public string testLogText;
 
     public void Interact()
     {
+        if (isRotating)
+        {
+            return;
+        }
+
+        // reclickable
+        if (singleUse)
+        {
+            if (hasBeenClicked)
+            {
+                return;
+            }
+            hasBeenClicked = true;
+        }
+
+        // test log
+        if (testLog)
+        {
+            Debug.Log(testLogText);
+        }
+
         // play sound
         if (soundOnInteract)
         {
@@ -47,23 +83,17 @@ public class Interactable : MonoBehaviour
         // rotate object
         if (rotateOnInteract)
         {
+            oldRotation = transform.eulerAngles;
+            newRotation = transform.eulerAngles + new Vector3(rotateDegreesX, rotateDegreesY, rotateDegreesZ);
             if (rotateOverTime)
             {
-                Debug.Log("ROTATE OVER TIME");
-                isRotating = true;
-                oldRotation = transform.eulerAngles;
-                newRotation = transform.eulerAngles + new Vector3(rotateDegreesX, rotateDegreesY, rotateDegreesZ);
                 rotationStartTime = Time.time;
-                rotationJourneyLength = Vector3.Angle(oldRotation, newRotation);
+                rotationEndTime = rotationStartTime + rotationDuration;
+                isRotating = true;
             }
             else
             {
-                Debug.Log("ROTATE INSTANT");
-                transform.eulerAngles = new Vector3(
-                    transform.eulerAngles.x + rotateDegreesX,
-                    transform.eulerAngles.y + rotateDegreesY,
-                    transform.eulerAngles.z + rotateDegreesZ
-                );
+                transform.eulerAngles = newRotation;
             }
         }
 
@@ -75,78 +105,48 @@ public class Interactable : MonoBehaviour
                 toggleObject.SetActive(!toggleObject.activeSelf);
             }
         }
+
+        // item
+        if (hasItem)
+        {
+            if (item != null)
+            {
+                GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
+            }
+        }
+
+        // animation
+        if (hasAnimation)
+        {
+            if (switchBetweenAnimations)
+            {
+                anim.Play(animationState ? animationDefault : animationAction);
+                animationState = !animationState;
+            }
+            else
+            {
+                anim.Play(animationAction);
+            }
+        }
+    }
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (isRotating)
         {
-            /*float distCovered = (Time.time - rotationStartTime) * rotationSpeed;
-            float fractionOfJourney = distCovered / rotationJourneyLength;
-            transform.eulerAngles = Vector3.Lerp(oldRotation, newRotation, fractionOfJourney);*/
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, turningRate * Time.deltaTime);
-            if (Vector3.Angle(oldRotation, newRotation) < 0.1f)
+            float timeStep = (Time.time - rotationStartTime) / (rotationStartTime - rotationEndTime);
+            Vector3 direction = oldRotation + timeStep * (oldRotation - newRotation);
+            transform.eulerAngles = direction;
+            if (Time.time >= rotationEndTime || (newRotation - transform.eulerAngles).magnitude < 1)
             {
                 isRotating = false;
                 transform.eulerAngles = newRotation;
             }
         }
-    }
-}
-
-[CustomEditor(typeof(Interactable))]
-public class InteractableEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        var dis = target as Interactable;
-
-        DrawUILine();
-
-        dis.soundOnInteract = GUILayout.Toggle(dis.soundOnInteract, "Sound On Interact");
-        if (dis.soundOnInteract)
-            dis.playSound = EditorGUILayout.TextField("Sound Name:", dis.playSound);
-
-        DrawUILine();
-
-        dis.rotateOnInteract = GUILayout.Toggle(dis.rotateOnInteract, "Rotate On Interact");
-        if (dis.rotateOnInteract)
-        {
-            dis.rotateDegreesX = EditorGUILayout.IntSlider("Rotation X Step:", dis.rotateDegreesX, 0, 360);
-            dis.rotateDegreesY = EditorGUILayout.IntSlider("Rotation Y Step:", dis.rotateDegreesY, 0, 360);
-            dis.rotateDegreesZ = EditorGUILayout.IntSlider("Rotation Z Step:", dis.rotateDegreesZ, 0, 360);
-
-            dis.rotateOverTime = GUILayout.Toggle(dis.rotateOverTime, "Rotate Over Time");
-            if (dis.rotateOverTime)
-                dis.rotationSpeed = EditorGUILayout.Slider(dis.rotationSpeed, 0.0f, 5.0f);
-        }
-
-        DrawUILine();
-
-        dis.toggleGameObject = GUILayout.Toggle(dis.toggleGameObject, "Toggle Game Object");
-        if (dis.toggleGameObject)
-            dis.toggleObject = (GameObject)EditorGUILayout.ObjectField("Toggle Object:", dis.toggleObject, typeof(GameObject), true);
-
-        DrawUILine();
-
-        dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
-        if (dis.hasItem)
-            dis.item = (ScriptableObject)EditorGUILayout.ObjectField("Item:", dis.item, typeof(ScriptableObject), true);
-
-        DrawUILine();
-    }
-
-    public static void DrawUILine()
-    {
-        Color color = new Color(1, 1, 1, 0.3f);
-        int thickness = 1;
-        int padding = 8;
-
-        Rect r = EditorGUILayout.GetControlRect(GUILayout.Height(padding + thickness));
-        r.height = thickness;
-        r.y += padding / 2;
-        r.x -= 2;
-        r.width += 6;
-        EditorGUI.DrawRect(r, color);
     }
 }

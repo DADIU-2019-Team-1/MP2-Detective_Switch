@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3500573058073785733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6697529345348188848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundOnInteract: 0
+  playSound: 
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationSpeed: 0.1
+  toggleGameObject: 0
+  toggleObject: {fileID: 0}
+  toggleAfterDelay: 0
+  toggleDelay: 0
+  hasItem: 0
+  item: {fileID: 0}
+--- !u!1001 &3446250294188762041
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_Name
+      value: Sofa_A Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.51999986
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.97
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: df949fbad46317e4da1aca5f6fb28e67,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df949fbad46317e4da1aca5f6fb28e67, type: 3}
+--- !u!1 &6697529345348188848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: df949fbad46317e4da1aca5f6fb28e67,
+    type: 3}
+  m_PrefabInstance: {fileID: 3446250294188762041}
+  m_PrefabAsset: {fileID: 0}

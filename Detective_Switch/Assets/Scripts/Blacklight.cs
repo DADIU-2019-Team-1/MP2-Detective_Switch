@@ -18,7 +18,7 @@ public class Blacklight : MonoBehaviour
         rend = GetComponent<Renderer>();
         if (initSize == new Vector2(0,0))
         {
-            initSize = rend.sharedMaterial.GetVector("_size");
+            initSize = rend.material.GetVector("_size");
         }
     }
 
@@ -30,12 +30,12 @@ public class Blacklight : MonoBehaviour
         {
             if (hit.collider.gameObject == gameObject)
             {
-                rend.sharedMaterial.SetVector("_blacklightpos", hit.point);
-                rend.sharedMaterial.SetVector("_size", new Vector4(initSize.x, initSize.y, 0, 0));
+                rend.material.SetVector("_blacklightpos", hit.point);
+                rend.material.SetVector("_size", new Vector4(initSize.x, initSize.y, 0, 0));
             }
             else
             {
-                rend.sharedMaterial.SetVector("_size", new Vector4(0, 0, 0, 0));
+                rend.material.SetVector("_size", new Vector4(0, 0, 0, 0));
             }
         }
     }
