@@ -58,6 +58,21 @@ public class MenuInteraction : MonoBehaviour
         }
     }
 
+    // Make it switch between the 2 different buttons, like flashlight.
+    public void LocalizationButton(Button localizationButton) {
+        Transform localizationSwitch = localizationButton.transform.parent;
+        if(localizationSwitch.GetChild(0).gameObject.activeInHierarchy) {
+            localizationSwitch.GetChild(0).gameObject.SetActive(false);
+            localizationSwitch.GetChild(1).gameObject.SetActive(true);
+        }
+        else {
+            localizationSwitch.GetChild(0).gameObject.SetActive(true);
+            localizationSwitch.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+
+    // Update RemoveMenuButtons with Sebastian's code to get child from last production.
     public void RemoveMenuButtons() {
         GameObject canvasGO = transform.GetChild(1).gameObject;
         Debug.Log(canvasGO.name);
@@ -69,11 +84,17 @@ public class MenuInteraction : MonoBehaviour
             
             Debug.Log(canvasGO.transform.GetChild(3).gameObject.name);
         }
+        
+        else if(canvasGO.transform.GetChild(2).gameObject.activeInHierarchy){
+            canvasGO.transform.GetChild(2).gameObject.SetActive(false);
+            canvasGO.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+
         else {
             canvasGO.transform.GetChild(1).gameObject.SetActive(false);
             canvasGO.transform.GetChild(2).gameObject.SetActive(true);
         }
-            
 
 
     }
