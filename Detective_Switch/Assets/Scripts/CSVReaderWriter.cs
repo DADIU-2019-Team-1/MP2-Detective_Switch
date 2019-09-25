@@ -23,7 +23,7 @@ public class CSVReaderWriter // : MonoBehaviour
     private List<Vector3> leftFootVelocity;
     private List<Vector3> rightFootVelocity;
     private List<Vector3> rootVelocity;
-    private AnimationClip animClips;
+    private List<string> clipNames;
 
 #if UNITY_EDITOR
     void Awake()
@@ -77,18 +77,12 @@ public class CSVReaderWriter // : MonoBehaviour
             else
             {
                 string[] tempDataValues = dataString.Split(',');
-
+                string tempClipNameValue = "";
                 float[] dataValues = new float[tempDataValues.Length];
-                string stateValues = "";
                 for (int i = 1; i < dataValues.Length; i++)
                 {
-                    if (i == dataValues.Length - 1)
-                        stateValues = tempDataValues[i];
-                    else
-                    {
-                        dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
-                    }
-
+                    clipNames.Add(tempDataValues[0]);
+                    dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
                 }
 
                 /// Populate the quaternion, position and timestamp arrays/lists:
@@ -232,6 +226,7 @@ public class CSVReaderWriter // : MonoBehaviour
         leftFootVelocity = new List<Vector3>();
         rightFootVelocity = new List<Vector3>();
         frames = new List<int>();
+        clipNames = new List<string>();
     }
 
 

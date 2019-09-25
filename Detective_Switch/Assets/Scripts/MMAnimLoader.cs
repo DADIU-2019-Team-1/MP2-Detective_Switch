@@ -21,8 +21,8 @@ public class MMAnimLoader : MonoBehaviour
             animController = new AnimatorOverrideController(thisAnimator.runtimeAnimatorController);
         }
 
-        Debug.Log(animationClips[1].name);
-        thisAnimator.Play(animationClips[1].name);
+        // Debug.Log(animationClips[1].name);
+        // thisAnimator.Play(animationClips[1].name);
 
     }
 
