@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 joyAnchor;
     private Vector3 oldPos;
     private bool canMove;
+    private bool mouseDown;
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
@@ -36,6 +37,7 @@ public class CharacterMovement : MonoBehaviour
             joyAnchor = Input.mousePosition;
             //print(joyAnchor);
             timeAtTouchDown = Time.time;
+            mouseDown = true;
         }
         if(Input.GetMouseButton(0)) {
             Vector2 joyDragVector = GetJoyDragVector(joyAnchor, Input.mousePosition);
@@ -50,9 +52,14 @@ public class CharacterMovement : MonoBehaviour
             }
         }
         if(Input.GetMouseButtonUp(0)) {
-            if (!canMove || Time.time - timeAtTouchDown < maxPressTime) {
-                MouseClick();
+            if (mouseDown)
+            {
+                if (!canMove || Time.time - timeAtTouchDown < maxPressTime)
+                {
+                    MouseClick();
+                }
             }
+            mouseDown = false;
             canMove = false;
         }
     }
