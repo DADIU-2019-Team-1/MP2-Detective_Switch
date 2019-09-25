@@ -26,17 +26,20 @@ public class InventoryUpdater : MonoBehaviour
         
     }
 
-    public void AddItemToSlot() {
+    public void AddItemToSlot(GameObject clue) {
         // Add the Scriptable object to the inventory slot. Called from Interaction.
         Debug.Log("Entered AddItemToSlot");
-        gameObject.GetComponent<ClueObject>();
         for(int i = 0; i < maxSlots; i++) {
-           /*  if(slot[i].GetComponent<Interactable>() != null) {
-                Debug.Log("Entered slot if statement" + slot[i].GetComponent<ClueObject>());
+             if(slot[i] == null) {
+                //Debug.Log(slot[i]);
+                // Debug.Log("Entered slot if statement" + slot[i].GetComponent<ClueObject>());
+                Debug.Log("I am not null");
+                slot[i] = clue;
+                break;
                 // Add clue to the slot.
                 // This could be done by placing a scaled sprite in the spot of the item. 
-
-            } */
+                
+            } 
         }
     }
 }
