@@ -76,6 +76,9 @@ public class EventManager : MonoBehaviour
             case 5:
                 StartCoroutine(events[eventNum].OnObjectMoving());
                 break;
+            case 6:
+                StartCoroutine(events[eventNum].OnObjectsRotateDirection());
+                break;
             default:
                 break;
         }
@@ -103,7 +106,8 @@ public class ThisEventSystem
         OnCollisionWithTag,
         OnObjectDestroy,
         TimedEvent,
-        OnObjectMoving
+        OnObjectMoving,
+        OnObjectsRotateDirection
     };
 
     [HideInInspector]
@@ -118,12 +122,15 @@ public class ThisEventSystem
     [HideInInspector]
     public GameObject thisGameObject;
     [HideInInspector]
+    public GameObject[] theseGameObjects;
+    [HideInInspector]
     public string collisionTag = "";
     [HideInInspector]
     public bool isTrigger = true;
     [HideInInspector]
     public float fireCooldown = 0f;
-    // public UnityEvent boolEvent;
+    [HideInInspector]
+    public float[] specificRotations;
 
     public void OnCollisionWithTag()
     {
@@ -267,6 +274,36 @@ public class ThisEventSystem
             }
         }
     }
+
+    public IEnumerator OnObjectsRotateDirection()
+    {
+        bool loop = false;
+        if (theseGameObjects != null && specificRotations != null)
+        {
+            loop = true;
+        }
+
+        bool[] conditionsMet = new bool[theseGameObjects.Length];
+
+        while (loop)
+        {
+            yield return new WaitForSeconds(delayForFire);
+
+
+                // if ()
+
+                eventToFire.Invoke();
+                Debug.Log(eventName + " event fired!");
+
+
+            if (fireCooldown == 0)
+            {
+                loop = false;
+            }
+
+            yield return new WaitForSeconds(fireCooldown);
+        }
+    }
 }
 
 #if UNITY_EDITOR
@@ -344,6 +381,13 @@ public class RandomScript_Editor : Editor
                     script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
                     script.events[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
                     EditorGUILayout.HelpBox("Fires an event when the selected gameobject is moving. Not fully tested yet", MessageType.Warning);
+                }
+                if ((int)script.events[i].function == 6)
+                {
+                    // Objects rotate dir // 
+                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
+                    script.events[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
+                    EditorGUILayout.HelpBox("Not yet implemented", MessageType.Error);
                 }
 
                 SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
