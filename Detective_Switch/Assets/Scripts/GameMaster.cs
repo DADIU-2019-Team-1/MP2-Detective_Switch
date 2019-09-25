@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameMaster : MonoBehaviour
 {
     public static GameMaster instance;
+
+    /// --- Public
+    public UnityEvent events;
+
+    /// --- Private
     private float moveSpeed;
+    [SerializeField] private bool localization = false; // "False == English, True == Danish"
 
     /// --- Events
     public delegate void LocalizationDelegate();
@@ -20,12 +27,17 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("b"))
-            if (localizationEvent != null)
-            {
-                Debug.Log("Localization event triggered!");
-                localizationEvent();
-            }
+
+    }
+
+    public void SetLocalization()
+    {
+        if (localizationEvent != null)
+        {
+            Debug.Log("Localization event triggered!");
+            localizationEvent();
+        }
+            localization = !localization;
     }
 
     void CreateGameMaster()

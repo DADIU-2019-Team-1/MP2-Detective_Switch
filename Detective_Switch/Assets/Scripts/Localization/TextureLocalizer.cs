@@ -8,12 +8,19 @@ public class TextureLocalizer : MonoBehaviour
     [Header("Place on an object with a text texture", order = 1)]
     public Texture englishTextTexture;
     public Texture danishTextTexture;
-    Material mat;
+    Renderer rend;
 
     void Start()
     {
-        mat = GetComponent<Renderer>().material;
-        mat.SetTexture("Hello World", englishTextTexture);
+        rend = GetComponent<Renderer>();
+        if (englishTextTexture != null)
+        {
+            rend.material.mainTexture = englishTextTexture;
+            rend.material.SetTexture("_BaseMap", englishTextTexture);
+        }
+        else
+            Debug.Log("The object \"" + gameObject.name + "\" is missing an ENGLISH texture in it's TextureLocalizer!");
+
         // Subscribe to the localization event
         FindObjectOfType<GameMaster>().localizationEvent += OnLocalizationChange;
     }
@@ -21,12 +28,15 @@ public class TextureLocalizer : MonoBehaviour
     public void OnLocalizationChange()
     {
         Debug.Log("Detected localization event for Gameobject: " + gameObject.name);
-        // Unsubscribe to the localization event
-        FindObjectOfType<GameMaster>().localizationEvent -= OnLocalizationChange;
 
-        if (mat.mainTexture == englishTextTexture)
-            mat.mainTexture = danishTextTexture;
+        if (rend.material.GetTexture("_BaseMap") == englishTextTexture)
+        {
+            if (danishTextTexture != null)
+                rend.material.SetTexture("_BaseMap", danishTextTexture);
+            else
+                Debug.Log("The object \"" + gameObject.name + "\" is missing a DANISH texture in it's TextureLocalizer!");
+        }
         else
-            mat.mainTexture = englishTextTexture;
+            rend.material.SetTexture("_BaseMap", englishTextTexture);
     }
 }
