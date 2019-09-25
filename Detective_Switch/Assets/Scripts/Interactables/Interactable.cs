@@ -33,6 +33,8 @@ public class Interactable : MonoBehaviour
     public bool hasItem;
     public Item item;
 
+    // animation
+
     public void Interact()
     {
         // play sound
@@ -76,6 +78,7 @@ public class Interactable : MonoBehaviour
             }
         }
 
+        // item
         if (hasItem) {
             if(item != null) {
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
@@ -105,6 +108,11 @@ public class InteractableEditor : Editor
 {
     public override void OnInspectorGUI()
     {
+        if (!Application.isEditor)
+        {
+            return;
+        }
+
         var dis = target as Interactable;
 
         DrawUILine();
