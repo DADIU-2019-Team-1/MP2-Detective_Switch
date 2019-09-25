@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    // main
+    public bool reclickable;
+    private bool hasBeenClicked;
+
     // sound
     public bool soundOnInteract;
     public string playSound;
@@ -34,9 +38,25 @@ public class Interactable : MonoBehaviour
     public Item item;
 
     // animation
+    public bool hasAnimation;
+    public bool switchBetweenAnimations;
+    public string animationDefault;
+    public string animationAction;
+    private Animator anim;
+    private bool animationState;
 
     public void Interact()
     {
+        // reclickable
+        if (!reclickable)
+        {
+            if (hasBeenClicked)
+            {
+                return;
+            }
+            hasBeenClicked = true;
+        }
+
         // play sound
         if (soundOnInteract)
         {
@@ -84,6 +104,24 @@ public class Interactable : MonoBehaviour
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             }
         }
+
+        // animation
+        if (hasAnimation)
+        {
+            if (switchBetweenAnimations)
+            {
+                anim.Play(animationState ? animationDefault : animationAction);
+                animationState = !animationState;
+            } else
+            {
+                anim.Play(animationAction);
+            }
+        }
+    }
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -117,6 +155,10 @@ public class InteractableEditor : Editor
 
         DrawUILine();
 
+        dis.reclickable = GUILayout.Toggle(dis.reclickable, "Reclickable");
+
+        DrawUILine();
+
         dis.soundOnInteract = GUILayout.Toggle(dis.soundOnInteract, "Sound On Interact");
         if (dis.soundOnInteract)
             dis.playSound = EditorGUILayout.TextField("Sound Name:", dis.playSound);
@@ -146,6 +188,18 @@ public class InteractableEditor : Editor
         dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
         if (dis.hasItem)
             dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
+
+        DrawUILine();
+
+        dis.hasAnimation = GUILayout.Toggle(dis.hasAnimation, "Has Animation");
+        if (dis.hasAnimation)
+        {
+            GUILayout.Label("Object must have an animator component");
+            dis.switchBetweenAnimations = GUILayout.Toggle(dis.switchBetweenAnimations, "Switch between animations");
+            if (dis.switchBetweenAnimations)
+                dis.animationDefault = EditorGUILayout.TextField("Animation Default:", dis.animationDefault);
+            dis.animationAction = EditorGUILayout.TextField("Animation Action:", dis.animationAction);
+        }
 
         DrawUILine();
     }
