@@ -75,6 +75,12 @@ public class Interactable : MonoBehaviour
                 toggleObject.SetActive(!toggleObject.activeSelf);
             }
         }
+
+        if (hasItem) {
+            if(item != null) {
+                GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
+            }
+        }
     }
 
     void Update()
