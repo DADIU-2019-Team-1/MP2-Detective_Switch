@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &5302350552680269298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029186621243347360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0660636, y: 3.336986, z: 2.070621}
+  m_Center: {x: -0.03303182, y: 1.168493, z: 0.036767244}
 --- !u!114 &-1381317811843628828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,6 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singleUse: 1
   soundOnInteract: 0
   playSound: 
   rotateOnInteract: 0
@@ -26,6 +40,12 @@ MonoBehaviour:
   toggleDelay: 0
   hasItem: 0
   item: {fileID: 0}
+  hasAnimation: 1
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: CupboardLarge_A_Skeleton|CupboardLarge_Interact
+  testLog: 0
+  testLogText: 
 --- !u!1001 &2039158282354428073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37,6 +57,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CupboardLarge
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095010389460847694, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5128762710847340186, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8d0e499461991fb42b52b6a712b6dd21,
         type: 3}
@@ -92,6 +127,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c3d4e1d1f4f9baf4a844f59e9d3de992, type: 2}
+    - target: {fileID: 1121063750183690423, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4208700848839971006, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845169591394129830, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604551850390346366, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515507764808924833, guid: 8d0e499461991fb42b52b6a712b6dd21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d0e499461991fb42b52b6a712b6dd21, type: 3}

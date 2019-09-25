@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: -3100369314251171874
     second: Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PaintingTex01
+    second: {fileID: 2100000, guid: 7680622a2a9b94e4791725469ae4afea, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
