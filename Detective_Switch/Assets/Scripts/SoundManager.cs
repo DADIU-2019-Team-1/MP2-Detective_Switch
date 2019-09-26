@@ -6,19 +6,28 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
+    // should be found by tag in start
     public GameObject player;
 
     private Material walkMaterial;
+
     private bool isInMenu;
 
-    private float runtime; //done
+    // time of day
+    public AK.Wwise.RTPC timeOfDay;
+    public int dayLength = 300;
 
-    private float distanceToWindow; //done
-    private GameObject[] windowObjects;
+    // distance to window
+    public AK.Wwise.RTPC distanceToWindow;
     public float maxDistanceToWindows = 5.0f;
 
+    private GameObject[] windowObjects;
+
+    // roomsize
     private float roomSize;
-    private int level;   
+
+    // progression
+    private int progression;
 
     void Awake() 
     {
@@ -45,12 +54,17 @@ public class SoundManager : MonoBehaviour
 
     void Update()
     {
-        runtime = Time.time;
-        distanceToWindow = calculateDistanceToWindows();
-        Debug.Log(distanceToWindow);
+        timeOfDay.SetGlobalValue(calcTimeOfDay());
+        distanceToWindow.SetGlobalValue(calcDistanceToWindows());
     }
 
-    private float calculateDistanceToWindows()
+    private float calcTimeOfDay()
+    {
+        float time = 100.0f / dayLength * Time.time;
+        return Mathf.Clamp(time, 0, 100);
+    }
+
+    private float calcDistanceToWindows()
     {
         float shortestDistance = Mathf.Infinity;
 
@@ -59,10 +73,6 @@ public class SoundManager : MonoBehaviour
             float dist = Vector3.Distance(player.transform.position, windowObjects[i].transform.position);
             shortestDistance = dist < shortestDistance ? dist : shortestDistance;
         }
-
-        Debug.Log("------------");
-
-        Debug.Log(shortestDistance);
 
         shortestDistance = 100.0f - (100.0f / maxDistanceToWindows * shortestDistance);
         shortestDistance = Mathf.Clamp(shortestDistance, 0, 100);
