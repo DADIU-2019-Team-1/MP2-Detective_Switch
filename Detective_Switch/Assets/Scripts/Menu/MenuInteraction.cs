@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour
 {
+    private int childIterator = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,32 @@ public class MenuInteraction : MonoBehaviour
     public void InventoryButton(Button button) {
         Debug.Log(button.name);
         Transform invChild = button.transform.GetChild(0);
-        if(!invChild.gameObject.activeInHierarchy) {
-            invChild.gameObject.SetActive(true);
+        //childIterator = 0;
+
+        // Have a List.count for 5 here.
+        if(!invChild.gameObject.activeInHierarchy && button.transform.childCount <= 5) {
+            /* childIterator = 0;
+            foreach(Transform child in transform) {
+                button.transform.GetChild(childIterator).gameObject.SetActive(true);
+                childIterator++;
+            } */
+            for(int i = 0; i <= button.transform.childCount; i++) {
+                button.transform.GetChild(i).gameObject.SetActive(true);
+            } 
+            //invChild.gameObject.SetActive(true);
         }
-        else {
-            invChild.gameObject.SetActive(false);
+        else {            
+            
+            for(int i = 0; i <= button.transform.childCount; i++)
+                button.transform.GetChild(i).gameObject.SetActive(false); 
+
+            
+            /* childIterator = 0;
+            foreach(Transform child in transform) {
+                button.transform.GetChild(childIterator).gameObject.SetActive(false);
+                childIterator++; 
+            } */
+
         }
 
 
