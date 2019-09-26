@@ -14,18 +14,24 @@ public class WallManager : MonoBehaviour
     [Range(1, 3)]
     public int WallVariants = 1;
 
-    public Color WallColour = new Color(0.5f, 0.5f, 0.5f);
-    public Color PanelColour = new Color(0.6f, 0.6f, 0.6f);
+    [HideInInspector] public Color WallColour = new Color(0.5f, 0.5f, 0.5f);
+    [HideInInspector] public Color PanelColour = new Color(0.6f, 0.6f, 0.6f);
 
 
 
     public bool TurnIn = false;
     public bool TurnOut = false;
 
+    public bool HalfLength = false;
+
     // Mesh components
     // The three different base wall cutouts
     [HideInInspector] public Mesh WallStandard;
     [HideInInspector] public Mesh WallStandardDoor;
+
+    [HideInInspector] public Mesh WallStandardDouble;
+    [HideInInspector] public Mesh WallStandardHalf;
+    [HideInInspector] public Mesh WallOuterHalf;
 
     [HideInInspector] public Mesh WallOuter;
     [HideInInspector] public Mesh WallOuterPillar;
@@ -64,7 +70,7 @@ public class WallManager : MonoBehaviour
                 }
                 if (WallVariants == 3)
                 {
-                    GetComponent<MeshFilter>().sharedMesh = WallStandard;
+                    GetComponent<MeshFilter>().sharedMesh = WallStandardDouble;
                 }
 
             }
@@ -111,10 +117,23 @@ public class WallManager : MonoBehaviour
                 }
             }
 
-            var cubeRenderer = GetComponent<Renderer>();
+            if (HalfLength == true)
+            {
 
-            cubeRenderer.sharedMaterial.SetColor("_BaseColor", WallColour);
-            cubeRenderer.sharedMaterials[1].SetColor("_BaseColor", PanelColour);
+                if (WallType == 1)
+                {
+                    GetComponent<MeshFilter>().sharedMesh = WallStandardHalf;
+                }
+                if (WallType == 2)
+                {
+                    GetComponent<MeshFilter>().sharedMesh = WallOuterHalf;
+                }
+            }
+
+            //var cubeRenderer = GetComponent<Renderer>();
+
+            //cubeRenderer.sharedMaterial.SetColor("_BaseColor", WallColour);
+            //cubeRenderer.sharedMaterials[1].SetColor("_BaseColor", PanelColour);
 
         }
     }

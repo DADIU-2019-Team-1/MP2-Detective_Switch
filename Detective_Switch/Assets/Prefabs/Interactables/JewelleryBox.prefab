@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &6244475810416058079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7852153464009874011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.36972523, y: 0.22700882, z: 0.20947313}
+  m_Center: {x: -0.024161339, y: 0.14545178, z: -0.059624195}
 --- !u!114 &8563436761975620722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,6 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singleUse: 0
   soundOnInteract: 0
   playSound: 
   rotateOnInteract: 0
@@ -26,6 +40,12 @@ MonoBehaviour:
   toggleDelay: 0
   hasItem: 0
   item: {fileID: 0}
+  hasAnimation: 1
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: JewelleryBox_A_Skeleton|JewelleryBox_Interact
+  testLog: 0
+  testLogText: 
 --- !u!1001 &2295040236438553426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36,8 +56,28 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 3dab32f65a6fed3499bac280db6c97b8,
         type: 3}
       propertyPath: m_Name
-      value: JewelleryBox_A
+      value: JewelleryBox
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3600413078391448059, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5274277465693595276, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9b90021224cee744877da2f4b711079, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -92,6 +132,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3199
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3199
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3199
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121063750183690423, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3456528008182656330, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 653762941009027570, guid: 3dab32f65a6fed3499bac280db6c97b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dab32f65a6fed3499bac280db6c97b8, type: 3}
