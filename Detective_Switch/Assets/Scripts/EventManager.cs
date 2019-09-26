@@ -122,6 +122,8 @@ public class ThisEventSystem
     [HideInInspector]
     public GameObject thisGameObject;
     [HideInInspector]
+    public int gameObjectAmount = 0;
+    [HideInInspector]
     public GameObject[] theseGameObjects;
     [HideInInspector]
     public string collisionTag = "";
@@ -130,7 +132,7 @@ public class ThisEventSystem
     [HideInInspector]
     public float fireCooldown = 0f;
     [HideInInspector]
-    public float[] specificRotations;
+    public int[] specificRotations;
 
     public void OnCollisionWithTag()
     {
@@ -283,26 +285,42 @@ public class ThisEventSystem
             loop = true;
         }
 
-        bool[] conditionsMet = new bool[theseGameObjects.Length];
+        bool conditionsMet = false;
 
         while (loop)
         {
-            yield return new WaitForSeconds(delayForFire);
+            yield return new WaitForSeconds(0.3f);
+            int j = 0;
 
-
-                // if ()
-
-                eventToFire.Invoke();
-                Debug.Log(eventName + " event fired!");
-
-
-            if (fireCooldown == 0)
+            for (int i = 0; i < theseGameObjects.Length; i++)
             {
-                loop = false;
+                if ((int)theseGameObjects[i].transform.rotation.eulerAngles.y != specificRotations[i])
+                {
+                    break;
+                }
+                conditionsMet = true;
             }
 
-            yield return new WaitForSeconds(fireCooldown);
+            if (conditionsMet)
+            {
+                yield return new WaitForSeconds(delayForFire);
+                eventToFire.Invoke();
+                Debug.Log(eventName + " event fired!");
+                conditionsMet = false;
+                yield return new WaitForSeconds(fireCooldown);
+
+                if (fireCooldown == 0)
+                {
+                    loop = false;
+                }
+            }
         }
+    }
+
+    public void ObjRotInit(int amount)
+    {
+        theseGameObjects = new GameObject[amount];
+        specificRotations = new int[amount];
     }
 }
 
@@ -386,8 +404,21 @@ public class RandomScript_Editor : Editor
                 {
                     // Objects rotate dir // 
                     script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
-                    script.events[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
-                    EditorGUILayout.HelpBox("Not yet implemented", MessageType.Error);
+                    script.events[i].gameObjectAmount = EditorGUILayout.IntField("Amount of objects", script.events[i].gameObjectAmount);
+                    if (script.events[i].gameObjectAmount > 0)
+                    {
+                        if (script.events[i].gameObjectAmount != script.events[i].theseGameObjects.Length)
+                        {
+                            script.events[i].ObjRotInit(script.events[i].gameObjectAmount);
+                        }
+
+                        for (int j = 0; j < script.events[i].theseGameObjects.Length; j++)
+                        {
+                            script.events[i].theseGameObjects[j] = EditorGUILayout.ObjectField("GameObject", script.events[i].theseGameObjects[j], typeof(GameObject), true) as GameObject;
+                            script.events[i].specificRotations[j] = EditorGUILayout.IntField("Rotation", script.events[i].specificRotations[j]);
+                        }
+                    }
+                    EditorGUILayout.HelpBox("Specify the amount of gameobjects you want, and then at what specific rotation they should be triggering. The event will fire when they all are rotated in the specified direction.", MessageType.Info);
                 }
 
                 SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
