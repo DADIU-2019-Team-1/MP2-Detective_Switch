@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Interactable : MonoBehaviour
 {
     // main
@@ -34,6 +35,11 @@ public class Interactable : MonoBehaviour
 
     // item
     public bool hasItem;
+    public bool hasClue;
+    public bool hasNote;
+    public bool hasKeyItem;
+    public string clueKeyString;   
+    public string noteKeyString;
     public Item item;
 
     // animation
@@ -109,11 +115,20 @@ public class Interactable : MonoBehaviour
         // item
         if (hasItem)
         {
-            if (item != null)
+            if (hasKeyItem && item != null)
             {
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
+            } 
+            if(hasClue && !string.IsNullOrEmpty(clueKeyString)) {
+                // Insert Jakob's load string function
             }
+            if(hasNote && !string.IsNullOrEmpty(noteKeyString)) {
+                // Insert load string for note function
+            }
+            
         }
+
+
 
         // animation
         if (hasAnimation)
