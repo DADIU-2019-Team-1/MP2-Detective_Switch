@@ -52,7 +52,7 @@ public class TrajectoryTest : MonoBehaviour
         {
             Gizmos.DrawWireSphere(transform.position + direction * trajPoints[i], 0.5f);
         }
-        Gizmos.DrawLine(transform.position, direction * 2);
+        Gizmos.DrawLine(transform.position, direction);
     }
 
     void HandleInput()
@@ -106,16 +106,11 @@ public class TrajectoryTest : MonoBehaviour
         {
             speedMove = speedMove.normalized * minPlayerSpeed;
         }
-        //playerRB.AddForce(speedMove * Time.deltaTime * 100);
         rb.velocity = Vector3.Lerp(rb.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
-        //print(speedMove);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), turnReactionTime * Time.deltaTime);
-        //globalPlayerSpeed = playerRB.velocity.magnitude;
-
+        
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;
-        //Debug.Log(distanceTravelled);
-        //Debug.Log(globalPlayerSpeed);
     }
 }
