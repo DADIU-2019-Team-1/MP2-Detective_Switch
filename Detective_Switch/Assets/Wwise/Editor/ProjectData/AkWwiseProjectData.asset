@@ -221,7 +221,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586323754318218322
+    m_lastTime: -8586322749380687891
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -237,61 +237,111 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586323608549815119
+    m_lastTime: -8586322732499274160
     List:
-    - name: Play_Amb
-      guid: 823f6d9e76dce0498759e240da23b7fe
-      id: 2959533290
+    - name: Play_Amb_Basic_Room
+      guid: ffda4d0042fc3c4d80ffa98bdd07ace5
+      id: 1643668981
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 3_Ambience
+      - ElementName: Ambience
         ObjectType: 4
-      - ElementName: Play_Amb
+      - ElementName: Amb_Environment
+        ObjectType: 4
+      - ElementName: Play_Amb_Basic_Room
         ObjectType: 3
-      Path: Default Work Unit\3_Ambience\Play_Amb
+      Path: Default Work Unit\Ambience\Amb_Environment\Play_Amb_Basic_Room
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Play_Flashlight_On_Off
-      guid: 034b30d842587d40badb8e205cc6a8d6
-      id: 4064524182
+    - name: Play_Amb_Environment
+      guid: a01b78865bb25e4a9726fcd25b07c562
+      id: 777179012
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 4_Player
+      - ElementName: Ambience
         ObjectType: 4
-      - ElementName: Play_Flashlight_On_Off
+      - ElementName: Amb_Environment
+        ObjectType: 4
+      - ElementName: Play_Amb_Environment
         ObjectType: 3
-      Path: Default Work Unit\4_Player\Play_Flashlight_On_Off
+      Path: Default Work Unit\Ambience\Amb_Environment\Play_Amb_Environment
       maxAttenuation: 0
-      maxDuration: 0.900915
-      minDuration: 0.790204
-    - name: Play_Flashlight_Switch
-      guid: 7c7dc24b834d334cbe06cb0b7ddf2dfe
-      id: 784840363
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Blacklight_OFF
+      guid: b6e72a4a02f193469b8d0196dd6eda36
+      id: 1585582443
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 4_Player
+      - ElementName: Player
         ObjectType: 4
-      - ElementName: Play_Flashlight_Switch
+      - ElementName: Play_Blacklight_OFF
         ObjectType: 3
-      Path: Default Work Unit\4_Player\Play_Flashlight_Switch
+      Path: Default Work Unit\Player\Play_Blacklight_OFF
       maxAttenuation: 0
-      maxDuration: 4.001041
-      minDuration: 2.884395
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Blacklight_On
+      guid: a7e50e3e3ce03740b3eeb50502deeba1
+      id: 3660826327
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Player
+        ObjectType: 4
+      - ElementName: Play_Blacklight_On
+        ObjectType: 3
+      Path: Default Work Unit\Player\Play_Blacklight_On
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Door_Open
+      guid: 5162955dc1b77b49ac5534aab039fba0
+      id: 1660008929
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Door
+        ObjectType: 4
+      - ElementName: Play_Door_Open
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Door\Play_Door_Open
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Door_Unlock_Open
+      guid: e940ccbc7b88d44f809d25e4fc98b48d
+      id: 2081382800
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Door
+        ObjectType: 4
+      - ElementName: Play_Door_Unlock_Open
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Door\Play_Door_Unlock_Open
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Footstep_Surface
       guid: c1afc499c9e1d34094cd7183899ace79
       id: 709824872
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 4_Player
+      - ElementName: Player
         ObjectType: 4
       - ElementName: Play_Footstep_Surface
         ObjectType: 3
-      Path: Default Work Unit\4_Player\Play_Footstep_Surface
+      Path: Default Work Unit\Player\Play_Footstep_Surface
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -301,11 +351,27 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 1_Music
+      - ElementName: Music
         ObjectType: 4
       - ElementName: Play_GameFlow_Music
         ObjectType: 3
-      Path: Default Work Unit\1_Music\Play_GameFlow_Music
+      Path: Default Work Unit\Music\Play_GameFlow_Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Grand_Clock_Ticking
+      guid: 789fceb2611366458202c494bef63b5e
+      id: 560436547
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
+      - ElementName: Play_Grand_Clock_Ticking
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Amb_Emitters\Play_Grand_Clock_Ticking
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -315,11 +381,11 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 2_UI
+      - ElementName: UI
         ObjectType: 4
       - ElementName: Play_Menu_Button
         ObjectType: 3
-      Path: Default Work Unit\2_UI\Play_Menu_Button
+      Path: Default Work Unit\UI\Play_Menu_Button
       maxAttenuation: 0
       maxDuration: 0.553774
       minDuration: 0.43198
@@ -329,52 +395,124 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 5_SFX
+      - ElementName: SFX
         ObjectType: 4
       - ElementName: Move_Objects
         ObjectType: 4
       - ElementName: Play_Moving_Object_Interactive
         ObjectType: 3
-      Path: Default Work Unit\5_SFX\Move_Objects\Play_Moving_Object_Interactive
+      Path: Default Work Unit\SFX\Move_Objects\Play_Moving_Object_Interactive
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Play_Presence
-      guid: 773cbb9e64baf54aa5b19aab235cf130
-      id: 4155730121
+    - name: Play_Scribble
+      guid: 5d200f47963efd4a8af277e6d92630e0
+      id: 806548754
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 3_Ambience
+      - ElementName: Player
         ObjectType: 4
-      - ElementName: Play_Presence
+      - ElementName: Play_Scribble
         ObjectType: 3
-      Path: Default Work Unit\3_Ambience\Play_Presence
+      Path: Default Work Unit\Player\Play_Scribble
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Play_Stop_Object_Move
-      guid: bde79ee4cc6b2e468cab627a99aa69b6
-      id: 1741783852
+    - name: Play_Stander_Lamp_OFF
+      guid: dbae731f32c7c74a8eb22c2d54ebdea5
+      id: 3906081382
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: 5_SFX
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
+      - ElementName: Lamps
+        ObjectType: 4
+      - ElementName: Play_Stander_Lamp_OFF
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Stander_Lamp_OFF
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Stander_Lamp_ON
+      guid: 8e1710b8ca094e498849ea7880539af3
+      id: 3153651208
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
+      - ElementName: Lamps
+        ObjectType: 4
+      - ElementName: Play_Stander_Lamp_ON
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Stander_Lamp_ON
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Table_Lamp_OFF
+      guid: fe2c9e5cc29e2642b21b94e68ee7ec65
+      id: 278845169
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
+      - ElementName: Lamps
+        ObjectType: 4
+      - ElementName: Play_Table_Lamp_OFF
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Table_Lamp_OFF
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Table_Lamp_ON
+      guid: be3e6443ae99f1469a78db632ec76d3b
+      id: 1211107685
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
+      - ElementName: Lamps
+        ObjectType: 4
+      - ElementName: Play_Table_Lamp_ON
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Table_Lamp_ON
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Object_Move
+      guid: bde79ee4cc6b2e468cab627a99aa69b6
+      id: 3975567679
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
         ObjectType: 4
       - ElementName: Move_Objects
         ObjectType: 4
-      - ElementName: Play_Stop_Object_Move
+      - ElementName: Stop_Object_Move
         ObjectType: 3
-      Path: Default Work Unit\5_SFX\Move_Objects\Play_Stop_Object_Move
+      Path: Default Work Unit\SFX\Move_Objects\Stop_Object_Move
       maxAttenuation: 0
-      maxDuration: 0.89695
-      minDuration: 0.620004
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: e693f946ea321a498ea501e6176c3a19
     GuidInternal: 
-    m_lastTime: -8586323609902493454
+    m_lastTime: -8586322794450864877
     List:
     - name: Day_Night_Rain
       guid: ae2f0969ebec6840943228caf82b3765
@@ -405,6 +543,15 @@ MonoBehaviour:
       - ElementName: Player_Near_Window
         ObjectType: 13
       Path: Default Work Unit\Player_Near_Window
+    - name: Room_Size
+      guid: 5d52111fc9e9ef409c31e8085969f99d
+      id: 2021037140
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Room_Size
+        ObjectType: 13
+      Path: Default Work Unit\Room_Size
     - name: SFX_Slider
       guid: bdd5564f7f787840badf5d28353581bf
       id: 4140634290
@@ -608,8 +755,39 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8e6cf1579bc29c46988d61678cefe7ca
     GuidInternal: 
-    m_lastTime: -8586328939320189153
-    List: []
+    m_lastTime: -8586322817099821872
+    List:
+    - name: FS_Material
+      guid: a010d6fceb027242ac44a731595e2d7f
+      id: 20433824
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: FS_Material
+        ObjectType: 11
+      Path: Default Work Unit\FS_Material
+      values:
+      - name: FS_Carpet
+        guid: ed3beebe5dfff747aea6aeb37f12043a
+        id: 3163497766
+        PathAndIcons:
+        - ElementName: FS_Carpet
+          ObjectType: 10
+      - name: FS_Marble
+        guid: 934fbe2022c3ee49802280676ef891d2
+        id: 889971200
+        PathAndIcons:
+        - ElementName: FS_Marble
+          ObjectType: 10
+      - name: FS_Wood
+        guid: a315e672b5b52646aec892fb5dd5f3a3
+        id: 3616930680
+        PathAndIcons:
+        - ElementName: FS_Wood
+          ObjectType: 10
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -621,8 +799,8 @@ MonoBehaviour:
   - /MG2_WwiseProject
   - /MG2_WwiseProject/Events
   - /MG2_WwiseProject/Events/Default Work Unit
-  - /MG2_WwiseProject/Events/Default Work Unit/3_Ambience
   - /MG2_WwiseProject/SoundBanks
   - /MG2_WwiseProject/SoundBanks/Default Work Unit
+  - /MG2_WwiseProject/Switches
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
