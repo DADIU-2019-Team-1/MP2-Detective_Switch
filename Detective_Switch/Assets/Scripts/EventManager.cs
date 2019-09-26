@@ -76,6 +76,9 @@ public class EventManager : MonoBehaviour
             case 5:
                 StartCoroutine(events[eventNum].OnObjectMoving());
                 break;
+            case 6:
+                StartCoroutine(events[eventNum].OnObjectsRotateDirection());
+                break;
             default:
                 break;
         }
@@ -103,7 +106,8 @@ public class ThisEventSystem
         OnCollisionWithTag,
         OnObjectDestroy,
         TimedEvent,
-        OnObjectMoving
+        OnObjectMoving,
+        OnObjectsRotateDirection
     };
 
     [HideInInspector]
@@ -118,12 +122,17 @@ public class ThisEventSystem
     [HideInInspector]
     public GameObject thisGameObject;
     [HideInInspector]
+    public int gameObjectAmount = 0;
+    [HideInInspector]
+    public GameObject[] theseGameObjects;
+    [HideInInspector]
     public string collisionTag = "";
     [HideInInspector]
     public bool isTrigger = true;
     [HideInInspector]
     public float fireCooldown = 0f;
-    // public UnityEvent boolEvent;
+    [HideInInspector]
+    public int[] specificRotations;
 
     public void OnCollisionWithTag()
     {
@@ -267,6 +276,52 @@ public class ThisEventSystem
             }
         }
     }
+
+    public IEnumerator OnObjectsRotateDirection()
+    {
+        bool loop = false;
+        if (theseGameObjects != null && specificRotations != null)
+        {
+            loop = true;
+        }
+
+        bool conditionsMet = false;
+
+        while (loop)
+        {
+            yield return new WaitForSeconds(0.3f);
+            int j = 0;
+
+            for (int i = 0; i < theseGameObjects.Length; i++)
+            {
+                if ((int)theseGameObjects[i].transform.rotation.eulerAngles.y != specificRotations[i])
+                {
+                    break;
+                }
+                conditionsMet = true;
+            }
+
+            if (conditionsMet)
+            {
+                yield return new WaitForSeconds(delayForFire);
+                eventToFire.Invoke();
+                Debug.Log(eventName + " event fired!");
+                conditionsMet = false;
+                yield return new WaitForSeconds(fireCooldown);
+
+                if (fireCooldown == 0)
+                {
+                    loop = false;
+                }
+            }
+        }
+    }
+
+    public void ObjRotInit(int amount)
+    {
+        theseGameObjects = new GameObject[amount];
+        specificRotations = new int[amount];
+    }
 }
 
 #if UNITY_EDITOR
@@ -344,6 +399,26 @@ public class EventManager_Editor : Editor
                     script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
                     script.events[i].thisGameObject = EditorGUILayout.ObjectField("GameObject", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
                     EditorGUILayout.HelpBox("Fires an event when the selected gameobject is moving. Not fully tested yet", MessageType.Warning);
+                }
+                if ((int)script.events[i].function == 6)
+                {
+                    // Objects rotate dir // 
+                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
+                    script.events[i].gameObjectAmount = EditorGUILayout.IntField("Amount of objects", script.events[i].gameObjectAmount);
+                    if (script.events[i].gameObjectAmount > 0)
+                    {
+                        if (script.events[i].gameObjectAmount != script.events[i].theseGameObjects.Length)
+                        {
+                            script.events[i].ObjRotInit(script.events[i].gameObjectAmount);
+                        }
+
+                        for (int j = 0; j < script.events[i].theseGameObjects.Length; j++)
+                        {
+                            script.events[i].theseGameObjects[j] = EditorGUILayout.ObjectField("GameObject", script.events[i].theseGameObjects[j], typeof(GameObject), true) as GameObject;
+                            script.events[i].specificRotations[j] = EditorGUILayout.IntField("Rotation", script.events[i].specificRotations[j]);
+                        }
+                    }
+                    EditorGUILayout.HelpBox("Specify the amount of gameobjects you want, and then at what specific rotation they should be triggering. The event will fire when they all are rotated in the specified direction.", MessageType.Info);
                 }
 
                 SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
