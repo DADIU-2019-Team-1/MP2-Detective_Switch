@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-/*
-[ExecuteInEditMode]
+
+// [System.Serializable]
+// [ExecuteInEditMode]
+
+#if UNITY_EDITOR
+
+using UnityEditor;
+
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Interactable))]
 public class InteractableEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        if (!Application.isEditor)
-        {
-            return;
-        }
+
+        DrawDefaultInspector();
 
         var dis = target as Interactable;
 
@@ -26,7 +29,7 @@ public class InteractableEditor : Editor
         dis.soundOnInteract = GUILayout.Toggle(dis.soundOnInteract, "Sound On Interact");
         if (dis.soundOnInteract)
             dis.playSound = EditorGUILayout.TextField("Sound Name:", dis.playSound);
-
+        
         DrawUILine();
 
         dis.rotateOnInteract = GUILayout.Toggle(dis.rotateOnInteract, "Rotate On Interact");
@@ -50,8 +53,19 @@ public class InteractableEditor : Editor
         DrawUILine();
 
         dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
-        if (dis.hasItem)
-            dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
+        if (dis.hasItem) {
+            dis.hasClue = GUILayout.Toggle(dis.hasClue, "Has Clue");
+            if(dis.hasClue) 
+                dis.clueKeyString = EditorGUILayout.TextField("Clue Key: ", dis.clueKeyString);
+            dis.hasNote = GUILayout.Toggle(dis.hasNote, "Has Note");
+            if(dis.hasNote) 
+                dis.noteKeyString = EditorGUILayout.TextField("Note Key: ", dis.noteKeyString);
+            dis.hasKeyItem = GUILayout.Toggle(dis.hasKeyItem, "Has KeyItem");
+            if(dis.hasKeyItem) 
+                dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
+        }
+
+            
 
         DrawUILine();
 
@@ -72,6 +86,13 @@ public class InteractableEditor : Editor
             dis.testLogText = EditorGUILayout.TextField("Text:", dis.testLogText);
 
         DrawUILine();
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(dis);
+        }
+
+        serializedObject.ApplyModifiedProperties();
     }
 
     public static void DrawUILine()
@@ -87,4 +108,5 @@ public class InteractableEditor : Editor
         r.width += 6;
         EditorGUI.DrawRect(r, color);
     }
-}*/
+}
+#endif
