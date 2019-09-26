@@ -41,7 +41,6 @@ public class TrajectoryTest : MonoBehaviour
 
     void FixedUpdate()
     {
-        direction = transform.position - oldPos;
         HandleInput();
     }
 
@@ -101,6 +100,7 @@ public class TrajectoryTest : MonoBehaviour
 
     void MovePlayer(Vector3 moVector)
     {
+        direction = moVector;
         Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
         if (speedMove.magnitude < minPlayerSpeed)
         {
