@@ -6,19 +6,28 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     // main
+    [HideInInspector]
     public bool singleUse;
     private bool hasBeenClicked;
 
     // sound
+    [HideInInspector]
     public bool soundOnInteract;
+    [HideInInspector]
     public string playSound;
 
     // rotation
+    [HideInInspector]
     public bool rotateOnInteract;
+    [HideInInspector]
     public int rotateDegreesX = 0;
+    [HideInInspector]
     public int rotateDegreesY = 90;
+    [HideInInspector]
     public int rotateDegreesZ = 0;
+    [HideInInspector]
     public bool rotateOverTime;
+    [HideInInspector]
     public float rotationDuration = 0.5f;
 
     private bool isRotating;
@@ -28,25 +37,37 @@ public class Interactable : MonoBehaviour
     private float rotationEndTime;
 
     // toggle
+    [HideInInspector]
     public bool toggleGameObject;
+    [HideInInspector]
     public GameObject toggleObject;
+    [HideInInspector]
     public bool toggleAfterDelay;
+    [HideInInspector]
     public float toggleDelay;
 
     // item
+    [HideInInspector]
     public bool hasItem;
+    [HideInInspector]
     public Item item;
 
     // animation
+    [HideInInspector]
     public bool hasAnimation;
+    [HideInInspector]
     public bool switchBetweenAnimations;
+    [HideInInspector]
     public string animationDefault;
+    [HideInInspector]
     public string animationAction;
     private Animator anim;
     private bool animationState;
 
     // test
+    [HideInInspector]
     public bool testLog;
+    [HideInInspector]
     public string testLogText;
 
     public void Interact()
@@ -110,11 +131,20 @@ public class Interactable : MonoBehaviour
         // item
         if (hasItem)
         {
-            if (item != null)
+            if (hasKeyItem && item != null)
             {
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
+            } 
+            if(hasClue && !string.IsNullOrEmpty(clueKeyString)) {
+                // Insert Jakob's load string function
             }
+            if(hasNote && !string.IsNullOrEmpty(noteKeyString)) {
+                // Insert load string for note function
+            }
+            
         }
+
+
 
         // animation
         if (hasAnimation)
