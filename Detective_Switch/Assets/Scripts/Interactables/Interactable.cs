@@ -131,11 +131,20 @@ public class Interactable : MonoBehaviour
         // item
         if (hasItem)
         {
-            if (item != null)
+            if (hasKeyItem && item != null)
             {
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
+            } 
+            if(hasClue && !string.IsNullOrEmpty(clueKeyString)) {
+                // Insert Jakob's load string function
             }
+            if(hasNote && !string.IsNullOrEmpty(noteKeyString)) {
+                // Insert load string for note function
+            }
+            
         }
+
+
 
         // animation
         if (hasAnimation)

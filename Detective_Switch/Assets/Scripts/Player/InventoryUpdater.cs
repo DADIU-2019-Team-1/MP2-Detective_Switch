@@ -11,7 +11,7 @@ public class InventoryUpdater : MonoBehaviour
     void Start()
     {
         
-        maxSlots = 40;
+        maxSlots = 10;
         slot = new GameObject[maxSlots];
 
         // This should get all of the slots in the inventory window. 
@@ -32,11 +32,17 @@ public class InventoryUpdater : MonoBehaviour
 
     public void AddItemToSlot(Item item) {
         Debug.Log("Entered AddItemToSlot");
+        List<Item> keyItemList = new List<Item>();
+
+        keyItemList.Add(item);
+
+        foreach(Item itemCount in keyItemList) {
+            Debug.Log("List items: " + itemCount);
+        }
+
         
-        // Load in the item information.
+/*         // Load in the item information.
         string itemName = item.name;
-        string itemType = item.type;
-        string itemText = item.text;
         int itemID = item.id;
         Sprite itemImage = item.clueImage; 
         // Loop through all the slots, load in item if the slot is empty. 
@@ -49,10 +55,8 @@ public class InventoryUpdater : MonoBehaviour
                 Debug.Log("I am not null");
                 //slot[i] = item;
                 slot[i].GetComponent<Slot>().icon = item.clueImage;// Item icon
-                slot[i].GetComponent<Slot>().type = itemType;
                 slot[i].GetComponent<Slot>().id = itemID;
                 slot[i].GetComponent<Slot>().name = itemName;
-                slot[i].GetComponent<Slot>().text = itemText;
 
                 //item.transform.parent = slot[i].transform;
                 slot[i].GetComponent<Slot>().UpdateSlot();
@@ -63,6 +67,6 @@ public class InventoryUpdater : MonoBehaviour
                 
             } 
              
-        }
+        } */
     }
 }

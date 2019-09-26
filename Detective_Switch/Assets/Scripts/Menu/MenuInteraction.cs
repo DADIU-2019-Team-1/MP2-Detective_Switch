@@ -45,18 +45,56 @@ public class MenuInteraction : MonoBehaviour
         }
     }
 
+    public void FlashlightButton(Button flashLightButton) {
+        Debug.Log(flashLightButton.name);
+        Transform flashLightSwitch = flashLightButton.transform.parent;
+        if(flashLightSwitch.GetChild(0).gameObject.activeInHierarchy) {
+            flashLightSwitch.GetChild(0).gameObject.SetActive(false);
+            flashLightSwitch.GetChild(1).gameObject.SetActive(true);
+        }
+        else {
+            flashLightSwitch.GetChild(0).gameObject.SetActive(true);
+            flashLightSwitch.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    // Make it switch between the 2 different buttons, like flashlight.
+    public void LocalizationButton(Button localizationButton) {
+        Transform localizationSwitch = localizationButton.transform.parent;
+        if(localizationSwitch.GetChild(0).gameObject.activeInHierarchy) {
+            localizationSwitch.GetChild(0).gameObject.SetActive(false);
+            localizationSwitch.GetChild(1).gameObject.SetActive(true);
+        }
+        else {
+            localizationSwitch.GetChild(0).gameObject.SetActive(true);
+            localizationSwitch.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+
+    // Update RemoveMenuButtons with Sebastian's code to get child from last production.
     public void RemoveMenuButtons() {
-        GameObject canvasGO = transform.parent.gameObject;
+       /*  GameObject canvasGO = transform.GetChild(1).gameObject;
+        Debug.Log(canvasGO.name);
         // Switch case made to differentiate between a game options press, where OnScreenGUI has to be turned off, and a main menu options press.
         if(canvasGO.transform.GetChild(0).gameObject.activeInHierarchy) {
             canvasGO.transform.GetChild(0).gameObject.SetActive(false);
+            canvasGO.transform.GetChild(3).gameObject.SetActive(false);
             canvasGO.transform.GetChild(2).gameObject.SetActive(true);
+            
+            Debug.Log(canvasGO.transform.GetChild(3).gameObject.name);
         }
+        
+        else if(canvasGO.transform.GetChild(2).gameObject.activeInHierarchy){
+            canvasGO.transform.GetChild(2).gameObject.SetActive(false);
+            canvasGO.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+
         else {
             canvasGO.transform.GetChild(1).gameObject.SetActive(false);
             canvasGO.transform.GetChild(2).gameObject.SetActive(true);
-        }
-            
+        } */
 
 
     }

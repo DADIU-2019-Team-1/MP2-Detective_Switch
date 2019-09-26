@@ -53,8 +53,19 @@ public class InteractableEditor : Editor
         DrawUILine();
 
         dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
-        if (dis.hasItem)
-            dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
+        if (dis.hasItem) {
+            dis.hasClue = GUILayout.Toggle(dis.hasClue, "Has Clue");
+            if(dis.hasClue) 
+                dis.clueKeyString = EditorGUILayout.TextField("Clue Key: ", dis.clueKeyString);
+            dis.hasNote = GUILayout.Toggle(dis.hasNote, "Has Note");
+            if(dis.hasNote) 
+                dis.noteKeyString = EditorGUILayout.TextField("Note Key: ", dis.noteKeyString);
+            dis.hasKeyItem = GUILayout.Toggle(dis.hasKeyItem, "Has KeyItem");
+            if(dis.hasKeyItem) 
+                dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
+        }
+
+            
 
         DrawUILine();
 
