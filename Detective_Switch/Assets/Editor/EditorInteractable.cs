@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
-[ExecuteInEditMode]
+// [System.Serializable]
+// [ExecuteInEditMode]
+
+#if UNITY_EDITOR
+
+using UnityEditor;
+
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Interactable))]
 public class InteractableEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        if (!Application.isEditor)
-        {
-            return;
-        }
+
+        DrawDefaultInspector();
 
         var dis = target as Interactable;
 
@@ -27,7 +29,7 @@ public class InteractableEditor : Editor
         dis.soundOnInteract = GUILayout.Toggle(dis.soundOnInteract, "Sound On Interact");
         if (dis.soundOnInteract)
             dis.playSound = EditorGUILayout.TextField("Sound Name:", dis.playSound);
-
+        
         DrawUILine();
 
         dis.rotateOnInteract = GUILayout.Toggle(dis.rotateOnInteract, "Rotate On Interact");
@@ -84,6 +86,13 @@ public class InteractableEditor : Editor
             dis.testLogText = EditorGUILayout.TextField("Text:", dis.testLogText);
 
         DrawUILine();
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(dis);
+        }
+
+        serializedObject.ApplyModifiedProperties();
     }
 
     public static void DrawUILine()
@@ -100,3 +109,4 @@ public class InteractableEditor : Editor
         EditorGUI.DrawRect(r, color);
     }
 }
+#endif
