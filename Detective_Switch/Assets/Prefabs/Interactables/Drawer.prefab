@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singleUse: 0
   soundOnInteract: 0
   playSound: 
   rotateOnInteract: 0
@@ -26,6 +27,25 @@ MonoBehaviour:
   toggleDelay: 0
   hasItem: 0
   item: {fileID: 0}
+  hasAnimation: 1
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: Drawer_A_Skeleton|Drawer_Interact
+  testLog: 0
+  testLogText: 
+--- !u!65 &4162147433693411114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909060614415257416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56624985, y: 0.6190493, z: 0.73235273}
+  m_Center: {x: -0.05300808, y: 0.2897135, z: -0.0022509098}
 --- !u!1001 &2225708058679334465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37,6 +57,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Drawer
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667845464519706734, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2061252371468331748, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
@@ -92,6 +127,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5adeb5422cfb7de409e90dd962ab78c1, type: 2}
+    - target: {fileID: 2531048573365299070, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5613454352911434580, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121063750183690423, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4019532962840830479, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -849695119849778815, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1799054521077709669, guid: dcd810c5a2531304b96e6d71122a61bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcd810c5a2531304b96e6d71122a61bd, type: 3}

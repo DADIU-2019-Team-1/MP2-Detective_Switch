@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 [ExecuteInEditMode]
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Interactable))]

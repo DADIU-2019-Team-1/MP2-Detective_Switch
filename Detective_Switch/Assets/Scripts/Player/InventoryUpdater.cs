@@ -6,7 +6,7 @@ public class InventoryUpdater : MonoBehaviour
 {
     private int maxSlots;
     private GameObject[] slot;
-    public GameObject slotHolder;
+    //public GameObject slotHolder;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class InventoryUpdater : MonoBehaviour
         // This should get all of the slots in the inventory window. 
         for(int i = 0; i < maxSlots; i++) {
             // Tweak this one after where the slots are placed
-            slot[i] = slotHolder.transform.GetChild(i).gameObject;
+            //slot[i] = slotHolder.transform.GetChild(i).gameObject;
             if(slot[i].GetComponent<Slot>().item == null) {
                 slot[i].GetComponent<Slot>().empty = true;
             }

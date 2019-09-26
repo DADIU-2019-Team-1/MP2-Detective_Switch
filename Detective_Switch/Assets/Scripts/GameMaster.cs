@@ -8,11 +8,10 @@ public class GameMaster : MonoBehaviour
     public static GameMaster instance;
 
     /// --- Public
-    public UnityEvent events;
 
     /// --- Private
     private float moveSpeed;
-    [SerializeField] private bool localization = false; // "False == English, True == Danish"
+    private bool localization = false; // "False == English, True == Danish"
 
     /// --- Events
     public delegate void LocalizationDelegate();
