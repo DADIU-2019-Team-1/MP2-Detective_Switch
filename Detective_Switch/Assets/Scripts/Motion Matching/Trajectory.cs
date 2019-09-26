@@ -17,4 +17,9 @@ public class Trajectory
         trajectoryId = _trajectoryId;
         points = _points;
     }
+
+    public TrajectoryPoint[] GetTrajectoryPoints()
+    {
+        return points;
+    }
 }

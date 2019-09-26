@@ -15,15 +15,11 @@ public class CSVReaderWriter // : MonoBehaviour
 
     // Variable holders from reading CSV files:
     private string[] labels;
-    private List<int> frames;
-    private List<Vector3> rootPositions;
-    private List<Quaternion> rootQuaternions;
-    private List<Vector3> leftFootPositions;
-    private List<Vector3> rightFootPositions;
-    private List<Vector3> leftFootVelocity;
-    private List<Vector3> rightFootVelocity;
-    private List<Vector3> rootVelocity;
     private List<string> clipNames;
+    private List<int> frames;
+    private List<Vector3> rootPositions, leftFootPositions, rightFootPositions, 
+        leftFootVelocity, rightFootVelocity, rootVelocity, trajPositions, trajForwards;
+    private List<Quaternion> rootQuaternions;
 
 #if UNITY_EDITOR
     void Awake()
@@ -79,11 +75,9 @@ public class CSVReaderWriter // : MonoBehaviour
                 string[] tempDataValues = dataString.Split(',');
                 string tempClipNameValue = "";
                 float[] dataValues = new float[tempDataValues.Length];
+                clipNames.Add(tempDataValues[0]);
                 for (int i = 1; i < dataValues.Length; i++)
-                {
-                    clipNames.Add(tempDataValues[0]);
                     dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
-                }
 
                 /// Populate the quaternion, position and timestamp arrays/lists:
                 QuaternionCreator(dataValues);
@@ -106,30 +100,40 @@ public class CSVReaderWriter // : MonoBehaviour
                 // Debug.Log(data[i] + " " + data[i + 1] + " " + data[i + 2]);  // For debugging (very performance heavy)
                 leftFootPositions.Add(tempPosition);
             }
-            if (labels[i].Contains("FootRightT.x"))
+            else if (labels[i].Contains("FootRightT.x"))
             {
                 Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
                 rightFootPositions.Add(tempPosition);
             }
-            if (labels[i].Contains("RootT.x"))
+            else if (labels[i].Contains("RootT.x"))
             {
                 Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
                 rootPositions.Add(tempPosition);
             }
-            if (labels[i].Contains("RootV.x"))
+            else if (labels[i].Contains("RootV.x"))
             {
                 Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
                 rootVelocity.Add(tempPosition);
             }
-            if (labels[i].Contains("FootLeftV.x"))
+            else if (labels[i].Contains("FootLeftV.x"))
             {
                 Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
                 leftFootVelocity.Add(tempPosition);
             }
-            if (labels[i].Contains("FootLeftV.x"))
+            else if (labels[i].Contains("FootRightV.x"))
             {
                 Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
                 rightFootVelocity.Add(tempPosition);
+            }
+            else if (labels[i].Contains("TrajPos.x"))
+            {
+                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                trajPositions.Add(tempPosition);
+            }
+            else if (labels[i].Contains("TrajForward.x"))
+            {
+                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                trajForwards.Add(tempPosition);
             }
         }
     }
@@ -177,7 +181,7 @@ public class CSVReaderWriter // : MonoBehaviour
             {
                 labels = new string[30] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","FootLeftT.x","FootLeftT.y","FootLeftT.z",
                 "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftV.x","FootLeftV.y", "FootLeftV.z","FootRightV.x","FootRightV.y",
-                "FootRightV.z","rootV.x","rootV.x","rootV.x","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
+                "FootRightV.z","RootV.x","RootV.x","RootV.x","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
                     "TrajPos.x","TrajPos.y","TrajPos.z","TrajForward.x","TrajForward.y","TrajForward.z"};
 
                 file.WriteLine(string.Join(",", labels));
@@ -250,29 +254,20 @@ public class CSVReaderWriter // : MonoBehaviour
         }
     }
 
-    public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
-    {
-        List<Quaternion> _rootRotPlaceholder = new List<Quaternion>();
-
-        for (int i = 0; i < _frame.Count; i++)
-        {
-            _rootRotPlaceholder.Add(new Quaternion(0, 0, 0, 0));
-        }
-
-        WriteCSV(_clipName, _frame, _rootPos, _rootRotPlaceholder, _footLeft, _footRight, _footLeftVel, _footRightVel, _rootVel);
-    }
-
-
     private void InitializeLists()
     {
-        rootQuaternions = new List<Quaternion>();
+        clipNames = new List<string>();
+        frames = new List<int>();
         rootPositions = new List<Vector3>();
         leftFootPositions = new List<Vector3>();
         rightFootPositions = new List<Vector3>();
         leftFootVelocity = new List<Vector3>();
         rightFootVelocity = new List<Vector3>();
-        frames = new List<int>();
-        clipNames = new List<string>();
+        rootVelocity = new List<Vector3>();
+        rootQuaternions = new List<Quaternion>();
+        trajPositions = new List<Vector3>();
+        trajForwards = new List<Vector3>();
+
     }
 
 
@@ -331,6 +326,16 @@ public class CSVReaderWriter // : MonoBehaviour
         return labels;
     }
 
+    public List<string> GetClipNames()
+    {
+        return clipNames;
+    }
+
+    public List<int> GetFrames()
+    {
+        return frames;
+    }
+
     public List<Vector3> GetLeftFootPos()
     {
         return leftFootPositions;
@@ -364,6 +369,16 @@ public class CSVReaderWriter // : MonoBehaviour
     public List<Vector3> GetRootVel()
     {
         return rootVelocity;
+    }
+
+    public List<Vector3> GetTrajectoryPos()
+    {
+        return trajPositions;
+    }
+
+    public List<Vector3> GetTrajectoryForwards()
+    {
+        return trajForwards;
     }
 
     public void SetWritePath(string path, string fileName)

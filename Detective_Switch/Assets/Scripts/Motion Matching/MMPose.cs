@@ -23,4 +23,14 @@ public class MMPose
         rFootVel = _rFootVel;
         rootQ = _rootQ;
     }
+
+    public string GetClipName()
+    {
+        return clipName;
+    }
+
+    public int GetFrame()
+    {
+        return frame;
+    }
 }
