@@ -26,19 +26,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   singleUse: 0
-  soundOnInteract: 0
-  playSound: 
+  soundOnInteract: 1
+  playSound: Play_Open_J_Box
   rotateOnInteract: 0
   rotateDegreesX: 0
   rotateDegreesY: 90
   rotateDegreesZ: 0
   rotateOverTime: 0
-  rotationSpeed: 0.1
+  rotationDuration: 0.5
   toggleGameObject: 0
   toggleObject: {fileID: 0}
   toggleAfterDelay: 0
   toggleDelay: 0
   hasItem: 0
+  hasClue: 0
+  clueKeyString: 
+  hasNote: 0
+  noteKeyString: 
+  hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 1
   switchBetweenAnimations: 0
@@ -86,12 +91,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51999986
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.5554123
+      value: 2.46
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3dab32f65a6fed3499bac280db6c97b8,
         type: 3}

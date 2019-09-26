@@ -1,38 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-881010223992000836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7909060614415257416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  singleUse: 0
-  soundOnInteract: 0
-  playSound: 
-  rotateOnInteract: 0
-  rotateDegreesX: 0
-  rotateDegreesY: 90
-  rotateDegreesZ: 0
-  rotateOverTime: 0
-  rotationSpeed: 0.1
-  toggleGameObject: 0
-  toggleObject: {fileID: 0}
-  toggleAfterDelay: 0
-  toggleDelay: 0
-  hasItem: 0
-  item: {fileID: 0}
-  hasAnimation: 1
-  switchBetweenAnimations: 0
-  animationDefault: 
-  animationAction: Drawer_A_Skeleton|Drawer_Interact
-  testLog: 0
-  testLogText: 
 --- !u!65 &4162147433693411114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46,6 +13,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.56624985, y: 0.6190493, z: 0.73235273}
   m_Center: {x: -0.05300808, y: 0.2897135, z: -0.0022509098}
+--- !u!114 &-881010223992000836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909060614415257416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleUse: 0
+  soundOnInteract: 1
+  playSound: Play_Open_Drawer_Small
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationDuration: 0.5
+  toggleGameObject: 0
+  toggleObject: {fileID: 0}
+  toggleAfterDelay: 0
+  toggleDelay: 0
+  hasItem: 0
+  hasClue: 0
+  clueKeyString: 
+  hasNote: 0
+  noteKeyString: 
+  hasKeyItem: 0
+  item: {fileID: 0}
+  hasAnimation: 1
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: Drawer_A_Skeleton|Drawer_Interact
+  testLog: 0
+  testLogText: 
 --- !u!1001 &2225708058679334465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,37 +81,37 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0118227
+      value: -3.0651276
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51999986
+      value: 0.00999999
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.4695745
+      value: -1.6391952
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.69395816
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7200154
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
@@ -121,7 +126,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -87.888
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcd810c5a2531304b96e6d71122a61bd,
         type: 3}
