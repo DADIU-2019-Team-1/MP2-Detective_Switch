@@ -49,6 +49,19 @@ public class Interactable : MonoBehaviour
     // item
     [HideInInspector]
     public bool hasItem;
+
+    [HideInInspector]
+    public bool hasClue;
+    [HideInInspector]
+    public string clueKeyString;
+
+    [HideInInspector]
+    public bool hasNote;
+    [HideInInspector]
+    public string noteKeyString;
+
+    [HideInInspector]
+    public bool hasKeyItem;
     [HideInInspector]
     public Item item;
 
@@ -143,8 +156,6 @@ public class Interactable : MonoBehaviour
             }
             
         }
-
-
 
         // animation
         if (hasAnimation)
