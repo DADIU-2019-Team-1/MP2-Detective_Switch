@@ -99,4 +99,4 @@ public class InteractableEditor : Editor
         r.width += 6;
         EditorGUI.DrawRect(r, color);
     }
-}*/
+}
