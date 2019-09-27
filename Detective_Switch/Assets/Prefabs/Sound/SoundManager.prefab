@@ -43,9 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ff455968be39243b090461acf7255c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkMaterial: {fileID: 0}
-  isInMenu: 0
-  runtime: 0
-  distanceToWindow: 0
-  roomSize: 0
-  level: 0
+  player: {fileID: 0}
+  timeOfDay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7b9ececf65097d94ca3716ab2219069f,
+      type: 2}
+  dayLength: 420
+  distanceToWindow:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: abe3d01b6b3efb34895e73d8c0c1a501,
+      type: 2}
+  maxDistanceToWindows: 5
