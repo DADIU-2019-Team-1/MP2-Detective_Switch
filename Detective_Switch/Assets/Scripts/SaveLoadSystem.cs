@@ -29,7 +29,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void Start()
     {
-        SaveGame();
+        // SaveGame();
     }
 
     public void LoadGame(string saveName)
@@ -100,30 +100,27 @@ public class SaveLoadSystem : MonoBehaviour
 
             tempIntObjCon.position = interactables[i].transform.position;
             tempIntObjCon.rotation = interactables[i].transform.rotation.eulerAngles;
-            tempIntObjCon.singleUse = tempIntScript.singleUse;
-            tempIntObjCon.soundOnInteract = tempIntScript.soundOnInteract;
-            tempIntObjCon.playSound = tempIntScript.playSound;
-            tempIntObjCon.rotateOnInteract = tempIntScript.rotateOnInteract;
-            tempIntObjCon.rotateDegreesX = tempIntScript.rotateDegreesX;
-            tempIntObjCon.rotateDegreesY = tempIntScript.rotateDegreesY;
-            tempIntObjCon.rotateDegreesZ = tempIntScript.rotateDegreesZ;
-            tempIntObjCon.rotateOverTime = tempIntScript.rotateOverTime;
-            tempIntObjCon.rotationDuration = tempIntScript.rotationDuration;
-            tempIntObjCon.toggleGameObject = tempIntScript.toggleGameObject;
-            tempIntObjCon.toggleObject = tempIntScript.toggleObject;
-            tempIntObjCon.toggleAfterDelay = tempIntScript.toggleAfterDelay;
-            tempIntObjCon.toggleDelay = tempIntScript.toggleDelay;
+            //tempIntObjCon.singleUse = tempIntScript.singleUse;
+            //tempIntObjCon.soundOnInteract = tempIntScript.soundOnInteract;
+            //tempIntObjCon.playSound = tempIntScript.playSound;
+            //tempIntObjCon.rotateOnInteract = tempIntScript.rotateOnInteract;
+            //tempIntObjCon.rotateOverTime = tempIntScript.rotateOverTime;
+            //tempIntObjCon.rotationDuration = tempIntScript.rotationDuration;
+            //tempIntObjCon.toggleGameObject = tempIntScript.toggleGameObject;
+            //tempIntObjCon.toggleObject = tempIntScript.toggleObject;
+            //tempIntObjCon.toggleAfterDelay = tempIntScript.toggleAfterDelay;
+            //tempIntObjCon.toggleDelay = tempIntScript.toggleDelay;
             tempIntObjCon.hasItem = tempIntScript.hasItem;
             tempIntObjCon.hasClue = tempIntScript.hasClue;
-            tempIntObjCon.clueKeyString = tempIntScript.clueKeyString;
+            //tempIntObjCon.clueKeyString = tempIntScript.clueKeyString;
             tempIntObjCon.hasNote = tempIntScript.hasNote;
-            tempIntObjCon.noteKeyString = tempIntScript.noteKeyString;
+            //tempIntObjCon.noteKeyString = tempIntScript.noteKeyString;
             tempIntObjCon.hasKeyItem = tempIntScript.hasKeyItem;
-            tempIntObjCon.item = tempIntScript.item;
-            tempIntObjCon.hasAnimation = tempIntScript.hasAnimation;
-            tempIntObjCon.switchBetweenAnimations = tempIntScript.switchBetweenAnimations;
-            tempIntObjCon.animationDefault = tempIntScript.animationDefault;
-            tempIntObjCon.animationAction = tempIntScript.animationAction;
+            //tempIntObjCon.item = tempIntScript.item;
+            //tempIntObjCon.hasAnimation = tempIntScript.hasAnimation;
+            //tempIntObjCon.switchBetweenAnimations = tempIntScript.switchBetweenAnimations;
+            //tempIntObjCon.animationDefault = tempIntScript.animationDefault;
+            //tempIntObjCon.animationAction = tempIntScript.animationAction;
 
             IntObjConList.Add(tempIntObjCon);
         }
@@ -146,38 +143,9 @@ public class InteractableObjectContainer
     public Vector3 rotation;
 
     ////// Interactable component variables: //////
-    public bool singleUse;
 
-    // Sound:
-    public bool soundOnInteract;
-    public string playSound;
-
-    // Rotation:
-    public bool rotateOnInteract;
-    public int rotateDegreesX = 0;
-    public int rotateDegreesY = 90;
-    public int rotateDegreesZ = 0;
-    public bool rotateOverTime;
-    public float rotationDuration = 0.5f;
-
-    // Toggle
-    public bool toggleGameObject;
-    public GameObject toggleObject;
-    public bool toggleAfterDelay;
-    public float toggleDelay;
-
-    // Item
     public bool hasItem;
     public bool hasClue;
-    public string clueKeyString;
     public bool hasNote;
-    public string noteKeyString;
     public bool hasKeyItem;
-    public Item item;
-
-    // Animation
-    public bool hasAnimation;
-    public bool switchBetweenAnimations;
-    public string animationDefault;
-    public string animationAction;
 }
