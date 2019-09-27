@@ -25,20 +25,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singleUse: 0
-  soundOnInteract: 0
-  playSound: 
+  singleUse: 1
+  soundOnInteract: 1
+  playSound: Play_Pillow_Move
   rotateOnInteract: 0
   rotateDegreesX: 0
   rotateDegreesY: 90
   rotateDegreesZ: 0
   rotateOverTime: 0
-  rotationSpeed: 0.1
+  rotationDuration: 0.5
   toggleGameObject: 0
   toggleObject: {fileID: 0}
   toggleAfterDelay: 0
   toggleDelay: 0
   hasItem: 0
+  hasClue: 0
+  clueKeyString: 
+  hasNote: 0
+  noteKeyString: 
+  hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 1
   switchBetweenAnimations: 0
@@ -81,17 +86,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: 4.9871387
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000011920929
+      value: -0.100000024
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.28
+      value: 3.0901487
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
@@ -101,7 +106,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9808744
+      value: 0.92931485
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
@@ -111,7 +116,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.19464178
+      value: -0.3692883
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
@@ -126,7 +131,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 157.552
+      value: 223.34299
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
@@ -143,7 +148,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 8701762229253341449, guid: df949fbad46317e4da1aca5f6fb28e67,
+    - target: {fileID: 6732053244932573324, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_Layer
       value: 10
@@ -153,7 +158,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 6732053244932573324, guid: df949fbad46317e4da1aca5f6fb28e67,
+    - target: {fileID: 8701762229253341449, guid: df949fbad46317e4da1aca5f6fb28e67,
         type: 3}
       propertyPath: m_Layer
       value: 10
