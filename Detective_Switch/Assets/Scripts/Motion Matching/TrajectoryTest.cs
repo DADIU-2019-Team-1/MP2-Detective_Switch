@@ -35,6 +35,12 @@ public class TrajectoryTest : MonoBehaviour
         oldPos = transform.position;
     }
 
+    /* Use velocity and acceleration to predict the points (over time) where the character will be
+     * this can be done using the explicit euler method (check unity implementation in different project)
+     * Once you can predict the curve over time (use changeable variables), save the points positions and forwards
+     * and send them to MM for comparison
+     */
+
     void Update()
     {
         

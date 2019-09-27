@@ -10,6 +10,14 @@ public class Trajectory
     public int trajectoryId;
     public TrajectoryPoint[] points;
 
+    public Trajectory (TrajectoryPoint[] _points)
+    {
+        clipName = "";
+        clipFrames = -1;
+        trajectoryId = -1;
+        points = _points;
+    }
+
     public Trajectory (string _clipName, int _clipFrames, int _trajectoryId, TrajectoryPoint[] _points)
     {
         clipName = _clipName;

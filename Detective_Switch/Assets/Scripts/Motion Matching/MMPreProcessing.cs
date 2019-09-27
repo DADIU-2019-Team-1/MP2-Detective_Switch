@@ -28,6 +28,8 @@ public class MMPreProcessing : MonoBehaviour
     public List<AnimationClip> clips;
     public List<string> jointNames;
     public bool preproces = false;
+    public int trajectoryPointsToUse = 5;
+    public int frameStepSize = 25;
 
     // --- Not in Inspector
     [HideInInspector]
@@ -105,13 +107,38 @@ public class MMPreProcessing : MonoBehaviour
             csvHandler.ReadCSV();
             for (int i = 0; i < csvHandler.GetClipNames().Count; i++)
             {
+                clipNames.Add(csvHandler.GetClipNames()[i]);
+                clipFrames.Add(csvHandler.GetFrames()[i]);
+
+                // Read pose data and store it in a list of poses
                 poses.Add(new MMPose(csvHandler.GetClipNames()[i], csvHandler.GetFrames()[i],
                     csvHandler.GetRootPos()[i], csvHandler.GetLeftFootPos()[i], csvHandler.GetRightFootPos()[i],
                     csvHandler.GetRootVel()[i], csvHandler.GetLeftFootVel()[i], csvHandler.GetRightFootVel()[i], csvHandler.GetRootQ()[i]));
-                //trajectories.Add(new Trajectory(csvHandler.GetClipNames()[i],csvHandler.GetFrames()[i],i,)
-                trajectoryPoints.Add(new TrajectoryPoint(csvHandler.GetTrajectoryPos()[i], csvHandler.GetTrajectoryForwards()[i]));
-                clipNames.Add(csvHandler.GetClipNames()[i]);
-                clipFrames.Add(csvHandler.GetFrames()[i]);
+
+                // To add the trajectory data, first compute the trajectory points for each frame
+                TrajectoryPoint[] tempPoints = new TrajectoryPoint[trajectoryPointsToUse];
+                if (i + (frameStepSize * trajectoryPointsToUse) < csvHandler.GetClipNames().Count) // Avoid out-of-bounds error
+                {
+                    if (csvHandler.GetClipNames()[i] == csvHandler.GetClipNames()[i + (frameStepSize * trajectoryPointsToUse)])
+                    {
+                        for (int point = 0; point < tempPoints.Length; point++)
+                        {
+                            tempPoints[point] = new TrajectoryPoint(csvHandler.GetTrajectoryPos()[i + (point / (trajectoryPointsToUse * 25 / frameStepSize) * 100)],
+                                csvHandler.GetTrajectoryForwards()[i + (point / trajectoryPointsToUse * 100)]);
+                        }
+                    }
+                    else
+                    {
+                        for (int j = 0; j < trajectoryPointsToUse; j++)
+                            tempPoints[j] = new TrajectoryPoint();
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < trajectoryPointsToUse; j++)
+                        tempPoints[j] = new TrajectoryPoint();
+                }
+                trajectories.Add(new Trajectory(csvHandler.GetClipNames()[i], csvHandler.GetFrames()[i], i, tempPoints));
             }
         }
     }

@@ -28,6 +28,7 @@ public class MM : MonoBehaviour
     public AnimationClip currentClip;
     public int currentClipNum;
     public int currentFrame;
+    public int currentAnimId;
 
     // --- Private variables
     private AnimationClip[] allClips;
@@ -44,40 +45,13 @@ public class MM : MonoBehaviour
         allClips = animator.runtimeAnimatorController.animationClips;
 
         // Populate trajectory
-        trajectories = new List<Trajectory>();
-        //string firstClipName = "";  Can be updated at break to only use csv data
-        int iterator = 0;
-        for (int i = 0; i < allClips.Length; i++)
-        {
-            List<TrajectoryPoint> tempTrajPoints = new List<TrajectoryPoint>();
-            for (int j =  0; j < preprocces.trajectoryPoints.Count; j++)
-            {
-                if (preprocces.clipNames[j] == allClips[i].name || iterator < preprocces.trajectoryPoints.Count)
-                {
-                    tempTrajPoints.Add(preprocces.trajectoryPoints[j]);
-                    iterator++;
-                }
-                else // New clip - don't save trajectory points from previous clip
-                    break;
-            }
-            trajectories.Add(new Trajectory(allClips[i].name, (int)(allClips[i].length * allClips[i].frameRate), i, tempTrajPoints.ToArray()));
-        }
+        trajectories = preprocces.trajectories;
 
         // Play the default animation and update the reference
-        currentClip = allClips[1];
-        currentFrame = 20;
-        PlayAnimationAtFrame(currentClip.name, currentFrame / currentClip.frameRate);
-        Debug.Log("Framerate: " + currentClip.frameRate + ". Length: " + currentClip.length);
-        Debug.Log("Current frame is: " + currentFrame + ". CurrentClip has " + currentClip.length * currentClip.frameRate + " frames." +
-            "result of input is: " + currentFrame / currentClip.frameRate);
-        //animator.Play(allClips[1].name, 0, allClips[1].length * );
-
-        Debug.Log("testing " + trajectories[currentClipNum].GetTrajectoryPoints().Length);
-
-        //for (int i = 0; i < trajectories[currentClipNum].GetTrajectoryPoints().Length; i++)
-        //{
-        //}
-        //Gizmos.DrawWireSphere(transform.position + trajectories[currentClipNum].GetTrajectoryPoints()[currentFrame + i].position * movement.trajPoints[i]); // Pos
+        currentClip = allClips[0];
+        currentFrame = 0;
+        currentAnimId = 0;
+        PlayAnimationAtFrame(currentClip.name, currentFrame / currentClip.frameRate, 0);
     }
 
     // Update is called once per frame
@@ -106,13 +80,13 @@ public class MM : MonoBehaviour
 
     }
 
-    void PlayAnimationAtFrame(string animation, float normalizedTime)
+    void PlayAnimationAtFrame(string animation, float normalizedTime, int animId)
     {
         animator.Play(animation, 0, normalizedTime);
-        UpdateCurrentClip(animation, normalizedTime);
+        UpdateCurrentClip(animation, normalizedTime, animId);
     }
 
-    void UpdateCurrentClip(string nameOfNewClip, float time)
+    void UpdateCurrentClip(string nameOfNewClip, float time, int clipId)
     {
         for (int i = 0; i < allClips.Length; i++)
         {
@@ -120,7 +94,7 @@ public class MM : MonoBehaviour
             {
                 Debug.Log("Current clip has changed from " + currentClip.name + " to " + allClips[i]);
                 currentClip = allClips[i];
-                currentClipNum = i;
+                currentAnimId = trajectories[?].GetTrajectoryId();
                 Debug.Log("Clip num is now: " + currentClipNum);
                 currentFrame = (int)(time * currentClip.frameRate);
                 return;
