@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryUpdater : MonoBehaviour
 {
-    private int maxSlots;
+    public int maxSlots;
     private List<GameObject> slot;
     public List<GameObject> slotList;
     public GameObject slotHolder;
@@ -24,7 +24,7 @@ public class InventoryUpdater : MonoBehaviour
         // This should get all of the slots in the inventory window. 
         // Have a checker if there are any slots, but don't lock it by checking List.count.
         if(slotHolder != null) {
-            for(int i = 0; i <= maxSlots/* slotList.Count */; i++) {
+            for(int i = 0; i < maxSlots/* slotList.Count */; i++) {
             // This gets the slotholder in the scene, which is the keyItemsButton.
                 slot.Add(slotHolder.transform.GetChild(i).gameObject);
                 //Debug.Log("Current slot is: " + slot[i]);
@@ -53,13 +53,13 @@ public class InventoryUpdater : MonoBehaviour
         List<Item> keyItemList = new List<Item>();
 
         keyItemList.Add(item);
-        string itemName = item.name;
+        string itemName = item.text;
         int itemID = item.id;
         Sprite itemImage = item.clueImage; 
         Debug.Log(keyItemList.Count);     
         // Add a checker if the parent (slotholder) is active, if not, it is added as inactive.       
         if(slotIterator >= /* slotList.Count */  maxSlots ) {
-            Debug.Log("Key item inventory is full.");
+            //Debug.Log("Key item inventory is full.");
             // Maybe add code here to remove the latest item if it becomes a problem. 
             return;
         }
@@ -69,7 +69,7 @@ public class InventoryUpdater : MonoBehaviour
             //Debug.Log("List items: " + itemCount);
             //keyItemList.Add(item);
             if(slot[slotIterator].GetComponent<Slot>().empty && keyItemList.Count <= maxSlots) {
-                Debug.Log("Entered add item if statement");
+                //Debug.Log("Entered add item if statement");
                 //keyItemList.Add(item);
                 slot[slotIterator].GetComponent<Slot>().icon = itemImage;
                 slot[slotIterator].GetComponent<Slot>().id = itemID;
