@@ -11,9 +11,9 @@ public class FloorManager : MonoBehaviour
     [Range(1, 3)]
     public int FloorType = 1;
 
-    [HideInInspector] public Material Mat1;
-    [HideInInspector] public Material Mat2;
-    [HideInInspector] public Material Mat3;
+    public Material Mat1;
+    public Material Mat2;
+    public Material Mat3;
 
     void Update()
     {
