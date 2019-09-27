@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894e9b471fe64b549bfe534144056066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerSpeed: 5.5
+  maxPlayerSpeed: 10
   minDragToMove: 80
   maxDragToMove: 150
   maxPressTime: 0.15
@@ -944,12 +944,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -5178661895559278292, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 3291121562166685594, guid: 70e394c73c85f3d4aa7dfbe225c998b9,
-        type: 3}
     - target: {fileID: -1504981713932161579, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
         type: 3}
       propertyPath: m_CastShadows
@@ -965,6 +959,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 676fcd79135719c4f864a1fbba1b4baf, type: 2}
+    - target: {fileID: -5178661895559278292, guid: e86d8a2b5e5994e45a9c1b2a39b1f222,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3291121562166685594, guid: 70e394c73c85f3d4aa7dfbe225c998b9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e86d8a2b5e5994e45a9c1b2a39b1f222, type: 3}
 --- !u!4 &6014505723782437292 stripped
