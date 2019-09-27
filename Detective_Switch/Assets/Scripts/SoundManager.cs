@@ -54,6 +54,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         windowObjects = GameObject.FindGameObjectsWithTag("WindowSound");
+        wwiseMenuIsOpen = !menuIsOpen;
     }
 
     void Update()
@@ -68,13 +69,15 @@ public class SoundManager : MonoBehaviour
         if (menuIsOpen == wwiseMenuIsOpen)
             return;
 
-        menuIsOpen = wwiseMenuIsOpen;
+        wwiseMenuIsOpen = menuIsOpen;
         if (menuIsOpen)
         {
             MenuOpen.SetValue();
+            Debug.Log("Menu Open Sound");
         } else
         {
             MenuClose.SetValue();
+            Debug.Log("Menu Close Sound");
         }
     }
 
