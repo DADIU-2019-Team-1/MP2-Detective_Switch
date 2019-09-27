@@ -22,4 +22,9 @@ public class Trajectory
     {
         return points;
     }
+
+    public int GetTrajectoryId()
+    {
+        return trajectoryId;
+    }
 }

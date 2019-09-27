@@ -22,6 +22,7 @@ public class MMPreProcessing : MonoBehaviour
     private Animator animator;
     [HideInInspector] public List<MMPose> poses;
     [HideInInspector] public List<TrajectoryPoint> trajectoryPoints;
+    [HideInInspector] public List<Trajectory> trajectories;
 
     // --- Inspector
     public List<AnimationClip> clips;
@@ -107,6 +108,7 @@ public class MMPreProcessing : MonoBehaviour
                 poses.Add(new MMPose(csvHandler.GetClipNames()[i], csvHandler.GetFrames()[i],
                     csvHandler.GetRootPos()[i], csvHandler.GetLeftFootPos()[i], csvHandler.GetRightFootPos()[i],
                     csvHandler.GetRootVel()[i], csvHandler.GetLeftFootVel()[i], csvHandler.GetRightFootVel()[i], csvHandler.GetRootQ()[i]));
+                //trajectories.Add(new Trajectory(csvHandler.GetClipNames()[i],csvHandler.GetFrames()[i],i,)
                 trajectoryPoints.Add(new TrajectoryPoint(csvHandler.GetTrajectoryPos()[i], csvHandler.GetTrajectoryForwards()[i]));
                 clipNames.Add(csvHandler.GetClipNames()[i]);
                 clipFrames.Add(csvHandler.GetFrames()[i]);

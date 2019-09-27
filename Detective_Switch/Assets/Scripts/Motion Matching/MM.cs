@@ -18,14 +18,15 @@ public class MM : MonoBehaviour
     // --- References
     private MMPreProcessing preprocces;
     private TrajectoryTest movement;
-    private MMPose pose;
     private TrajectoryPoint trajectoryPoint;
     private Trajectory trajectory;
     private List<Trajectory> trajectories;
+    private MMPose pose;
     private Animator animator;
 
     // --- Public variables
     public AnimationClip currentClip;
+    public int currentClipNum;
     public int currentFrame;
 
     // --- Private variables
@@ -36,6 +37,7 @@ public class MM : MonoBehaviour
     {
         // Data is loaded from the MMPreProcessor
         preprocces = GetComponent<MMPreProcessing>();
+        movement = GetComponent<TrajectoryTest>();
 
         // Animator is initialized
         animator = GetComponent<Animator>();
@@ -61,9 +63,21 @@ public class MM : MonoBehaviour
             trajectories.Add(new Trajectory(allClips[i].name, (int)(allClips[i].length * allClips[i].frameRate), i, tempTrajPoints.ToArray()));
         }
 
-        // Play the default animation and upadte the reference
-        currentClip = allClips[0];
-        animator.Play(allClips[0].name, 0, 0);
+        // Play the default animation and update the reference
+        currentClip = allClips[1];
+        currentFrame = 20;
+        PlayAnimationAtFrame(currentClip.name, currentFrame / currentClip.frameRate);
+        Debug.Log("Framerate: " + currentClip.frameRate + ". Length: " + currentClip.length);
+        Debug.Log("Current frame is: " + currentFrame + ". CurrentClip has " + currentClip.length * currentClip.frameRate + " frames." +
+            "result of input is: " + currentFrame / currentClip.frameRate);
+        //animator.Play(allClips[1].name, 0, allClips[1].length * );
+
+        Debug.Log("testing " + trajectories[currentClipNum].GetTrajectoryPoints().Length);
+
+        //for (int i = 0; i < trajectories[currentClipNum].GetTrajectoryPoints().Length; i++)
+        //{
+        //}
+        //Gizmos.DrawWireSphere(transform.position + trajectories[currentClipNum].GetTrajectoryPoints()[currentFrame + i].position * movement.trajPoints[i]); // Pos
     }
 
     // Update is called once per frame
@@ -79,10 +93,15 @@ public class MM : MonoBehaviour
     
     void ComputeCost()
     {
+        // Weights
+    }
+
+    void TrajectoryMatching()
+    {
 
     }
 
-    void NewClipSelector()
+    void PoseMatching()
     {
 
     }
@@ -101,9 +120,22 @@ public class MM : MonoBehaviour
             {
                 Debug.Log("Current clip has changed from " + currentClip.name + " to " + allClips[i]);
                 currentClip = allClips[i];
+                currentClipNum = i;
+                Debug.Log("Clip num is now: " + currentClipNum);
                 currentFrame = (int)(time * currentClip.frameRate);
                 return;
             }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < movement.trajPoints.Length; i++)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + trajectories[currentClipNum].GetTrajectoryPoints()[currentFrame + i].position * movement.trajPoints[i] / movement.gizmoSphereSpacing, movement.gizmoSphereSize); // Pos
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position + trajectories[currentClipNum].GetTrajectoryPoints()[currentFrame + i].forward * movement.trajPoints[i], movement.gizmoSphereSize); // Forward
         }
     }
 }
@@ -111,19 +143,19 @@ public class MM : MonoBehaviour
 //AnimatorController controller = GetComponent<Animator>().runtimeAnimatorController;
 
 //AnimatorStateInfo currentAnimatorStateInfo;
-        //float playbackTime = currentAnimatorStateInfo.normalizedTime * currentAnimatorStateInfo.length;
+//float playbackTime = currentAnimatorStateInfo.normalizedTime * currentAnimatorStateInfo.length;
 
-        //AnimationClip[] manyClips = controller.animationClips;
-        //List<AnimationClip> allClips = new List<AnimationClip>();
+//AnimationClip[] manyClips = controller.animationClips;
+//List<AnimationClip> allClips = new List<AnimationClip>();
 
-        // NEED A SMARTER WAY TO ITERATE THROUGHT THE AMOUNT OF CLIPS (STATES) IN AN ANIMATION
-        //for (int i = 0; i < manyClips.Length; i++)
-        //{
-            //Debug.Log(manyClips[i].);
-            //allClips = controller.animationClips;
-            //currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(i);
-            //Debug.Log("Name of animation " + i + ": " + currentAnimatorStateInfo.nameHash);
-            //Debug.Log("Length of animation " + i +  ": " + currentAnimatorStateInfo.length);
-        //}
+// NEED A SMARTER WAY TO ITERATE THROUGHT THE AMOUNT OF CLIPS (STATES) IN AN ANIMATION
+//for (int i = 0; i < manyClips.Length; i++)
+//{
+//Debug.Log(manyClips[i].);
+//allClips = controller.animationClips;
+//currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(i);
+//Debug.Log("Name of animation " + i + ": " + currentAnimatorStateInfo.nameHash);
+//Debug.Log("Length of animation " + i +  ": " + currentAnimatorStateInfo.length);
+//}
 
-        //preprocces = new MMPreProcessing(animator.GetCurrentAnimatorClipInfo)
+//preprocces = new MMPreProcessing(animator.GetCurrentAnimatorClipInfo)

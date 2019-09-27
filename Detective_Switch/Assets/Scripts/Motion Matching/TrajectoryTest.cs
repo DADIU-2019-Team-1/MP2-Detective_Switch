@@ -15,6 +15,7 @@ public class TrajectoryTest : MonoBehaviour
     // --- Public
     public float[] trajPoints;
     public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, moveReactionTime = 0.3f, turnReactionTime = 2.5f, globalPlayerSpeed;
+    public float gizmoSphereSize = 0.2f, gizmoSphereSpacing = 50;
 
     // --- Private
     Vector3 direction;
@@ -47,13 +48,13 @@ public class TrajectoryTest : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + direction / direction.magnitude);
+        Gizmos.DrawLine(transform.position, transform.position + direction * 2 / direction.magnitude);
         for (int i = 0; i < trajPoints.Length; i++)
         {
-            Gizmos.DrawWireSphere(transform.position + direction * trajPoints[i] / 10, 0.5f);
+            Gizmos.DrawWireSphere(transform.position + direction * trajPoints[i] / gizmoSphereSpacing, gizmoSphereSize);
         }
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward);
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward*2);
     }
 
     void HandleInput()
