@@ -11,6 +11,12 @@ public class SoundManager : MonoBehaviour
 
     private Material walkMaterial;
 
+    // in menu
+    public AK.Wwise.State MenuOpen;
+    public AK.Wwise.State MenuClose;
+    public bool menuIsOpen;
+    private bool wwiseMenuIsOpen;
+
     // time of day
     public AK.Wwise.RTPC timeOfDay;
     public int dayLength = 300;
@@ -22,7 +28,8 @@ public class SoundManager : MonoBehaviour
     private GameObject[] windowObjects;
 
     // roomsize
-    private float roomSize;
+    public AK.Wwise.RTPC roomSizeM2;
+    public float roomSize;
 
     // progression
     private int progression;
@@ -48,12 +55,29 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         windowObjects = GameObject.FindGameObjectsWithTag("WindowSound");
+        wwiseMenuIsOpen = !menuIsOpen;
     }
 
     void Update()
     {
         timeOfDay.SetGlobalValue(calcTimeOfDay());
         distanceToWindow.SetGlobalValue(calcDistanceToWindows());
+        setMenuState();
+    }
+
+    private void setMenuState()
+    {
+        if (menuIsOpen == wwiseMenuIsOpen)
+            return;
+
+        wwiseMenuIsOpen = menuIsOpen;
+        if (menuIsOpen)
+        {
+            MenuOpen.SetValue();
+        } else
+        {
+            MenuClose.SetValue();
+        }
     }
 
     private float calcTimeOfDay()
