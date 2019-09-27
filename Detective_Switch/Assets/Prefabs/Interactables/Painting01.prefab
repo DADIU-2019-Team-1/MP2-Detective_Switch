@@ -33,12 +33,17 @@ MonoBehaviour:
   rotateDegreesY: 90
   rotateDegreesZ: 0
   rotateOverTime: 0
-  rotationSpeed: 0.1
+  rotationDuration: 0.5
   toggleGameObject: 0
   toggleObject: {fileID: 0}
   toggleAfterDelay: 0
   toggleDelay: 0
   hasItem: 0
+  hasClue: 0
+  clueKeyString: 
+  hasNote: 0
+  noteKeyString: 
+  hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 1
   switchBetweenAnimations: 0
@@ -57,6 +62,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Painting01
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6f73d483162fe474a9b98018221e1b50,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6f73d483162fe474a9b98018221e1b50,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 6f73d483162fe474a9b98018221e1b50,
         type: 3}
