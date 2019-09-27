@@ -17,7 +17,7 @@ public class KeyItemInteractions : MonoBehaviour
         
     }
 
-    void keyPressed(/* key or maybe using Button keyItemButton, and reference with that.*/ ) {
+    /*void keyPressed( key or maybe using Button keyItemButton, and reference with that. ) {
         interactables = GameObject.FindGameObjectsWithTag("interactable");
           foreach(GameObject interactable in interactables) {
               Interactable tempScript = interactable.GetComponent<Interactable>();
@@ -25,6 +25,6 @@ public class KeyItemInteractions : MonoBehaviour
                     if(closeEnough)
                         if(interactable.triggerKey = key)
                             interactable.trigger();
-        */
-    }
+        
+    } */
 }
