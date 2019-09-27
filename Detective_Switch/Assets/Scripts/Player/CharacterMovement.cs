@@ -14,8 +14,6 @@ public class CharacterMovement : MonoBehaviour
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
-    [SerializeField]
-    private InventoryUpdater _invUpdater;
     // Start is called before the first frame update
     void Start()
     {
@@ -119,8 +117,6 @@ public class CharacterMovement : MonoBehaviour
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;
         GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);
-
-        Debug.Log(speedMove.magnitude);
 
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
