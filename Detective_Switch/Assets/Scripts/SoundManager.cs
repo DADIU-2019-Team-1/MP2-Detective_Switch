@@ -68,6 +68,7 @@ public class SoundManager : MonoBehaviour
         if (menuIsOpen == wwiseMenuIsOpen)
             return;
 
+        menuIsOpen = wwiseMenuIsOpen;
         if (menuIsOpen)
         {
             MenuOpen.SetValue();
