@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3724875676509136208}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.013}
-  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.037949}
+  m_LocalPosition: {x: 0, y: 0, z: -0.019068}
+  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.0050552986}
   m_Children: []
   m_Father: {fileID: 6847826463433783279}
   m_RootOrder: 2
@@ -118,8 +118,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6254317151160317340}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.065}
-  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.037949}
+  m_LocalPosition: {x: 0, y: 0, z: -0.025995}
+  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.0050552986}
   m_Children: []
   m_Father: {fileID: 6847826463433783279}
   m_RootOrder: 0
@@ -209,8 +209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6481893280631109892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.041}
-  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.037949}
+  m_LocalPosition: {x: 0, y: 0, z: -0.022798}
+  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.0050552986}
   m_Children: []
   m_Father: {fileID: 6847826463433783279}
   m_RootOrder: 1
@@ -300,8 +300,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6847826463433783056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.009}
+  m_LocalScale: {x: 1, y: 1, z: 1.5805}
   m_Children:
   - {fileID: 5375600975677106140}
   - {fileID: 5685973537882016020}
@@ -383,7 +383,7 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 1
+            m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -426,7 +426,7 @@ MonoBehaviour:
     specificRotations: 
   - attachedManager: {fileID: 0}
     activeInInspector: 1
-    eventName: EnableNextRoom
+    eventName: CloseNextRoom
     eventToFire:
       m_PersistentCalls:
         m_Calls:
@@ -439,7 +439,7 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 1
+            m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -454,7 +454,7 @@ MonoBehaviour:
     specificRotations: 
   - attachedManager: {fileID: 0}
     activeInInspector: 1
-    eventName: EnableNextRoom
+    eventName: ReloadPrevRoom
     eventToFire:
       m_PersistentCalls:
         m_Calls:
@@ -507,8 +507,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6946597228519980333}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.025}
-  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.037949}
+  m_LocalPosition: {x: 0, y: 0, z: -0.014005}
+  m_LocalScale: {x: 1.7042, y: 1.919, z: 0.0050552986}
   m_Children: []
   m_Father: {fileID: 6847826463433783279}
   m_RootOrder: 3
