@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class MenuInteraction : MonoBehaviour
 {
     private int childIterator = 0;
+    private InventoryUpdater _invUpdate;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _invUpdate = GameMaster.instance.GetComponent<InventoryUpdater>();
     }
 
     // Update is called once per frame
@@ -23,22 +24,25 @@ public class MenuInteraction : MonoBehaviour
         Transform invChild = button.transform.GetChild(0);
         //childIterator = 0;
 
-        // Have a List.count for 5 here.
-        if(!invChild.gameObject.activeInHierarchy && button.transform.childCount <= 5) {
+        // Have a slotList.count instead of 5 here.
+        if(!invChild.gameObject.activeInHierarchy && button.transform.childCount <=  10 /*  _invUpdate.slotList.Count */) {
             /* childIterator = 0;
             foreach(Transform child in transform) {
                 button.transform.GetChild(childIterator).gameObject.SetActive(true);
                 childIterator++;
             } */
-            for(int i = 0; i <= button.transform.childCount; i++) {
+            for(int i = 0; i < button.transform.childCount; i++) {
                 button.transform.GetChild(i).gameObject.SetActive(true);
             } 
             //invChild.gameObject.SetActive(true);
         }
         else {            
             
-            for(int i = 0; i <= button.transform.childCount; i++)
-                button.transform.GetChild(i).gameObject.SetActive(false); 
+            for(int i = 0; i < button.transform.childCount; i++) {
+                //Debug.Log("Childcount is: " + button.transform.childCount);
+                button.transform.GetChild(i).gameObject.SetActive(false);                
+            }
+ 
 
             
             /* childIterator = 0;
