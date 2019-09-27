@@ -11,8 +11,6 @@ public class SoundManager : MonoBehaviour
 
     private Material walkMaterial;
 
-    private bool isInMenu;
-
     // time of day
     public AK.Wwise.RTPC timeOfDay;
     public int dayLength = 300;
