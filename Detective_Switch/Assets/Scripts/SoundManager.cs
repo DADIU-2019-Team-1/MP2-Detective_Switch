@@ -11,6 +11,12 @@ public class SoundManager : MonoBehaviour
 
     private Material walkMaterial;
 
+    // in menu
+    public AK.Wwise.State MenuOpen;
+    public AK.Wwise.State MenuClose;
+    public bool menuIsOpen;
+    private bool wwiseMenuIsOpen;
+
     // time of day
     public AK.Wwise.RTPC timeOfDay;
     public int dayLength = 300;
@@ -54,6 +60,21 @@ public class SoundManager : MonoBehaviour
     {
         timeOfDay.SetGlobalValue(calcTimeOfDay());
         distanceToWindow.SetGlobalValue(calcDistanceToWindows());
+        setMenuState();
+    }
+
+    private void setMenuState()
+    {
+        if (menuIsOpen == wwiseMenuIsOpen)
+            return;
+
+        if (menuIsOpen)
+        {
+            MenuOpen.SetValue();
+        } else
+        {
+            MenuClose.SetValue();
+        }
     }
 
     private float calcTimeOfDay()
