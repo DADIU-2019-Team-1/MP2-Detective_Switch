@@ -37,7 +37,7 @@ public class MenuInteraction : MonoBehaviour
 
     public void OptionsButton(Button optionsButton) {
         Debug.Log(optionsButton.name);
-        Transform optsChild = optionsButton.transform.parent.parent.GetChild(2);
+        Transform optsChild = optionsButton.transform.parent.parent.GetChild(1);
         if(!optsChild.gameObject.activeInHierarchy) {
             optsChild.gameObject.SetActive(true);
             RemoveMenuButtons();
