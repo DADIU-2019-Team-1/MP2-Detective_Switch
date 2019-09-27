@@ -203,6 +203,7 @@ public class UI_Journal : MonoBehaviour
 
         bool endOfFile = false;
         bool firstRun = true;
+        bool secondRun = true;
 
         while (!endOfFile)
         {
@@ -221,7 +222,15 @@ public class UI_Journal : MonoBehaviour
             }
             else
             {
+
                 string[] tempDataValues = dataString.Split(';');
+                
+                if(secondRun) 
+                {
+                    caseEN = tempDataValues[4];
+                    caseDA = tempDataValues[5];
+                    secondRun = false;
+                }
 
                 cluesEN.Add(tempDataValues[0]);
                 cluesDA.Add(tempDataValues[1]);
