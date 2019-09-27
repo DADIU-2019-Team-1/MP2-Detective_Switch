@@ -86,28 +86,42 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void MovePlayer(Vector3 moVector) {
-/*         Vector3 poelse = moVector;
-        if(poelse.magnitude  * playerSpeedInterval < minPlayerSpeed) {
-            poelse = moVector.normalized * minPlayerSpeed;
-        }
-        print("Can move: " + canMove + ", speed" + poelse.magnitude);
-        playerRB.AddForce(poelse * playerSpeedInterval * Time.deltaTime); */
-        //print("Move vector is: " + moVector);
-        Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
+
+        /*Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
         if(speedMove.magnitude < minPlayerSpeed) {
             speedMove = speedMove.normalized * minPlayerSpeed;
         }
-        //playerRB.AddForce(speedMove * Time.deltaTime * 100);
+
         playerRB.velocity = Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
-        //print(speedMove);
-        
+
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), turnReactionTime * Time.deltaTime);
-        //globalPlayerSpeed = playerRB.velocity.magnitude;
-        
+
+        distanceTravelled = (oldPos - transform.position).magnitude;
+        oldPos = transform.position;
+        GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);*/
+
+
+
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.position + moVector), turnReactionTime * Time.deltaTime);
+
+        Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
+
+        if (speedMove.magnitude < minPlayerSpeed)
+        {
+            speedMove = speedMove.normalized * minPlayerSpeed;
+        }
+
+        speedMove.y = playerRB.velocity.y;
+
+        playerRB.velocity = speedMove; // Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
+
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;
         GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);
-        //Debug.Log(distanceTravelled);
-        //Debug.Log(globalPlayerSpeed);
+
+        Debug.Log(speedMove.magnitude);
+
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }
