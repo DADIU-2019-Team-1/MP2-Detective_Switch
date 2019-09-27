@@ -254,6 +254,12 @@ public class ThisEventSystem
         }
     }
 
+    public IEnumerator OnInteractablesToggle()
+    {
+
+        yield return new WaitForSeconds(delayForFire);
+    }
+
     public IEnumerator OnObjectMoving()
     {
         Vector3 tempPos = thisGameObject.transform.position;
@@ -427,6 +433,11 @@ public class EventManager_Editor : Editor
             }
 
             EditorGUI.indentLevel = EditorGUI.indentLevel - 1;
+        }
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(script);
         }
     }
 }
