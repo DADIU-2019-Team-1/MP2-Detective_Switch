@@ -63,6 +63,11 @@ public class TrajectoryTest : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + transform.forward*2);
     }
 
+    void Stuff()
+    {
+        TrajectoryPoint[] point = new TrajectoryPoint[trajPoints.Length];
+    }
+
     void HandleInput()
     {
         if (Input.GetMouseButtonDown(0))

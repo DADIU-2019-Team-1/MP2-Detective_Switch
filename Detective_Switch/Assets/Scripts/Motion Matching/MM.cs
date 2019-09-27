@@ -94,7 +94,7 @@ public class MM : MonoBehaviour
             {
                 Debug.Log("Current clip has changed from " + currentClip.name + " to " + allClips[i]);
                 currentClip = allClips[i];
-                currentAnimId = trajectories[?].GetTrajectoryId();
+                /////////currentAnimId = trajectories[?].GetTrajectoryId();
                 Debug.Log("Clip num is now: " + currentClipNum);
                 currentFrame = (int)(time * currentClip.frameRate);
                 return;
