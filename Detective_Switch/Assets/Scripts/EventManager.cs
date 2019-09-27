@@ -287,12 +287,11 @@ public class ThisEventSystem
             Debug.LogError("EventManager Error: array null or interactable script missing from some objects!");
         }
 
-        bool conditionsMet = false;
-
         while (loop)
         {
             yield return new WaitForSeconds(0.3f);
 
+            int j = 0;
             for (int i = 0; i < theseGameObjects.Length; i++)
             {
                 tempIntScript = theseGameObjects[i].GetComponent<Interactable>();
@@ -300,15 +299,14 @@ public class ThisEventSystem
                 {
                     break;
                 }
-                conditionsMet = true;
+                j++;
             }
 
-            if (conditionsMet)
+            if (j == theseGameObjects.Length)
             {
                 yield return new WaitForSeconds(delayForFire);
                 eventToFire.Invoke();
                 Debug.Log(eventName + " event fired!");
-                conditionsMet = false;
                 yield return new WaitForSeconds(fireCooldown);
 
                 if (fireCooldown == 0)
@@ -352,27 +350,25 @@ public class ThisEventSystem
             loop = true;
         }
 
-        bool conditionsMet = false;
-
         while (loop)
         {
             yield return new WaitForSeconds(0.3f);
 
+            int j = 0;
             for (int i = 0; i < theseGameObjects.Length; i++)
             {
                 if ((int)theseGameObjects[i].transform.rotation.eulerAngles.y != specificRotations[i])
                 {
                     break;
                 }
-                conditionsMet = true;
+                j++;
             }
 
-            if (conditionsMet)
+            if (j == theseGameObjects.Length)
             {
                 yield return new WaitForSeconds(delayForFire);
                 eventToFire.Invoke();
                 Debug.Log(eventName + " event fired!");
-                conditionsMet = false;
                 yield return new WaitForSeconds(fireCooldown);
 
                 if (fireCooldown == 0)
