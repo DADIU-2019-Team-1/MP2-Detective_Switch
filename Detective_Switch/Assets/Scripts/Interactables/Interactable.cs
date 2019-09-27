@@ -1,57 +1,101 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Interactable : MonoBehaviour
 {
     // main
+    [HideInInspector]
+    public int iD;
+    [HideInInspector]
     public bool singleUse;
-    private bool hasBeenClicked;
+    [HideInInspector]
+    public bool hasBeenClicked;
 
     // sound
+    [HideInInspector]
     public bool soundOnInteract;
+    [HideInInspector]
     public string playSound;
 
     // rotation
+    [HideInInspector]
     public bool rotateOnInteract;
+    [HideInInspector]
     public int rotateDegreesX = 0;
+    [HideInInspector]
     public int rotateDegreesY = 90;
+    [HideInInspector]
     public int rotateDegreesZ = 0;
+    [HideInInspector]
     public bool rotateOverTime;
+    [HideInInspector]
     public float rotationDuration = 0.5f;
 
-    private bool isRotating;
-    private Vector3 oldRotation;
-    private Vector3 newRotation;
-    private float rotationStartTime;
-    private float rotationEndTime;
+    [HideInInspector]
+    public bool isRotating;
+    [HideInInspector]
+    public Vector3 oldRotation;
+    [HideInInspector]
+    public Vector3 newRotation;
+    [HideInInspector]
+    public float rotationStartTime;
+    [HideInInspector]
+    public float rotationEndTime;
 
     // toggle
+    [HideInInspector]
     public bool toggleGameObject;
+    [HideInInspector]
     public GameObject toggleObject;
-    public bool toggleAfterDelay;
-    public float toggleDelay;
+    [HideInInspector]
+    public bool toggleState;
 
     // item
+    [HideInInspector]
     public bool hasItem;
+
+    [HideInInspector]
     public bool hasClue;
+    [HideInInspector]
+    public int clueKeyInt;
+
+    [HideInInspector]
     public bool hasNote;
+    [HideInInspector]
+    public int noteKeyInt;
+
+    [HideInInspector]
     public bool hasKeyItem;
-    public string clueKeyString;   
-    public string noteKeyString;
+    [HideInInspector]
     public Item item;
 
     // animation
+    [HideInInspector]
     public bool hasAnimation;
+    [HideInInspector]
     public bool switchBetweenAnimations;
+    [HideInInspector]
     public string animationDefault;
+    [HideInInspector]
     public string animationAction;
     private Animator anim;
     private bool animationState;
 
+    // trigger
+    [HideInInspector]
+    public bool isTriggerOnKeyPress = false;
+    [HideInInspector]
+    public string triggerKey = "";
+    [HideInInspector]
+    public UnityEvent triggerEvent;
+
     // test
+    [HideInInspector]
     public bool testLog;
+    [HideInInspector]
     public string testLogText;
 
     public void Interact()
@@ -110,25 +154,36 @@ public class Interactable : MonoBehaviour
             {
                 toggleObject.SetActive(!toggleObject.activeSelf);
             }
+            toggleState = !toggleState;
         }
 
         // item
         if (hasItem)
         {
+            GameObject tempJournal = GameObject.FindGameObjectWithTag("Journal");
+
             if (hasKeyItem && item != null)
             {
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             } 
-            if(hasClue && !string.IsNullOrEmpty(clueKeyString)) {
-                // Insert Jakob's load string function
+            if(hasClue && clueKeyInt != null) {
+
+                if (tempJournal != null)
+                {
+                    UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
+                    tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt));
+                }
             }
-            if(hasNote && !string.IsNullOrEmpty(noteKeyString)) {
-                // Insert load string for note function
+            if(hasNote && noteKeyInt != null) {
+
+                if (tempJournal != null)
+                {
+                    UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
+                    tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt));
+                }
             }
             
         }
-
-
 
         // animation
         if (hasAnimation)
@@ -163,5 +218,10 @@ public class Interactable : MonoBehaviour
                 transform.eulerAngles = newRotation;
             }
         }
+    }
+
+    public void triggerEventInteractable()
+    {
+        triggerEvent.Invoke();
     }
 }
