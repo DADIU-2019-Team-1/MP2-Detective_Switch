@@ -20,17 +20,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2260560345000693755}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82d0535de1a526f469901bdda885ab63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FloorType: 1
-  Mat1: {fileID: 2100000, guid: 49b5909ec91f753459be74433e4979ce, type: 2}
-  Mat2: {fileID: 0}
-  Mat3: {fileID: 0}
+  Mat1: {fileID: 2100000, guid: 0321361bb421e664db719ed02add95b7, type: 2}
+  Mat2: {fileID: 2100000, guid: aff783053bcd9464cb859a4a39c838c3, type: 2}
+  Mat3: {fileID: 2100000, guid: 3efbd90f053c96a40844b1a8fbb8add8, type: 2}
 --- !u!1001 &7817952902279239410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,13 +39,13 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 88ae22ae397cc054ebe0bc333eaf5a17,
         type: 3}
       propertyPath: m_Name
-      value: FloorBlack
+      value: Floor
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 88ae22ae397cc054ebe0bc333eaf5a17,
+    - target: {fileID: -927199367670048503, guid: 88ae22ae397cc054ebe0bc333eaf5a17,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 49b5909ec91f753459be74433e4979ce, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 88ae22ae397cc054ebe0bc333eaf5a17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -113,6 +111,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3618442
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 88ae22ae397cc054ebe0bc333eaf5a17,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0321361bb421e664db719ed02add95b7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88ae22ae397cc054ebe0bc333eaf5a17, type: 3}
 --- !u!1 &2260560345000693755 stripped
