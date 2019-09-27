@@ -20,6 +20,8 @@ public class InteractableEditor : Editor
 
         var dis = target as Interactable;
 
+        dis.iD = EditorGUILayout.IntField("Unique ID", dis.iD);
+
         DrawUILine();
 
         dis.singleUse = GUILayout.Toggle(dis.singleUse, "Single Use");
@@ -56,10 +58,10 @@ public class InteractableEditor : Editor
         if (dis.hasItem) {
             dis.hasClue = GUILayout.Toggle(dis.hasClue, "Has Clue");
             if(dis.hasClue) 
-                dis.clueKeyString = EditorGUILayout.TextField("Clue Key: ", dis.clueKeyString);
+                dis.clueKeyInt = EditorGUILayout.IntField("Clue Key: ", dis.clueKeyInt);
             dis.hasNote = GUILayout.Toggle(dis.hasNote, "Has Note");
             if(dis.hasNote) 
-                dis.noteKeyString = EditorGUILayout.TextField("Note Key: ", dis.noteKeyString);
+                dis.noteKeyInt = EditorGUILayout.IntField("Note Key: ", dis.noteKeyInt);
             dis.hasKeyItem = GUILayout.Toggle(dis.hasKeyItem, "Has KeyItem");
             if(dis.hasKeyItem) 
                 dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
@@ -78,6 +80,12 @@ public class InteractableEditor : Editor
                 dis.animationDefault = EditorGUILayout.TextField("Animation Default:", dis.animationDefault);
             dis.animationAction = EditorGUILayout.TextField("Animation Action:", dis.animationAction);
         }
+
+        DrawUILine();
+
+        dis.triggerKey = EditorGUILayout.TextField("Trigger Key:", dis.triggerKey);
+        SerializedProperty eventProp = serializedObject.FindProperty("triggerEvent");
+        EditorGUILayout.PropertyField(eventProp);
 
         DrawUILine();
 

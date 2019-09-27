@@ -8,11 +8,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7852153464009874011}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.36972523, y: 0.22700882, z: 0.20947313}
-  m_Center: {x: -0.024161339, y: 0.14545178, z: -0.059624195}
+  m_Size: {x: 0.36972523, y: 0.2551253, z: 0.3197892}
+  m_Center: {x: -0.024161331, y: 0.13139358, z: -0.0044662277}
 --- !u!114 &8563436761975620722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,12 +33,17 @@ MonoBehaviour:
   rotateDegreesY: 90
   rotateDegreesZ: 0
   rotateOverTime: 0
-  rotationSpeed: 0.1
+  rotationDuration: 0.5
   toggleGameObject: 0
   toggleObject: {fileID: 0}
   toggleAfterDelay: 0
   toggleDelay: 0
   hasItem: 0
+  hasClue: 0
+  clueKeyString: 
+  hasNote: 0
+  noteKeyString: 
+  hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 1
   switchBetweenAnimations: 0
