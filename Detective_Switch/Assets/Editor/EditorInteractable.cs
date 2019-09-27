@@ -83,6 +83,7 @@ public class InteractableEditor : Editor
 
         DrawUILine();
 
+        dis.isTriggerOnKeyPress = GUILayout.Toggle(dis.isTriggerOnKeyPress, "Is trigger on key press?");
         dis.triggerKey = EditorGUILayout.TextField("Trigger Key:", dis.triggerKey);
         SerializedProperty eventProp = serializedObject.FindProperty("triggerEvent");
         EditorGUILayout.PropertyField(eventProp);

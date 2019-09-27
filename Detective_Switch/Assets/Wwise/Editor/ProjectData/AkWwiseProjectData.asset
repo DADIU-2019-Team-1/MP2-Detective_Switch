@@ -184,7 +184,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 6f0215d87963454cb77c37e1cdd774dc
     GuidInternal: 
-    m_lastTime: -8586321159667422842
+    m_lastTime: -8586321005656147437
     List:
     - name: Non_World_Verb
       guid: aa0eb7215c869d44b38dbd9845ad2ce2
@@ -201,6 +201,25 @@ MonoBehaviour:
       - ElementName: Non_World_Verb
         ObjectType: 1
       Path: Default Work Unit\Master Audio Bus\SoundFX\Non-World\Non_World_Verb
+    - name: Presence_Verb
+      guid: ab0225302e7a7f4bb11ec33ec1507684
+      id: 2695769798
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: SoundFX
+        ObjectType: 2
+      - ElementName: World
+        ObjectType: 2
+      - ElementName: Ambiences
+        ObjectType: 2
+      - ElementName: Amb_Emitters
+        ObjectType: 2
+      - ElementName: Presence_Verb
+        ObjectType: 1
+      Path: Default Work Unit\Master Audio Bus\SoundFX\World\Ambiences\Amb_Emitters\Presence_Verb
     - name: World_Verb
       guid: f3d784edefb76f498a617d3f16232554
       id: 2667095749
@@ -221,7 +240,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586321107016071790
+    m_lastTime: -8586321073618773249
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -237,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586322678084116793
+    m_lastTime: -8586321005656765388
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -795,7 +814,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 42d5c85cd7a0d1498b228a183e381e0f
     GuidInternal: 
-    m_lastTime: -8586321096846544893
+    m_lastTime: -8586321067070657771
     List:
     - name: Progression
       guid: 871fc3fee973c244ac72e3519ecbc613
@@ -811,7 +830,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 0a4e87a430b188448b1e34af0f1af577
     GuidInternal: 
-    m_lastTime: -8586321984936756352
+    m_lastTime: -8586321092828333479
     List:
     - name: GameState
       guid: d3948fabffde5b4ba75c55eeb161f13b
@@ -823,12 +842,6 @@ MonoBehaviour:
         ObjectType: 9
       Path: Default Work Unit\GameState
       values:
-      - name: Explore
-        guid: 46178fd96553904e9da3d22087cd2f97
-        id: 579523862
-        PathAndIcons:
-        - ElementName: Explore
-          ObjectType: 8
       - name: Menu
         guid: bebae2ba10048e4eb12bfbe1359059c9
         id: 2607556080
@@ -841,6 +854,12 @@ MonoBehaviour:
         PathAndIcons:
         - ElementName: None
           ObjectType: 8
+      - name: Playing
+        guid: 46178fd96553904e9da3d22087cd2f97
+        id: 1852808225
+        PathAndIcons:
+        - ElementName: Playing
+          ObjectType: 8
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -849,7 +868,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8e6cf1579bc29c46988d61678cefe7ca
     GuidInternal: 
-    m_lastTime: -8586321096846395506
+    m_lastTime: -8586320334244763510
     List:
     - name: FS_Material
       guid: a010d6fceb027242ac44a731595e2d7f
@@ -997,14 +1016,8 @@ MonoBehaviour:
   - /MG2_WwiseProject
   - /MG2_WwiseProject/Events
   - /MG2_WwiseProject/Events/Default Work Unit
-  - /MG2_WwiseProject/SoundBanks
-  - /MG2_WwiseProject/SoundBanks/Default Work Unit
-  - /MG2_WwiseProject/States
-  - /MG2_WwiseProject/States/Default Work Unit
-  - /MG2_WwiseProject/States/Default Work Unit/GameState
-  - /MG2_WwiseProject/Switches
-  - /MG2_WwiseProject/Switches/Default Work Unit
-  - /MG2_WwiseProject/Switches/Default Work Unit/FS_Material
-  - /MG2_WwiseProject/Switches/Default Work Unit/Gameplay
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Emitters
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
