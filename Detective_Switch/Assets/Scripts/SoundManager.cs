@@ -29,7 +29,9 @@ public class SoundManager : MonoBehaviour
 
     // roomsize
     public AK.Wwise.RTPC roomSizeM2;
-    public float roomSize;
+    public float roomSize = 10;
+    public float largestRoomSize = 50;
+    private float lastRoomSize;
 
     // progression
     private int progression;
@@ -56,6 +58,7 @@ public class SoundManager : MonoBehaviour
     {
         windowObjects = GameObject.FindGameObjectsWithTag("WindowSound");
         wwiseMenuIsOpen = !menuIsOpen;
+        lastRoomSize = roomSize + 1;
     }
 
     void Update()
@@ -63,6 +66,16 @@ public class SoundManager : MonoBehaviour
         timeOfDay.SetGlobalValue(calcTimeOfDay());
         distanceToWindow.SetGlobalValue(calcDistanceToWindows());
         setMenuState();
+        setRoomSize();
+    }
+
+    private void setRoomSize()
+    {
+        if (roomSize == lastRoomSize)
+            return;
+
+        lastRoomSize = roomSize;
+        roomSizeM2.SetGlobalValue(Mathf.Clamp(roomSize, 0, 100));
     }
 
     private void setMenuState()
