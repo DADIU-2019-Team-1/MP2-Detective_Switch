@@ -462,6 +462,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3653083261744341174, guid: 5d11b793a64845540951a46e373fa48d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653083261744341170, guid: 5d11b793a64845540951a46e373fa48d,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3653083261744341173, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
     - {fileID: 3653083261744341169, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
@@ -568,7 +578,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 50c5154523359a04c9f44bc9d141daec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

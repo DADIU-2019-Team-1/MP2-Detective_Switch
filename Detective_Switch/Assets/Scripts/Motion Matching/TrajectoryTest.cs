@@ -47,11 +47,13 @@ public class TrajectoryTest : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + direction / direction.magnitude);
         for (int i = 0; i < trajPoints.Length; i++)
         {
-            Gizmos.DrawWireSphere(transform.position + direction * trajPoints[i], 0.5f);
+            Gizmos.DrawWireSphere(transform.position + direction * trajPoints[i] / 10, 0.5f);
         }
-        Gizmos.DrawLine(transform.position, direction);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward);
     }
 
     void HandleInput()
