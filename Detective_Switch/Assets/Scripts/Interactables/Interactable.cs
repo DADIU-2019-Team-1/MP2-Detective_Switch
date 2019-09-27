@@ -86,6 +86,8 @@ public class Interactable : MonoBehaviour
 
     // trigger
     [HideInInspector]
+    public bool isTriggerOnKeyPress = false;
+    [HideInInspector]
     public string triggerKey = "";
     [HideInInspector]
     public UnityEvent triggerEvent;
