@@ -136,7 +136,8 @@ public class UI_Journal : MonoBehaviour
 
     public void RemoveClueFromJournal(int index)
     {
-        clueTexts.RemoveAt(index);
+        if (clueTexts[index] != null)
+            clueTexts.RemoveAt(index);
     }
 
     public void RemoveClueFromJournal(string specificText)
