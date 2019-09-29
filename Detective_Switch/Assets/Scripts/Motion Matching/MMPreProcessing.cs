@@ -27,7 +27,7 @@ public class MMPreProcessing : MonoBehaviour
     // --- Inspector
     public List<AnimationClip> clips;
     public List<string> jointNames;
-    public bool preproces = false;
+    public bool preprocess = false;
     public int trajectoryPointsToUse = 5;
     public int frameStepSize = 25;
 
@@ -52,7 +52,7 @@ public class MMPreProcessing : MonoBehaviour
         rFootPos = new List<Vector3>();
         rootQ = new List<Quaternion>();
         CSVReaderWriter csvHandler = new CSVReaderWriter();
-        if (preproces)
+        if (preprocess)
         {
             int uniqueIDIterator = 0;
 
@@ -143,6 +143,11 @@ public class MMPreProcessing : MonoBehaviour
         }
     }
 
+    public List<Trajectory> GetTrajectories()
+    {
+        return trajectories;
+    }
+
     public Vector3 GetJointPositionAtFrame(AnimationClip clip, int frame, string jointName)
     {
         /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
@@ -179,59 +184,9 @@ public class MMPreProcessing : MonoBehaviour
         return new Quaternion(vectorValues[0], vectorValues[1], vectorValues[2], vectorValues[3]);
     }
 
-    public List<Vector3> GetJointPositionsFromClipBindings(AnimationClip clip, string jointName)
+    public Vector3 CalculateVelocityFromVectors(Vector3 currentPos, Vector3 prevPos)
     {
-        /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        
-        List<Vector3> jointsToReturn = new List<Vector3>();
-
-        AnimationCurve curve;
-        List<float> vectorValues;
-        int arrayEnumerator = 0;
-        for (int i = 0; i < clip.length * clip.frameRate; i++)
-        {
-            vectorValues = new List<float>();
-            arrayEnumerator = 0;
-            foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
-            {
-                if (binding.propertyName.Contains(jointName))
-                {
-                    curve = AnimationUtility.GetEditorCurve(clip, binding);
-                    vectorValues.Add(curve.Evaluate(i / clip.frameRate));
-                    arrayEnumerator++;
-                }
-            }
-            jointsToReturn.Add(new Vector3(vectorValues[0], vectorValues[1], vectorValues[2]));
-        }
-
-        return jointsToReturn;
-    }
-
-    public List<Quaternion> GetJointQuaternionsFromClipBindings(AnimationClip clip, string jointName)
-    {
-        /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        List<Quaternion> quaternionsToReturn = new List<Quaternion>();
-
-        AnimationCurve curve;
-        List<float> vectorValues;
-        int arrayEnumerator = 0;
-        for (int i = 0; i < clip.length * clip.frameRate; i++)
-        {
-            vectorValues = new List<float>();
-            arrayEnumerator = 0;
-            foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
-            {
-                if (binding.propertyName.Contains(jointName))
-                {
-                    curve = AnimationUtility.GetEditorCurve(clip, binding);
-                    vectorValues.Add(curve.Evaluate(i / clip.frameRate));
-                    arrayEnumerator++;
-                }
-            }
-            quaternionsToReturn.Add(new Quaternion(vectorValues[0], vectorValues[1], vectorValues[2], vectorValues[3]));
-        }
-
-        return quaternionsToReturn;
+        return (currentPos - prevPos) / 1 / 30;
     }
 
     private List<string> GetClipNameFromClip(AnimationClip clip)
@@ -261,17 +216,9 @@ public class MMPreProcessing : MonoBehaviour
                 indexer = 0;
             }
 
-        _frames.Add(currentFrame);
+            _frames.Add(currentFrame);
         }
 
         return _frames;
     }
-
-    public Vector3 CalculateVelocityFromVectors(Vector3 currentPos, Vector3 prevPos)
-    {
-        return (currentPos - prevPos) / 1 / 30;
-    }
-
-    // Trajectory references
-    
 }

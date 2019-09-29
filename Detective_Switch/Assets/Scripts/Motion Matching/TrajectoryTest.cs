@@ -9,11 +9,10 @@ public class TrajectoryTest : MonoBehaviour
 
     // --- References
     Rigidbody rb;
-    [HideInInspector] public List<TrajectoryPoint> trajectoryPoints;
-    MM mm;
+    [HideInInspector] public TrajectoryPoint[] trajectoryPoints;
+    MMPreProcessing preProcessing;
 
     // --- Public
-    public float[] trajPoints;
     public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, moveReactionTime = 0.3f, turnReactionTime = 2.5f, globalPlayerSpeed;
     public float gizmoSphereSize = 0.2f, gizmoSphereSpacing = 50;
 
@@ -26,13 +25,19 @@ public class TrajectoryTest : MonoBehaviour
     private bool canMove;
     private bool mouseDown;
 
+    public float acceleration;
+    float mass = 5;
+    float spring;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        mm = GetComponent<MM>();
-        trajectoryPoints = new List<TrajectoryPoint>();
+        preProcessing = GetComponent<MMPreProcessing>();
+        trajectoryPoints = new TrajectoryPoint[preProcessing.trajectoryPointsToUse];
+        InitArray(trajectoryPoints);
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
         oldPos = transform.position;
+        rb.velocity = new Vector3(0,0,0);
     }
 
     /* Use velocity and acceleration to predict the points (over time) where the character will be
@@ -41,12 +46,18 @@ public class TrajectoryTest : MonoBehaviour
      * and send them to MM for comparison
      */
 
-    void Update()
+    private void Update()
     {
-        
+        trajectoryPoints = CalculateTrajectory((float)preProcessing.frameStepSize/100);
+        //Debug.Log("Rb velocity: " + rb.velocity);
+        //for (int i = 0; i < trajectoryPoints.Length; i++)
+        //{
+        //    Debug.Log("Trajectory point " + i + " pos: " + trajectoryPoints[i].position);
+        //    Debug.Log("Trajectory point " + i + " fw: " + trajectoryPoints[i].forward);
+        //}
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         HandleInput();
     }
@@ -55,19 +66,57 @@ public class TrajectoryTest : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + direction * 2 / direction.magnitude);
-        for (int i = 0; i < trajPoints.Length; i++)
+        for (int i = 0; i < trajectoryPoints.Length; i++)
         {
-            Gizmos.DrawWireSphere(transform.position + direction * trajPoints[i] / gizmoSphereSpacing, gizmoSphereSize);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(trajectoryPoints[i].position, gizmoSphereSize);
+            Gizmos.DrawLine(trajectoryPoints[i].position, trajectoryPoints[i].position + trajectoryPoints[i].forward);
         }
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward*2);
     }
 
-    void Stuff()
+    TrajectoryPoint[] CalculateTrajectory(float timeStep)
     {
-        TrajectoryPoint[] point = new TrajectoryPoint[trajPoints.Length];
+        TrajectoryPoint[] point = new TrajectoryPoint[trajectoryPoints.Length];
+        InitArray(point);
+        Vector3 velAtPreviousPos = rb.velocity;
+        Vector3 velAtNextPos = rb.velocity;
+        for (int i = 0; i < point.Length; i++)
+        {
+            // add trajectory curve points to array based on velocity and acceleration DONE
+            // Acceleration = change in velocity over time (deltaVel /deltaTime)
+            // TODO: Approximate with explicit euler method (Completed - verify?)
+            // TODO: Handle reset when there is no player input (points north when last dir was south)
+
+            if (i != 0)
+            {
+                point[i].position = point[i-1].position + rb.velocity * (timeStep * i);
+                velAtNextPos += velAtNextPos * (timeStep * i); // timeStep e.g. 0.25f
+                point[i].forward = point[i].position + (velAtNextPos - velAtPreviousPos) / (timeStep * i); // pos + acceleration
+                velAtPreviousPos = velAtNextPos;
+            }
+            else
+            {
+                point[i].position = transform.position;
+                point[i].forward = point[i].position + rb.velocity;
+            }
+        }
+        return point;
     }
 
+    private void InitArray(TrajectoryPoint[] arr)
+    {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = new TrajectoryPoint();
+        }
+    }
+
+    public TrajectoryPoint[] GetMovementTrajectoryPoints()
+    {
+        return trajectoryPoints;
+    }
     void HandleInput()
     {
         if (Input.GetMouseButtonDown(0))
@@ -105,9 +154,11 @@ public class TrajectoryTest : MonoBehaviour
     Vector2 GetJoyDragVector(Vector2 anchor, Vector2 goal)
     {
         Vector2 rawJoy = goal - anchor;
-        Vector2 turnedJoyVector = new Vector2(0, 0);
-        turnedJoyVector.x = rawJoy.x * Mathf.Cos(joyDisplacementAngle) - rawJoy.y * Mathf.Sin(joyDisplacementAngle);
-        turnedJoyVector.y = rawJoy.x * Mathf.Sin(joyDisplacementAngle) + rawJoy.y * Mathf.Cos(joyDisplacementAngle);
+        Vector2 turnedJoyVector = new Vector2(0, 0)
+        {
+            x = rawJoy.x * Mathf.Cos(joyDisplacementAngle) - rawJoy.y * Mathf.Sin(joyDisplacementAngle),
+            y = rawJoy.x * Mathf.Sin(joyDisplacementAngle) + rawJoy.y * Mathf.Cos(joyDisplacementAngle)
+        };
         turnedJoyVector = Vector2.ClampMagnitude(turnedJoyVector, maxDragToMove);
         return turnedJoyVector;
     }
@@ -122,7 +173,7 @@ public class TrajectoryTest : MonoBehaviour
         }
         rb.velocity = Vector3.Lerp(rb.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), turnReactionTime * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rb.velocity), turnReactionTime * Time.deltaTime);
         
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;

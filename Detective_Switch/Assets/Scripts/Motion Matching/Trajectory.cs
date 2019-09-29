@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using UnityEngine;
+
+[System.Serializable]
 public class Trajectory
 {
     public string clipName;
@@ -30,5 +32,25 @@ public class Trajectory
     public int GetTrajectoryId()
     {
         return trajectoryId;
+    }
+
+    public float CompareTrajectoryPoints(Trajectory trajToCompare)
+    {
+        float distance = 0;
+        for (int i = 0; i < points.Length; i++)
+        {
+            distance += Vector3.Distance(points[i].position, trajToCompare.points[i].position);
+            //distance += Vector3.Angle(points[i].forward, trajToCompare.points[i].forward);
+        }
+        return distance;
+    }
+    public float CompareTrajectoryForwards(Trajectory trajToCompare)
+    {
+        float distance = 0;
+        for (int i = 0; i < points.Length; i++)
+        {
+            distance += Vector3.Angle(points[i].forward, trajToCompare.points[i].forward);
+        }
+        return distance;
     }
 }

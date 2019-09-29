@@ -533,7 +533,7 @@ MonoBehaviour:
   - RootQ
   - LeftFootT
   - RightFootT
-  preproces: 0
+  preprocess: 0
   trajectoryPointsToUse: 4
   frameStepSize: 25
   clipNames: []
@@ -551,23 +551,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trajectoryPoints: []
-  trajPoints:
-  - -0.25
-  - 0
-  - 0.25
-  - 0.5
-  - 0.75
-  - 1
-  maxPlayerSpeed: 8.5
-  minDragToMove: 70
+  maxPlayerSpeed: 4
+  minDragToMove: 80
   maxDragToMove: 150
   maxPressTime: 0.15
-  minPlayerSpeed: 5
+  minPlayerSpeed: 1
   moveReactionTime: 0.3
-  turnReactionTime: 2.5
+  turnReactionTime: 2
   globalPlayerSpeed: 0
   gizmoSphereSize: 0.2
   gizmoSphereSpacing: 50
+  acceleration: 0
 --- !u!114 &787734772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,8 +575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentClip: {fileID: 0}
-  currentClipNum: 0
   currentFrame: 0
+  currentAnimId: 0
 --- !u!95 &787734774
 Animator:
   serializedVersion: 3

@@ -6,7 +6,7 @@ using UnityEngine;
 public class MMPose
 {
     public string clipName;
-    public int frame;
+    public int frame, id;
     public Vector3 rootPos, lFootPos, rFootPos, rootVel, lFootVel, rFootVel;
     public Quaternion rootQ; // Might be redundant
 
@@ -23,6 +23,15 @@ public class MMPose
         rFootVel = _rFootVel;
         rootQ = _rootQ;
     }
+    public MMPose(Vector3 _rootPos, Vector3 _lFootPos, Vector3 _rFootPos, Vector3 _rootVel, Vector3 _lFootVel, Vector3 _rFootVel)
+    {
+        rootPos = _rootPos;
+        lFootPos = _lFootPos;
+        rFootPos = _rFootPos;
+        rootVel = _rootVel;
+        lFootVel = _lFootVel;
+        rFootVel = _rFootVel;
+    }
 
     public string GetClipName()
     {
@@ -32,5 +41,21 @@ public class MMPose
     public int GetFrame()
     {
         return frame;
+    }
+    public int GetPoseId(int _id)
+    {
+        return id;
+    }
+
+    public float ComparePose(MMPose poseToCompare)
+    {
+        float distance = 0;
+        distance += Vector3.Distance(rootPos, poseToCompare.rootPos);
+        distance += Vector3.Distance(lFootPos, poseToCompare.lFootPos);
+        distance += Vector3.Distance(rFootPos, poseToCompare.rFootPos);
+        distance += Vector3.Distance(rootVel, poseToCompare.rootVel);
+        distance += Vector3.Distance(lFootVel, poseToCompare.lFootVel);
+        distance += Vector3.Distance(rFootVel, poseToCompare.rFootVel);
+        return distance;
     }
 }
