@@ -32,10 +32,10 @@ public class UI_Journal : MonoBehaviour
     {
         clueTexts = new List<string>();
         noteTexts = new List<string>();
-        notesDA = new List<string>();
-        cluesDA = new List<string>();
-        notesEN = new List<string>();
-        cluesEN = new List<string>();
+        //notesDA = new List<string>();
+        //cluesDA = new List<string>();
+        //notesEN = new List<string>();
+        //cluesEN = new List<string>();
 
         if (readCSV)
         {
@@ -169,8 +169,13 @@ public class UI_Journal : MonoBehaviour
 
     public string GetClue(int index)
     {
-        if (index > cluesEN.Count || index < 0)
+        Debug.Log(index);
+        if (index > cluesEN.Count || index < 1)
+        {
+            Debug.LogError("Journal error! - get out of bounds");
             return null;
+        }
+
 
         if (isEnglish)
         {
@@ -184,8 +189,12 @@ public class UI_Journal : MonoBehaviour
 
     public string GetNote(int index)
     {
-        if (index > notesEN.Count || index < 0)
+        Debug.Log(index + " " + notesEN.Count);
+        if (index > notesEN.Count || index < 1)
+        {
+            Debug.LogError("Journal error! - get out of bounds");
             return null;
+        }
 
         if (isEnglish)
         {

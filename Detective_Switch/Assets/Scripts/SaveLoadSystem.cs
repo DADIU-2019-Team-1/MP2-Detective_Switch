@@ -25,13 +25,13 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void Start()
     {
-        SaveGame();
-        LoadGame();
+        // SaveGame();
+        // LoadGame();
     }
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        // SaveGame();
     }
 
     public void LoadGame()
