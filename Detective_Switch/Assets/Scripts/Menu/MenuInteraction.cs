@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour
 {
+    public GameObject FlashLightDay;
+    public GameObject FlashLightNight;
+    public GameObject BlackLightObject;
     private int childIterator = 0;
     private InventoryUpdater _invUpdate;
     // Start is called before the first frame update
@@ -82,10 +85,18 @@ public class MenuInteraction : MonoBehaviour
         if(flashLightSwitch.GetChild(0).gameObject.activeInHierarchy) {
             flashLightSwitch.GetChild(0).gameObject.SetActive(false);
             flashLightSwitch.GetChild(1).gameObject.SetActive(true);
+
+            FlashLightDay.SetActive(true);
+            FlashLightNight.SetActive(false);
+            BlackLightObject.SetActive(false);
         }
         else {
             flashLightSwitch.GetChild(0).gameObject.SetActive(true);
             flashLightSwitch.GetChild(1).gameObject.SetActive(false);
+
+            FlashLightDay.SetActive(false);
+            FlashLightNight.SetActive(true);
+            BlackLightObject.SetActive(true);
         }
     }
 
