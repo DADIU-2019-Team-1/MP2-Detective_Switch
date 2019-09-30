@@ -8,12 +8,9 @@ public class SaveLoadSystem : MonoBehaviour
 {
     public bool newGame = true;
     public string saveLocation = "Assets/Resources/SaveFiles/";
-    // public string saveFileName = "save1.csv";
-    private string fullSavePath = "";
 
     private void Awake()
     {
-
         if (newGame)
         {
             PlayerPrefs.SetInt("previousGame", 1);
@@ -29,48 +26,16 @@ public class SaveLoadSystem : MonoBehaviour
         // SaveGame();
     }
 
-    public void LoadGame(string saveName)
-    {
-        fullSavePath = saveLocation + saveName + ".csv";
-    }
-
     public void LoadGame()
     {
-        StreamReader strReader = new StreamReader(fullSavePath);
-
-        bool endOfFile = false;
-        bool firstRun = true;
-
-        while (!endOfFile)
+        if (File.Exists(saveLocation + "interactables.txt"))
         {
-            string dataString = strReader.ReadLine();
 
-            if (dataString == null)
-            {
-                endOfFile = true;
-                break;
-            }
-
-            if (firstRun)
-            {
-                // To ignore first line
-                firstRun = false;
-            }
-            else
-            {
-                string[] tempDataValues = dataString.Split(';');
-                float[] dataValues = new float[tempDataValues.Length];
-                for (int i = 1; i < dataValues.Length; i++)
-                {
-                    dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
-                }
-
-                // Do something
-            }
         }
+        
     }
 
-    public bool GetHasRunBool()
+    public bool GetNewGameBool()
     {
         return newGame;
     }
@@ -124,10 +89,13 @@ public class SaveLoadSystem : MonoBehaviour
 
         if (journal.GetComponent<UI_Journal>() != null)
         {
-            tempSaveString = JsonUtility.ToJson(journal.GetComponent<UI_Journal>().clueTexts);
-            File.WriteAllText(saveLocation + "activeClues.txt", tempSaveString);
-        }
-   
+            JournalContainer tempJournal = new JournalContainer();
+            tempJournal.activeClues = journal.GetComponent<UI_Journal>().clueTexts;
+            tempJournal.activeNotes = journal.GetComponent<UI_Journal>().noteTexts;
+
+            tempSaveString = JsonUtility.ToJson(tempJournal);
+            File.WriteAllText(saveLocation + "activeJournal.txt", tempSaveString);
+        }  
     }
 }
 
