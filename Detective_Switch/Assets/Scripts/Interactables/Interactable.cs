@@ -60,14 +60,14 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public bool hasClue;
     [HideInInspector]
-    public int clueKeyAmount = 1;
+    public int clueKeyAmount = 0;
     [HideInInspector]
     public int[] clueKeyInt;
 
     [HideInInspector]
     public bool hasNote;
     [HideInInspector]
-    public int noteKeyAmount = 1;
+    public int noteKeyAmount = 0;
     [HideInInspector]
     public int[] noteKeyInt;
 
@@ -170,24 +170,31 @@ public class Interactable : MonoBehaviour
 
             if (hasKeyItem && item != null)
             {
+                hasKeyItem = false;
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             } 
-            if(hasClue && clueKeyInt != null) {
+            if(hasClue && clueKeyInt != null && clueKeyAmount != 0) {
 
                 if (tempJournal != null)
                 {
+                    hasClue = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
                     for (int i = 0; i < clueKeyInt.Length; i++)
+                    {
                         tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt[i]));
+                    }
                 }
             }
-            if(hasNote && noteKeyInt != null) {
+            if(hasNote && noteKeyInt != null && noteKeyAmount != 0) {
 
                 if (tempJournal != null)
                 {
+                    hasNote = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
                     for (int i = 0; i < noteKeyInt.Length; i++)
+                    {
                         tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt[i]));
+                    }
                 }
             }
         }
@@ -232,5 +239,15 @@ public class Interactable : MonoBehaviour
     public void triggerEventInteractable()
     {
         triggerEvent.Invoke();
+    }
+
+    public void noteKeyArrayInit()
+    {
+        noteKeyInt = new int[noteKeyAmount];
+    }
+
+    public void clueKeyArrayInit()
+    {
+        clueKeyInt = new int[clueKeyAmount];
     }
 }
