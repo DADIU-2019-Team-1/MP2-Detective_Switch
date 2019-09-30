@@ -28,10 +28,15 @@ public class SoundManager : MonoBehaviour
     private GameObject[] windowObjects;
 
     // roomsize
-    private float roomSize;
+    public AK.Wwise.RTPC roomSizeM2;
+    public float roomSize;
+    public float largestRoomSize = 50.0f;
+    private float oldRoomSize;
 
     // progression
-    private int progression;
+    public AK.Wwise.RTPC progressionLevel;
+    public float progression;
+    private float oldProgression;
 
     void Awake() 
     {
@@ -54,17 +59,52 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         windowObjects = GameObject.FindGameObjectsWithTag("WindowSound");
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
         wwiseMenuIsOpen = !menuIsOpen;
+        oldProgression = progression + 1;
+        oldRoomSize = roomSize + 1;
     }
 
     void Update()
     {
-        timeOfDay.SetGlobalValue(calcTimeOfDay());
-        distanceToWindow.SetGlobalValue(calcDistanceToWindows());
-        setMenuState();
+        timeOfDay.SetGlobalValue(CalcTimeOfDay());
+        distanceToWindow.SetGlobalValue(CalcDistanceToWindows());
+        SetMenuState();
+        SetProgressionLevel();
+        SetRoomSizeNiveau();
     }
 
-    private void setMenuState()
+    private void SetRoomSizeNiveau()
+    {
+        if (oldRoomSize == roomSize)
+            return;
+
+        oldRoomSize = roomSize;
+        float scaledRoomSize = roomSize / largestRoomSize * 100.0f;
+        scaledRoomSize = Mathf.Clamp(scaledRoomSize, 0, 100);
+        roomSizeM2.SetGlobalValue(scaledRoomSize);
+    }
+
+    public void SetProgression(float level)
+    {
+        progression = level;
+    }
+
+    public void AddProgression()
+    {
+        progression++;
+    }
+
+    private void SetProgressionLevel()
+    {
+        if (oldProgression == progression)
+            return;
+
+        oldProgression = progression;
+        progressionLevel.SetGlobalValue(progression);
+    }
+
+    private void SetMenuState()
     {
         if (menuIsOpen == wwiseMenuIsOpen)
             return;
@@ -73,21 +113,19 @@ public class SoundManager : MonoBehaviour
         if (menuIsOpen)
         {
             MenuOpen.SetValue();
-            Debug.Log("Menu Open Sound");
         } else
         {
             MenuClose.SetValue();
-            Debug.Log("Menu Close Sound");
         }
     }
 
-    private float calcTimeOfDay()
+    private float CalcTimeOfDay()
     {
         float time = 100.0f / dayLength * Time.time;
         return Mathf.Clamp(time, 0, 100);
     }
 
-    private float calcDistanceToWindows()
+    private float CalcDistanceToWindows()
     {
         float shortestDistance = Mathf.Infinity;
 

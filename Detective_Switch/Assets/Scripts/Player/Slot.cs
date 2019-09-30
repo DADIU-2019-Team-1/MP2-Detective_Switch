@@ -8,7 +8,6 @@ public class Slot : MonoBehaviour
 
     public GameObject item;
     public int id;
-    public string type;
     public string text;
     public bool empty;
     // If we want to have panels when we change sprite, activate this and start.

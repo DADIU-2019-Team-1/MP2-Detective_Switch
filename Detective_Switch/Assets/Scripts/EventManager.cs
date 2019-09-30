@@ -54,6 +54,16 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void PlayerTeleportToPoint(GameObject pointObj)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null && pointObj != null)
+        {
+            player.transform.position = pointObj.transform.position;
+        }
+    }
+
     void StartClassCoroutine(int eventNum, int funcNum)
     {
         switch (funcNum)
@@ -78,6 +88,9 @@ public class EventManager : MonoBehaviour
                 break;
             case 6:
                 StartCoroutine(events[eventNum].OnObjectsRotateDirection());
+                break;
+            case 7:
+                StartCoroutine(events[eventNum].OnInteractablesToggle());
                 break;
             default:
                 break;
@@ -107,7 +120,8 @@ public class ThisEventSystem
         OnObjectDestroy,
         TimedEvent,
         OnObjectMoving,
-        OnObjectsRotateDirection
+        OnObjectsRotateDirection,
+        OnInteractablesToggle
     };
 
     [HideInInspector]
@@ -256,8 +270,53 @@ public class ThisEventSystem
 
     public IEnumerator OnInteractablesToggle()
     {
+        Interactable tempIntScript;
+        bool loop = false;
+        if (theseGameObjects != null)
+        {
+            for (int j = 0; j < theseGameObjects.Length; j++)
+            {
+                if (theseGameObjects[j].GetComponent<Interactable>() == null)
+                    break;
+                loop = true;
+            }           
+        }
 
-        yield return new WaitForSeconds(delayForFire);
+        if (loop == false)
+        {
+            Debug.LogError("EventManager Error: array null or interactable script missing from some objects!");
+        }
+
+        while (loop)
+        {
+            yield return new WaitForSeconds(0.3f);
+
+            int j = 0;
+            for (int i = 0; i < theseGameObjects.Length; i++)
+            {
+                tempIntScript = theseGameObjects[i].GetComponent<Interactable>();
+                if (tempIntScript.toggleState == false)
+                {
+                    break;
+                }
+                j++;
+            }
+
+            if (j == theseGameObjects.Length)
+            {
+                yield return new WaitForSeconds(delayForFire);
+                eventToFire.Invoke();
+                Debug.Log(eventName + " event fired!");
+                yield return new WaitForSeconds(fireCooldown);
+
+                if (fireCooldown == 0)
+                {
+                    loop = false;
+                }
+            }
+        }
+
+
     }
 
     public IEnumerator OnObjectMoving()
@@ -291,28 +350,25 @@ public class ThisEventSystem
             loop = true;
         }
 
-        bool conditionsMet = false;
-
         while (loop)
         {
             yield return new WaitForSeconds(0.3f);
-            int j = 0;
 
+            int j = 0;
             for (int i = 0; i < theseGameObjects.Length; i++)
             {
                 if ((int)theseGameObjects[i].transform.rotation.eulerAngles.y != specificRotations[i])
                 {
                     break;
                 }
-                conditionsMet = true;
+                j++;
             }
 
-            if (conditionsMet)
+            if (j == theseGameObjects.Length)
             {
                 yield return new WaitForSeconds(delayForFire);
                 eventToFire.Invoke();
                 Debug.Log(eventName + " event fired!");
-                conditionsMet = false;
                 yield return new WaitForSeconds(fireCooldown);
 
                 if (fireCooldown == 0)
@@ -427,7 +483,26 @@ public class EventManager_Editor : Editor
                     EditorGUILayout.HelpBox("Specify the amount of gameobjects you want, and then at what specific rotation they should be triggering. The event will fire when they all are rotated in the specified direction.", MessageType.Info);
                 }
 
-                SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
+                if ((int)script.events[i].function == 7)
+                {
+                    script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
+                    script.events[i].gameObjectAmount = EditorGUILayout.IntField("Amount of objects", script.events[i].gameObjectAmount);
+                    if (script.events[i].gameObjectAmount > 0)
+                    {
+                        if (script.events[i].gameObjectAmount != script.events[i].theseGameObjects.Length)
+                        {
+                            script.events[i].ObjRotInit(script.events[i].gameObjectAmount);
+                        }
+
+                        for (int j = 0; j < script.events[i].theseGameObjects.Length; j++)
+                        {
+                            script.events[i].theseGameObjects[j] = EditorGUILayout.ObjectField("Interactable Object", script.events[i].theseGameObjects[j], typeof(GameObject), true) as GameObject;
+                        }
+                    }
+                    EditorGUILayout.HelpBox("Specify the amount of interactable gameobjects you want to check. The event will fire when they all their states are true.", MessageType.Info);
+                }
+
+                    SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
                 EditorGUILayout.PropertyField(fireProp);
                 serializedObject.ApplyModifiedProperties();
             }

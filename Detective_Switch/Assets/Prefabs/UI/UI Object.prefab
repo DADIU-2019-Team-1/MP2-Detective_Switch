@@ -97,8 +97,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 3684818188840218491}
-  - {fileID: 2715990489798589442}
   - {fileID: 3108450315076672333}
+  - {fileID: 2715990489798589442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,11 +174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6928339571792252905}
     m_Modifications:
-    - target: {fileID: 2741948979864259084, guid: 4e4912b29b4b5ae4e8e588ec636b8ac8,
-        type: 3}
-      propertyPath: m_Name
-      value: BuildNumDisplay
-      objectReference: {fileID: 0}
     - target: {fileID: 2005265607052788179, guid: 4e4912b29b4b5ae4e8e588ec636b8ac8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -217,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 2005265607052788179, guid: 4e4912b29b4b5ae4e8e588ec636b8ac8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2005265607052788179, guid: 4e4912b29b4b5ae4e8e588ec636b8ac8,
         type: 3}
@@ -284,6 +279,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2741948979864259084, guid: 4e4912b29b4b5ae4e8e588ec636b8ac8,
+        type: 3}
+      propertyPath: m_Name
+      value: BuildNumDisplay
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e4912b29b4b5ae4e8e588ec636b8ac8, type: 3}
 --- !u!224 &3108450315076672333 stripped
@@ -299,11 +299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6928339571792252905}
     m_Modifications:
-    - target: {fileID: 5106212482643089882, guid: 504d39cc6e146c24db0f26bc62a639a6,
-        type: 3}
-      propertyPath: m_Name
-      value: Journal
-      objectReference: {fileID: 0}
     - target: {fileID: 5106212482643089881, guid: 504d39cc6e146c24db0f26bc62a639a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -342,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 5106212482643089881, guid: 504d39cc6e146c24db0f26bc62a639a6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5106212482643089881, guid: 504d39cc6e146c24db0f26bc62a639a6,
         type: 3}
@@ -408,6 +403,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212482643089882, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_Name
+      value: Journal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750535007259388724, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750535007259388724, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481617726615, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481617726615, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PrevButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481617726615, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481617726615, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481617726615, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481686312866, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106212481686312866, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027489316375865283, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027489316375865283, guid: 504d39cc6e146c24db0f26bc62a639a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PrevButtonPress
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 504d39cc6e146c24db0f26bc62a639a6, type: 3}
