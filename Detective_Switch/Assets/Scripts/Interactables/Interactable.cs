@@ -168,14 +168,12 @@ public class Interactable : MonoBehaviour
 
             if (hasKeyItem && item != null)
             {
-                hasKeyItem = false;
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             } 
             if(hasClue && clueKeyInt != null) {
 
                 if (tempJournal != null)
                 {
-                    hasClue = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
                     for (int i = 0; i < clueKeyInt.Length; i++)
                         tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt[i]));
@@ -185,7 +183,6 @@ public class Interactable : MonoBehaviour
 
                 if (tempJournal != null)
                 {
-                    hasNote = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
                     for (int i = 0; i < noteKeyInt.Length; i++)
                         tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt[i]));

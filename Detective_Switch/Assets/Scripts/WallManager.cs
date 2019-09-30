@@ -45,8 +45,8 @@ public class WallManager : MonoBehaviour
 
 
     // List of usable mats
-    [HideInInspector] public Material Mat2;
-    [HideInInspector] public Material Mat3;
+    public Material Mat2;
+    public Material Mat3;
 
 
     // Start is called before the first frame update
@@ -77,6 +77,8 @@ public class WallManager : MonoBehaviour
 
             if (WallType == 2)
             {
+                GetComponent<Renderer>().sharedMaterials[0] = Mat2;
+                GetComponent<Renderer>().sharedMaterials[1] = Mat3;
                 if (WallVariants == 1)
                 {
                     GetComponent<MeshFilter>().sharedMesh = WallOuter;
@@ -116,13 +118,15 @@ public class WallManager : MonoBehaviour
                     GetComponent<MeshFilter>().sharedMesh = WallOuter90Out;
                 }
             }
-
+            var cubeRenderer = GetComponent<Renderer>();
             if (HalfLength == true)
             {
 
                 if (WallType == 1)
                 {
+
                     GetComponent<MeshFilter>().sharedMesh = WallStandardHalf;
+                    
                 }
                 if (WallType == 2)
                 {
