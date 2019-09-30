@@ -120,8 +120,6 @@ public class CharacterMovement : MonoBehaviour
         oldPos = transform.position;
         GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);
 
-        Debug.Log(speedMove.magnitude);
-
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }
