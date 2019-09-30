@@ -94,15 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894e9b471fe64b549bfe534144056066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerSpeed: 8
+  maxPlayerSpeed: 2
   minDragToMove: 80
-  maxDragToMove: 150
+  maxDragToMove: 300
   maxPressTime: 0.15
-  minPlayerSpeed: 3
+  minPlayerSpeed: 0.1
   moveReactionTime: 0.3
   turnReactionTime: 3
   globalPlayerSpeed: 0
-  _invUpdater: {fileID: 0}
 --- !u!54 &3653083261744341170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -199,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581563717974355625, guid: 118edda99034fe146925416400477ee4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118edda99034fe146925416400477ee4, type: 3}
