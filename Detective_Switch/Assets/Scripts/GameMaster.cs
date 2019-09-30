@@ -17,6 +17,8 @@ public class GameMaster : MonoBehaviour
     public delegate void LocalizationDelegate();
     public event LocalizationDelegate localizationEvent;
 
+    private bool playerCanMove = true;
+
     public void Awake()
     {
         CreateGameMaster();
@@ -27,6 +29,16 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public bool GetPlayerCanMove()
+    {
+        return playerCanMove;
+    }
+
+    public void SetPlayerCanMove(bool canMove)
+    {
+        playerCanMove = canMove;
     }
 
     public void SetLocalization()

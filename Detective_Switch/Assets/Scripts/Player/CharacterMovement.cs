@@ -26,7 +26,10 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         //playerRB.AddForce();
-        HandleInput();
+        if (GameMaster.instance.GetPlayerCanMove())
+        {
+            HandleInput();
+        }
     }
 
     void HandleInput() {
