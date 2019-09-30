@@ -498,6 +498,24 @@ PrefabInstance:
     - {fileID: 3653083261744341174, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
     - {fileID: 3653083261744341175, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
+--- !u!4 &584969294 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828515159928846323, guid: 5d11b793a64845540951a46e373fa48d,
+    type: 3}
+  m_PrefabInstance: {fileID: 584969293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &584969295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8087450038138676649, guid: 5d11b793a64845540951a46e373fa48d,
+    type: 3}
+  m_PrefabInstance: {fileID: 584969293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &584969296 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1174647506988475012, guid: 5d11b793a64845540951a46e373fa48d,
+    type: 3}
+  m_PrefabInstance: {fileID: 584969293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &787734768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3653083261744341172, guid: 5d11b793a64845540951a46e373fa48d,
@@ -561,7 +579,12 @@ MonoBehaviour:
   globalPlayerSpeed: 0
   gizmoSphereSize: 0.2
   gizmoSphereSpacing: 50
-  acceleration: 0
+  root: {fileID: 584969296}
+  lFoot: {fileID: 584969295}
+  rFoot: {fileID: 584969294}
+  rootVel: {x: 0, y: 0, z: 0}
+  lFootVel: {x: 0, y: 0, z: 0}
+  rFootVel: {x: 0, y: 0, z: 0}
 --- !u!114 &787734772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +600,9 @@ MonoBehaviour:
   currentClip: {fileID: 0}
   currentFrame: 0
   currentAnimId: 0
+  queryRate: 0.1
+  comparisonThreshold: 50
+  isMMRunning: 0
 --- !u!95 &787734774
 Animator:
   serializedVersion: 3

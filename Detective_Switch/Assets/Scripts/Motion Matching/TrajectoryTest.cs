@@ -14,20 +14,20 @@ public class TrajectoryTest : MonoBehaviour
 
     // --- Public
     public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, moveReactionTime = 0.3f, turnReactionTime = 2.5f, globalPlayerSpeed;
-    public float gizmoSphereSize = 0.2f, gizmoSphereSpacing = 50;
+    public float gizmoSphereSize = 0.2f;
+    public Transform root, lFoot, rFoot;
+    [HideInInspector] public Vector3 rootVel, lFootVel, rFootVel;
 
     // --- Private
-    Vector3 direction;
+    private Vector3 rootPrePos, lFootPrePos, rFootPrePos;
+    private Vector3 direction;
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private Vector2 joyAnchor;
     private Vector3 oldPos;
     private bool canMove;
     private bool mouseDown;
-
-    public float acceleration;
-    float mass = 5;
-    float spring;
+    private Vector3 moveVector;
 
     private void Start()
     {
@@ -60,46 +60,49 @@ public class TrajectoryTest : MonoBehaviour
     private void FixedUpdate()
     {
         HandleInput();
+        UpdateJointVelocities();
+    }
+
+    private void UpdateJointVelocities()
+    {
+        rootVel = (root.position - rootPrePos) / Time.fixedDeltaTime;
+        lFootVel = (lFoot.position - lFootPrePos) / Time.fixedDeltaTime;
+        rFootVel = (rFoot.position - rFootPrePos) / Time.fixedDeltaTime;
+        rootPrePos = root.position;
+        lFootPrePos = lFoot.position;
+        rFootPrePos = rFoot.position;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + direction * 2 / direction.magnitude);
-        for (int i = 0; i < trajectoryPoints.Length; i++)
+        if (Application.isPlaying)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(trajectoryPoints[i].position, gizmoSphereSize);
-            Gizmos.DrawLine(trajectoryPoints[i].position, trajectoryPoints[i].position + trajectoryPoints[i].forward);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, transform.position + direction * 2 / direction.magnitude);
+            for (int i = 0; i < trajectoryPoints.Length; i++)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(trajectoryPoints[i].position, gizmoSphereSize);
+                Gizmos.DrawLine(trajectoryPoints[i].position, trajectoryPoints[i].position + trajectoryPoints[i].forward);
+            }
         }
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward*2);
     }
 
     TrajectoryPoint[] CalculateTrajectory(float timeStep)
     {
         TrajectoryPoint[] point = new TrajectoryPoint[trajectoryPoints.Length];
         InitArray(point);
-        Vector3 velAtPreviousPos = rb.velocity;
-        Vector3 velAtNextPos = rb.velocity;
         for (int i = 0; i < point.Length; i++)
         {
-            // add trajectory curve points to array based on velocity and acceleration DONE
-            // Acceleration = change in velocity over time (deltaVel /deltaTime)
-            // TODO: Approximate with explicit euler method (Completed - verify?)
-            // TODO: Handle reset when there is no player input (points north when last dir was south)
-
             if (i != 0)
             {
-                point[i].position = point[i-1].position + rb.velocity * (timeStep * i);
-                velAtNextPos += velAtNextPos * (timeStep * i); // timeStep e.g. 0.25f
-                point[i].forward = point[i].position + (velAtNextPos - velAtPreviousPos) / (timeStep * i); // pos + acceleration
-                velAtPreviousPos = velAtNextPos;
+                point[i].position = point[i - 1].position + Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.position + moveVector), timeStep * i ) * Vector3.forward;
+                point[i].forward = (point[i].position - point[i - 1].position).normalized;
             }
             else
             {
                 point[i].position = transform.position;
-                point[i].forward = point[i].position + rb.velocity;
+                point[i].forward = transform.forward;
             }
         }
         return point;
@@ -151,31 +154,33 @@ public class TrajectoryTest : MonoBehaviour
         }
     }
 
+
     Vector2 GetJoyDragVector(Vector2 anchor, Vector2 goal)
     {
         Vector2 rawJoy = goal - anchor;
-        Vector2 turnedJoyVector = new Vector2(0, 0)
-        {
-            x = rawJoy.x * Mathf.Cos(joyDisplacementAngle) - rawJoy.y * Mathf.Sin(joyDisplacementAngle),
-            y = rawJoy.x * Mathf.Sin(joyDisplacementAngle) + rawJoy.y * Mathf.Cos(joyDisplacementAngle)
-        };
-        turnedJoyVector = Vector2.ClampMagnitude(turnedJoyVector, maxDragToMove);
-        return turnedJoyVector;
+        rawJoy = Vector2.ClampMagnitude(rawJoy, maxDragToMove);
+        return rawJoy;
     }
 
     void MovePlayer(Vector3 moVector)
     {
-        direction = moVector;
+        moveVector = moVector;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.position + moVector), turnReactionTime * Time.deltaTime);
+
         Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
+
         if (speedMove.magnitude < minPlayerSpeed)
         {
             speedMove = speedMove.normalized * minPlayerSpeed;
         }
-        rb.velocity = Vector3.Lerp(rb.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rb.velocity), turnReactionTime * Time.deltaTime);
-        
+        speedMove.y = rb.velocity.y;
+
+        rb.velocity = speedMove;
+
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;
+
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }
