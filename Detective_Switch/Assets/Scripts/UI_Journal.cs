@@ -7,7 +7,8 @@ using System.IO;
 public class UI_Journal : MonoBehaviour
 {
     // Text content of the journal:
-    List<string> clueTexts, noteTexts;
+    [HideInInspector]
+    public List<string> clueTexts, noteTexts;
     [TextArea]
     public List<string> notesEN, cluesEN, notesDA, cluesDA;
     [TextArea]
