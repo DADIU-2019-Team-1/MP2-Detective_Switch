@@ -6,7 +6,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ID_Assigner : MonoBehaviour
 {
-    public bool assigned = false;
+    public bool assigned = true;
     int interactableAmount = 0;
 
     private void Update()
@@ -16,7 +16,7 @@ public class ID_Assigner : MonoBehaviour
             if (assigned == false)
             {
                 AssignIDsInteractables();
-                Debug.Log("This is working");
+                Debug.Log("Interactable IDs assigned");
             }
 
             if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)

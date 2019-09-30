@@ -57,17 +57,28 @@ public class InteractableEditor : Editor
         dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
         if (dis.hasItem) {
             dis.hasClue = GUILayout.Toggle(dis.hasClue, "Has Clue");
-            if(dis.hasClue) 
-                dis.clueKeyInt = EditorGUILayout.IntField("Clue Key: ", dis.clueKeyInt);
+            if (dis.hasClue)
+            {
+                dis.clueKeyAmount = EditorGUILayout.IntField("Key amount:", dis.clueKeyAmount);
+                for (int i = 0; i < dis.clueKeyInt.Length; i++)
+                {
+                    dis.clueKeyInt[i] = EditorGUILayout.IntField("Clue Key: ", dis.clueKeyInt[i]);
+                }
+            }   
             dis.hasNote = GUILayout.Toggle(dis.hasNote, "Has Note");
-            if(dis.hasNote) 
-                dis.noteKeyInt = EditorGUILayout.IntField("Note Key: ", dis.noteKeyInt);
+            if(dis.hasNote)
+            {
+                dis.noteKeyAmount = EditorGUILayout.IntField("Key amount:", dis.noteKeyAmount);
+                for (int i = 0; i < dis.noteKeyInt.Length; i++)
+                {
+                    dis.noteKeyInt[i] = EditorGUILayout.IntField("Note Key: ", dis.noteKeyInt[i]);
+                }
+            }
             dis.hasKeyItem = GUILayout.Toggle(dis.hasKeyItem, "Has KeyItem");
             if(dis.hasKeyItem) 
                 dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
         }
-
-            
+  
 
         DrawUILine();
 
@@ -96,6 +107,18 @@ public class InteractableEditor : Editor
 
         DrawUILine();
 
+        if (dis.clueKeyAmount != dis.clueKeyInt.Length)
+        {
+            Debug.Log("Clue Key Init");
+            dis.clueKeyInt = new int[dis.clueKeyAmount];
+        }
+
+        if (dis.noteKeyAmount != dis.noteKeyInt.Length)
+        {
+            Debug.Log("Note Key Init");
+            dis.noteKeyInt = new int[dis.noteKeyAmount];
+        }
+
         if (GUI.changed)
         {
             EditorUtility.SetDirty(dis);
@@ -117,5 +140,6 @@ public class InteractableEditor : Editor
         r.width += 6;
         EditorGUI.DrawRect(r, color);
     }
+
 }
 #endif

@@ -60,12 +60,16 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public bool hasClue;
     [HideInInspector]
-    public int clueKeyInt;
+    public int clueKeyAmount = 1;
+    [HideInInspector]
+    public int[] clueKeyInt;
 
     [HideInInspector]
     public bool hasNote;
     [HideInInspector]
-    public int noteKeyInt;
+    public int noteKeyAmount = 1;
+    [HideInInspector]
+    public int[] noteKeyInt;
 
     [HideInInspector]
     public bool hasKeyItem;
@@ -173,7 +177,8 @@ public class Interactable : MonoBehaviour
                 {
                     hasClue = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
-                    tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt));
+                    for (int i = 0; i < clueKeyInt.Length; i++)
+                        tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt[i]));
                 }
             }
             if(hasNote && noteKeyInt != null) {
@@ -182,7 +187,8 @@ public class Interactable : MonoBehaviour
                 {
                     hasNote = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
-                    tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt));
+                    for (int i = 0; i < noteKeyInt.Length; i++)
+                        tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt[i]));
                 }
             }
             
