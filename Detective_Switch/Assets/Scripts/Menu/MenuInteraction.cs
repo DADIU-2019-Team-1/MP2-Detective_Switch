@@ -10,10 +10,13 @@ public class MenuInteraction : MonoBehaviour
     public GameObject BlackLightObject;
     private int childIterator = 0;
     private InventoryUpdater _invUpdate;
+    private GameObject flashlightDay;
+    private GameObject flashlightNight;
     // Start is called before the first frame update
     void Start()
     {
         _invUpdate = GameMaster.instance.GetComponent<InventoryUpdater>();
+             
     }
 
     // Update is called once per frame
