@@ -8,10 +8,12 @@ public class UI_Journal : MonoBehaviour
 {
     // Text content of the journal:
     List<string> clueTexts, noteTexts;
-    List<string> notesEN, cluesEN, notesDA, cluesDA;
-    string caseEN = "", caseDA = "";
+    [TextArea]
+    public List<string> notesEN, cluesEN, notesDA, cluesDA;
+    [TextArea]
+    public string caseEN = "", caseDA = "";
 
-    public bool readCSV = true;
+    public bool readCSV = false;
     [Tooltip("Must contain the full path, filename and filetype!")]
     public string filePathCSV = "Assets/Resources/CSV/JournalData.csv";
     public string defaultNoteText = "You have no notes.";
@@ -35,7 +37,9 @@ public class UI_Journal : MonoBehaviour
         cluesEN = new List<string>();
 
         if (readCSV)
-            ReadJournalCSV();
+        {
+            // ReadJournalCSV();    // Not functional yet
+        }
     }
 
     private void Start()
@@ -132,7 +136,8 @@ public class UI_Journal : MonoBehaviour
 
     public void RemoveClueFromJournal(int index)
     {
-        clueTexts.RemoveAt(index);
+        if (clueTexts[index] != null)
+            clueTexts.RemoveAt(index);
     }
 
     public void RemoveClueFromJournal(string specificText)
