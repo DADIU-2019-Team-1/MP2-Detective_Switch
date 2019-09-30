@@ -2904,21 +2904,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.8681216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Center.x
-      value: -0.041769616
-      objectReference: {fileID: 0}
-    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 3.8647401
-      objectReference: {fileID: 0}
     - target: {fileID: 4865634885996901864, guid: db9203a560010344cbdf5a5cccf48777,
         type: 3}
       propertyPath: m_Mesh
@@ -2939,6 +2924,21 @@ PrefabInstance:
         type: 3}
       propertyPath: WallVariants
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.8681216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.041769616
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3.8647401
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9203a560010344cbdf5a5cccf48777, type: 3}
@@ -4596,11 +4596,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1899957433342290482}
     m_Modifications:
-    - target: {fileID: 922099330223855049, guid: 71335a49e4fedaf40acd715ad8a89384,
-        type: 3}
-      propertyPath: m_Name
-      value: WallLantern Variant (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4220063807206631386, guid: 71335a49e4fedaf40acd715ad8a89384,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4655,6 +4650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 922099330223855049, guid: 71335a49e4fedaf40acd715ad8a89384,
+        type: 3}
+      propertyPath: m_Name
+      value: WallLantern Variant (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1486554677916508979, guid: 71335a49e4fedaf40acd715ad8a89384,
         type: 3}
@@ -5137,11 +5137,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1899957433342290482}
     m_Modifications:
-    - target: {fileID: 922099330223855049, guid: 71335a49e4fedaf40acd715ad8a89384,
-        type: 3}
-      propertyPath: m_Name
-      value: WallLantern Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 4220063807206631386, guid: 71335a49e4fedaf40acd715ad8a89384,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5196,6 +5191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 922099330223855049, guid: 71335a49e4fedaf40acd715ad8a89384,
+        type: 3}
+      propertyPath: m_Name
+      value: WallLantern Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1486554677916508979, guid: 71335a49e4fedaf40acd715ad8a89384,
         type: 3}
