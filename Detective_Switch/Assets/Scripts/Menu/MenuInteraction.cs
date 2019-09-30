@@ -13,8 +13,7 @@ public class MenuInteraction : MonoBehaviour
     void Start()
     {
         _invUpdate = GameMaster.instance.GetComponent<InventoryUpdater>();
-/*             GameObject flashlightDay = GameMaster.instance.FindObjectFromParentName("FlashLightModel", "FlashLightSpotDay");
-            GameObject flashlightNight = GameMaster.instance.FindObjectFromParentName("FlashLightModel", "FlashLightSpotNight"); */
+             
     }
 
     // Update is called once per frame
@@ -82,20 +81,23 @@ public class MenuInteraction : MonoBehaviour
 
     public void FlashlightButton(Button flashLightButton) {
         Debug.Log(flashLightButton.name);
-        Transform flashLightSwitch = flashLightButton.transform.parent;
-        if(flashLightSwitch.GetChild(0).gameObject.activeInHierarchy) {
-            flashLightSwitch.GetChild(0).gameObject.SetActive(false);
-            flashLightSwitch.GetChild(1).gameObject.SetActive(true);
-
-/*             flashlightDay.SetActive(false);
-            flashlightNight.SetActive(true); */
+        //Transform flashLightSwitch = flashLightButton.transform.parent;
+        GameObject flashlightDay = GameMaster.instance.FindObjectFromParentName("FlashLightModel", "FlashLightSpotDay");
+        GameObject flashlightNight = GameMaster.instance.FindObjectFromParentName("FlashLightModel", "FlashLightSpotNight");
+        if(flashlightDay.activeInHierarchy) {
+            /* flashLightSwitch.GetChild(0).gameObject.SetActive(false);
+            flashLightSwitch.GetChild(1).gameObject.SetActive(true); */
+            Debug.Log(flashlightDay.name);
+            Debug.Log(flashlightNight.name);
+            flashlightDay.SetActive(false);
+            flashlightNight.SetActive(true); 
 
         }
         else {
-            flashLightSwitch.GetChild(0).gameObject.SetActive(true);
-            flashLightSwitch.GetChild(1).gameObject.SetActive(false);
-/*             flashlightDay.SetActive(true);
-            flashlightNight.SetActive(false); */
+            /* flashLightSwitch.GetChild(0).gameObject.SetActive(true);
+            flashLightSwitch.GetChild(1).gameObject.SetActive(false); */
+            flashlightDay.SetActive(true);
+            flashlightNight.SetActive(false); 
 
         }
     }
