@@ -11,12 +11,15 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 oldPos;
     private bool canMove;
     private bool mouseDown;
+
+    //private Quaternion lookAtPosition;
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
     // Start is called before the first frame update
     void Start()
     {
+        //lookAtPosition = Quaternion.LookRotation(transform.position + new Vector3(1000, 0, 0));
         playerRB = GetComponent<Rigidbody>();
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
         oldPos = transform.position;
@@ -29,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
         if (GameMaster.instance.GetPlayerCanMove())
         {
             HandleInput();
+            //transform.rotation = Quaternion.Lerp(transform.rotation, lookAtPosition, turnReactionTime * Time.deltaTime);
         }
     }
 
@@ -58,6 +62,9 @@ public class CharacterMovement : MonoBehaviour
                 if (!canMove || Time.time - timeAtTouchDown < maxPressTime)
                 {
                     MouseClick();
+                } else
+                {
+                    //lookAtPosition = transform.rotation;
                 }
             }
             mouseDown = false;
@@ -72,8 +79,11 @@ public class CharacterMovement : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Interactable");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-            hit.transform.gameObject.GetComponent<Interactable>().Interact();
-            //_invUpdater.AddItemToSlot();
+            Vector3 objectPosition = hit.transform.gameObject.GetComponent<Interactable>().Interact();
+            //lookAtPosition = Quaternion.LookRotation(objectPosition);
+        } else
+        {
+            //lookAtPosition = transform.rotation;
         }
     }
 
@@ -102,7 +112,7 @@ public class CharacterMovement : MonoBehaviour
         GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);*/
 
 
-
+        //lookAtPosition = Quaternion.LookRotation(transform.position + moVector);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.position + moVector), turnReactionTime * Time.deltaTime);
 
