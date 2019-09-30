@@ -38,7 +38,7 @@ public class SaveLoadSystem : MonoBehaviour
 
             List<InteractableObjectContainer> IntObjConList = new List<InteractableObjectContainer>();
 
-            string[] tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
+            string[] tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
 
             Debug.Log(tempDataString[0]);
                 // JsonUtility.FromJson(tempLoadString, InteractableObjectContainer);
@@ -85,7 +85,7 @@ public class SaveLoadSystem : MonoBehaviour
             tempIntObjCon.hasKeyItem = tempIntScript.hasKeyItem;
 
             IntObjConList.Add(tempIntObjCon);
-            tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(IntObjConList[i]);
+            tempSaveString = tempSaveString + JsonUtility.ToJson(IntObjConList[i]);
         }
         File.WriteAllText(saveLocation + "interactables.txt", tempSaveString);
 
