@@ -106,13 +106,13 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public string testLogText;
 
-    public Vector3 Interact()
+    public void Interact()
     {
-        Vector3 interactResponse = new Vector3(-1, -1, -1);
+        //Vector3 interactResponse = new Vector3(-1, -1, -1);
 
         if (isRotating)
         {
-            return interactResponse;
+            return;// interactResponse;
         }
 
         // reclickable
@@ -120,7 +120,7 @@ public class Interactable : MonoBehaviour
         {
             if (hasBeenClicked)
             {
-                return interactResponse;
+                return;// interactResponse;
             }
             hasBeenClicked = true;
         }
@@ -225,7 +225,7 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        return gameObject.transform.position;
+        //return gameObject.transform.position;
     }
 
     void Start()
