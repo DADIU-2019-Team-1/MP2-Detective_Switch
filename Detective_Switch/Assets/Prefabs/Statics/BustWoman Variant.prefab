@@ -25,30 +25,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iD: 0
   singleUse: 0
-  soundOnInteract: 0
-  playSound: 
+  hasBeenClicked: 0
+  soundOnInteract: 1
+  playSound: Play_Moving_Object_Interactive
   rotateOnInteract: 1
   rotateDegreesX: 0
   rotateDegreesY: 90
   rotateDegreesZ: 0
   rotateOverTime: 1
   rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
   toggleGameObject: 0
   toggleObject: {fileID: 0}
-  toggleAfterDelay: 0
-  toggleDelay: 0
+  toggleState: 0
   hasItem: 0
   hasClue: 0
-  clueKeyString: 
+  clueKeyInt: 0
   hasNote: 0
-  noteKeyString: 
+  noteKeyInt: 0
   hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 0
   switchBetweenAnimations: 0
   animationDefault: 
   animationAction: 
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   testLog: 0
   testLogText: 
 --- !u!1001 &1068486871995302333
