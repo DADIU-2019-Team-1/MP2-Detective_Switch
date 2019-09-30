@@ -32,10 +32,10 @@ MonoBehaviour:
   playSound: 
   rotateOnInteract: 0
   rotateDegreesX: 0
-  rotateDegreesY: 90
+  rotateDegreesY: 180
   rotateDegreesZ: 0
-  rotateOverTime: 0
-  rotationDuration: 0.5
+  rotateOverTime: 1
+  rotationDuration: 5
   isRotating: 0
   oldRotation: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0}
@@ -46,9 +46,11 @@ MonoBehaviour:
   toggleState: 0
   hasItem: 0
   hasClue: 0
-  clueKeyInt: 0
+  clueKeyAmount: 1
+  clueKeyInt: 00000000
   hasNote: 0
-  noteKeyInt: 0
+  noteKeyAmount: 1
+  noteKeyInt: 00000000
   hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 0
