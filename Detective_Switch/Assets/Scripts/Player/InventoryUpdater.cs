@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUpdater : MonoBehaviour
 {
-    public int maxSlots;
-    private List<GameObject> slot;
+    public int maxSlots, itemID;
+    public List<GameObject> slot;
     public List<GameObject> slotList;
+
+    public List<Item> keyItemList;
     public GameObject slotHolder;
     public int slotIterator, slotListIterator;
     
@@ -108,10 +111,16 @@ public class InventoryUpdater : MonoBehaviour
         } */  
     }
 
-    public void RemoveFromList() {
+    public void RemoveFromList(Button keyItemsButton) {
         // Get the ID of the item of the button pressed, and match it to the slot list.
         // Then remove the component, and access the i+1 to move all slots above the selected one down.
-        // 
+        Debug.Log("Entered removed");
+        // Debug.Log(slotList[slotIterator].name);
+        if(slot[0].activeInHierarchy /*canRemove a boolean that checks if item has been used correctly */)
+        Debug.Log("Entered Remove if statement" + slot[0].name /* + GetComponent<Slot>().name */ + itemID);
+        //slotList.RemoveAll(r => r.GetComponent<Slot>().id == itemID);
+        slot.Remove(keyItemsButton.gameObject/* .GetComponent<Slot>() */);
+        keyItemsButton.gameObject.SetActive(false);
     }
 
     public void AddSlotToInventory() {

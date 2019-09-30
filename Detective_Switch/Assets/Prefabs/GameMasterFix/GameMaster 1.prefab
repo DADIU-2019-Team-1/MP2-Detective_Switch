@@ -372,7 +372,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4346148480013065188}
   m_OnClick:
     m_PersistentCalls:
@@ -709,6 +709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213771195308153661}
   - component: {fileID: 8031554777376891609}
+  - component: {fileID: 1925711557630442558}
   m_Layer: 0
   m_Name: Sfx_Slider
   m_TagString: Untagged
@@ -790,6 +791,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1925711557630442558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869647801357919226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42ac3243fa9e4c4fb7a9dc0e8608202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menuslider_SFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  sfxSliderValue: 0
+  musicSliderValue: 0
+  sliderValue: 0
 --- !u!1 &1939931357362924636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1232,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6625359801076006896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2944844715854016880}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3154329369056332274}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &2083768392214684338
@@ -1894,7 +1936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6131990891793518418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2037,7 +2079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6936206959973101161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2168,7 +2210,7 @@ GameObject:
   - component: {fileID: 8081796203539142294}
   - component: {fileID: 2007309291284444421}
   m_Layer: 0
-  m_Name: GameMaster
+  m_Name: GameMaster 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,6 +2255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea25b7e7e7ab7a4981829882456685a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlashLightDay: {fileID: 0}
+  FlashLightNight: {fileID: 0}
+  BlackLightObject: {fileID: 0}
 --- !u!114 &8081796203539142294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,7 +2271,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlots: 0
+  itemID: 0
+  slot: []
   slotList: []
+  keyItemList: []
   slotHolder: {fileID: 4735084408936704076}
   slotIterator: 0
   slotListIterator: 0
@@ -3221,7 +3269,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7080416382885631912}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2944844715854016880}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8134451159429626777}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &5186834348215651520
@@ -5622,6 +5692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad2f3407ff87c74cbf56b54379df1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clueTexts: []
+  noteTexts: []
   notesEN: []
   cluesEN: []
   notesDA: []
@@ -7578,6 +7650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3915521666668894387}
   - component: {fileID: 591496708481230757}
+  - component: {fileID: 7443807962092438585}
   m_Layer: 0
   m_Name: Music_Slider
   m_TagString: Untagged
@@ -7659,6 +7732,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7443807962092438585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917077076231114003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42ac3243fa9e4c4fb7a9dc0e8608202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menuslider_SFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  sfxSliderValue: 0
+  musicSliderValue: 0
+  sliderValue: 0
 --- !u!1 &7934562697582143635
 GameObject:
   m_ObjectHideFlags: 0

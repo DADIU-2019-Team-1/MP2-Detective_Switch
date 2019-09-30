@@ -8,10 +8,13 @@ public class GameMaster : MonoBehaviour
     public static GameMaster instance;
 
     /// --- Public
+    
 
     /// --- Private
     private float moveSpeed;
     private bool localization = false; // "False == English, True == Danish"
+    private int musicLevel = 70;
+    private int sfxLevel = 70;
 
     /// --- Events
     public delegate void LocalizationDelegate();
@@ -95,5 +98,25 @@ public class GameMaster : MonoBehaviour
             }
         }
         return obj;
+    }
+
+        public int GetMusicLevel()
+    {
+        return musicLevel;
+    }
+
+    public void SetMusicLevel(int music_level)
+    {
+        musicLevel = music_level;
+    }
+
+    public int GetSFXLevel()
+    {
+        return sfxLevel;
+    }
+
+    public void SetSFXLevel(int sfx_level)
+    {
+        sfxLevel = sfx_level;
     }
 }
