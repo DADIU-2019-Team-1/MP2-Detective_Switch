@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &515408118944425989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146651764508159807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: 0
+  singleUse: 0
+  hasBeenClicked: 0
+  soundOnInteract: 0
+  playSound: 
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
+  toggleGameObject: 1
+  toggleObject: {fileID: 0}
+  toggleState: 0
+  hasItem: 1
+  hasClue: 0
+  clueKeyInt: 0
+  hasNote: 0
+  noteKeyInt: 0
+  hasKeyItem: 1
+  item: {fileID: 0}
+  hasAnimation: 0
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: 
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  testLog: 0
+  testLogText: 
 --- !u!1 &5703991549409876378
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +737,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: -1382025674330262095, guid: 91ed0072e3d2b25418620f121edf6642,
+        type: 3}
+      propertyPath: hasItem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1382025674330262095, guid: 91ed0072e3d2b25418620f121edf6642,
+        type: 3}
+      propertyPath: hasClue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1382025674330262095, guid: 91ed0072e3d2b25418620f121edf6642,
+        type: 3}
+      propertyPath: hasNote
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ed0072e3d2b25418620f121edf6642, type: 3}
@@ -1737,6 +1803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doll_K Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7306249851272958403, guid: dd11f5ed957a23c478e2ae15f149dd76,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5998331119902581712, guid: dd11f5ed957a23c478e2ae15f149dd76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1745,7 +1816,7 @@ PrefabInstance:
     - target: {fileID: 5998331119902581712, guid: dd11f5ed957a23c478e2ae15f149dd76,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.912
+      value: 0.948
       objectReference: {fileID: 0}
     - target: {fileID: 5998331119902581712, guid: dd11f5ed957a23c478e2ae15f149dd76,
         type: 3}
@@ -1797,6 +1868,12 @@ PrefabInstance:
 --- !u!4 &2157363598581275948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5998331119902581712, guid: dd11f5ed957a23c478e2ae15f149dd76,
+    type: 3}
+  m_PrefabInstance: {fileID: 5678516433638489852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3146651764508159807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7306249851272958403, guid: dd11f5ed957a23c478e2ae15f149dd76,
     type: 3}
   m_PrefabInstance: {fileID: 5678516433638489852}
   m_PrefabAsset: {fileID: 0}
@@ -2032,12 +2109,12 @@ PrefabInstance:
     - target: {fileID: 3714514031527694722, guid: 3a16a0f9851413c4d930d130a9eb789a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3714514031527694722, guid: 3a16a0f9851413c4d930d130a9eb789a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3714514031527694722, guid: 3a16a0f9851413c4d930d130a9eb789a,
         type: 3}
