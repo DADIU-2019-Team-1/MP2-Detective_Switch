@@ -6,6 +6,7 @@ using System.Globalization;
 
 public class SaveLoadSystem : MonoBehaviour
 {
+    private const string SAVE_SEPERATOR = "#SAVE-VALUE#";
     public bool newGame = true;
     public string saveLocation = "Assets/Resources/SaveFiles/";
 
@@ -24,13 +25,23 @@ public class SaveLoadSystem : MonoBehaviour
     private void Start()
     {
         // SaveGame();
+        // LoadGame();
     }
 
     public void LoadGame()
     {
+        string tempLoadString = "";
+
         if (File.Exists(saveLocation + "interactables.txt"))
         {
+            tempLoadString = File.ReadAllText(saveLocation + "interactables.txt");
 
+            List<InteractableObjectContainer> IntObjConList = new List<InteractableObjectContainer>();
+
+            string[] tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+
+            Debug.Log(tempDataString[0]);
+                // JsonUtility.FromJson(tempLoadString, InteractableObjectContainer);
         }
         
     }
