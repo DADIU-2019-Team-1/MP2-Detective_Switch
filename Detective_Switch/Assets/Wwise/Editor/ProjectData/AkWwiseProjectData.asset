@@ -240,7 +240,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586321073618773249
+    m_lastTime: -8586317772968162573
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586320208612181828
+    m_lastTime: -8586317657866281027
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -380,6 +380,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 5.703213
       minDuration: 2.313166
+    - name: Play_Fireplace
+      guid: d4cf93e6d78b164ea47184df2f8b4d8c
+      id: 1501216439
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_Fireplace
+        ObjectType: 3
+      Path: Default Work Unit\Play_Fireplace
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Footstep_Surface
       guid: c1afc499c9e1d34094cd7183899ace79
       id: 709824872
@@ -421,9 +433,21 @@ MonoBehaviour:
       - ElementName: Play_Grand_Clock_Ticking
         ObjectType: 3
       Path: Default Work Unit\Ambience\Amb_Emitters\Play_Grand_Clock_Ticking
-      maxAttenuation: 100
+      maxAttenuation: 20
       maxDuration: -1
       minDuration: -1
+    - name: Play_Inventory_Button
+      guid: a0ccc06d835e7f48ae308c1627a10a59
+      id: 990055725
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_Inventory_Button
+        ObjectType: 3
+      Path: Default Work Unit\Play_Inventory_Button
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Large_Cupboard_Open
       guid: b259652b0147e04199f90d4d094587f0
       id: 95859917
@@ -534,6 +558,22 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 13.060834
       minDuration: 10.972589
+    - name: Play_Painting_Falling
+      guid: c9d8c18ea5c56347ac4dcf65246b126c
+      id: 2362235562
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Paintings
+        ObjectType: 4
+      - ElementName: Play_Painting_Falling
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Paintings\Play_Painting_Falling
+      maxAttenuation: 0
+      maxDuration: 2.40246
+      minDuration: 1.971832
     - name: Play_Pillow_Move
       guid: 1eab7be3364507428e0ce0773e520127
       id: 2612059735
@@ -548,8 +588,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Sofa\Play_Pillow_Move
       maxAttenuation: 0
-      maxDuration: 2.211918
-      minDuration: 1.9401
+      maxDuration: 1.985261
+      minDuration: 1.741296
     - name: Play_Pull_Curtains
       guid: 9b1ada10403b8e4fa94d87e893c0559d
       id: 304507835
@@ -564,8 +604,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Curtains\Play_Pull_Curtains
       maxAttenuation: 0
-      maxDuration: 1.985973
-      minDuration: 1.490515
+      maxDuration: 1.70393
+      minDuration: 1.295156
     - name: Play_Scribble
       guid: 5d200f47963efd4a8af277e6d92630e0
       id: 806548754
@@ -652,6 +692,22 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_Writing_Desk_Open
+      guid: 935b08bbf07f384ebdda0fab394a0208
+      id: 2047012289
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Writing_Desk
+        ObjectType: 4
+      - ElementName: Play_Writing_Desk_Open
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Writing_Desk\Play_Writing_Desk_Open
+      maxAttenuation: 0
+      maxDuration: 1.997923
+      minDuration: 1.997923
     - name: Stop_Object_Move
       guid: bde79ee4cc6b2e468cab627a99aa69b6
       id: 3975567679
@@ -908,7 +964,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 42d5c85cd7a0d1498b228a183e381e0f
     GuidInternal: 
-    m_lastTime: -8586321067070657771
+    m_lastTime: -8586317709850451485
     List:
     - name: Progression
       guid: 871fc3fee973c244ac72e3519ecbc613
@@ -962,7 +1018,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8e6cf1579bc29c46988d61678cefe7ca
     GuidInternal: 
-    m_lastTime: -8586320334244763510
+    m_lastTime: -8586317706134374051
     List:
     - name: FS_Material
       guid: a010d6fceb027242ac44a731595e2d7f
@@ -1005,11 +1061,11 @@ MonoBehaviour:
         ObjectType: 11
       Path: Default Work Unit\Gameplay
       values:
-      - name: Bedroom
+      - name: After_Doll
         guid: ebf10ab518362e41a59a8051b6e84784
-        id: 3788924735
+        id: 672167899
         PathAndIcons:
-        - ElementName: Bedroom
+        - ElementName: After_Doll
           ObjectType: 10
       - name: Downstairs
         guid: e0120fa9e788ce439081b225bb0b7732
@@ -1036,65 +1092,41 @@ MonoBehaviour:
         ObjectType: 11
       Path: Default Work Unit\Progression
       values:
-      - name: Lvl_01
+      - name: Lvl_00
         guid: bad55dda2a772e429f94bb3633ab9597
+        id: 2147068364
+        PathAndIcons:
+        - ElementName: Lvl_00
+          ObjectType: 10
+      - name: Lvl_01
+        guid: bf9c3b0617a8724bbc04fd007517b9aa
         id: 2147068365
         PathAndIcons:
         - ElementName: Lvl_01
           ObjectType: 10
       - name: Lvl_02
-        guid: bf9c3b0617a8724bbc04fd007517b9aa
+        guid: 727c7fae3e4bed409260bbbe1d1203c6
         id: 2147068366
         PathAndIcons:
         - ElementName: Lvl_02
           ObjectType: 10
       - name: Lvl_03
-        guid: 727c7fae3e4bed409260bbbe1d1203c6
+        guid: 21c0b083850dfb4992394b10c013b8ec
         id: 2147068367
         PathAndIcons:
         - ElementName: Lvl_03
           ObjectType: 10
       - name: Lvl_04
-        guid: 21c0b083850dfb4992394b10c013b8ec
+        guid: 4295a252778cfd47b3f7821eeed876c9
         id: 2147068360
         PathAndIcons:
         - ElementName: Lvl_04
           ObjectType: 10
       - name: Lvl_05
-        guid: 4295a252778cfd47b3f7821eeed876c9
+        guid: 3bdaf0e5bbe9cb419943c1e96fff5c95
         id: 2147068361
         PathAndIcons:
         - ElementName: Lvl_05
-          ObjectType: 10
-      - name: Lvl_06
-        guid: 3bdaf0e5bbe9cb419943c1e96fff5c95
-        id: 2147068362
-        PathAndIcons:
-        - ElementName: Lvl_06
-          ObjectType: 10
-      - name: Lvl_07
-        guid: 8561be060d358843bc08660e2c66ee39
-        id: 2147068363
-        PathAndIcons:
-        - ElementName: Lvl_07
-          ObjectType: 10
-      - name: Lvl_08
-        guid: 80f8f06bc0e5844f894a8f4c452d5693
-        id: 2147068356
-        PathAndIcons:
-        - ElementName: Lvl_08
-          ObjectType: 10
-      - name: Lvl_09
-        guid: 2dc3510fa49b7946b4a9b4b1eb542003
-        id: 2147068357
-        PathAndIcons:
-        - ElementName: Lvl_09
-          ObjectType: 10
-      - name: Lvl_10
-        guid: 0fd3cf65d952a149a4fd866d4dd5b919
-        id: 2163846079
-        PathAndIcons:
-        - ElementName: Lvl_10
           ObjectType: 10
       ValueGuids: []
       ValueIcons: []
