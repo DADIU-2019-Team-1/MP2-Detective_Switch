@@ -33,9 +33,11 @@ MonoBehaviour:
   toggleState: 0
   hasItem: 1
   hasClue: 0
-  clueKeyInt: 0
+  clueKeyAmount: 1
+  clueKeyInt: 
   hasNote: 0
-  noteKeyInt: 0
+  noteKeyAmount: 1
+  noteKeyInt: 
   hasKeyItem: 1
   item: {fileID: 0}
   hasAnimation: 0
@@ -2457,6 +2459,21 @@ PrefabInstance:
         type: 3}
       propertyPath: WallVariants
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.9016142
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.041769616
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3.8479934
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9203a560010344cbdf5a5cccf48777, type: 3}

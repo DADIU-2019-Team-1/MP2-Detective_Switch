@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 395549241987041276}
   - component: {fileID: 3662898312304420178}
   - component: {fileID: 6806597438812583835}
+  - component: {fileID: 6310323552353443698}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -56,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -3620867243544224356, guid: 122fcb5ec0e21604aa1268a9e2ed7d1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +118,8 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 122fcb5ec0e21604aa1268a9e2ed7d1b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3620867243544224356, guid: 122fcb5ec0e21604aa1268a9e2ed7d1b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -183,9 +185,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6806597438812583835}
-    characterCount: 11
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 2
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -206,3 +208,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!65 &6310323552353443698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2722218930805880482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.484788, y: 1.9459317, z: 0.78}
+  m_Center: {x: -4.6201653, y: 0.47511652, z: 0}
