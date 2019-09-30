@@ -15,40 +15,104 @@ public class SaveLoadSystem : MonoBehaviour
         if (newGame)
         {
             PlayerPrefs.SetInt("previousGame", 1);
+
         }
         else if (PlayerPrefs.GetInt("previousGame") == 1)
         {
-            // Load previous game
+            // LoadGame(); YYY
         }
     }
 
     private void Start()
     {
-        // SaveGame();
-        // LoadGame();
+        SaveGame();
+        LoadGame();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveGame();
     }
 
     public void LoadGame()
     {
+        if (GameObject.FindGameObjectWithTag("Player") == null || GameObject.FindGameObjectsWithTag("interactable") == null || GameObject.FindGameObjectWithTag("Journal") == null)
+            return;
+
         string tempLoadString = "";
 
-        if (File.Exists(saveLocation + "interactables.txt"))
+        if (File.Exists(saveLocation + "interactables.txt") && File.Exists(saveLocation + "player.txt") && File.Exists(saveLocation + "activeJournal.txt"))
         {
             tempLoadString = File.ReadAllText(saveLocation + "interactables.txt");
 
+            //// Load interactables: ////
             List<InteractableObjectContainer> IntObjConList = new List<InteractableObjectContainer>();
-
+            GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
             string[] tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
 
-            Debug.Log(tempDataString[0]);
-                // JsonUtility.FromJson(tempLoadString, InteractableObjectContainer);
-        }
-        
+            for (int i = 1; i < tempDataString.Length; i++) // Start from 1
+            {
+                IntObjConList.Add(JsonUtility.FromJson<InteractableObjectContainer>(tempDataString[i]));               
+            }
+            // Debug.Log(IntObjConList[1].position + " " + IntObjConList[1].rotation + " " + IntObjConList[1].hasClue);
+
+            for (int i = 0; i < interactables.Length; i++)
+            {
+                Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
+                for (int j = 0; j < IntObjConList.Count; j++)
+                {
+                    if (tempIntScript.iD == IntObjConList[j].uniqueID)
+                    {
+                        interactables[i].transform.position = IntObjConList[j].position;
+                        interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
+                        tempIntScript.hasClue = IntObjConList[j].hasClue;
+                        tempIntScript.hasNote = IntObjConList[j].hasNote;
+                        tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
+                        tempIntScript.hasItem = IntObjConList[j].hasItem;
+                    }
+                }               
+            }
+
+            //// Load player pos and rot: ////
+            tempLoadString = File.ReadAllText(saveLocation + "player.txt");
+            tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.transform.position = JsonUtility.FromJson<Vector3>(tempDataString[0]);
+            player.transform.rotation = Quaternion.Euler(JsonUtility.FromJson<Vector3>(tempDataString[1]));
+
+            //// Load journal data: ////
+            tempLoadString = File.ReadAllText(saveLocation + "activeJournal.txt");
+            JournalContainer journalCon = new JournalContainer();
+            journalCon = JsonUtility.FromJson<JournalContainer>(tempLoadString);
+            if (GameObject.FindGameObjectWithTag("Journal") != null)
+            {
+                GameObject journal = GameObject.FindGameObjectWithTag("Journal");
+                if (journal.GetComponent<UI_Journal>() != null)
+                {
+                    UI_Journal journalScript = journal.GetComponent<UI_Journal>();
+                    journalScript.clueTexts = journalCon.activeClues;
+                    journalScript.noteTexts = journalCon.activeNotes;
+                }
+                else
+                {
+                    Debug.LogError("Load error: journal not found, or journal tag not on correct object!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Load error: journal not found, or journal tag not on correct object!");
+            }
+        }    
     }
 
     public bool GetNewGameBool()
     {
         return newGame;
+    }
+
+    public void SetNewGameBool(bool setTo)
+    {
+        newGame = setTo;
     }
 
     public void SaveGame()
@@ -76,6 +140,7 @@ public class SaveLoadSystem : MonoBehaviour
             InteractableObjectContainer tempIntObjCon = new InteractableObjectContainer();
             Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
 
+            tempIntObjCon.uniqueID = tempIntScript.iD;
             tempIntObjCon.position = interactables[i].transform.position;
             tempIntObjCon.rotation = interactables[i].transform.rotation.eulerAngles;
 
@@ -92,7 +157,7 @@ public class SaveLoadSystem : MonoBehaviour
         //// Save player position and rotation: ////
         tempSaveString = "";
 
-        tempSaveString = JsonUtility.ToJson(playerPos) + JsonUtility.ToJson(playerRot);
+        tempSaveString = JsonUtility.ToJson(playerPos) + SAVE_SEPERATOR + JsonUtility.ToJson(playerRot);
         File.WriteAllText(saveLocation + "player.txt", tempSaveString);
 
         //// Save journal data: ////
@@ -112,6 +177,8 @@ public class SaveLoadSystem : MonoBehaviour
 
 public class InteractableObjectContainer
 {
+    public int uniqueID;
+
     ////// Transform: //////
     public Vector3 position;
     public Vector3 rotation;
