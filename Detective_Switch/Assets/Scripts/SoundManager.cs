@@ -83,7 +83,6 @@ public class SoundManager : MonoBehaviour
         float scaledRoomSize = roomSize / largestRoomSize * 100.0f;
         scaledRoomSize = Mathf.Clamp(scaledRoomSize, 0, 100);
         roomSizeM2.SetGlobalValue(scaledRoomSize);
-        Debug.Log("Set roomsize to " + roomSize);
     }
 
     public void SetProgression(float level)
@@ -103,7 +102,6 @@ public class SoundManager : MonoBehaviour
 
         oldProgression = progression;
         progressionLevel.SetGlobalValue(progression);
-        Debug.Log("Set progression to " + progression);
     }
 
     private void SetMenuState()
