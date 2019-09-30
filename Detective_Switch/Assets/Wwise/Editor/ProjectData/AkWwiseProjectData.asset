@@ -184,7 +184,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 6f0215d87963454cb77c37e1cdd774dc
     GuidInternal: 
-    m_lastTime: -8586321005656147437
+    m_lastTime: -8586320219936597979
     List:
     - name: Non_World_Verb
       guid: aa0eb7215c869d44b38dbd9845ad2ce2
@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586321005656765388
+    m_lastTime: -8586320140901314446
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -318,6 +318,36 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_Case_File_Button
+      guid: b13cbdefa7551c428a31343d824c8ea5
+      id: 2410086214
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: UI
+        ObjectType: 4
+      - ElementName: Play_Case_File_Button
+        ObjectType: 3
+      Path: Default Work Unit\UI\Play_Case_File_Button
+      maxAttenuation: 0
+      maxDuration: 0.737392
+      minDuration: 0.61864
+    - name: Play_Clock_Door_Open
+      guid: 53ea86cfea5be04ea6ce5012ba1f09d8
+      id: 4011491198
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Grand_Clock
+        ObjectType: 4
+      - ElementName: Play_Clock_Door_Open
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Grand_Clock\Play_Clock_Door_Open
+      maxAttenuation: 0
+      maxDuration: 1.625729
+      minDuration: 1.556266
     - name: Play_Door_Open
       guid: 5162955dc1b77b49ac5534aab039fba0
       id: 1660008929
@@ -333,7 +363,7 @@ MonoBehaviour:
       Path: Default Work Unit\SFX\Door\Play_Door_Open
       maxAttenuation: 0
       maxDuration: 4.203213
-      minDuration: 1.304528
+      minDuration: 0.813166
     - name: Play_Door_Unlock_Open
       guid: e940ccbc7b88d44f809d25e4fc98b48d
       id: 2081382800
@@ -349,7 +379,7 @@ MonoBehaviour:
       Path: Default Work Unit\SFX\Door\Play_Door_Unlock_Open
       maxAttenuation: 0
       maxDuration: 5.703213
-      minDuration: 2.804528
+      minDuration: 2.313166
     - name: Play_Footstep_Surface
       guid: c1afc499c9e1d34094cd7183899ace79
       id: 709824872
@@ -394,6 +424,22 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: -1
       minDuration: -1
+    - name: Play_Large_Cupboard_Open
+      guid: b259652b0147e04199f90d4d094587f0
+      id: 95859917
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Cupboard
+        ObjectType: 4
+      - ElementName: Play_Large_Cupboard_Open
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Cupboard\Play_Large_Cupboard_Open
+      maxAttenuation: 0
+      maxDuration: 0.983243
+      minDuration: 0.983243
     - name: Play_Menu_Button
       guid: 72ce0b1666ddc74b8de3ae3cddec1054
       id: 1109058446
@@ -438,8 +484,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Drawers\Play_Open_Drawer_Big
       maxAttenuation: 0
-      maxDuration: 2.454493
-      minDuration: 1.596896
+      maxDuration: 1.748644
+      minDuration: 1.374027
     - name: Play_Open_Drawer_Small
       guid: 005ed5b303e397408160aa7d82fc434a
       id: 684873218
@@ -454,8 +500,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Drawers\Play_Open_Drawer_Small
       maxAttenuation: 0
-      maxDuration: 1.942514
-      minDuration: 1.320518
+      maxDuration: 2.08349
+      minDuration: 1.540323
     - name: Play_Open_J_Box
       guid: 307760567e456746a952070b184303a1
       id: 1559052575
@@ -470,8 +516,56 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Jewelry Box\Play_Open_J_Box
       maxAttenuation: 0
-      maxDuration: 0.671259
-      minDuration: 0.360694
+      maxDuration: 0.293652
+      minDuration: 0.232534
+    - name: Play_Page_Turn
+      guid: d9f5b4738a217d42a7c1b249ac727585
+      id: 786024383
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Diary
+        ObjectType: 4
+      - ElementName: Play_Page_Turn
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Diary\Play_Page_Turn
+      maxAttenuation: 0
+      maxDuration: 13.060834
+      minDuration: 10.972589
+    - name: Play_Pillow_Move
+      guid: 1eab7be3364507428e0ce0773e520127
+      id: 2612059735
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Sofa
+        ObjectType: 4
+      - ElementName: Play_Pillow_Move
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Sofa\Play_Pillow_Move
+      maxAttenuation: 0
+      maxDuration: 2.211918
+      minDuration: 1.9401
+    - name: Play_Pull_Curtains
+      guid: 9b1ada10403b8e4fa94d87e893c0559d
+      id: 304507835
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Curtains
+        ObjectType: 4
+      - ElementName: Play_Pull_Curtains
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Curtains\Play_Pull_Curtains
+      maxAttenuation: 0
+      maxDuration: 1.985973
+      minDuration: 1.490515
     - name: Play_Scribble
       guid: 5d200f47963efd4a8af277e6d92630e0
       id: 806548754
@@ -558,6 +652,22 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_Writing_Desk_Open
+      guid: 935b08bbf07f384ebdda0fab394a0208
+      id: 2047012289
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Writing_Desk
+        ObjectType: 4
+      - ElementName: Play_Writing_Desk_Open
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Writing_Desk\Play_Writing_Desk_Open
+      maxAttenuation: 0
+      maxDuration: 2.747923
+      minDuration: 2.747923
     - name: Stop_Object_Move
       guid: bde79ee4cc6b2e468cab627a99aa69b6
       id: 3975567679
@@ -1014,10 +1124,8 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /MG2_WwiseProject
-  - /MG2_WwiseProject/Events
-  - /MG2_WwiseProject/Events/Default Work Unit
-  - /MG2_WwiseProject/Events/Default Work Unit/Ambience
-  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Emitters
-  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
+  - /MG2_WwiseProject/States
+  - /MG2_WwiseProject/States/Default Work Unit
+  - /MG2_WwiseProject/States/Default Work Unit/GameState
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

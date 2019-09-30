@@ -14,8 +14,6 @@ public class CharacterMovement : MonoBehaviour
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
-    [SerializeField]
-    private InventoryUpdater _invUpdater;
     // Start is called before the first frame update
     void Start()
     {
