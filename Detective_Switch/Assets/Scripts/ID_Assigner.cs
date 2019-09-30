@@ -7,25 +7,33 @@ using UnityEngine;
 public class ID_Assigner : MonoBehaviour
 {
     public bool assigned = true;
-    int interactableAmount = 0;
 
-    private void Update()
+    private void Start()
     {
         if (GameObject.FindGameObjectsWithTag("interactable") != null)
         {
-            if (assigned == false)
-            {
-                AssignIDsInteractables();
-                // Debug.Log("Interactable IDs assigned");
-            }
+            AssignIDsInteractables();
+            Debug.Log("Interactable IDs assigned");
 
-            if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
-            {
-                assigned = false;
-            }
         }
-
     }
+    //private void Update()
+    //{
+    //    if (GameObject.FindGameObjectsWithTag("interactable") != null)
+    //    {
+    //        if (assigned == false)
+    //        {
+    //            AssignIDsInteractables();
+    //            Debug.Log("Interactable IDs assigned");
+    //        }
+
+    //        if (Input.GetKeyDown("q"))
+    //        {
+    //            assigned = false;
+    //        }
+    //    }
+
+    //}
 
     private void AssignIDsInteractables()
     {
@@ -42,7 +50,6 @@ public class ID_Assigner : MonoBehaviour
             tempIntScript.iD = i;
         }
 
-        interactableAmount = interactables.Length;
         assigned = true;
     }
 

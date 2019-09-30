@@ -31,7 +31,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        // SaveGame();
+        SaveGame();
     }
 
     public void LoadGame()
