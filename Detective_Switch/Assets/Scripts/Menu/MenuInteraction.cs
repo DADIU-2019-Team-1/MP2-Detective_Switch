@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour
 {
-    public GameObject FlashLightDay;
-    public GameObject FlashLightNight;
-    public GameObject BlackLightObject;
     private int childIterator = 0;
     private InventoryUpdater _invUpdate;
     private GameObject flashlightDay;
@@ -84,22 +81,24 @@ public class MenuInteraction : MonoBehaviour
 
     public void FlashlightButton(Button flashLightButton) {
         Debug.Log(flashLightButton.name);
-        Transform flashLightSwitch = flashLightButton.transform.parent;
-        if(flashLightSwitch.GetChild(0).gameObject.activeInHierarchy) {
-            flashLightSwitch.GetChild(0).gameObject.SetActive(false);
-            flashLightSwitch.GetChild(1).gameObject.SetActive(true);
+        //Transform flashLightSwitch = flashLightButton.transform.parent;
+        GameObject flashlightDay = GameMaster.instance.FindObjectFromParentName("FlashLightModel", "FlashLightSpotDay");
+        GameObject flashlightNight = GameMaster.instance.FindObjectFromParentName("FlashLightModel", "FlashLightSpotNight");
+        if(flashlightDay.activeInHierarchy) {
+            /* flashLightSwitch.GetChild(0).gameObject.SetActive(false);
+            flashLightSwitch.GetChild(1).gameObject.SetActive(true); */
+            Debug.Log(flashlightDay.name);
+            Debug.Log(flashlightNight.name);
+            flashlightDay.SetActive(false);
+            flashlightNight.SetActive(true); 
 
-            FlashLightDay.SetActive(true);
-            FlashLightNight.SetActive(false);
-            BlackLightObject.SetActive(false);
         }
         else {
-            flashLightSwitch.GetChild(0).gameObject.SetActive(true);
-            flashLightSwitch.GetChild(1).gameObject.SetActive(false);
+            /* flashLightSwitch.GetChild(0).gameObject.SetActive(true);
+            flashLightSwitch.GetChild(1).gameObject.SetActive(false); */
+            flashlightDay.SetActive(true);
+            flashlightNight.SetActive(false); 
 
-            FlashLightDay.SetActive(false);
-            FlashLightNight.SetActive(true);
-            BlackLightObject.SetActive(true);
         }
     }
 

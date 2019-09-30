@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &9007186118960003436
 Transform:
@@ -116,9 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iD: 0
   singleUse: 0
-  hasBeenClicked: 0
   soundOnInteract: 0
   playSound: 
   rotateOnInteract: 0
@@ -127,32 +125,21 @@ MonoBehaviour:
   rotateDegreesZ: 0
   rotateOverTime: 0
   rotationDuration: 0.5
-  isRotating: 0
-  oldRotation: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0}
-  rotationStartTime: 0
-  rotationEndTime: 0
   toggleGameObject: 1
   toggleObject: {fileID: 528770656965083434}
-  toggleState: 0
+  toggleAfterDelay: 0
+  toggleDelay: 0
   hasItem: 0
   hasClue: 0
-  clueKeyInt: 0
+  clueKeyString: 
   hasNote: 0
-  noteKeyInt: 0
+  noteKeyString: 
   hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 0
   switchBetweenAnimations: 0
   animationDefault: 
   animationAction: 
-  isTriggerOnKeyPress: 0
-  triggerKey: 
-  triggerEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   testLog: 0
   testLogText: 
 --- !u!1001 &782209079971931739
@@ -171,11 +158,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f4188eb2eaf49bb4db24abac73dc5007,
         type: 3}
