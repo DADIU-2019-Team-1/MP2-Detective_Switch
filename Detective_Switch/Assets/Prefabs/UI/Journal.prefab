@@ -197,7 +197,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4570563318732435183}
         m_MethodName: NextButtonPress
         m_Mode: 6
         m_Arguments:
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5106212482643089882}
+      - m_Target: {fileID: 5106212480890443195}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -358,7 +358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5106212480890443194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5106212481333543396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5106212482643089882}
+      - m_Target: {fileID: 5106212480890443195}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -1371,16 +1371,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 4570563318732435183}
+        m_MethodName: PrevButtonPress
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4570563318732435183}
         m_MethodName: NextButtonPress
         m_Mode: 6
         m_Arguments:
@@ -1930,15 +1930,15 @@ RectTransform:
   m_GameObject: {fileID: 5106212482091511697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21271937, y: 0.076792434, z: 0.19144739}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5106212482442843504}
-  m_RootOrder: 1
+  m_Father: {fileID: 8814721390743110699}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50.64, y: -45.331}
-  m_SizeDelta: {x: 375.74, y: 233.2}
+  m_AnchoredPosition: {x: 191.43, y: -1440.3}
+  m_SizeDelta: {x: 382.86, y: 2881.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5106212482091511702
 CanvasRenderer:
@@ -1981,7 +1981,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Case tab with some information on the case
+  m_Text: 
 --- !u!1 &5106212482134604380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,7 +2245,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5106212481333543396}
-  - {fileID: 5106212482091511696}
+  - {fileID: 8814721390743110699}
   m_Father: {fileID: 5106212481940091329}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2377,9 +2377,10 @@ GameObject:
   - component: {fileID: 5106212482643089881}
   - component: {fileID: 5106212482643089886}
   - component: {fileID: 5106212482643089880}
+  - component: {fileID: 4570563318732435183}
   m_Layer: 5
   m_Name: Journal
-  m_TagString: Untagged
+  m_TagString: Journal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2442,6 +2443,193 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4570563318732435183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5106212482643089882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad2f3407ff87c74cbf56b54379df1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notesEN: []
+  cluesEN: []
+  notesDA: []
+  cluesDA: []
+  caseEN: "Incident information:\r\nMadeleine Carter has been missing for 6 days.
+    She is the 6\x19th girl who\x19s gone missing in the past months. All with similar
+    appearance to Madeleine.\r\n\r\nDay/date/Time of incident: Monday, june 6, 1957\r\nLocation
+    of Incident: Road between Orchard Avenue and Hill Roads  \r\n                                                                                                                                                                                                                    Victim
+    information:\r\nName: Madeleine \x1CMaddy\x1D Carter\r\nAge: 7\r\nSex: Female\r\nVictim
+    type: Child \r\nDOB: 12/11/1950\r\nRace: Caucasian\r\nEye colour: Blue\r\nHair
+    colour: Black/Dark Brown\r\nOffenses of victim: Missing (Suspected kidnapping)\r\nWeapons
+    involved: Unknown\r\n                                                                                                                                                                                                                      Suspect
+    Information:\r\nName: Douglas Adler\r\nAge: 59\r\nSex: Male\r\nSuspect type: Adult\r\nDOB:
+    06/07/1898\r\nRace: Caucasian\r\nEye colour: Brown\r\nHair colour: Black and grey\r\nSuspect
+    location: Orchard Manor\r\nWeapons involved: Unknown\r\n                                                                                                                                                                                                               Witness
+    information:\r\nMadeliene Carter was last seen leaving her school, walking on
+    the roadside near the avenue leading to the Orchard Manor. She had been seen the
+    day before, with her parents, attending\r\nthe charity event for the children's
+    hospital, hosted by Douglas Adler, the lord of the Orchard Manor and a prominent
+    charity fundraiser, living outskirts from the community.\r\n\nDuring the event,
+    Madeleine was held in high regard by the elder man, and many witnesses say they
+    saw him crying when he saw her.\r"
+  caseDA: "Information om utilsigtet h\xE6ndelse:\r\nMadeleine Carter har v\xE6ret
+    forsvundet de sidste seks dage. Hun er den sjette pige der er forsvundet i de
+    sidste seks m\xE5neder. Alle med lignende udseende til Madeleine.\r\n\r\nDag/Dato/Tid
+    for h\xE6ndelse: Mandag, 6. Juni, 1957\r\nLokation for h\xE6ndelse: Landevejen
+    mellem Orchard Avenue og Hill Roads\r\n\r\nOffer Information:\r\nNavn: Madeleine
+    \u201CMaddy\u201D Carter\r\nAlder: 7\r\nK\xF8n: Kvinde\r\nOffer type: Barn\r\nF\xF8dselsdato:
+    12/11/1950\r\nRace: Kaukasisk \r\n\xD8jenfarve: Bl\xE5\r\nH\xE5r farve: Sort/M\xF8rke
+    brun\r\nOvertr\xE6delser af offer: forsvundet (mist\xE6nkt kidnapning)\r\nV\xE5ben
+    involveret: Ukendt\r\r\n\r\nMist\xE6nkte Information:\r\nNavn: Douglas Adler\r\nAlder:
+    59\r\nK\xF8n: Mand\r\nMist\xE6nkte type: Voksen \r\nF\xF8dselsdato: 06/07/1898\r\nRace:
+    Kaukasisk\r\n\xD8jenfarve: Brun\r\nH\xE5r farve: Sort og gr\xE5\r\nMist\xE6nkte
+    location: Orchard Manor\r\nV\xE5ben involveret: Ukendt\r\r\n\r\nVidne Information:\r\nMadeleine
+    Carter var sidst set forlade sin skole, g\xE5ende p\xE5 landevejen n\xE6r Orchard
+    Avenue, som leder op til Orchard Manor. Hun blev set dagen f\xF8r, med sine for\xE6ldre,
+    deltage i velg\xF8renheds begivenheden for b\xF8rnehospitalet, betalt for af Douglas
+    Adler, Herren af Orchard Manor og en fremtr\xE6dende velg\xF8renheds v\xE6rt,
+    som bor i udkanten af kommunen. \r\n\r\nMadeleine blev, under begivenheden, taget
+    meget godt imod af den \xE6ldre mand, og mange vidner siger de s\xE5 ham gr\xE6de
+    da han f\xF8rst s\xE5 hende.\r"
+  readCSV: 0
+  filePathCSV: Assets/Resources/CSV/JournalData.csv
+  defaultNoteText: You have no notes.
+  defaultClueText: You don't have any clues at the moment
+  clueTextObj: {fileID: 5106212482134603170}
+  clueCountObj: {fileID: 5106212481323082689}
+  noteTextObj: {fileID: 5106212480935598605}
+  noteCountObj: {fileID: 273426188537985322}
+  caseTextObj: {fileID: 5106212482091511703}
+  caseBtnTextObj: {fileID: 5106212481824069862}
+  clueBtnTextObj: {fileID: 5106212481206886739}
+  noteBtnTextObj: {fileID: 5106212482346831715}
+--- !u!1 &5852989514883038571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8814721390743110699}
+  - component: {fileID: 1663892772089968901}
+  - component: {fileID: 7341752467510544748}
+  - component: {fileID: 1317438153769605397}
+  - component: {fileID: 5993011954663844945}
+  m_Layer: 5
+  m_Name: CaseTextHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8814721390743110699
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852989514883038571}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.21271934, y: 0.076792434, z: 0.19144739}
+  m_Children:
+  - {fileID: 5106212482091511696}
+  m_Father: {fileID: 5106212482442843504}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50.48, y: -50.532}
+  m_SizeDelta: {x: 376.45, y: 360.492}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1663892772089968901
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852989514883038571}
+  m_CullTransparentMesh: 0
+--- !u!114 &7341752467510544748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852989514883038571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 5106212482091511696}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 11
+  m_Viewport: {fileID: 8814721390743110699}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1317438153769605397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852989514883038571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &5993011954663844945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852989514883038571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &7432868829972131672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,7 +2748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4570563318732435183}
         m_MethodName: PrevButtonPress
         m_Mode: 6
         m_Arguments:
