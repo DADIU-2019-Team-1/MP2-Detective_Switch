@@ -77,6 +77,8 @@ public class WallManager : MonoBehaviour
 
             if (WallType == 2)
             {
+                GetComponent<Renderer>().sharedMaterials[0] = Mat2;
+                GetComponent<Renderer>().sharedMaterials[1] = Mat3;
                 if (WallVariants == 1)
                 {
                     GetComponent<MeshFilter>().sharedMesh = WallOuter;
