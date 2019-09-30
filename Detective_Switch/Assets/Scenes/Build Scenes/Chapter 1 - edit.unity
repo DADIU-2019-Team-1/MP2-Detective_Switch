@@ -945,6 +945,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1829017670}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &395529857 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3653083261744341168, guid: 5d11b793a64845540951a46e373fa48d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1829017670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &396177921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5473409719966811922, guid: 466743a997ea8834abec8f695cde01c6,
@@ -3721,6 +3727,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 395529856}
+    - target: {fileID: 21971789, guid: 93317e53bcca4264096a8708de3d574e, type: 3}
+      propertyPath: volumeTrigger
+      value: 
+      objectReference: {fileID: 395529857}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93317e53bcca4264096a8708de3d574e, type: 3}
 --- !u!4 &1520266739 stripped
@@ -3735,6 +3745,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 893636492}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1551169258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1012460768983611718, guid: 93317e53bcca4264096a8708de3d574e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491982982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1551169259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551169258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_RendererOverrideOption: 1
+  m_RendererData: {fileID: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!4 &1555730333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3345780069168782811, guid: 3f9f878e4a0a56343a7d33d6c5be97b5,
@@ -4205,6 +4241,11 @@ PrefabInstance:
       propertyPath: BlackLightObject
       value: 
       objectReference: {fileID: 1030201092}
+    - target: {fileID: 5049073133236552140, guid: 15fe9d13bd033dd4fb3a91028e29362b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15fe9d13bd033dd4fb3a91028e29362b, type: 3}
 --- !u!4 &1860868568 stripped
