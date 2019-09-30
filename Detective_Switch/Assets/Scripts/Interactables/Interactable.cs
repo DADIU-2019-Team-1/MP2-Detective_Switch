@@ -51,6 +51,10 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public GameObject toggleObject;
     [HideInInspector]
+    public GameObject toggleObject2;
+    [HideInInspector]
+    public GameObject toggleObject3;
+    [HideInInspector]
     public bool toggleState;
 
     // item
@@ -159,6 +163,14 @@ public class Interactable : MonoBehaviour
             if (toggleObject != null)
             {
                 toggleObject.SetActive(!toggleObject.activeSelf);
+            }
+            if (toggleObject2 != null)
+            {
+                toggleObject2.SetActive(!toggleObject2.activeSelf);
+            }
+            if (toggleObject3 != null)
+            {
+                toggleObject3.SetActive(!toggleObject3.activeSelf);
             }
             toggleState = !toggleState;
         }
