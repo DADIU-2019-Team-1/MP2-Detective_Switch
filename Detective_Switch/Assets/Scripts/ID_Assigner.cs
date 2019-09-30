@@ -16,7 +16,7 @@ public class ID_Assigner : MonoBehaviour
             if (assigned == false)
             {
                 AssignIDsInteractables();
-                Debug.Log("Interactable IDs assigned");
+                // Debug.Log("Interactable IDs assigned");
             }
 
             if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)

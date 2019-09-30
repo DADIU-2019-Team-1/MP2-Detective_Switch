@@ -109,13 +109,11 @@ public class InteractableEditor : Editor
 
         if (dis.clueKeyAmount != dis.clueKeyInt.Length)
         {
-            Debug.Log("Clue Key Init");
             dis.clueKeyInt = new int[dis.clueKeyAmount];
         }
 
         if (dis.noteKeyAmount != dis.noteKeyInt.Length)
         {
-            Debug.Log("Note Key Init");
             dis.noteKeyInt = new int[dis.noteKeyAmount];
         }
 
