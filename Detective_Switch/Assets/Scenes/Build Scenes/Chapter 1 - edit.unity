@@ -468,6 +468,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f9f878e4a0a56343a7d33d6c5be97b5, type: 3}
+--- !u!1 &112523523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4804732729776953750, guid: faeebafd2bec0fe4db09239b8034f3bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5496687338832698118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &112523526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112523523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: 0
+  singleUse: 0
+  hasBeenClicked: 0
+  soundOnInteract: 0
+  playSound: 
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
+  toggleGameObject: 0
+  toggleObject: {fileID: 0}
+  toggleState: 0
+  hasItem: 1
+  hasClue: 1
+  clueKeyInt: 0
+  hasNote: 0
+  noteKeyInt: 0
+  hasKeyItem: 0
+  item: {fileID: 0}
+  hasAnimation: 0
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: 
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  testLog: 0
+  testLogText: 
 --- !u!1 &131208845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,6 +1936,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d66e0457c3c70e142bb714e7f595143d, type: 3}
+--- !u!1 &842773201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6371727948141425155, guid: 102082d68e6fadf4a86f285f217c538e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1088609823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &842773204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842773201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: 0
+  singleUse: 0
+  hasBeenClicked: 0
+  soundOnInteract: 0
+  playSound: 
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
+  toggleGameObject: 0
+  toggleObject: {fileID: 0}
+  toggleState: 0
+  hasItem: 1
+  hasClue: 0
+  clueKeyInt: 0
+  hasNote: 1
+  noteKeyInt: 13
+  hasKeyItem: 0
+  item: {fileID: 0}
+  hasAnimation: 0
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: 
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  testLog: 0
+  testLogText: 
 --- !u!1001 &863222892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2668,6 +2782,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Foyer 1st Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 4286721129376713431, guid: 102082d68e6fadf4a86f285f217c538e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1713067142468758279, guid: 102082d68e6fadf4a86f285f217c538e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2733,6 +2852,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 1777172823}
+    - target: {fileID: 1491777866665177024, guid: 102082d68e6fadf4a86f285f217c538e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491777866665177024, guid: 102082d68e6fadf4a86f285f217c538e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 102082d68e6fadf4a86f285f217c538e, type: 3}
 --- !u!1 &1088609824 stripped
@@ -2820,6 +2949,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.8681216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.041769616
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3.8647401
+      objectReference: {fileID: 0}
     - target: {fileID: 4865634885996901864, guid: db9203a560010344cbdf5a5cccf48777,
         type: 3}
       propertyPath: m_Mesh
@@ -2840,21 +2984,6 @@ PrefabInstance:
         type: 3}
       propertyPath: WallVariants
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.8681216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Center.x
-      value: -0.041769616
-      objectReference: {fileID: 0}
-    - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 3.8647401
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9203a560010344cbdf5a5cccf48777, type: 3}
@@ -3738,6 +3867,63 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 609583692474674929}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468924397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8052932257321036912, guid: 102082d68e6fadf4a86f285f217c538e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1088609823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1468924400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468924397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: 0
+  singleUse: 0
+  hasBeenClicked: 0
+  soundOnInteract: 0
+  playSound: 
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
+  toggleGameObject: 0
+  toggleObject: {fileID: 0}
+  toggleState: 0
+  hasItem: 1
+  hasClue: 0
+  clueKeyInt: 0
+  hasNote: 1
+  noteKeyInt: 14
+  hasKeyItem: 0
+  item: {fileID: 0}
+  hasAnimation: 0
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: 
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  testLog: 0
+  testLogText: 
 --- !u!4 &1486032641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5473409719966811922, guid: 466743a997ea8834abec8f695cde01c6,
@@ -4284,6 +4470,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3653083261744341169, guid: 5d11b793a64845540951a46e373fa48d,
+        type: 3}
+      propertyPath: maxPlayerSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1716712844794608334, guid: 5d11b793a64845540951a46e373fa48d,
         type: 3}
       propertyPath: m_Controller
@@ -4292,11 +4483,6 @@ PrefabInstance:
     - target: {fileID: 1419721610, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
       propertyPath: priority
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653083261744341169, guid: 5d11b793a64845540951a46e373fa48d,
-        type: 3}
-      propertyPath: maxPlayerSpeed
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d11b793a64845540951a46e373fa48d, type: 3}
@@ -4384,6 +4570,63 @@ PrefabInstance:
       objectReference: {fileID: 1030201092}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15fe9d13bd033dd4fb3a91028e29362b, type: 3}
+--- !u!1 &1846684178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3862073764168478331, guid: 1135b2d7b3da271489b048eb7297578d,
+    type: 3}
+  m_PrefabInstance: {fileID: 609583692474674929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1846684181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846684178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iD: 0
+  singleUse: 0
+  hasBeenClicked: 0
+  soundOnInteract: 0
+  playSound: 
+  rotateOnInteract: 0
+  rotateDegreesX: 0
+  rotateDegreesY: 90
+  rotateDegreesZ: 0
+  rotateOverTime: 0
+  rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
+  toggleGameObject: 0
+  toggleObject: {fileID: 0}
+  toggleState: 0
+  hasItem: 1
+  hasClue: 0
+  clueKeyInt: 0
+  hasNote: 0
+  noteKeyInt: 0
+  hasKeyItem: 1
+  item: {fileID: 0}
+  hasAnimation: 0
+  switchBetweenAnimations: 0
+  animationDefault: 
+  animationAction: 
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  testLog: 0
+  testLogText: 
 --- !u!4 &1860868568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6847826463433783279, guid: d66e0457c3c70e142bb714e7f595143d,
@@ -5018,16 +5261,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 19.95
       objectReference: {fileID: 0}
-    - target: {fileID: 2527848890872950699, guid: b86870907ec257446a8369a37ee5b380,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2527848890872950699, guid: b86870907ec257446a8369a37ee5b380,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 7781444621267695913, guid: b86870907ec257446a8369a37ee5b380,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5128,16 +5361,26 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 3.9307764
       objectReference: {fileID: 0}
-    - target: {fileID: 369659663642865712, guid: b86870907ec257446a8369a37ee5b380,
-        type: 3}
-      propertyPath: m_BoundingSphereOverride.x
-      value: 0.31640625
-      objectReference: {fileID: 0}
     - target: {fileID: 3497460449782493925, guid: b86870907ec257446a8369a37ee5b380,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e08630611eec14c4d9d26a4a3ecf5454, type: 2}
+    - target: {fileID: 2527848890872950699, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527848890872950699, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 369659663642865712, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0.31640625
+      objectReference: {fileID: 0}
     - target: {fileID: 3412942925766142301, guid: b86870907ec257446a8369a37ee5b380,
         type: 3}
       propertyPath: m_RootOrder
@@ -5312,6 +5555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dining Hall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633407644432534219, guid: faeebafd2bec0fe4db09239b8034f3bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8337209353069103350, guid: faeebafd2bec0fe4db09239b8034f3bc,
         type: 3}
