@@ -49,12 +49,6 @@ public class TrajectoryTest : MonoBehaviour
     private void Update()
     {
         trajectoryPoints = CalculateTrajectory((float)preProcessing.frameStepSize/100);
-        //Debug.Log("Rb velocity: " + rb.velocity);
-        //for (int i = 0; i < trajectoryPoints.Length; i++)
-        //{
-        //    Debug.Log("Trajectory point " + i + " pos: " + trajectoryPoints[i].position);
-        //    Debug.Log("Trajectory point " + i + " fw: " + trajectoryPoints[i].forward);
-        //}
     }
 
     private void FixedUpdate()
@@ -96,7 +90,10 @@ public class TrajectoryTest : MonoBehaviour
         {
             if (i != 0)
             {
-                point[i].position = point[i - 1].position + Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.position + moveVector), timeStep * i ) * Vector3.forward;
+                // Quaternion.LookRotation spams debug errors when input is vector3.zero, this removes that possibility
+                Quaternion lookRotation = transform.position + moveVector != Vector3.zero ? Quaternion.LookRotation(transform.position + moveVector) : Quaternion.identity;
+
+                point[i].position = point[i - 1].position + Quaternion.Slerp(transform.rotation, lookRotation, timeStep * i ) * Vector3.forward;
                 point[i].forward = (point[i].position - point[i - 1].position).normalized;
             }
             else

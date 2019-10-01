@@ -43,21 +43,19 @@ public class MMPreProcessing : MonoBehaviour
 
     private void Awake()
     {
-        clipNames = new List<string>();
-        clipFrames = new List<int>();
-        poses = new List<MMPose>();
-        trajectoryPoints = new List<TrajectoryPoint>();
-        rootPos = new List<Vector3>();
-        lFootPos = new List<Vector3>();
-        rFootPos = new List<Vector3>();
-        rootQ = new List<Quaternion>();
+        InitCollections();
         CSVReaderWriter csvHandler = new CSVReaderWriter();
         if (preprocess)
         {
-            int uniqueIDIterator = 0;
-
             foreach (AnimationClip clip in clips)
             {
+                // Initialize lists again to avoid reusing previous data
+                clipNames = new List<string>();
+                clipFrames = new List<int>();
+                rootPos = new List<Vector3>();
+                lFootPos = new List<Vector3>();
+                rFootPos = new List<Vector3>();
+                rootQ = new List<Quaternion>();
                 for (int i = 0; i < clip.length * clip.frameRate; i++)
                 {
                     clipNames.Add(clip.name);
@@ -93,54 +91,55 @@ public class MMPreProcessing : MonoBehaviour
                             CalculateVelocityFromVectors(rFootPos[i], new Vector3(0, 0, 0)),
                             rootQ[i]));
                     }
-                    // Add trajectory to list
                     trajectoryPoints.Add(new TrajectoryPoint(rootPos[i], rootQ[i] * Vector3.forward));
-
-                    uniqueIDIterator++;
                 }
             }
-
             csvHandler.WriteCSV(poses, trajectoryPoints);
         }
-        else
+
+        InitCollections();
+        csvHandler.ReadCSV();
+        for (int i = 0; i < csvHandler.GetClipNames().Count; i++)
         {
-            csvHandler.ReadCSV();
-            for (int i = 0; i < csvHandler.GetClipNames().Count; i++)
+            clipNames.Add(csvHandler.GetClipNames()[i]);
+            clipFrames.Add(csvHandler.GetFrames()[i]);
+
+            // Read pose data and store it in a list of poses
+            poses.Add(new MMPose(csvHandler.GetClipNames()[i], csvHandler.GetFrames()[i],
+                csvHandler.GetRootPos()[i], csvHandler.GetLeftFootPos()[i], csvHandler.GetRightFootPos()[i],
+                csvHandler.GetRootVel()[i], csvHandler.GetLeftFootVel()[i], csvHandler.GetRightFootVel()[i]));
+
+            // To add the trajectory data, first compute the trajectory points for each frame
+            TrajectoryPoint[] tempPoints = new TrajectoryPoint[trajectoryPointsToUse];
+            if (i + (frameStepSize * trajectoryPointsToUse) < csvHandler.GetClipNames().Count && // Avoid out-of-bounds error
+                csvHandler.GetClipNames()[i] == csvHandler.GetClipNames()[i + (frameStepSize * trajectoryPointsToUse)]) // Make sure frames belong to the same clip
             {
-                clipNames.Add(csvHandler.GetClipNames()[i]);
-                clipFrames.Add(csvHandler.GetFrames()[i]);
-
-                // Read pose data and store it in a list of poses
-                poses.Add(new MMPose(csvHandler.GetClipNames()[i], csvHandler.GetFrames()[i],
-                    csvHandler.GetRootPos()[i], csvHandler.GetLeftFootPos()[i], csvHandler.GetRightFootPos()[i],
-                    csvHandler.GetRootVel()[i], csvHandler.GetLeftFootVel()[i], csvHandler.GetRightFootVel()[i], csvHandler.GetRootQ()[i]));
-
-                // To add the trajectory data, first compute the trajectory points for each frame
-                TrajectoryPoint[] tempPoints = new TrajectoryPoint[trajectoryPointsToUse];
-                if (i + (frameStepSize * trajectoryPointsToUse) < csvHandler.GetClipNames().Count) // Avoid out-of-bounds error
+                for (int point = 0; point < tempPoints.Length; point++)
                 {
-                    if (csvHandler.GetClipNames()[i] == csvHandler.GetClipNames()[i + (frameStepSize * trajectoryPointsToUse)])
-                    {
-                        for (int point = 0; point < tempPoints.Length; point++)
-                        {
-                            tempPoints[point] = new TrajectoryPoint(csvHandler.GetTrajectoryPos()[i + (point / (trajectoryPointsToUse * 25 / frameStepSize) * 100)],
-                                csvHandler.GetTrajectoryForwards()[i + (point / trajectoryPointsToUse * 100)]);
-                        }
-                    }
-                    else
-                    {
-                        for (int j = 0; j < trajectoryPointsToUse; j++)
-                            tempPoints[j] = new TrajectoryPoint();
-                    }
-                }
-                else
-                {
-                    for (int j = 0; j < trajectoryPointsToUse; j++)
-                        tempPoints[j] = new TrajectoryPoint();
+                    tempPoints[point] = new TrajectoryPoint(csvHandler.GetTrajectoryPos()[i + (point * frameStepSize)],
+                        csvHandler.GetTrajectoryForwards()[i + (point * frameStepSize)]);
                 }
                 trajectories.Add(new Trajectory(csvHandler.GetClipNames()[i], csvHandler.GetFrames()[i], i, tempPoints));
             }
+            else
+            {
+                for (int j = 0; j < trajectoryPointsToUse; j++)
+                    tempPoints[j] = new TrajectoryPoint();
+                trajectories.Add(new Trajectory(tempPoints));
+            }
         }
+    }
+
+    private void InitCollections()
+    {
+        poses = new List<MMPose>();
+        trajectoryPoints = new List<TrajectoryPoint>();
+        clipNames = new List<string>();
+        clipFrames = new List<int>();
+        rootPos = new List<Vector3>();
+        lFootPos = new List<Vector3>();
+        rFootPos = new List<Vector3>();
+        rootQ = new List<Quaternion>();
     }
 
     public List<Trajectory> GetTrajectories()
@@ -150,15 +149,14 @@ public class MMPreProcessing : MonoBehaviour
 
     public Vector3 GetJointPositionAtFrame(AnimationClip clip, int frame, string jointName)
     {
-        /// Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        AnimationCurve curve = new AnimationCurve();
+        // Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
         float[] vectorValues = new float[3];
         int arrayEnumerator = 0;
         foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
         {
             if (binding.propertyName.Contains(jointName))
             {
-                curve = AnimationUtility.GetEditorCurve(clip, binding);
+                var curve = AnimationUtility.GetEditorCurve(clip, binding);
                 vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
                 arrayEnumerator++;
             }

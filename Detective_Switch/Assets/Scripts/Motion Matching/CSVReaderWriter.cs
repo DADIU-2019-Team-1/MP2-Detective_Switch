@@ -80,7 +80,7 @@ public class CSVReaderWriter // : MonoBehaviour
                     dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
 
                 /// Populate the quaternion, position and timestamp arrays/lists:
-                QuaternionCreator(dataValues);
+                //QuaternionCreator(dataValues); // We no longer store Quaternions
                 PositionCreator(dataValues);
                 FloatIntCreator(dataValues);
 
@@ -96,43 +96,43 @@ public class CSVReaderWriter // : MonoBehaviour
         {
             if (labels[i].Contains("FootLeftT.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 // Debug.Log(data[i] + " " + data[i + 1] + " " + data[i + 2]);  // For debugging (very performance heavy)
                 leftFootPositions.Add(tempPosition);
             }
             else if (labels[i].Contains("FootRightT.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 rightFootPositions.Add(tempPosition);
             }
             else if (labels[i].Contains("RootT.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 rootPositions.Add(tempPosition);
             }
             else if (labels[i].Contains("RootV.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 rootVelocity.Add(tempPosition);
             }
             else if (labels[i].Contains("FootLeftV.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 leftFootVelocity.Add(tempPosition);
             }
             else if (labels[i].Contains("FootRightV.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 rightFootVelocity.Add(tempPosition);
             }
             else if (labels[i].Contains("TrajPos.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 trajPositions.Add(tempPosition);
             }
             else if (labels[i].Contains("TrajForward.x"))
             {
-                Vector3 tempPosition = new Vector3(data[i], data[i + 1], data[i + 2]);
+                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
                 trajForwards.Add(tempPosition);
             }
         }
@@ -179,11 +179,18 @@ public class CSVReaderWriter // : MonoBehaviour
 
             using (var file = File.CreateText(CSVWritePath))
             {
-                labels = new string[30] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","FootLeftT.x","FootLeftT.y","FootLeftT.z",
-                "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftV.x","FootLeftV.y", "FootLeftV.z","FootRightV.x","FootRightV.y",
-                "FootRightV.z","RootV.x","RootV.x","RootV.x","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
-                    "TrajPos.x","TrajPos.y","TrajPos.z","TrajForward.x","TrajForward.y","TrajForward.z"};
-
+	            labels = new string[18]
+	            {
+		            "ClipName", "Frame",
+		            "RootT.x", "RootT.z",
+		            "FootLeftT.x", "FootLeftT.z",
+		            "FootRightT.x", "FootRightT.z",
+		            "FootLeftV.x", "FootLeftV.z",
+		            "FootRightV.x", "FootRightV.z",
+		            "RootV.x", "RootV.z",
+		            "TrajPos.x", "TrajPos.z",
+		            "TrajForward.x", "TrajForward.z"
+	            };
                 file.WriteLine(string.Join(",", labels));
 
                 string spec;
@@ -194,59 +201,15 @@ public class CSVReaderWriter // : MonoBehaviour
 
                 for (int i = 0; i < poseData.Count; i++)
                 {
-                    string[] tempLine = new string[30] {poseData[i].clipName, poseData[i].frame.ToString(),
-                        poseData[i].rootPos.x.ToString(spec, cul),  poseData[i].rootPos.y.ToString(spec, cul),  poseData[i].rootPos.z.ToString(spec, cul),
-                        poseData[i].lFootPos.x.ToString(spec, cul), poseData[i].lFootPos.y.ToString(spec, cul), poseData[i].lFootPos.z.ToString(spec, cul),
-                        poseData[i].rFootPos.x.ToString(spec, cul), poseData[i].rFootPos.y.ToString(spec, cul), poseData[i].rFootPos.z.ToString(spec, cul),
-                        poseData[i].rootVel.x.ToString(spec, cul),  poseData[i].rootVel.y.ToString(spec, cul),  poseData[i].rootVel.z.ToString(spec, cul),
-                        poseData[i].lFootVel.x.ToString(spec, cul), poseData[i].lFootVel.y.ToString(spec, cul), poseData[i].lFootVel.z.ToString(spec, cul),
-                        poseData[i].rFootVel.x.ToString(spec, cul), poseData[i].rFootVel.y.ToString(spec, cul), poseData[i].rFootVel.z.ToString(spec, cul),
-                        poseData[i].rootQ.x.ToString(spec, cul),    poseData[i].rootQ.y.ToString(spec, cul),   poseData[i].rootQ.z.ToString(spec, cul), poseData[i].rootQ.w.ToString(spec, cul),
-                        trajectoryData[i].position.x.ToString(spec, cul), trajectoryData[i].position.y.ToString(spec, cul),trajectoryData[i].position.z.ToString(spec, cul),
-                        trajectoryData[i].forward.x.ToString(spec, cul), trajectoryData[i].forward.y.ToString(spec, cul),trajectoryData[i].forward.z.ToString(spec, cul),};
-
-                    file.WriteLine(string.Join(",", tempLine));
-                }
-            }
-        }
-    }
-
-    public void WriteCSV(List<string> _clipName, List<int> _frame, List<Vector3> _rootPos, List<Quaternion> _rootRot, List<Vector3> _footLeft, List<Vector3> _footRight, List<Vector3> _footLeftVel, List<Vector3> _footRightVel, List<Vector3> _rootVel)
-    {
-        if (CSVWritePath == null || CSVFileName == null)
-        {
-            Debug.LogError("CSV Reader/Writer Error: CSV write path or file name empty!");
-        }
-        else if (_frame.Count <= 0 || _frame == null)
-        {
-            Debug.LogError("CSV Reader/Writer Error: attempt to write CSV file using empty lists!");
-        }
-        else
-        {
-            // CSVFileName = CSVFileName + ".csv";
-            // CSVWritePath = CSVWritePath + "/" + CSVFileName;
-            Debug.Log("CSV Reader/Writer: writing lists to CSV file " + CSVFileName);
-
-            using (var file = File.CreateText(CSVWritePath))
-            {
-                labels = new string[24] {"ClipName", "Frame", "RootT.x","RootT.y","RootT.z","RootQ.x","RootQ.y","RootQ.z","RootQ.w",
-                "FootLeftT.x","FootLeftT.y","FootLeftT.z", "FootRightT.x","FootRightT.y","FootRightT.z","FootLeftV.x","FootLeftV.y",
-                "FootLeftV.z","FootRightV.x","FootRightV.y","FootRightV.z","rootV.x","rootV.x","rootV.x"};
-
-                file.WriteLine(string.Join(",", labels));
-
-                string spec;
-                CultureInfo cul;
-
-                spec = "G";
-                cul = CultureInfo.CreateSpecificCulture("en-US");
-
-                for (int i = 0; i < _frame.Count; i++)
-                {
-                    string[] tempLine = new string[24] {_clipName[i], _frame[i].ToString(), _rootPos[i].x.ToString(spec, cul), _rootPos[i].y.ToString(spec, cul), _rootPos[i].z.ToString(spec, cul), _rootRot[i].x.ToString(spec, cul),
-                    _rootRot[i].y.ToString(spec, cul), _rootRot[i].z.ToString(spec, cul), _rootRot[i].w.ToString(spec, cul), _footLeft[i].x.ToString(spec, cul), _footLeft[i].y.ToString(spec, cul), _footLeft[i].z.ToString(spec, cul),
-                    _footRight[i].x.ToString(spec, cul), _footRight[i].y.ToString(spec, cul), _footRight[i].z.ToString(spec, cul), _footLeftVel[i].x.ToString(spec, cul), _footLeftVel[i].y.ToString(spec, cul), _footLeftVel[i].z.ToString(spec, cul),
-                    _footRightVel[i].x.ToString(spec, cul), _footRightVel[i].y.ToString(spec, cul), _footRightVel[i].z.ToString(spec, cul), _rootVel[i].x.ToString(spec, cul), _rootVel[i].y.ToString(spec, cul), _rootVel[i].z.ToString(spec, cul)};
+                    string[] tempLine = new string[18] {poseData[i].clipName, poseData[i].frame.ToString(),
+                        poseData[i].rootPos.x.ToString(spec, cul),poseData[i].rootPos.z.ToString(spec, cul),
+                        poseData[i].lFootPos.x.ToString(spec, cul),poseData[i].lFootPos.z.ToString(spec, cul),
+                        poseData[i].rFootPos.x.ToString(spec, cul),poseData[i].rFootPos.z.ToString(spec, cul),
+                        poseData[i].rootVel.x.ToString(spec, cul), poseData[i].rootVel.z.ToString(spec, cul),
+                        poseData[i].lFootVel.x.ToString(spec, cul), poseData[i].lFootVel.z.ToString(spec, cul),
+                        poseData[i].rFootVel.x.ToString(spec, cul), poseData[i].rFootVel.z.ToString(spec, cul),
+                        trajectoryData[i].position.x.ToString(spec, cul), trajectoryData[i].position.z.ToString(spec, cul),
+                        trajectoryData[i].forward.x.ToString(spec, cul), trajectoryData[i].forward.z.ToString(spec, cul),};
 
                     file.WriteLine(string.Join(",", tempLine));
                 }
@@ -268,42 +231,6 @@ public class CSVReaderWriter // : MonoBehaviour
         trajPositions = new List<Vector3>();
         trajForwards = new List<Vector3>();
 
-    }
-
-
-    private void CalculateColoumns(int _amountColumns, int _amountVectors, int _amountQuaternions)
-    {
-        int tempColAmount;
-        tempColAmount = (_amountColumns + (_amountVectors * 3) + (_amountQuaternions * 4)) - (_amountQuaternions + _amountVectors);
-        Debug.Log(tempColAmount);
-    }
-
-    public void IndexHelper(int index)
-    {
-        if (index > -1 && index < labels.Length)
-        {
-            Debug.Log("CSV index " + index + " is the " + labels[index]);
-        }
-        else
-        {
-            Debug.LogError("CSV Reader/Writer Error: index helper out of bounds!");
-        }
-    }
-
-    public void IndexHelper(string all)
-    {
-        if (all == "all")
-        {
-            for (int i = 0; 0 < labels.Length; i++)
-            {
-                Debug.Log("CSV index " + i + " is the " + labels[i]);
-            }
-
-        }
-        else
-        {
-            Debug.Log("CSV Reader/Writer Notice: Index helper can only take specific index numbers or 'all' if you want to see all joints");
-        }
     }
 
     public string GetCSVReadPath()

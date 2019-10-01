@@ -33,6 +33,14 @@ public class Trajectory
     {
         return trajectoryId;
     }
+    public string GetClipName()
+    {
+        return clipName;
+    }
+    public int GetFrame()
+    {
+        return clipFrames;
+    }
 
     public float CompareTrajectoryPoints(Trajectory trajToCompare)
     {
@@ -40,7 +48,6 @@ public class Trajectory
         for (int i = 0; i < points.Length; i++)
         {
             distance += Vector3.Distance(points[i].position, trajToCompare.points[i].position);
-            //distance += Vector3.Angle(points[i].forward, trajToCompare.points[i].forward);
         }
         return distance;
     }

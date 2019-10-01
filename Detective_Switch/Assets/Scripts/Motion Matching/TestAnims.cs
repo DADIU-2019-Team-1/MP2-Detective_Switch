@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEditor.Animations;
-using UnityEngine.UIElements;
 
-public class MM : MonoBehaviour
+public class TestAnims : MonoBehaviour
 {
     /* Main script for handling Motion Matching.
      * Load the feature list from the preprocessor,
@@ -23,10 +22,8 @@ public class MM : MonoBehaviour
     // --- References
     private MMPreProcessing preprocess;
     private TrajectoryTest movement;
-    private Trajectory trajectory;
     private List<Trajectory> animTrajectories;
     private Trajectory movementTrajectory;
-    private MMPose pose;
     private Animator animator;
 
     // --- Public variables
@@ -65,61 +62,7 @@ public class MM : MonoBehaviour
         currentClip = allClips[0];
         currentFrame = 0;
         currentAnimId = 0;
-        PlayAnimationAtFrame(currentClip.name, currentFrame / currentClip.frameRate, 0);
-
-        // TODO: Make coroutines for starting mm, idle, and walking, as well as stopping mm
-        StartCoroutine(StartMM());
-    }
-
-    List<Trajectory> TrajectoryMatching(Trajectory movement, float threshold)
-    {
-	    List<Trajectory> trajectoryCandidates = new List<Trajectory>();
-		// Transform animation trajectories to character space
-		//for (int i = 0; i < animTrajectories.Count; i++)
-		//{
-	 //       TrajectoryPoint[] tempPoints = new TrajectoryPoint[preprocess.trajectoryPointsToUse];
-	 //       for (int j = 0; j < tempPoints.Length; j++)
-	 //       {
-		//        tempPoints[j] = new TrajectoryPoint(); // Initialize
-	 //       }
-  //          for (int j = 0; j < preprocess.trajectoryPointsToUse; j++)
-	 //       {
-		//		tempPoints[j].position = transform.worldToLocalMatrix.MultiplyPoint3x4(animTrajectories[i].GetTrajectoryPoints()[j].position);
-		//		tempPoints[j].forward = transform.worldToLocalMatrix.MultiplyVector(animTrajectories[i].GetTrajectoryPoints()[j].forward);
-  //          }
-  //          trajectoryCandidates.Add(new Trajectory(animTrajectories[i].GetClipName(), animTrajectories[i].GetFrame(), animTrajectories[i].GetTrajectoryId(), tempPoints));
-  //      }
-        for (int i = 0; i < trajectoryCandidates.Count; i++)
-        {
-            if (trajectoryCandidates[i].GetTrajectoryId() >= 0 && trajectoryCandidates[i].GetTrajectoryId() != currentAnimId)
-            {
-                if (trajectoryCandidates[i].CompareTrajectoryPoints(movement) +
-                    trajectoryCandidates[i].CompareTrajectoryForwards(movement) < threshold)
-                {
-                    trajectoryCandidates.Add(trajectoryCandidates[i]);
-                }
-            }
-        }
-        return trajectoryCandidates;
-    }
-
-    private int PoseMatching(List<Trajectory> candidates)
-    {
-        float poseDistance = float.MaxValue;
-        int newId = currentAnimId;
-        foreach (var candidate in candidates)
-        {
-            float candidateDistance = preprocess.poses[candidate.GetTrajectoryId()].ComparePose(new MMPose(
-                movement.root.position, movement.lFoot.position, movement.rFoot.position,
-                movement.rootVel, movement.lFootVel, movement.rFootVel));
-            if (candidateDistance < poseDistance)
-            {
-                poseDistance = candidateDistance;
-                newId = candidate.GetTrajectoryId();
-            }
-        }
-
-        return newId;
+        PlayAnimationAtFrame(currentClip.name, currentFrame / currentClip.frameRate, currentAnimId);
     }
 
     void PlayAnimationAtFrame(string animName, float normalizedTime, int animId)
@@ -137,7 +80,6 @@ public class MM : MonoBehaviour
                 Debug.Log("Current clip has changed from " + currentClip.name + " to " + allClips[i].name); // Keep
                 currentClip = allClips[i];
                 currentFrame = (int)(time * currentClip.frameRate);
-                currentAnimId = clipId;
                 return;
             }
         }
@@ -156,9 +98,9 @@ public class MM : MonoBehaviour
         }
     }
 
-    private void CandidatesToCull() 
+    private void CandidatesToCull()
     {
-        
+
     }
 
     private IEnumerator StartMM()
@@ -167,11 +109,6 @@ public class MM : MonoBehaviour
         isMMRunning = true;
         while (true)
         {
-            if (movement.rootVel.Equals(Vector3.zero))
-                StartCoroutine(StartIdle());
-            movementTrajectory = new Trajectory(movement.GetMovementTrajectoryPoints());
-            candidates = TrajectoryMatching(movementTrajectory, comparisonThreshold);
-            candidateId = PoseMatching(candidates);
             PlayAnimationAtFrame(preprocess.poses[candidateId].GetClipName(), (float)preprocess.poses[candidateId].GetFrame() / 1 / 30, candidateId);
             yield return new WaitForSeconds(queryRate);
         }
@@ -184,7 +121,7 @@ public class MM : MonoBehaviour
     private IEnumerator StartIdle()
     {
         Debug.Log("Idling");
-        PlayAnimationAtFrame(preprocess.poses[0].GetClipName(), (float) preprocess.poses[0].GetFrame() / 1 / 30, 0);
+        PlayAnimationAtFrame(preprocess.poses[currentAnimId].GetClipName(), (float)preprocess.poses[currentAnimId].GetFrame() / 1 / 30, 0);
         yield return new WaitForSeconds(1);
     }
     private IEnumerator StartMovement()
