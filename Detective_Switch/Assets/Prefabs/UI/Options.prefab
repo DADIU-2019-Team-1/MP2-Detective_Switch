@@ -977,7 +977,8 @@ MonoBehaviour:
   Menuslider_SFX:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 6f31138101241a04db9f06006c2f9b5a,
+      type: 2}
   sfxSliderValue: 0
   musicSliderValue: 0
   sliderValue: 0
@@ -1352,7 +1353,7 @@ GameObject:
   - component: {fileID: 4294581764542786931}
   - component: {fileID: 48763087189305215}
   m_Layer: 0
-  m_Name: Sfx_Slider
+  m_Name: SFX_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1448,8 @@ MonoBehaviour:
   Menuslider_SFX:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 3cb27d208c1d24b41b440c69cda78021,
+      type: 2}
   sfxSliderValue: 0
   musicSliderValue: 0
   sliderValue: 0
@@ -1821,8 +1823,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233, y: 507}
-  m_SizeDelta: {x: 140, y: 50}
+  m_AnchoredPosition: {x: -232.4, y: 507}
+  m_SizeDelta: {x: 173.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1185688338010020864
 CanvasRenderer:
@@ -1974,8 +1976,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 216, y: 507}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 220, y: 508.5}
+  m_SizeDelta: {x: 208.93, y: 48.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3030821147165044000
 CanvasRenderer:

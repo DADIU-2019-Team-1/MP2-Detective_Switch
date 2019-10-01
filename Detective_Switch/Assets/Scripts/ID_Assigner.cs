@@ -6,36 +6,37 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ID_Assigner : MonoBehaviour
 {
-    public bool assigned = true;
+    public bool notAssigned = false;
+    // private int interactableAmount;
 
-    private void Start()
+    private void Awake()
     {
-        if (assigned != false)
-        {
-            if (GameObject.FindGameObjectsWithTag("interactable") != null)
-            {
-                AssignIDsInteractables();
-                Debug.Log("Interactable IDs assigned");
-
-            }
-        }
+        AssignIDsInteractables();           
     }
+
+
     //private void Update()
     //{
-    //    if (GameObject.FindGameObjectsWithTag("interactable") != null)
+    //    if (Application.isEditor)
     //    {
-    //        if (assigned == false)
+    //        if (GameObject.FindGameObjectsWithTag("interactable") != null)
     //        {
-    //            AssignIDsInteractables();
-    //            Debug.Log("Interactable IDs assigned");
-    //        }
 
-    //        if (Input.GetKeyDown("q"))
-    //        {
-    //            assigned = false;
+    //            if (notAssigned == true)
+    //            {
+    //                AssignIDsInteractables();
+    //                // interactableAmount = GameObject.FindGameObjectsWithTag("interactable").Length;
+    //                // PlayerPrefs.SetInt("interactAmount", interactableAmount);
+    //                Debug.Log("Interactable IDs assigned" + " " + PlayerPrefs.GetInt("interactAmount"));
+    //            }
+
+    //            //if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
+    //            //{
+    //            //    notAssigned = true;
+    //            //    interactableAmount = PlayerPrefs.GetInt("interactAmount");
+    //            //}
     //        }
     //    }
-
     //}
 
     private void AssignIDsInteractables()
@@ -47,13 +48,13 @@ public class ID_Assigner : MonoBehaviour
 
         for (int i = 0; i < interactables.Length; i++)
         {
-            InteractableObjectContainer tempIntObjCon = new InteractableObjectContainer();
             Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
 
             tempIntScript.iD = i;
         }
 
-        assigned = true;
+        Debug.Log("Interactable IDs assigned");
+        notAssigned = false;
     }
 
 }

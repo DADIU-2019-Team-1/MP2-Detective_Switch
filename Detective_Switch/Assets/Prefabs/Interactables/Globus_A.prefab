@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!135 &1190723701862549994
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220286230643812217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5096829
+  m_Center: {x: 0, y: 0.62122273, z: 0}
 --- !u!114 &-7274528092171600446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +55,10 @@ MonoBehaviour:
   noteKeyInt: 
   hasKeyItem: 0
   item: {fileID: 0}
-  hasAnimation: 0
+  hasAnimation: 1
   switchBetweenAnimations: 0
   animationDefault: 
-  animationAction: 
+  animationAction: Take 001
   isTriggerOnKeyPress: 0
   triggerKey: 
   triggerEvent:
@@ -136,6 +149,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Globus_A
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 70a7ecff198cf9248887ec3916c8def8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431380202361306219, guid: 70a7ecff198cf9248887ec3916c8def8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121063750183690423, guid: 70a7ecff198cf9248887ec3916c8def8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 70a7ecff198cf9248887ec3916c8def8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,6 +233,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 70a7ecff198cf9248887ec3916c8def8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a2a3ebeccc108ef499eee7c80f9905ef, type: 2}
+    - target: {fileID: -4167638988912162621, guid: 70a7ecff198cf9248887ec3916c8def8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a7ecff198cf9248887ec3916c8def8, type: 3}
