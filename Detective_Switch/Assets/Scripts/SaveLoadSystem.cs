@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Globalization;
+using UnityEngine.UI;
 
 public class SaveLoadSystem : MonoBehaviour
 {
@@ -10,31 +10,43 @@ public class SaveLoadSystem : MonoBehaviour
     public bool newGame = true;
     public string saveLocation = "Assets/Resources/SaveFiles/";
 
-    private void Awake()
-    {
-        if (newGame)
-        {
-            PlayerPrefs.SetInt("previousGame", 1);
-
-        }
-        else if (PlayerPrefs.GetInt("previousGame") == 1)
-        {
-            // LoadGame(); YYY
-        }
-    }
-
     private void Start()
     {
-        // SaveGame();
-        // LoadGame();
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("l"))
+        {
+            SaveGame();
+            Debug.Log("Saved Game!");
+        }
     }
 
     private void OnApplicationQuit()
     {
-        // SaveGame();
+        SaveGame();
     }
 
-    public void LoadGame()
+    public void NewGame()
+    {
+        PlayerPrefs.SetInt("previousGame", 1);
+    }
+
+    public void ContinueGame()
+    {
+        if (PlayerPrefs.GetInt("previousGame") == 1)
+        {
+            LoadGame();
+        }
+        else
+        {
+            Debug.Log("LoadGame: No previous games to load");
+        }
+    }
+
+    private void LoadGame()
     {
         if (GameObject.FindGameObjectWithTag("Player") == null || GameObject.FindGameObjectsWithTag("interactable") == null || GameObject.FindGameObjectWithTag("Journal") == null)
             return;
@@ -63,19 +75,21 @@ public class SaveLoadSystem : MonoBehaviour
                 {
                     if (tempIntScript.iD == IntObjConList[j].uniqueID)
                     {
-                        interactables[i].transform.position = IntObjConList[j].position;
+                        // interactables[i].transform.position = IntObjConList[j].position;
                         interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
                         tempIntScript.hasClue = IntObjConList[j].hasClue;
                         tempIntScript.hasNote = IntObjConList[j].hasNote;
                         tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
                         tempIntScript.hasItem = IntObjConList[j].hasItem;
+                        tempIntScript.toggleState = IntObjConList[j].toggleState;
+                        tempIntScript.hasBeenClicked = IntObjConList[j].hasBeenClicked;
                     }
                 }               
             }
 
             //// Load player pos and rot: ////
             tempLoadString = File.ReadAllText(saveLocation + "player.txt");
-            tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+            tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.transform.position = JsonUtility.FromJson<Vector3>(tempDataString[0]);
             player.transform.rotation = Quaternion.Euler(JsonUtility.FromJson<Vector3>(tempDataString[1]));
@@ -107,27 +121,23 @@ public class SaveLoadSystem : MonoBehaviour
             tempLoadString = File.ReadAllText(saveLocation + "keyItems.txt");
             List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
             GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
-            tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+            tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
 
             for (int i = 1; i < tempDataString.Length; i++) // Start from 1
             {
                 tempKeyItemSlotContList.Add(JsonUtility.FromJson<KeyItemSlotContainer>(tempDataString[i]));
             }
 
-            for (int i = 0; i < interactables.Length; i++)
+            for (int i = 0; i < tempKeyItemSlotContList.Count; i++)
             {
                 Slot tempSlotScript = keyItemSlots[i].GetComponent<Slot>();
-                /*
-                if (tempSlotScript == false)
-                {
-                    interactables[i].transform.position = IntObjConList[j].position;
-                    interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
-                    tempIntScript.hasClue = IntObjConList[j].hasClue;
-                    tempIntScript.hasNote = IntObjConList[j].hasNote;
-                    tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
-                    tempIntScript.hasItem = IntObjConList[j].hasItem;
-                } */
 
+                keyItemSlots[i].GetComponent<Image>().sprite = tempKeyItemSlotContList[i].sourceImage;
+                tempSlotScript.item = tempKeyItemSlotContList[i].item;
+                tempSlotScript.id = tempKeyItemSlotContList[i].id;
+                tempSlotScript.text = tempKeyItemSlotContList[i].text;
+                tempSlotScript.empty = tempKeyItemSlotContList[i].empty;
+                tempSlotScript.icon = tempKeyItemSlotContList[i].icon;
             }
 
         }
@@ -185,8 +195,10 @@ public class SaveLoadSystem : MonoBehaviour
             tempIntObjCon.hasClue = tempIntScript.hasClue;
             tempIntObjCon.hasNote = tempIntScript.hasNote;
             tempIntObjCon.hasKeyItem = tempIntScript.hasKeyItem;
+            tempIntObjCon.toggleState = tempIntScript.toggleState;
+            tempIntObjCon.hasBeenClicked = tempIntScript.hasBeenClicked;
 
-            IntObjConList.Add(tempIntObjCon);
+    IntObjConList.Add(tempIntObjCon);
             tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(IntObjConList[i]);
         }
         File.WriteAllText(saveLocation + "interactables.txt", tempSaveString);
@@ -221,6 +233,7 @@ public class SaveLoadSystem : MonoBehaviour
 
             if (tempSlotScript.empty == false)
             {
+                tempIntObjCon.sourceImage = keyItemSlots[i].GetComponent<Image>().sprite;
                 tempIntObjCon.item = tempSlotScript.item;
                 tempIntObjCon.id = tempSlotScript.id;
                 tempIntObjCon.text = tempSlotScript.text;
@@ -249,6 +262,8 @@ public class InteractableObjectContainer
     public bool hasClue;
     public bool hasNote;
     public bool hasKeyItem;
+    public bool toggleState;
+    public bool hasBeenClicked;
 }
 
 public class JournalContainer
@@ -259,6 +274,7 @@ public class JournalContainer
 
 public class KeyItemSlotContainer
 {
+    public Sprite sourceImage;
     public GameObject item;
     public int id;
     public string text;

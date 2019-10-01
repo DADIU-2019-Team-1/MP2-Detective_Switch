@@ -17,8 +17,8 @@ public class UI_Journal : MonoBehaviour
     public bool readCSV = false;
     [Tooltip("Must contain the full path, filename and filetype!")]
     public string filePathCSV = "Assets/Resources/CSV/JournalData.csv";
-    public string defaultNoteText = "You have no notes.";
-    public string defaultClueText = "You don't have any clues at the moment.";
+    string defaultNoteText = "You have no notes.";
+    string defaultClueText = "You don't have any clues at the moment.";
     private string defaultCount = "0/0";
     private int currentClueIndex = 0;
     private int currentNoteIndex = 0;
@@ -32,14 +32,10 @@ public class UI_Journal : MonoBehaviour
     {
         clueTexts = new List<string>();
         noteTexts = new List<string>();
-        //notesDA = new List<string>();
-        //cluesDA = new List<string>();
-        //notesEN = new List<string>();
-        //cluesEN = new List<string>();
 
         if (readCSV)
         {
-            // ReadJournalCSV();    // Not functional yet
+            // ReadJournalCSV();    // Not functional
         }
     }
 
@@ -159,11 +155,15 @@ public class UI_Journal : MonoBehaviour
         {
             caseTextObj.text = caseEN;
             caseBtnTextObj.text = "Case"; clueBtnTextObj.text = "Clues"; noteBtnTextObj.text = "Notes";
+            defaultNoteText = "You have no notes.";
+            defaultClueText = "You don't have any clues at the moment.";
         }
         else
         {
             caseTextObj.text = caseDA;
             caseBtnTextObj.text = "Sag"; clueBtnTextObj.text = "Spor"; noteBtnTextObj.text = "Noter";
+            defaultNoteText = "Du har ingen noter.";
+            defaultClueText = "Du har ingen spor lige nu.";
         }
     }
 
