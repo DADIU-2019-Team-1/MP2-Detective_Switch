@@ -14,6 +14,11 @@ public class InGame_Menu_Button_SFX : MonoBehaviour
         AkSoundEngine.PostEvent("Play_Menu_Button", gameObject);
     }
 
+    public void Inventory_Button_SFX()
+    {
+        AkSoundEngine.PostEvent("Play_Inventory_Button", gameObject);
+    }
+
     public void Blacklight_ON()
     {
         AkSoundEngine.PostEvent("Play_Blacklight_On", gameObject);
