@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586316869932131629
+    m_lastTime: -8586316823408297781
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -346,8 +346,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Grand_Clock\Play_Clock_Door_Open
       maxAttenuation: 0
-      maxDuration: 1.425729
-      minDuration: 1.356266
+      maxDuration: 1.625729
+      minDuration: 1.556266
     - name: Play_Door_Open
       guid: 5162955dc1b77b49ac5534aab039fba0
       id: 1660008929
@@ -433,7 +433,7 @@ MonoBehaviour:
       - ElementName: Play_Grand_Clock_Ticking
         ObjectType: 3
       Path: Default Work Unit\Ambience\Amb_Emitters\Play_Grand_Clock_Ticking
-      maxAttenuation: 20
+      maxAttenuation: 30
       maxDuration: -1
       minDuration: -1
     - name: Play_Inventory_Button
@@ -448,8 +448,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI\Play_Inventory_Button
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.611577
+      minDuration: 0.611577
     - name: Play_Large_Cupboard_Open
       guid: b259652b0147e04199f90d4d094587f0
       id: 95859917
@@ -464,8 +464,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Cupboard\Play_Large_Cupboard_Open
       maxAttenuation: 0
-      maxDuration: 1.283243
-      minDuration: 1.283243
+      maxDuration: 0.983243
+      minDuration: 0.983243
     - name: Play_Menu_Button
       guid: 72ce0b1666ddc74b8de3ae3cddec1054
       id: 1109058446
@@ -510,8 +510,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Drawers\Play_Open_Drawer_Big
       maxAttenuation: 0
-      maxDuration: 1.848644
-      minDuration: 1.474027
+      maxDuration: 1.748644
+      minDuration: 1.374027
     - name: Play_Open_Drawer_Small
       guid: 005ed5b303e397408160aa7d82fc434a
       id: 684873218
@@ -526,8 +526,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Drawers\Play_Open_Drawer_Small
       maxAttenuation: 0
-      maxDuration: 1.291745
-      minDuration: 1.061141
+      maxDuration: 2.08349
+      minDuration: 1.540323
     - name: Play_Open_J_Box
       guid: 307760567e456746a952070b184303a1
       id: 1559052575
@@ -1142,11 +1142,47 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /MG2_WwiseProject
+  - /MG2_WwiseProject/Auxiliary Busses
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit/Master Audio Bus
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit/Master Audio Bus/SoundFX
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit/Master Audio Bus/SoundFX/Non-World
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit/Master Audio Bus/SoundFX/World
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit/Master Audio Bus/SoundFX/World/Ambiences
+  - /MG2_WwiseProject/Auxiliary Busses/Default Work Unit/Master Audio Bus/SoundFX/World/Ambiences/Amb_Emitters
   - /MG2_WwiseProject/Events
   - /MG2_WwiseProject/Events/Default Work Unit
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Emitters
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Emitters/Lamps
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
+  - /MG2_WwiseProject/Events/Default Work Unit/Music
+  - /MG2_WwiseProject/Events/Default Work Unit/Player
   - /MG2_WwiseProject/Events/Default Work Unit/SFX
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Cupboard
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Curtains
   - /MG2_WwiseProject/Events/Default Work Unit/SFX/Diary
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Door
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Drawers
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Grand_Clock
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Jewelry Box
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Move_Objects
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Paintings
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Sofa
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Writing_Desk
+  - /MG2_WwiseProject/Events/Default Work Unit/UI
+  - /MG2_WwiseProject/SoundBanks
+  - /MG2_WwiseProject/SoundBanks/Default Work Unit
+  - /MG2_WwiseProject/States
+  - /MG2_WwiseProject/States/Default Work Unit
+  - /MG2_WwiseProject/States/Default Work Unit/GameState
+  - /MG2_WwiseProject/Switches
+  - /MG2_WwiseProject/Switches/Default Work Unit
+  - /MG2_WwiseProject/Switches/Default Work Unit/FS_Material
+  - /MG2_WwiseProject/Switches/Default Work Unit/Gameplay
+  - /MG2_WwiseProject/Switches/Default Work Unit/Progression
+  - /MG2_WwiseProject/Virtual Acoustics
+  - /MG2_WwiseProject/Virtual Acoustics/Factory Reflect Acoustic Textures
+  - /MG2_WwiseProject/Virtual Acoustics/Factory Reflect Acoustic Textures/Textures
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
