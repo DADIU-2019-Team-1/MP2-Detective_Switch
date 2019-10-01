@@ -9,37 +9,35 @@ public class ID_Assigner : MonoBehaviour
     public bool notAssigned = false;
     // private int interactableAmount;
 
-    private void Start()
+    private void Awake()
     {
-        
-        notAssigned = true;
-            
+        AssignIDsInteractables();           
     }
 
 
-        private void Update()
-    {
-        if (Application.isEditor)
-        {
-            if (GameObject.FindGameObjectsWithTag("interactable") != null)
-            {
+    //private void Update()
+    //{
+    //    if (Application.isEditor)
+    //    {
+    //        if (GameObject.FindGameObjectsWithTag("interactable") != null)
+    //        {
 
-                if (notAssigned == true)
-                {
-                    AssignIDsInteractables();
-                    // interactableAmount = GameObject.FindGameObjectsWithTag("interactable").Length;
-                    // PlayerPrefs.SetInt("interactAmount", interactableAmount);
-                    Debug.Log("Interactable IDs assigned" + " " + PlayerPrefs.GetInt("interactAmount"));
-                }
+    //            if (notAssigned == true)
+    //            {
+    //                AssignIDsInteractables();
+    //                // interactableAmount = GameObject.FindGameObjectsWithTag("interactable").Length;
+    //                // PlayerPrefs.SetInt("interactAmount", interactableAmount);
+    //                Debug.Log("Interactable IDs assigned" + " " + PlayerPrefs.GetInt("interactAmount"));
+    //            }
 
-                //if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
-                //{
-                //    notAssigned = true;
-                //    interactableAmount = PlayerPrefs.GetInt("interactAmount");
-                //}
-            }
-        }
-    }
+    //            //if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
+    //            //{
+    //            //    notAssigned = true;
+    //            //    interactableAmount = PlayerPrefs.GetInt("interactAmount");
+    //            //}
+    //        }
+    //    }
+    //}
 
     private void AssignIDsInteractables()
     {
@@ -55,6 +53,7 @@ public class ID_Assigner : MonoBehaviour
             tempIntScript.iD = i;
         }
 
+        Debug.Log("Interactable IDs assigned");
         notAssigned = false;
     }
 
