@@ -21,6 +21,7 @@ public class GameMaster : MonoBehaviour
     public event LocalizationDelegate localizationEvent;
 
     private bool playerCanMove = true;
+    private bool playerIsInMenu = true;
 
     public void Awake()
     {
@@ -32,6 +33,17 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void SetMenuIsOpen(bool state)
+    {
+        playerIsInMenu = state;
+        SoundManager.instance.SetMenuIsOpen(playerIsInMenu);
+    }
+
+    public bool GetMenuIsOpen()
+    {
+        return playerIsInMenu;
     }
 
     public bool GetPlayerCanMove()

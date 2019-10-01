@@ -60,6 +60,7 @@ public class SoundManager : MonoBehaviour
     {
         windowObjects = GameObject.FindGameObjectsWithTag("WindowSound");
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        menuIsOpen = GameMaster.instance.GetMenuIsOpen();
         wwiseMenuIsOpen = !menuIsOpen;
         oldProgression = progression + 1;
         oldRoomSize = roomSize + 1;
@@ -72,6 +73,11 @@ public class SoundManager : MonoBehaviour
         SetMenuState();
         SetProgressionLevel();
         SetRoomSizeNiveau();
+    }
+
+    public void SetMenuIsOpen(bool state)
+    {
+        menuIsOpen = state;
     }
 
     private void SetRoomSizeNiveau()

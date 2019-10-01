@@ -31,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         //playerRB.AddForce();
-        if (GameMaster.instance.GetPlayerCanMove())
+        if (!GameMaster.instance.GetMenuIsOpen())
         {
             HandleInput();
             //transform.rotation = Quaternion.Lerp(transform.rotation, lookAtPosition, turnReactionTime * Time.deltaTime);
