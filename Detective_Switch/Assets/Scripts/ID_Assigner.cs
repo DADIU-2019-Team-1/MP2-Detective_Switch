@@ -6,37 +6,45 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ID_Assigner : MonoBehaviour
 {
-    public bool assigned = true;
+    public bool notAssigned = false;
+    private int interactableAmount;
 
-    private void Start()
+    private void Awake()
     {
-        if (assigned != false)
+        if (Application.isEditor)
         {
-            if (GameObject.FindGameObjectsWithTag("interactable") != null)
-            {
-                AssignIDsInteractables();
-                Debug.Log("Interactable IDs assigned");
+            interactableAmount = PlayerPrefs.GetInt("interactAmount");
 
+            if (PlayerPrefs.GetInt("interactAmount") == 0)
+            {
+                notAssigned = true;
+            }
+        }
+
+    }
+    private void Update()
+    {
+        if (Application.isEditor)
+        {
+            if (GameObject.FindGameObjectsWithTag("interactable") != null || GameObject.FindGameObjectsWithTag("interactable").Length != 0)
+            {
+
+                if (notAssigned == true)
+                {
+                    AssignIDsInteractables();
+                    interactableAmount = GameObject.FindGameObjectsWithTag("interactable").Length;
+                    PlayerPrefs.SetInt("interactAmount", interactableAmount);
+                    Debug.Log("Interactable IDs assigned" + " " + PlayerPrefs.GetInt("interactAmount"));
+                }
+
+                if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
+                {
+                    notAssigned = true;
+                    interactableAmount = PlayerPrefs.GetInt("interactAmount");
+                }
             }
         }
     }
-    //private void Update()
-    //{
-    //    if (GameObject.FindGameObjectsWithTag("interactable") != null)
-    //    {
-    //        if (assigned == false)
-    //        {
-    //            AssignIDsInteractables();
-    //            Debug.Log("Interactable IDs assigned");
-    //        }
-
-    //        if (Input.GetKeyDown("q"))
-    //        {
-    //            assigned = false;
-    //        }
-    //    }
-
-    //}
 
     private void AssignIDsInteractables()
     {
@@ -53,7 +61,7 @@ public class ID_Assigner : MonoBehaviour
             tempIntScript.iD = i;
         }
 
-        assigned = true;
+        notAssigned = false;
     }
 
 }
