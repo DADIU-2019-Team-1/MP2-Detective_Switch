@@ -51,6 +51,10 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public GameObject toggleObject;
     [HideInInspector]
+    public GameObject toggleObject2;
+    [HideInInspector]
+    public GameObject toggleObject3;
+    [HideInInspector]
     public bool toggleState;
 
     // item
@@ -60,12 +64,16 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public bool hasClue;
     [HideInInspector]
-    public int clueKeyInt;
+    public int clueKeyAmount = 0;
+    [HideInInspector]
+    public int[] clueKeyInt;
 
     [HideInInspector]
     public bool hasNote;
     [HideInInspector]
-    public int noteKeyInt;
+    public int noteKeyAmount = 0;
+    [HideInInspector]
+    public int[] noteKeyInt;
 
     [HideInInspector]
     public bool hasKeyItem;
@@ -100,9 +108,11 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        //Vector3 interactResponse = new Vector3(-1, -1, -1);
+
         if (isRotating)
         {
-            return;
+            return;// interactResponse;
         }
 
         // reclickable
@@ -110,7 +120,7 @@ public class Interactable : MonoBehaviour
         {
             if (hasBeenClicked)
             {
-                return;
+                return;// interactResponse;
             }
             hasBeenClicked = true;
         }
@@ -154,6 +164,14 @@ public class Interactable : MonoBehaviour
             {
                 toggleObject.SetActive(!toggleObject.activeSelf);
             }
+            if (toggleObject2 != null)
+            {
+                toggleObject2.SetActive(!toggleObject2.activeSelf);
+            }
+            if (toggleObject3 != null)
+            {
+                toggleObject3.SetActive(!toggleObject3.activeSelf);
+            }
             toggleState = !toggleState;
         }
 
@@ -167,25 +185,30 @@ public class Interactable : MonoBehaviour
                 hasKeyItem = false;
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             } 
-            if(hasClue && clueKeyInt != null) {
+            if(hasClue && clueKeyInt != null && clueKeyAmount != 0) {
 
                 if (tempJournal != null)
                 {
                     hasClue = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
-                    tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt));
+                    for (int i = 0; i < clueKeyInt.Length; i++)
+                    {
+                        tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt[i]));
+                    }
                 }
             }
-            if(hasNote && noteKeyInt != null) {
+            if(hasNote && noteKeyInt != null && noteKeyAmount != 0) {
 
                 if (tempJournal != null)
                 {
                     hasNote = false;
                     UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
-                    tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt));
+                    for (int i = 0; i < noteKeyInt.Length; i++)
+                    {
+                        tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt[i]));
+                    }
                 }
             }
-            
         }
 
         // animation
@@ -201,6 +224,8 @@ public class Interactable : MonoBehaviour
                 anim.Play(animationAction);
             }
         }
+
+        //return gameObject.transform.position;
     }
 
     void Start()
@@ -226,5 +251,15 @@ public class Interactable : MonoBehaviour
     public void triggerEventInteractable()
     {
         triggerEvent.Invoke();
+    }
+
+    public void noteKeyArrayInit()
+    {
+        noteKeyInt = new int[noteKeyAmount];
+    }
+
+    public void clueKeyArrayInit()
+    {
+        clueKeyInt = new int[clueKeyAmount];
     }
 }

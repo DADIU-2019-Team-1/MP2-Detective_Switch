@@ -346,8 +346,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Grand_Clock\Play_Clock_Door_Open
       maxAttenuation: 0
-      maxDuration: 1.625729
-      minDuration: 1.556266
+      maxDuration: 1.425729
+      minDuration: 1.356266
     - name: Play_Door_Open
       guid: 5162955dc1b77b49ac5534aab039fba0
       id: 1660008929
@@ -464,8 +464,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Cupboard\Play_Large_Cupboard_Open
       maxAttenuation: 0
-      maxDuration: 0.983243
-      minDuration: 0.983243
+      maxDuration: 1.283243
+      minDuration: 1.283243
     - name: Play_Menu_Button
       guid: 72ce0b1666ddc74b8de3ae3cddec1054
       id: 1109058446
@@ -510,8 +510,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Drawers\Play_Open_Drawer_Big
       maxAttenuation: 0
-      maxDuration: 1.748644
-      minDuration: 1.374027
+      maxDuration: 1.848644
+      minDuration: 1.474027
     - name: Play_Open_Drawer_Small
       guid: 005ed5b303e397408160aa7d82fc434a
       id: 684873218
@@ -526,8 +526,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Drawers\Play_Open_Drawer_Small
       maxAttenuation: 0
-      maxDuration: 2.08349
-      minDuration: 1.540323
+      maxDuration: 1.291745
+      minDuration: 1.061141
     - name: Play_Open_J_Box
       guid: 307760567e456746a952070b184303a1
       id: 1559052575
@@ -1146,5 +1146,7 @@ MonoBehaviour:
   - /MG2_WwiseProject/Events/Default Work Unit
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX
+  - /MG2_WwiseProject/Events/Default Work Unit/SFX/Diary
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
