@@ -27,7 +27,7 @@ public class InventoryUpdater : MonoBehaviour
             for(int i = 0; i < maxSlots/* slotList.Count */; i++) {
             // This gets the slotholder in the scene, which is the keyItemsButton.
                 slot.Add(slotHolder.transform.GetChild(i).gameObject);
-                //Debug.Log("Current slot is: " + slot[i]);
+                Debug.Log("Current slot is: " + slot[i]);
                 // We check if the current slot has an item. If it doesn't have one, we set the empty boolean to true. 
                 if(slot[i].GetComponent<Slot>().item == null) {
                     //Debug.Log(slot[i].GetComponent<Slot>().item.name);
@@ -69,6 +69,7 @@ public class InventoryUpdater : MonoBehaviour
         foreach(Item itemCount in keyItemList) {
             //Debug.Log("List items: " + itemCount);
             //keyItemList.Add(item);
+            Debug.Log("Current slot: " + slot[slotIterator].name);
             if(slot[slotIterator].GetComponent<Slot>().empty && keyItemList.Count <= maxSlots) {
                 //Debug.Log("Entered add item if statement");
                 //keyItemList.Add(item);
