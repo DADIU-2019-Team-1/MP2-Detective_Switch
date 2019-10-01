@@ -28,7 +28,12 @@ public class KeyItemInteractions : MonoBehaviour
                     if(CheckDistance(interactable))
                         if(tempScript.triggerKey == keyItemButton.GetComponent<Slot>().text) {
                             //Debug.Log("trigger event if");
-                            tempScript.triggerEventInteractable();                            
+                            keyItemButton.GetComponent<Slot>().icon = keyItemButton.GetComponent<Slot>().greyedOutImage;
+                            keyItemButton.GetComponent<Slot>().UpdateSlot();
+                            
+                            
+                            tempScript.triggerEventInteractable();
+
                         }
 
         

@@ -56,6 +56,7 @@ public class InventoryUpdater : MonoBehaviour
         string itemName = item.text;
         int itemID = item.id;
         Sprite itemImage = item.clueImage; 
+        Sprite greyImage = item.greyedOutImage;
         Debug.Log(keyItemList.Count);     
         // Add a checker if the parent (slotholder) is active, if not, it is added as inactive.       
         if(slotIterator >= /* slotList.Count */  maxSlots ) {
@@ -76,6 +77,7 @@ public class InventoryUpdater : MonoBehaviour
                 slot[slotIterator].GetComponent<Slot>().text = itemName;
                 slot[slotIterator].GetComponent<Slot>().UpdateSlot();
                 slot[slotIterator].GetComponent<Slot>().empty = false;
+                slot[slotIterator].GetComponent<Slot>().greyedOutImage = greyImage;
 
                 slotIterator++;
                 //Debug.Log(slotIterator);
