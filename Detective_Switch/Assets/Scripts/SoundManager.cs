@@ -93,7 +93,6 @@ public class SoundManager : MonoBehaviour
     public void AddProgression()
     {
         progression++;
-        Debug.Log("increased music: " +progression);
     }
 
     private void SetProgressionLevel()
