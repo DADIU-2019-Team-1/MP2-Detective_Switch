@@ -60,7 +60,11 @@ public class InteractableEditor : Editor
 
         dis.toggleGameObject = GUILayout.Toggle(dis.toggleGameObject, "Toggle Game Object");
         if (dis.toggleGameObject)
-            dis.toggleObject = (GameObject)EditorGUILayout.ObjectField("Toggle Object:", dis.toggleObject, typeof(GameObject), true);
+        {
+            dis.toggleObject = (GameObject)EditorGUILayout.ObjectField("Toggle Object 1:", dis.toggleObject, typeof(GameObject), true);
+            dis.toggleObject2 = (GameObject)EditorGUILayout.ObjectField("Toggle Object 2:", dis.toggleObject2, typeof(GameObject), true);
+            dis.toggleObject3 = (GameObject)EditorGUILayout.ObjectField("Toggle Object 3:", dis.toggleObject3, typeof(GameObject), true);
+        }
 
         DrawUILine();
 

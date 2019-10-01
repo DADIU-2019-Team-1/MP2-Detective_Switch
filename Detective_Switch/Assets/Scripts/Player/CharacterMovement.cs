@@ -79,7 +79,8 @@ public class CharacterMovement : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Interactable");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-            Vector3 objectPosition = hit.transform.gameObject.GetComponent<Interactable>().Interact();
+            //Vector3 objectPosition = 
+            hit.transform.gameObject.GetComponent<Interactable>().Interact();
             //lookAtPosition = Quaternion.LookRotation(objectPosition);
         } else
         {
