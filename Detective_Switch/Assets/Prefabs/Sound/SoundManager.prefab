@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9073862582897053208}
   - component: {fileID: 3906757472313468584}
   - component: {fileID: 848596846}
-  - component: {fileID: 5005417304796488851}
+  - component: {fileID: 1588911361}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -222,7 +222,7 @@ MonoBehaviour:
   groupIdInternal: 0
   valueGuidInternal: 
   groupGuidInternal: 
---- !u!114 &5005417304796488851
+--- !u!114 &1588911361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2240068107719653341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa8de9ebb5292f418810dd2b49163a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b6b2ed124943b44985536de1f47c418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerList: f7e1664c
@@ -252,7 +252,3 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  LargeModePositions: []
-  multiPositionArray: []
