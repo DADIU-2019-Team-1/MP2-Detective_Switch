@@ -6,12 +6,14 @@ public class Countdown : MonoBehaviour
 {
     public GameObject Self;
     public float totalTime = 1f; //2 minutes
+    float startTime;
     public bool rise = true;
     Vector3 startPos;
 
     private void Start()
     {
         startPos = transform.position;
+        startTime = totalTime;
     }
 
     private void Update()
@@ -43,6 +45,7 @@ public class Countdown : MonoBehaviour
         {
             Self.SetActive(false);
             transform.position = startPos;
+            totalTime = startTime;
         }
 
     }
