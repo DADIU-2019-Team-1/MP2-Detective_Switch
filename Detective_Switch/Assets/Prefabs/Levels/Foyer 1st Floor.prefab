@@ -2150,17 +2150,17 @@ PrefabInstance:
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.22
+      value: 6.2599998
       objectReference: {fileID: 0}
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.07999992
       objectReference: {fileID: 0}
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.5
+      value: -5.9100003
       objectReference: {fileID: 0}
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
@@ -2931,6 +2931,11 @@ PrefabInstance:
       propertyPath: toggleObject
       value: 
       objectReference: {fileID: 8130953604159475991}
+    - target: {fileID: -7355969905471345245, guid: 1c6572f29b710c74b807937acd1913ff,
+        type: 3}
+      propertyPath: hasAnimation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6016345281335048768, guid: 1c6572f29b710c74b807937acd1913ff,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3009,17 +3014,17 @@ PrefabInstance:
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.88
+      value: 5.92
       objectReference: {fileID: 0}
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.89
+      value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 6600580925553638747, guid: c95b1ecda4152104fa8bc0d8be825ac6,
         type: 3}
@@ -5653,16 +5658,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5862275942904245404, guid: 73442c6e720b93641ac6d8ebf2f3cdb0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9172087000319091357, guid: 73442c6e720b93641ac6d8ebf2f3cdb0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8631216526511723101, guid: 73442c6e720b93641ac6d8ebf2f3cdb0,
         type: 3}
