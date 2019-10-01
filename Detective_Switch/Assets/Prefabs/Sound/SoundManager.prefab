@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6986512900004251202}
   - component: {fileID: 8875750800143563140}
   - component: {fileID: 9073862582897053208}
-  - component: {fileID: 717526557311077433}
   - component: {fileID: 3906757472313468584}
+  - component: {fileID: 848596846}
+  - component: {fileID: 5005417304796488851}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MonoBehaviour:
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 4f9c672972e74674dae1edad75a617bc,
       type: 2}
-  menuIsOpen: 0
+  menuIsOpen: 1
   timeOfDay:
     idInternal: 0
     valueGuidInternal: 
@@ -81,14 +82,14 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: c5c880ca7bec56f4994a29d29164d2c7,
       type: 2}
-  roomSize: 0
-  largestRoomSize: 50
+  roomSize: 99
+  largestRoomSize: 100
   progressionLevel:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 13324e5209bbe6842aadefa5fca364bf,
       type: 2}
-  progression: 0
+  progression: 0.1
 --- !u!114 &6986512900004251202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +167,7 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
---- !u!114 &717526557311077433
+--- !u!114 &3906757472313468584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +197,32 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
---- !u!114 &3906757472313468584
+--- !u!114 &848596846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240068107719653341}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef89972233c8dd347861527e8723c063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 70131a439fe9beb459fcd5963d24e261,
+      type: 2}
+  valueIdInternal: 0
+  groupIdInternal: 0
+  valueGuidInternal: 
+  groupGuidInternal: 
+--- !u!114 &5005417304796488851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,7 +231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2240068107719653341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6b2ed124943b44985536de1f47c418, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fa8de9ebb5292f418810dd2b49163a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerList: f7e1664c
@@ -226,3 +252,7 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  LargeModePositions: []
+  multiPositionArray: []

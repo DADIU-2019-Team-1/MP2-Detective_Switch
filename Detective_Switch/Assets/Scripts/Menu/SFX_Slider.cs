@@ -11,8 +11,8 @@ public class SFX_Slider : MonoBehaviour
     {
         // SetRTPCValue(wwise name, float from slider)
         // Load float from slider, and place it in the float slot of SetRTPCValue.
-        AKRESULT effectSound = AkSoundEngine.SetRTPCValue("Menuslider_SoundFX", GameMaster.instance.GetMusicLevel());
-        AKRESULT musicSound = AkSoundEngine.SetRTPCValue("Menuslider_Music", GameMaster.instance.GetSFXLevel());
+        AKRESULT effectSound = AkSoundEngine.SetRTPCValue("SFX_Slider", GameMaster.instance.GetMusicLevel());
+        AKRESULT musicSound = AkSoundEngine.SetRTPCValue("Music_Slider", GameMaster.instance.GetSFXLevel());
 
         if (gameObject.name == "Sfx_Slider")
         {
