@@ -21,17 +21,38 @@ public class GameMaster : MonoBehaviour
     public event LocalizationDelegate localizationEvent;
 
     private bool playerCanMove = true;
+    private bool playerIsInMenu = true;
+    private bool journalIsOpen = false;
 
     public void Awake()
     {
         CreateGameMaster();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void SetJournalIsOpen(bool state)
+    {
+        journalIsOpen = state;
+    }
+
+    public bool GetJournalIsOpen()
+    {
+        return journalIsOpen;
+    }
+
+    public void SetMenuIsOpen(bool state)
+    {
+        playerIsInMenu = state;
+        SoundManager.instance.SetMenuIsOpen(playerIsInMenu);
+    }
+
+    public bool GetMenuIsOpen()
+    {
+        return playerIsInMenu;
     }
 
     public bool GetPlayerCanMove()

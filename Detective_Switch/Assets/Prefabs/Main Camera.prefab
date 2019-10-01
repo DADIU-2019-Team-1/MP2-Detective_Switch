@@ -292,10 +292,10 @@ MonoBehaviour:
   volumeTrigger: {fileID: 0}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   stopNaNPropagation: 0
   finalBlitToCameraTarget: 1
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -693,6 +693,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 970cc3401e5718246a927e07e4fd96c5, type: 3}
+--- !u!1 &8296172667441614538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 970cc3401e5718246a927e07e4fd96c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1747376067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5006512736553630937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 970cc3401e5718246a927e07e4fd96c5,
