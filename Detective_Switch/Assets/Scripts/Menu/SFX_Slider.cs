@@ -14,7 +14,7 @@ public class SFX_Slider : MonoBehaviour
         AKRESULT effectSound = AkSoundEngine.SetRTPCValue("SFX_Slider", GameMaster.instance.GetMusicLevel());
         AKRESULT musicSound = AkSoundEngine.SetRTPCValue("Music_Slider", GameMaster.instance.GetSFXLevel());
 
-        if (gameObject.name == "Sfx_Slider")
+        if (gameObject.name == "SFX_Slider")
         {
             Debug.Log("Setting SFX slider to " + GameMaster.instance.GetSFXLevel());
             GetComponent<Slider>().value = GameMaster.instance.GetSFXLevel();
@@ -35,13 +35,13 @@ public class SFX_Slider : MonoBehaviour
         if (gameObject.name == "SFX_Slider")
         {
             GameMaster.instance.SetSFXLevel((int)sliderValue);
-            AkSoundEngine.SetRTPCValue("Menuslider_SoundFX", sliderValue);
+            AkSoundEngine.SetRTPCValue("SFX_Slider", sliderValue);
         }
         
         else if(gameObject.name == "Music_Slider")
         {
             GameMaster.instance.SetMusicLevel((int)sliderValue);
-            AkSoundEngine.SetRTPCValue("Menuslider_Music", sliderValue);
+            AkSoundEngine.SetRTPCValue("Music_Slider", sliderValue);
         }
 
 
