@@ -5,12 +5,25 @@ using UnityEngine;
 public class Countdown : MonoBehaviour
 {
     public GameObject Self;
-    float totalTime = 4f; //2 minutes
+    public float totalTime = 1f; //2 minutes
+    public bool rise = true;
+    Vector3 startPos;
+
+    private void Start()
+    {
+        startPos = transform.position;
+    }
 
     private void Update()
     {
         totalTime -= Time.deltaTime;
         UpdateLevelTimer(totalTime);
+
+        if(rise)
+        {
+            transform.position += Vector3.up *0.005f;
+        }
+        
     }
 
     public void UpdateLevelTimer(float totalSeconds)
@@ -29,6 +42,7 @@ public class Countdown : MonoBehaviour
         if (seconds < 0)
         {
             Self.SetActive(false);
+            transform.position = startPos;
         }
 
     }
