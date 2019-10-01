@@ -22,17 +22,26 @@ public class GameMaster : MonoBehaviour
 
     private bool playerCanMove = true;
     private bool playerIsInMenu = true;
+    private bool journalIsOpen = false;
 
     public void Awake()
     {
         CreateGameMaster();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void SetJournalIsOpen(bool state)
+    {
+        journalIsOpen = state;
+    }
+
+    public bool GetJournalIsOpen()
+    {
+        return journalIsOpen;
     }
 
     public void SetMenuIsOpen(bool state)
