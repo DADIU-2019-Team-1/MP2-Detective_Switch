@@ -240,7 +240,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586316696132467814
+    m_lastTime: -8586316660157315862
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586316684412182350
+    m_lastTime: -8586316673179169519
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -378,8 +378,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Door\Play_Door_Unlock_Open
       maxAttenuation: 0
-      maxDuration: 5.703213
-      minDuration: 2.313166
+      maxDuration: 5.203213
+      minDuration: 1.813166
     - name: Play_Fireplace
       guid: d4cf93e6d78b164ea47184df2f8b4d8c
       id: 1501216439
@@ -407,7 +407,7 @@ MonoBehaviour:
       maxDuration: 0.657467
       minDuration: 0.175774
     - name: Play_GameFlow_Music
-      guid: a8fcaab4c89e9d44893e76960af3c011
+      guid: d75f82bb23440b41b82fb65540b5bd78
       id: 2096200520
       PathAndIcons:
       - ElementName: Default Work Unit
@@ -1142,5 +1142,10 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /MG2_WwiseProject
+  - /MG2_WwiseProject/Events
+  - /MG2_WwiseProject/Events/Default Work Unit
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
+  - /MG2_WwiseProject/Events/Default Work Unit/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
