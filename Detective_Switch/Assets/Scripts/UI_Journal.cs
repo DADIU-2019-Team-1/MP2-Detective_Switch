@@ -169,7 +169,7 @@ public class UI_Journal : MonoBehaviour
 
     public string GetClue(int index)
     {
-        if (index > cluesEN.Count || index < 1)
+        if (index > cluesEN.Count || index < 0)
         {
             Debug.LogError("Journal error! - get out of bounds");
             return null;
@@ -188,7 +188,7 @@ public class UI_Journal : MonoBehaviour
 
     public string GetNote(int index)
     {
-        if (index > notesEN.Count || index < 1)
+        if (index > notesEN.Count || index < 0)
         {
             Debug.LogError("Journal error! - get out of bounds");
             return null;
