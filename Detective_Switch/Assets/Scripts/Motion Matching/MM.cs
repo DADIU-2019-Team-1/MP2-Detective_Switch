@@ -49,10 +49,6 @@ public class MM : MonoBehaviour
 		animTrajectoriesInCharSpace = new Trajectory[animTrajectories.Count];
         movementTrajectory = new Trajectory(movement.GetMovementTrajectoryPoints());
         culledIDs = new Queue<int>();
-        for (int i = 0; i < allClips[0].length * allClips[0].frameRate; i++)
-        {
-	        culledIDs.Enqueue(i);
-        }
 
         // Play the default animation and update the reference
         currentClip = allClips[0];
@@ -100,8 +96,9 @@ public class MM : MonoBehaviour
 		List<Trajectory> trajectoryCandidates = new List<Trajectory>();
 		for (int i = 0; i < animTrajectoriesInCharSpace.Length; i++)
         {
-            if (animTrajectoriesInCharSpace[i].GetTrajectoryId() >= 0 && animTrajectoriesInCharSpace[i].GetTrajectoryId() != currentAnimId
-                && !culledIDs.Contains(animTrajectoriesInCharSpace[i].GetTrajectoryId()))
+            if (animTrajectoriesInCharSpace[i].GetTrajectoryId() >= allClips[0].length * allClips[0].frameRate &&
+                animTrajectoriesInCharSpace[i].GetTrajectoryId() != currentAnimId &&
+                !culledIDs.Contains(animTrajectoriesInCharSpace[i].GetTrajectoryId()))
             {
                 if (animTrajectoriesInCharSpace[i].CompareTrajectoryPoints(movement) +
                     animTrajectoriesInCharSpace[i].CompareTrajectoryForwards(movement) < threshold)
