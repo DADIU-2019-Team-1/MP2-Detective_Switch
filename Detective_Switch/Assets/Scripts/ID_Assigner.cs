@@ -7,41 +7,36 @@ using UnityEngine;
 public class ID_Assigner : MonoBehaviour
 {
     public bool notAssigned = false;
-    private int interactableAmount;
+    // private int interactableAmount;
 
-    private void Awake()
+    private void Start()
     {
-        if (Application.isEditor)
-        {
-            interactableAmount = PlayerPrefs.GetInt("interactAmount");
-
-            if (PlayerPrefs.GetInt("interactAmount") == 0)
-            {
-                notAssigned = true;
-            }
-        }
-
+        
+        notAssigned = true;
+            
     }
-    private void Update()
+
+
+        private void Update()
     {
         if (Application.isEditor)
         {
-            if (GameObject.FindGameObjectsWithTag("interactable") != null || GameObject.FindGameObjectsWithTag("interactable").Length != 0)
+            if (GameObject.FindGameObjectsWithTag("interactable") != null)
             {
 
                 if (notAssigned == true)
                 {
                     AssignIDsInteractables();
-                    interactableAmount = GameObject.FindGameObjectsWithTag("interactable").Length;
-                    PlayerPrefs.SetInt("interactAmount", interactableAmount);
+                    // interactableAmount = GameObject.FindGameObjectsWithTag("interactable").Length;
+                    // PlayerPrefs.SetInt("interactAmount", interactableAmount);
                     Debug.Log("Interactable IDs assigned" + " " + PlayerPrefs.GetInt("interactAmount"));
                 }
 
-                if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
-                {
-                    notAssigned = true;
-                    interactableAmount = PlayerPrefs.GetInt("interactAmount");
-                }
+                //if (interactableAmount != GameObject.FindGameObjectsWithTag("interactable").Length)
+                //{
+                //    notAssigned = true;
+                //    interactableAmount = PlayerPrefs.GetInt("interactAmount");
+                //}
             }
         }
     }
@@ -55,7 +50,6 @@ public class ID_Assigner : MonoBehaviour
 
         for (int i = 0; i < interactables.Length; i++)
         {
-            InteractableObjectContainer tempIntObjCon = new InteractableObjectContainer();
             Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
 
             tempIntScript.iD = i;

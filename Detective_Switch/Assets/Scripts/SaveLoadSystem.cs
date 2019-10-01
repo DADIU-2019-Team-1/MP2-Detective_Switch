@@ -10,18 +10,19 @@ public class SaveLoadSystem : MonoBehaviour
     public bool newGame = true;
     public string saveLocation = "Assets/Resources/SaveFiles/";
 
-    //private void Start()
-    //{
-    //    if (newGame)
-    //    {
-    //        PlayerPrefs.SetInt("previousGame", 1);
+    private void Start()
+    {
+        
+    }
 
-    //    }
-    //    else if (PlayerPrefs.GetInt("previousGame") == 1)
-    //    {
-    //        LoadGame();
-    //    }
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown("l"))
+        {
+            SaveGame();
+            Debug.Log("Saved Game!");
+        }
+    }
 
     private void OnApplicationQuit()
     {
@@ -74,19 +75,21 @@ public class SaveLoadSystem : MonoBehaviour
                 {
                     if (tempIntScript.iD == IntObjConList[j].uniqueID)
                     {
-                        interactables[i].transform.position = IntObjConList[j].position;
+                        // interactables[i].transform.position = IntObjConList[j].position;
                         interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
                         tempIntScript.hasClue = IntObjConList[j].hasClue;
                         tempIntScript.hasNote = IntObjConList[j].hasNote;
                         tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
                         tempIntScript.hasItem = IntObjConList[j].hasItem;
+                        tempIntScript.toggleState = IntObjConList[j].toggleState;
+                        tempIntScript.hasBeenClicked = IntObjConList[j].hasBeenClicked;
                     }
                 }               
             }
 
             //// Load player pos and rot: ////
             tempLoadString = File.ReadAllText(saveLocation + "player.txt");
-            tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+            tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.transform.position = JsonUtility.FromJson<Vector3>(tempDataString[0]);
             player.transform.rotation = Quaternion.Euler(JsonUtility.FromJson<Vector3>(tempDataString[1]));
@@ -118,7 +121,7 @@ public class SaveLoadSystem : MonoBehaviour
             tempLoadString = File.ReadAllText(saveLocation + "keyItems.txt");
             List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
             GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
-            tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+            tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
 
             for (int i = 1; i < tempDataString.Length; i++) // Start from 1
             {
@@ -192,8 +195,10 @@ public class SaveLoadSystem : MonoBehaviour
             tempIntObjCon.hasClue = tempIntScript.hasClue;
             tempIntObjCon.hasNote = tempIntScript.hasNote;
             tempIntObjCon.hasKeyItem = tempIntScript.hasKeyItem;
+            tempIntObjCon.toggleState = tempIntScript.toggleState;
+            tempIntObjCon.hasBeenClicked = tempIntScript.hasBeenClicked;
 
-            IntObjConList.Add(tempIntObjCon);
+    IntObjConList.Add(tempIntObjCon);
             tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(IntObjConList[i]);
         }
         File.WriteAllText(saveLocation + "interactables.txt", tempSaveString);
@@ -257,6 +262,8 @@ public class InteractableObjectContainer
     public bool hasClue;
     public bool hasNote;
     public bool hasKeyItem;
+    public bool toggleState;
+    public bool hasBeenClicked;
 }
 
 public class JournalContainer

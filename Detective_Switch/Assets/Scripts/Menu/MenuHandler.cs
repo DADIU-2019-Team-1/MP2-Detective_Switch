@@ -15,13 +15,16 @@ public class MenuHandler : MonoBehaviour
     public Text optionsBackBtnText;
     public Text musicSliderText;
     public Text languageText;
-    public Text tutorialText;
+    public Text tutorialFlashText;
+    public Text tutorialSlideText;
 
     private bool isEnglish = true;
 
     void Start()
     {
+        Color defaultCol = continueBtnText.color;
         continueBtn.interactable = false;
+        continueBtnText.color = Color.gray;
 
         if (FindObjectOfType<GameMaster>() != null)
         {
@@ -30,7 +33,8 @@ public class MenuHandler : MonoBehaviour
     
         if (PlayerPrefs.GetInt("previousGame") == 1)
         {
-            continueBtn.interactable = false;
+            continueBtn.interactable = true;
+            continueBtnText.color = defaultCol;
         }
     }
 
@@ -46,7 +50,8 @@ public class MenuHandler : MonoBehaviour
             optionsBackBtnText.text = "Back";
             musicSliderText.text = "music";
             languageText.text = "language";
-            tutorialText.text = "tap to change the flashlight mode";
+            tutorialFlashText.text = "tap to change the flashlight mode";
+            tutorialSlideText.text = "hold and drag to move";
 }
         else
         {
@@ -56,7 +61,8 @@ public class MenuHandler : MonoBehaviour
             optionsBackBtnText.text = "Tilbage";
             musicSliderText.text = "musik";
             languageText.text = "sprog";
-            tutorialText.text = "tryk for at skifte lommelygte tilstand";
+            tutorialFlashText.text = "tryk for at skifte lommelygte tilstand";
+            tutorialSlideText.text = "hold og træk for at gå";
         }
     }
 
