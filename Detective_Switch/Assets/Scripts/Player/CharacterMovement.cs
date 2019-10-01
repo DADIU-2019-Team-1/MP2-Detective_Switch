@@ -76,15 +76,14 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log("MOUSE CLICK");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        LayerMask mask = LayerMask.GetMask("Interactable");
+        LayerMask mask = LayerMask.GetMask("Interactable", "SolidBlock");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
             //Vector3 objectPosition = 
-            hit.transform.gameObject.GetComponent<Interactable>().Interact();
-            //lookAtPosition = Quaternion.LookRotation(objectPosition);
-        } else
-        {
-            //lookAtPosition = transform.rotation;
+            if (hit.transform.gameObject.GetComponent<Interactable>())
+            {
+                hit.transform.gameObject.GetComponent<Interactable>().Interact();
+            }
         }
     }
 
