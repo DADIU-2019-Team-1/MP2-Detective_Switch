@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryUpdater : MonoBehaviour
 {
     public int maxSlots;
-    private List<GameObject> slot;
+    public List<GameObject> slot;
     public List<GameObject> slotList;
     public GameObject slotHolder;
     public int slotIterator, slotListIterator;

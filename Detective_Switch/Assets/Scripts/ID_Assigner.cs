@@ -10,11 +10,14 @@ public class ID_Assigner : MonoBehaviour
 
     private void Start()
     {
-        if (GameObject.FindGameObjectsWithTag("interactable") != null)
+        if (assigned != false)
         {
-            AssignIDsInteractables();
-            Debug.Log("Interactable IDs assigned");
+            if (GameObject.FindGameObjectsWithTag("interactable") != null)
+            {
+                AssignIDsInteractables();
+                Debug.Log("Interactable IDs assigned");
 
+            }
         }
     }
     //private void Update()

@@ -31,7 +31,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        // SaveGame();
     }
 
     public void LoadGame()
@@ -41,7 +41,8 @@ public class SaveLoadSystem : MonoBehaviour
 
         string tempLoadString = "";
 
-        if (File.Exists(saveLocation + "interactables.txt") && File.Exists(saveLocation + "player.txt") && File.Exists(saveLocation + "activeJournal.txt"))
+        if (File.Exists(saveLocation + "interactables.txt") && File.Exists(saveLocation + "player.txt")
+            && File.Exists(saveLocation + "activeJournal.txt") && File.Exists(saveLocation + "keyItems.txt"))
         {
             tempLoadString = File.ReadAllText(saveLocation + "interactables.txt");
 
@@ -54,7 +55,6 @@ public class SaveLoadSystem : MonoBehaviour
             {
                 IntObjConList.Add(JsonUtility.FromJson<InteractableObjectContainer>(tempDataString[i]));               
             }
-            // Debug.Log(IntObjConList[1].position + " " + IntObjConList[1].rotation + " " + IntObjConList[1].hasClue);
 
             for (int i = 0; i < interactables.Length; i++)
             {
@@ -102,7 +102,39 @@ public class SaveLoadSystem : MonoBehaviour
             {
                 Debug.LogError("Load error: journal not found, or journal tag not on correct object!");
             }
-        }    
+
+            //// Load key items: ////
+            tempLoadString = File.ReadAllText(saveLocation + "keyItems.txt");
+            List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
+            GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
+            tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+
+            for (int i = 1; i < tempDataString.Length; i++) // Start from 1
+            {
+                tempKeyItemSlotContList.Add(JsonUtility.FromJson<KeyItemSlotContainer>(tempDataString[i]));
+            }
+
+            for (int i = 0; i < interactables.Length; i++)
+            {
+                Slot tempSlotScript = keyItemSlots[i].GetComponent<Slot>();
+                /*
+                if (tempSlotScript == false)
+                {
+                    interactables[i].transform.position = IntObjConList[j].position;
+                    interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
+                    tempIntScript.hasClue = IntObjConList[j].hasClue;
+                    tempIntScript.hasNote = IntObjConList[j].hasNote;
+                    tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
+                    tempIntScript.hasItem = IntObjConList[j].hasItem;
+                } */
+
+            }
+
+        }
+        else
+        {
+            Debug.LogError("LoadGame Error: could not load game due to one or more loadfiles missing. Make sure you have saved a game before loading");
+        }
     }
 
     public bool GetNewGameBool()
@@ -117,13 +149,18 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SaveGame()
     {
-        if (GameObject.FindGameObjectWithTag("Player") == null || GameObject.FindGameObjectsWithTag("interactable") == null || GameObject.FindGameObjectWithTag("Journal") == null)
+        if (GameObject.FindGameObjectWithTag("Player") == null || GameObject.FindGameObjectsWithTag("interactable") == null
+            || GameObject.FindGameObjectWithTag("Journal") == null || GameObject.FindGameObjectsWithTag("KeyItemSlot") == null)
+        {
+            Debug.LogError("SaveGame failed: tags missing or player, interactables, journal or key item slots not found");
             return;
+        }
      
         // Find gameobjects:
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
         GameObject journal = GameObject.FindGameObjectWithTag("Journal");
+        GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
 
         // Player vectors:
         Vector3 playerPos = player.transform.position;
@@ -171,7 +208,31 @@ public class SaveLoadSystem : MonoBehaviour
 
             tempSaveString = JsonUtility.ToJson(tempJournal);
             File.WriteAllText(saveLocation + "activeJournal.txt", tempSaveString);
-        }  
+        }
+
+        //// Save key items: ////
+        tempSaveString = "";
+        List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
+
+        for (int i = 0; i < keyItemSlots.Length; i++)
+        {
+            KeyItemSlotContainer tempIntObjCon = new KeyItemSlotContainer();
+            Slot tempSlotScript = keyItemSlots[i].GetComponent<Slot>();
+
+            if (tempSlotScript.empty == false)
+            {
+                tempIntObjCon.item = tempSlotScript.item;
+                tempIntObjCon.id = tempSlotScript.id;
+                tempIntObjCon.text = tempSlotScript.text;
+                tempIntObjCon.empty = tempSlotScript.empty;
+                tempIntObjCon.icon = tempSlotScript.icon;
+
+                tempKeyItemSlotContList.Add(tempIntObjCon);
+                tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(tempKeyItemSlotContList[i]);
+            }
+        }
+        File.WriteAllText(saveLocation + "keyItems.txt", tempSaveString);
+
     }
 }
 
@@ -194,4 +255,13 @@ public class JournalContainer
 {
     public List<string> activeClues;
     public List<string> activeNotes;
+}
+
+public class KeyItemSlotContainer
+{
+    public GameObject item;
+    public int id;
+    public string text;
+    public bool empty;
+    public Sprite icon;
 }
