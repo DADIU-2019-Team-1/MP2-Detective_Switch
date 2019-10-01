@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
     private bool canMove;
     private bool mouseDown;
 
+    public float interactDistance = 4.0f;
+
     //private Quaternion lookAtPosition;
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
@@ -76,15 +78,17 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log("MOUSE CLICK");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        LayerMask mask = LayerMask.GetMask("Interactable");
+        LayerMask mask = LayerMask.GetMask("Interactable", "SolidBlock");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-            //Vector3 objectPosition = 
-            hit.transform.gameObject.GetComponent<Interactable>().Interact();
-            //lookAtPosition = Quaternion.LookRotation(objectPosition);
-        } else
-        {
-            //lookAtPosition = transform.rotation;
+            GameObject clickedObject = hit.transform.gameObject;
+            if (clickedObject.GetComponent<Interactable>())
+            {
+                if ((clickedObject.transform.position - transform.position).magnitude <= interactDistance)
+                {
+                    clickedObject.GetComponent<Interactable>().Interact();
+                }
+            }
         }
     }
 
