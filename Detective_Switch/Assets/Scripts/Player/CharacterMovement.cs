@@ -12,6 +12,9 @@ public class CharacterMovement : MonoBehaviour
     private bool canMove;
     private bool mouseDown;
 
+    public float currentPlayerSpeed;
+    Vector3 prevLocation;
+
     public float interactDistance = 4.0f;
 
     //private Quaternion lookAtPosition;
@@ -25,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
         oldPos = transform.position;
+        prevLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -36,6 +40,18 @@ public class CharacterMovement : MonoBehaviour
             HandleInput();
             //transform.rotation = Quaternion.Lerp(transform.rotation, lookAtPosition, turnReactionTime * Time.deltaTime);
         }
+
+        float tempPlayerSpeed = (transform.position - prevLocation).magnitude / Time.deltaTime;
+        if (tempPlayerSpeed < 0.15f)
+        {
+            currentPlayerSpeed = 0;
+        }
+        else
+        {
+            currentPlayerSpeed = tempPlayerSpeed;
+        }
+
+        prevLocation = transform.position;
     }
 
     void HandleInput() {
