@@ -33,7 +33,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -750,7 +750,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -880,6 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7114000682191968025}
   - component: {fileID: 6690608276549363727}
+  - component: {fileID: 8239459553086893725}
   m_Layer: 0
   m_Name: Music_Slider
   m_TagString: Untagged
@@ -961,6 +962,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8239459553086893725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121814554146603705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42ac3243fa9e4c4fb7a9dc0e8608202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menuslider_SFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  sfxSliderValue: 0
+  musicSliderValue: 0
+  sliderValue: 0
 --- !u!1 &4474067027547912056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7968813101976442007}
   - component: {fileID: 4294581764542786931}
+  - component: {fileID: 48763087189305215}
   m_Layer: 0
   m_Name: Sfx_Slider
   m_TagString: Untagged
@@ -1411,6 +1432,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &48763087189305215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557135300227116112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42ac3243fa9e4c4fb7a9dc0e8608202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menuslider_SFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  sfxSliderValue: 0
+  musicSliderValue: 0
+  sliderValue: 0
 --- !u!1 &5620701872346588150
 GameObject:
   m_ObjectHideFlags: 0
