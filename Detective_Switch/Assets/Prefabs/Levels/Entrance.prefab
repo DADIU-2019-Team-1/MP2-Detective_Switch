@@ -2185,11 +2185,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5691699040746796868, guid: 70be2c16a42bad94088604f02a27d6eb,
+    - target: {fileID: 6310323552353443698, guid: 70be2c16a42bad94088604f02a27d6eb,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6806597438812583835, guid: 70be2c16a42bad94088604f02a27d6eb,
         type: 3}
       propertyPath: m_text
@@ -2263,16 +2263,11 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6310323552353443698, guid: 70be2c16a42bad94088604f02a27d6eb,
+    - target: {fileID: 5691699040746796868, guid: 70be2c16a42bad94088604f02a27d6eb,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 395549241987041276, guid: 70be2c16a42bad94088604f02a27d6eb,
-        type: 3}
-      propertyPath: m_Mesh
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70be2c16a42bad94088604f02a27d6eb, type: 3}
 --- !u!224 &3268347074238695464 stripped
