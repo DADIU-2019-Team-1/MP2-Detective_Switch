@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="134">
 	<RootPaths>
-		<ProjectRoot>C:\Users\jonas\Documents\WwiseProjects\MG2_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\jonas\Documents\WwiseProjects\MG2_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<ProjectRoot>C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\</SourceFilesRoot>
 		<SoundBanksRoot>C:\Users\jonas\Documents\GitHub\MP2-Detective_Switch\Detective_Switch\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\jonas\Documents\WwiseProjects\MG2_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -21,12 +21,629 @@
 			<ShortName>Master</ShortName>
 			<Path>Master.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3303490701" Name="Play_desert" ObjectPath="\Events\Default Work Unit\Play_desert" DurationType="OneShot" DurationMin="48.990688" DurationMax="48.990688"/>
+				<Event Id="1643668981" Name="Play_Amb_Basic_Room" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Environment\Play_Amb_Basic_Room" DurationType="Infinite"/>
+				<Event Id="777179012" Name="Play_Amb_Environment" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Environment\Play_Amb_Environment" DurationType="Infinite"/>
+				<Event Id="1585582443" Name="Play_Blacklight_OFF" ObjectPath="\Events\Default Work Unit\Player\Play_Blacklight_OFF" DurationType="OneShot" DurationMin="2.401522" DurationMax="2.401522"/>
+				<Event Id="3660826327" Name="Play_Blacklight_On" ObjectPath="\Events\Default Work Unit\Player\Play_Blacklight_On" DurationType="Infinite"/>
+				<Event Id="2410086214" Name="Play_Case_File_Button" ObjectPath="\Events\Default Work Unit\UI\Play_Case_File_Button" DurationType="OneShot" DurationMin="0.618640" DurationMax="0.737392"/>
+				<Event Id="4011491198" Name="Play_Clock_Door_Open" ObjectPath="\Events\Default Work Unit\SFX\Grand_Clock\Play_Clock_Door_Open" DurationType="OneShot" DurationMin="1.556266" DurationMax="1.625729"/>
+				<Event Id="1660008929" Name="Play_Door_Open" ObjectPath="\Events\Default Work Unit\SFX\Door\Play_Door_Open" DurationType="OneShot" DurationMin="0.813166" DurationMax="4.203213"/>
+				<Event Id="2081382800" Name="Play_Door_Unlock_Open" ObjectPath="\Events\Default Work Unit\SFX\Door\Play_Door_Unlock_Open" DurationType="OneShot" DurationMin="2.313166" DurationMax="5.703213"/>
+				<Event Id="1501216439" Name="Play_Fireplace" ObjectPath="\Events\Default Work Unit\Play_Fireplace" MaxAttenuation="30.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="709824872" Name="Play_Footstep_Surface" ObjectPath="\Events\Default Work Unit\Player\Play_Footstep_Surface" DurationType="OneShot" DurationMin="0.175774" DurationMax="0.657467"/>
+				<Event Id="2096200520" Name="Play_GameFlow_Music" ObjectPath="\Events\Default Work Unit\Music\Play_GameFlow_Music" DurationType="Infinite"/>
+				<Event Id="560436547" Name="Play_Grand_Clock_Ticking" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Play_Grand_Clock_Ticking" MaxAttenuation="30.000000" DurationType="Infinite"/>
+				<Event Id="990055725" Name="Play_Inventory_Button" ObjectPath="\Events\Default Work Unit\UI\Play_Inventory_Button" DurationType="OneShot" DurationMin="0.611577" DurationMax="0.611577"/>
+				<Event Id="95859917" Name="Play_Large_Cupboard_Open" ObjectPath="\Events\Default Work Unit\SFX\Cupboard\Play_Large_Cupboard_Open" DurationType="OneShot" DurationMin="0.983243" DurationMax="0.983243"/>
+				<Event Id="1109058446" Name="Play_Menu_Button" ObjectPath="\Events\Default Work Unit\UI\Play_Menu_Button" DurationType="OneShot" DurationMin="0.431980" DurationMax="0.553774"/>
+				<Event Id="134964135" Name="Play_Moving_Object_Interactive" ObjectPath="\Events\Default Work Unit\SFX\Move_Objects\Play_Moving_Object_Interactive" DurationType="Infinite"/>
+				<Event Id="2407964245" Name="Play_Open_Drawer_Big" ObjectPath="\Events\Default Work Unit\SFX\Drawers\Play_Open_Drawer_Big" DurationType="OneShot" DurationMin="1.374027" DurationMax="1.748644"/>
+				<Event Id="684873218" Name="Play_Open_Drawer_Small" ObjectPath="\Events\Default Work Unit\SFX\Drawers\Play_Open_Drawer_Small" DurationType="OneShot" DurationMin="1.540323" DurationMax="2.083490"/>
+				<Event Id="1559052575" Name="Play_Open_J_Box" ObjectPath="\Events\Default Work Unit\SFX\Jewelry Box\Play_Open_J_Box" DurationType="OneShot" DurationMin="0.232534" DurationMax="0.293652"/>
+				<Event Id="786024383" Name="Play_Page_Turn" ObjectPath="\Events\Default Work Unit\SFX\Diary\Play_Page_Turn" DurationType="OneShot" DurationMin="10.972589" DurationMax="13.060834"/>
+				<Event Id="2362235562" Name="Play_Painting_Falling" ObjectPath="\Events\Default Work Unit\SFX\Paintings\Play_Painting_Falling" DurationType="OneShot" DurationMin="1.971832" DurationMax="2.402460"/>
+				<Event Id="2612059735" Name="Play_Pillow_Move" ObjectPath="\Events\Default Work Unit\SFX\Sofa\Play_Pillow_Move" DurationType="OneShot" DurationMin="1.741296" DurationMax="1.985261"/>
+				<Event Id="304507835" Name="Play_Pull_Curtains" ObjectPath="\Events\Default Work Unit\SFX\Curtains\Play_Pull_Curtains" DurationType="OneShot" DurationMin="1.295156" DurationMax="1.703930"/>
+				<Event Id="806548754" Name="Play_Scribble" ObjectPath="\Events\Default Work Unit\Player\Play_Scribble" DurationType="OneShot" DurationMin="22.948790" DurationMax="26.179146"/>
+				<Event Id="3906081382" Name="Play_Stander_Lamp_OFF" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Stander_Lamp_OFF" DurationType="OneShot" DurationMin="0.449081" DurationMax="0.901778"/>
+				<Event Id="3153651208" Name="Play_Stander_Lamp_ON" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Stander_Lamp_ON" DurationType="Infinite"/>
+				<Event Id="278845169" Name="Play_Table_Lamp_OFF" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Table_Lamp_OFF" DurationType="OneShot" DurationMin="0.192000" DurationMax="1.001021"/>
+				<Event Id="1211107685" Name="Play_Table_Lamp_ON" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Table_Lamp_ON" DurationType="Infinite"/>
+				<Event Id="2047012289" Name="Play_Writing_Desk_Open" ObjectPath="\Events\Default Work Unit\SFX\Writing_Desk\Play_Writing_Desk_Open" DurationType="OneShot" DurationMin="1.997923" DurationMax="1.997923"/>
+				<Event Id="3975567679" Name="Stop_Object_Move" ObjectPath="\Events\Default Work Unit\SFX\Move_Objects\Stop_Object_Move" DurationType="OneShot" DurationMin="0.620004" DurationMax="0.896950"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
-				<File Id="146336685" Language="SFX">
-					<ShortName>chainsaw_engine start_3 revs_4 long humming and buzzing cuts_idle_11.wav</ShortName>
-					<Path>SFX\chainsaw_engine start_3 revs_4 long humming and buzzing cuts_idle_11_11697732.wem</Path>
+				<File Id="4203804" Language="SFX">
+					<ShortName>distant-thunder-05.wav</ShortName>
+					<Path>SFX\distant-thunder-05_620E097B.wem</Path>
+				</File>
+				<File Id="25932971" Language="SFX">
+					<ShortName>12--after_dolls--FM8_Misting.wav</ShortName>
+					<Path>SFX\12--after_dolls--FM8_Misting_469574DC.wem</Path>
+				</File>
+				<File Id="29292564" Language="SFX">
+					<ShortName>341612__pureaudioninja__electricity-4.wav</ShortName>
+					<Path>SFX\341612__pureaudioninja__electricity-4_3CD2B941.wem</Path>
+				</File>
+				<File Id="32471053" Language="SFX">
+					<ShortName>door-1-open.wav</ShortName>
+					<Path>SFX\door-1-open_5E6B4744.wem</Path>
+				</File>
+				<File Id="34575482" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_CCF8262F.wem</Path>
+				</File>
+				<File Id="38981141" Language="SFX">
+					<ShortName>Page_Turn-Mark_DiAngelo-1304638748.wav</ShortName>
+					<Path>SFX\Page_Turn-Mark_DiAngelo-1304638748_E81DF1F0.wem</Path>
+				</File>
+				<File Id="82327122" Language="SFX">
+					<ShortName>FootstepsCarpetStairs_BW.7368.wav</ShortName>
+					<Path>SFX\FootstepsCarpetStairs_BW.7368_D38F5DB0.wem</Path>
+				</File>
+				<File Id="83205833" Language="SFX">
+					<ShortName>12--after_dolls--Gaya Whisper.wav</ShortName>
+					<Path>SFX\12--after_dolls--Gaya Whisper_469574DC.wem</Path>
+				</File>
+				<File Id="86478077" Language="SFX">
+					<ShortName>12--after_dolls--Netherverse.wav</ShortName>
+					<Path>SFX\12--after_dolls--Netherverse_469574DC.wem</Path>
+				</File>
+				<File Id="89457689" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_533A9BBB.wem</Path>
+				</File>
+				<File Id="91509997" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_7DF7FA41.wem</Path>
+				</File>
+				<File Id="103143887" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_52E35C3F.wem</Path>
+				</File>
+				<File Id="116935071" Language="SFX">
+					<ShortName>storm_ambience_rain_heavy_small hail_large droplets_metal roof_low resonance from rain in valley_long_04.wav</ShortName>
+					<Path>SFX\storm_ambience_rain_heavy_small hail_large droplets_metal roof_low resonance from rain in valley_long_04_EC874479.wem</Path>
+				</File>
+				<File Id="157507227" Language="SFX">
+					<ShortName>door-lock-2.wav</ShortName>
+					<Path>SFX\door-lock-2_B7560822.wem</Path>
+				</File>
+				<File Id="162704137" Language="SFX">
+					<ShortName>Door, Cupboard, Open, Close SND0592 2.wav</ShortName>
+					<Path>SFX\Door, Cupboard, Open, Close SND0592 2_FC36B14D.wem</Path>
+				</File>
+				<File Id="176199561" Language="SFX">
+					<ShortName>Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176.wav</ShortName>
+					<Path>SFX\Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176_725C178A.wem</Path>
+				</File>
+				<File Id="179348293" Language="SFX">
+					<ShortName>distant-thunder-05.wav</ShortName>
+					<Path>SFX\distant-thunder-05_F1FBF90E.wem</Path>
+				</File>
+				<File Id="181377603" Language="SFX">
+					<ShortName>Switches\switch-8.wav</ShortName>
+					<Path>SFX\Switches\switch-8_11697732.wem</Path>
+				</File>
+				<File Id="205361062" Language="SFX">
+					<ShortName>421902__chazzravenelle__pillow-foley.wav</ShortName>
+					<Path>SFX\421902__chazzravenelle__pillow-foley_22671768.wem</Path>
+				</File>
+				<File Id="206840085" Language="SFX">
+					<ShortName>cabinet-door-open-2.wav</ShortName>
+					<Path>SFX\cabinet-door-open-2_97111EB4.wem</Path>
+				</File>
+				<File Id="217464879" Language="SFX">
+					<ShortName>218725__an-tony__lamp-buzz.wav</ShortName>
+					<Path>SFX\218725__an-tony__lamp-buzz_469574DC.wem</Path>
+				</File>
+				<File Id="224362045" Language="SFX">
+					<ShortName>342873__pfannkuchn__wooden-door-1-opening-and-closing-with-different-speeds-and-articulations.wav</ShortName>
+					<Path>SFX\342873__pfannkuchn__wooden-door-1-opening-and-closing-with-different-speeds-and-articulations_D5B77371.wem</Path>
+				</File>
+				<File Id="224450579" Language="SFX">
+					<ShortName>Switches\switch-17.wav</ShortName>
+					<Path>SFX\Switches\switch-17_11697732.wem</Path>
+				</File>
+				<File Id="226888399" Language="SFX">
+					<ShortName>6--Downstairs_1--Thrill Cymbal Mysterious.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Thrill Cymbal Mysterious_469574DC.wem</Path>
+				</File>
+				<File Id="228045506" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_F313DD4E.wem</Path>
+				</File>
+				<File Id="251254750" Language="SFX">
+					<ShortName>Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1.wav</ShortName>
+					<Path>SFX\Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1_469574DC.wem</Path>
+				</File>
+				<File Id="254186454" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_A0C5F805.wem</Path>
+				</File>
+				<File Id="261602269" Language="SFX">
+					<ShortName>7--Downstairs_2--Harp &amp; Vibraphone BHCT.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Harp &amp; Vibraphone BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="269097066" Language="SFX">
+					<ShortName>writing-signature-2.wav</ShortName>
+					<Path>SFX\writing-signature-2_11697732.wem</Path>
+				</File>
+				<File Id="272001158" Language="SFX">
+					<ShortName>Switches\switch-12.wav</ShortName>
+					<Path>SFX\Switches\switch-12_11697732.wem</Path>
+				</File>
+				<File Id="276042442" Language="SFX">
+					<ShortName>ink-pen-1.wav</ShortName>
+					<Path>SFX\ink-pen-1_11697732.wem</Path>
+				</File>
+				<File Id="276812034" Language="SFX">
+					<ShortName>Electricity, Electro Magnetic Interference 05 SND37279 1.wav</ShortName>
+					<Path>SFX\Electricity, Electro Magnetic Interference 05 SND37279 1_3DC65F87.wem</Path>
+				</File>
+				<File Id="288009750" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_EFF07A41.wem</Path>
+				</File>
+				<File Id="299601280" Language="SFX">
+					<ShortName>door-13-open.wav</ShortName>
+					<Path>SFX\door-13-open_11697732.wem</Path>
+				</File>
+				<File Id="304783600" Language="SFX">
+					<ShortName>CreekyWood_Barefoot_Sneaking.wav</ShortName>
+					<Path>SFX\CreekyWood_Barefoot_Sneaking_486BCFED.wem</Path>
+				</File>
+				<File Id="309781244" Language="SFX">
+					<ShortName>rain-street-10.wav</ShortName>
+					<Path>SFX\rain-street-10_4C503C92.wem</Path>
+				</File>
+				<File Id="311746557" Language="SFX">
+					<ShortName>369926__mephisto-egmont__curtains-heavy.wav</ShortName>
+					<Path>SFX\369926__mephisto-egmont__curtains-heavy_05BDA942.wem</Path>
+				</File>
+				<File Id="313515572" Language="SFX">
+					<ShortName>door-3-open.wav</ShortName>
+					<Path>SFX\door-3-open_B1D20AAE.wem</Path>
+				</File>
+				<File Id="314656348" Language="SFX">
+					<ShortName>Door, Cupboard, Sliding, Close, Hard SND2989.wav</ShortName>
+					<Path>SFX\Door, Cupboard, Sliding, Close, Hard SND2989_2D92B56A.wem</Path>
+				</File>
+				<File Id="322987836" Language="SFX">
+					<ShortName>footstep_wood_4.wav</ShortName>
+					<Path>SFX\footstep_wood_4_E7510BA2.wem</Path>
+				</File>
+				<File Id="326076904" Language="SFX">
+					<ShortName>Electricity, Electro Magnetic Interference 05 SND37279 1.wav</ShortName>
+					<Path>SFX\Electricity, Electro Magnetic Interference 05 SND37279 1_8C7E6260.wem</Path>
+				</File>
+				<File Id="343902678" Language="SFX">
+					<ShortName>Harp &amp; Vibraphone BHCT-3-Main Loop_2_8L.wav</ShortName>
+					<Path>SFX\Harp &amp; Vibraphone BHCT-3-Main Loop_2_8L_469574DC.wem</Path>
+				</File>
+				<File Id="350842475" Language="SFX">
+					<ShortName>Switches\switch-20.wav</ShortName>
+					<Path>SFX\Switches\switch-20_11697732.wem</Path>
+				</File>
+				<File Id="359995157" Language="SFX">
+					<ShortName>FootstepsCarpetStairs_BW.7368.wav</ShortName>
+					<Path>SFX\FootstepsCarpetStairs_BW.7368_83983C5C.wem</Path>
+				</File>
+				<File Id="360753182" Language="SFX">
+					<ShortName>CreekyWood_Barefoot_Sneaking.wav</ShortName>
+					<Path>SFX\CreekyWood_Barefoot_Sneaking_10812678.wem</Path>
+				</File>
+				<File Id="365403068" Language="SFX">
+					<ShortName>7--Downstairs_2--Sketch Piano #1.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Sketch Piano #1_469574DC.wem</Path>
+				</File>
+				<File Id="383106571" Language="SFX">
+					<ShortName>271378__rodincoil__opening-antique-trunk-latches-and-opening.wav</ShortName>
+					<Path>SFX\271378__rodincoil__opening-antique-trunk-latches-and-opening_075CE612.wem</Path>
+				</File>
+				<File Id="390012060" Language="SFX">
+					<ShortName>writing-signature-1.wav</ShortName>
+					<Path>SFX\writing-signature-1_11697732.wem</Path>
+				</File>
+				<File Id="418809485" Language="SFX">
+					<ShortName>door_open_and_close_1.wav</ShortName>
+					<Path>SFX\door_open_and_close_1_C2F88505.wem</Path>
+				</File>
+				<File Id="419815528" Language="SFX">
+					<ShortName>CreekyWood_Barefoot_Sneaking.wav</ShortName>
+					<Path>SFX\CreekyWood_Barefoot_Sneaking_F18F198D.wem</Path>
+				</File>
+				<File Id="422310191" Language="SFX">
+					<ShortName>pencil-1.wav</ShortName>
+					<Path>SFX\pencil-1_11697732.wem</Path>
+				</File>
+				<File Id="428273513" Language="SFX">
+					<ShortName>5-Main Loop_2variation_8L-Thrill Human Fear Ambience.wav</ShortName>
+					<Path>SFX\5-Main Loop_2variation_8L-Thrill Human Fear Ambience_469574DC.wem</Path>
+				</File>
+				<File Id="431542660" Language="SFX">
+					<ShortName>2-Minimalistic Loop_4L_PEX-Harp.wav</ShortName>
+					<Path>SFX\2-Minimalistic Loop_4L_PEX-Harp_469574DC.wem</Path>
+				</File>
+				<File Id="432211114" Language="SFX">
+					<ShortName>Door, Cupboard, Sliding, Close, Hard SND2989 1.wav</ShortName>
+					<Path>SFX\Door, Cupboard, Sliding, Close, Hard SND2989 1_FCA45BDE.wem</Path>
+				</File>
+				<File Id="435053371" Language="SFX">
+					<ShortName>Door_Open_close_3.wav</ShortName>
+					<Path>SFX\Door_Open_close_3_183F14EB.wem</Path>
+				</File>
+				<File Id="474592915" Language="SFX">
+					<ShortName>6--Downstairs_1--Low Winds BHCT.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Low Winds BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="482597625" Language="SFX">
+					<ShortName>12--after_dolls--BHCT Cluster.wav</ShortName>
+					<Path>SFX\12--after_dolls--BHCT Cluster_469574DC.wem</Path>
+				</File>
+				<File Id="485333703" Language="SFX">
+					<ShortName>5-Main Loop_2variation_8L-Sketch Piano #1.wav</ShortName>
+					<Path>SFX\5-Main Loop_2variation_8L-Sketch Piano #1_469574DC.wem</Path>
+				</File>
+				<File Id="498374068" Language="SFX">
+					<ShortName>Bag, Holdall, Leather Rummage Or Movements SND15731.wav</ShortName>
+					<Path>SFX\Bag, Holdall, Leather Rummage Or Movements SND15731_94AC86EF.wem</Path>
+				</File>
+				<File Id="502447257" Language="SFX">
+					<ShortName>221649__abbahoot__squeaky-door-opening.wav</ShortName>
+					<Path>SFX\221649__abbahoot__squeaky-door-opening_9FEAE19E.wem</Path>
+				</File>
+				<File Id="507178268" Language="SFX">
+					<ShortName>6--Downstairs_1--Thrill Dark &amp; Mellow.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Thrill Dark &amp; Mellow_469574DC.wem</Path>
+				</File>
+				<File Id="521733992" Language="SFX">
+					<ShortName>6--Downstairs_1--Sketch Piano #1.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Sketch Piano #1_469574DC.wem</Path>
+				</File>
+				<File Id="524329268" Language="SFX">
+					<ShortName>7--Downstairs_2--Thrill Cymbal Mysterious.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Thrill Cymbal Mysterious_469574DC.wem</Path>
+				</File>
+				<File Id="536057049" Language="SFX">
+					<ShortName>7--Downstairs_2--Vintage Keys.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Vintage Keys_469574DC.wem</Path>
+				</File>
+				<File Id="541772668" Language="SFX">
+					<ShortName>220197__gameaudio__click-basic.wav</ShortName>
+					<Path>SFX\220197__gameaudio__click-basic_11697732.wem</Path>
+				</File>
+				<File Id="563471481" Language="SFX">
+					<ShortName>Switches\switch-13.wav</ShortName>
+					<Path>SFX\Switches\switch-13_11697732.wem</Path>
+				</File>
+				<File Id="584777857" Language="SFX">
+					<ShortName>storm_ambience_thunder_strike_close_wet_light rain_Zeus resonance_16.wav</ShortName>
+					<Path>SFX\storm_ambience_thunder_strike_close_wet_light rain_Zeus resonance_16_D94F2EA6.wem</Path>
+				</File>
+				<File Id="602352373" Language="SFX">
+					<ShortName>Analog Dreams-2-Minimalistic Loop_4L_PEX.wav</ShortName>
+					<Path>SFX\Analog Dreams-2-Minimalistic Loop_4L_PEX_469574DC.wem</Path>
+				</File>
+				<File Id="604692420" Language="SFX">
+					<ShortName>footstep_wood_6.wav</ShortName>
+					<Path>SFX\footstep_wood_6_B4028749.wem</Path>
+				</File>
+				<File Id="607259975" Language="SFX">
+					<ShortName>5-Main Loop_2variation_8L-Harp &amp; Vibraphone BHCT.wav</ShortName>
+					<Path>SFX\5-Main Loop_2variation_8L-Harp &amp; Vibraphone BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="609974483" Language="SFX">
+					<ShortName>Switches\switch-19.wav</ShortName>
+					<Path>SFX\Switches\switch-19_11697732.wem</Path>
+				</File>
+				<File Id="616911124" Language="SFX">
+					<ShortName>6--Downstairs_1--Harp &amp; Vibraphone BHCT.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Harp &amp; Vibraphone BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="634949747" Language="SFX">
+					<ShortName>6--Downstairs_1--Low Strings BHCT.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Low Strings BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="635200229" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_54F572C9.wem</Path>
+				</File>
+				<File Id="639947866" Language="SFX">
+					<ShortName>door-16-open.wav</ShortName>
+					<Path>SFX\door-16-open_68765F07.wem</Path>
+				</File>
+				<File Id="641670323" Language="SFX">
+					<ShortName>Switches\switch-14.wav</ShortName>
+					<Path>SFX\Switches\switch-14_11697732.wem</Path>
+				</File>
+				<File Id="650142101" Language="SFX">
+					<ShortName>7--Downstairs_2--Low Winds BHCT.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Low Winds BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="660189763" Language="SFX">
+					<ShortName>1-Main Loop_8L_PEX-Analog Dreams.wav</ShortName>
+					<Path>SFX\1-Main Loop_8L_PEX-Analog Dreams_469574DC.wem</Path>
+				</File>
+				<File Id="663629318" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_FE32E583.wem</Path>
+				</File>
+				<File Id="667162587" Language="SFX">
+					<ShortName>Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176.wav</ShortName>
+					<Path>SFX\Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176_216E0F4C.wem</Path>
+				</File>
+				<File Id="667731179" Language="SFX">
+					<ShortName>storm_ambience_rain_heavy_small hail_large droplets_metal roof_low resonance from rain in valley_long_04.wav</ShortName>
+					<Path>SFX\storm_ambience_rain_heavy_small hail_large droplets_metal roof_low resonance from rain in valley_long_04_7ADC8AA2.wem</Path>
+				</File>
+				<File Id="669819824" Language="SFX">
+					<ShortName>12--after_dolls--FM8_Misting-01.wav</ShortName>
+					<Path>SFX\12--after_dolls--FM8_Misting-01_469574DC.wem</Path>
+				</File>
+				<File Id="684900672" Language="SFX">
+					<ShortName>Thrill Human Fear Ambience-3-Main Loop_2_8L.wav</ShortName>
+					<Path>SFX\Thrill Human Fear Ambience-3-Main Loop_2_8L_469574DC.wem</Path>
+				</File>
+				<File Id="686075366" Language="SFX">
+					<ShortName>12--after_dolls--Black Snow.wav</ShortName>
+					<Path>SFX\12--after_dolls--Black Snow_469574DC.wem</Path>
+				</File>
+				<File Id="687963851" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_93EE38CA.wem</Path>
+				</File>
+				<File Id="693390204" Language="SFX">
+					<ShortName>Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176.wav</ShortName>
+					<Path>SFX\Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176_1CE671B0.wem</Path>
+				</File>
+				<File Id="701978231" Language="SFX">
+					<ShortName>6--Downstairs_1--Thrill Aqua Scape.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Thrill Aqua Scape_469574DC.wem</Path>
+				</File>
+				<File Id="717636152" Language="SFX">
+					<ShortName>FootstepsCarpetStairs_BW.7368.wav</ShortName>
+					<Path>SFX\FootstepsCarpetStairs_BW.7368_6E532D6B.wem</Path>
+				</File>
+				<File Id="740690019" Language="SFX">
+					<ShortName>2-Minimalistic Loop_4L_PEX-Thrill Human Fear Ambience.wav</ShortName>
+					<Path>SFX\2-Minimalistic Loop_4L_PEX-Thrill Human Fear Ambience_469574DC.wem</Path>
+				</File>
+				<File Id="747541129" Language="SFX">
+					<ShortName>7--Downstairs_2--Clarinets &amp; Flutes BHCT.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Clarinets &amp; Flutes BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="749436539" Language="SFX">
+					<ShortName>440710__blouhond__sfx-various-briefcase-latch-sounds.wav</ShortName>
+					<Path>SFX\440710__blouhond__sfx-various-briefcase-latch-sounds_6683915E.wem</Path>
+				</File>
+				<File Id="750865797" Language="SFX">
+					<ShortName>6--Downstairs_1--Vintage Keys.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Vintage Keys_469574DC.wem</Path>
+				</File>
+				<File Id="751195063" Language="SFX">
+					<ShortName>341612__pureaudioninja__electricity-4.wav</ShortName>
+					<Path>SFX\341612__pureaudioninja__electricity-4_C72BDCC3.wem</Path>
+				</File>
+				<File Id="764825958" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_6EE99A6C.wem</Path>
+				</File>
+				<File Id="766609637" Language="SFX">
+					<ShortName>door-16-open.wav</ShortName>
+					<Path>SFX\door-16-open_E9478458.wem</Path>
+				</File>
+				<File Id="802680674" Language="SFX">
+					<ShortName>Room Tone, Living Room, Walla, Distant Traffic SND3546 1.wav</ShortName>
+					<Path>SFX\Room Tone, Living Room, Walla, Distant Traffic SND3546 1_5F712D16.wem</Path>
+				</File>
+				<File Id="816724461" Language="SFX">
+					<ShortName>Door, Cupboard, Sliding, Close, Hard SND2989.wav</ShortName>
+					<Path>SFX\Door, Cupboard, Sliding, Close, Hard SND2989_09E7B4F6.wem</Path>
+				</File>
+				<File Id="818197218" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_66348568.wem</Path>
+				</File>
+				<File Id="821978684" Language="SFX">
+					<ShortName>7--Downstairs_2--Thrill Aqua Scape.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Thrill Aqua Scape_469574DC.wem</Path>
+				</File>
+				<File Id="824121568" Language="SFX">
+					<ShortName>2-Minimalistic Loop_4L_PEX-Piano_1_WAV.wav</ShortName>
+					<Path>SFX\2-Minimalistic Loop_4L_PEX-Piano_1_WAV_469574DC.wem</Path>
+				</File>
+				<File Id="828824809" Language="SFX">
+					<ShortName>7--Downstairs_2--Thrill Dark &amp; Mellow.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Thrill Dark &amp; Mellow_469574DC.wem</Path>
+				</File>
+				<File Id="840532270" Language="SFX">
+					<ShortName>Door_Open_close_3.wav</ShortName>
+					<Path>SFX\Door_Open_close_3_08F93D03.wem</Path>
+				</File>
+				<File Id="841294508" Language="SFX">
+					<ShortName>handbag-lock-3.wav</ShortName>
+					<Path>SFX\handbag-lock-3_11697732.wem</Path>
+				</File>
+				<File Id="842090942" Language="SFX">
+					<ShortName>clock-ticking-4.wav</ShortName>
+					<Path>SFX\clock-ticking-4_DDD0EDA4.wem</Path>
+				</File>
+				<File Id="845153691" Language="SFX">
+					<ShortName>footstep_wood_2.wav</ShortName>
+					<Path>SFX\footstep_wood_2_EE9766D0.wem</Path>
+				</File>
+				<File Id="846937253" Language="SFX">
+					<ShortName>435845__dersuperanton__flashlight-click.wav</ShortName>
+					<Path>SFX\435845__dersuperanton__flashlight-click_39675D27.wem</Path>
+				</File>
+				<File Id="853566693" Language="SFX">
+					<ShortName>footstep_wood_5.wav</ShortName>
+					<Path>SFX\footstep_wood_5_8BE8CA20.wem</Path>
+				</File>
+				<File Id="855287437" Language="SFX">
+					<ShortName>Drawer, Wood, Open, Close, Rails, Hard 1 SND0910.wav</ShortName>
+					<Path>SFX\Drawer, Wood, Open, Close, Rails, Hard 1 SND0910_3D82C564.wem</Path>
+				</File>
+				<File Id="865092804" Language="SFX">
+					<ShortName>6--Downstairs_1--Cellos Ess SYE.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Cellos Ess SYE_469574DC.wem</Path>
+				</File>
+				<File Id="866113847" Language="SFX">
+					<ShortName>435845__dersuperanton__flashlight-click.wav</ShortName>
+					<Path>SFX\435845__dersuperanton__flashlight-click_4771D2BA.wem</Path>
+				</File>
+				<File Id="874459945" Language="SFX">
+					<ShortName>6--Downstairs_1--Clarinets &amp; Flutes BHCT.wav</ShortName>
+					<Path>SFX\6--Downstairs_1--Clarinets &amp; Flutes BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="886073209" Language="SFX">
+					<ShortName>Drawer, Wood, Open, Close, Rails, Hard 1 SND0910.wav</ShortName>
+					<Path>SFX\Drawer, Wood, Open, Close, Rails, Hard 1 SND0910_3BCCC746.wem</Path>
+				</File>
+				<File Id="886357878" Language="SFX">
+					<ShortName>Door, Cupboard, Open, Close SND0592.wav</ShortName>
+					<Path>SFX\Door, Cupboard, Open, Close SND0592_9C74450A.wem</Path>
+				</File>
+				<File Id="903314442" Language="SFX">
+					<ShortName>Sketch Piano #1-3-Main Loop_2_8L.wav</ShortName>
+					<Path>SFX\Sketch Piano #1-3-Main Loop_2_8L_469574DC.wem</Path>
+				</File>
+				<File Id="906877858" Language="SFX">
+					<ShortName>FootstepsCarpetStairs_BW.7368.wav</ShortName>
+					<Path>SFX\FootstepsCarpetStairs_BW.7368_B35F3510.wem</Path>
+				</File>
+				<File Id="910923962" Language="SFX">
+					<ShortName>7--Downstairs_2--Low Strings BHCT.wav</ShortName>
+					<Path>SFX\7--Downstairs_2--Low Strings BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="913395569" Language="SFX">
+					<ShortName>Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176.wav</ShortName>
+					<Path>SFX\Door, Wood, Unlocking, Key Jingle, Slight Room Reverb SND26176_9B521E5A.wem</Path>
+				</File>
+				<File Id="915828884" Language="SFX">
+					<ShortName>271378__rodincoil__opening-antique-trunk-latches-and-opening.wav</ShortName>
+					<Path>SFX\271378__rodincoil__opening-antique-trunk-latches-and-opening_31542059.wem</Path>
+				</File>
+				<File Id="923620343" Language="SFX">
+					<ShortName>Electricity, Electro Magnetic Interference 05 SND37279 1.wav</ShortName>
+					<Path>SFX\Electricity, Electro Magnetic Interference 05 SND37279 1_2BACFC7C.wem</Path>
+				</File>
+				<File Id="928685241" Language="SFX">
+					<ShortName>rain-street-11.wav</ShortName>
+					<Path>SFX\rain-street-11_A328FD5D.wem</Path>
+				</File>
+				<File Id="934544696" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_E60D7C4A.wem</Path>
+				</File>
+				<File Id="934824615" Language="SFX">
+					<ShortName>2-Minimalistic Loop_4L_PEX-Piano_3_WAV.wav</ShortName>
+					<Path>SFX\2-Minimalistic Loop_4L_PEX-Piano_3_WAV_469574DC.wem</Path>
+				</File>
+				<File Id="941792296" Language="SFX">
+					<ShortName>11--trans_after_doll--trans_to_after_dolls_stereo.wav</ShortName>
+					<Path>SFX\11--trans_after_doll--trans_to_after_dolls_stereo_469574DC.wem</Path>
+				</File>
+				<File Id="947159297" Language="SFX">
+					<ShortName>Page_Turn-Mark_DiAngelo-1304638748.wav</ShortName>
+					<Path>SFX\Page_Turn-Mark_DiAngelo-1304638748_5C932275.wem</Path>
+				</File>
+				<File Id="947959664" Language="SFX">
+					<ShortName>11--trans_after_doll--FM8_Misting.wav</ShortName>
+					<Path>SFX\11--trans_after_doll--FM8_Misting_469574DC.wem</Path>
+				</File>
+				<File Id="948253266" Language="SFX">
+					<ShortName>8--Downstairs_3--Clarinets &amp; Flutes BHCT.wav</ShortName>
+					<Path>SFX\8--Downstairs_3--Clarinets &amp; Flutes BHCT_469574DC.wem</Path>
+				</File>
+				<File Id="951053429" Language="SFX">
+					<ShortName>2-Minimalistic Loop_4L_PEX-Piano_2_WAV.wav</ShortName>
+					<Path>SFX\2-Minimalistic Loop_4L_PEX-Piano_2_WAV_469574DC.wem</Path>
+				</File>
+				<File Id="956373865" Language="SFX">
+					<ShortName>CreekyWood_Barefoot_Sneaking.wav</ShortName>
+					<Path>SFX\CreekyWood_Barefoot_Sneaking_FB1F9C5A.wem</Path>
+				</File>
+				<File Id="962895634" Language="SFX">
+					<ShortName>202092__spookymodem__chest-opening.wav</ShortName>
+					<Path>SFX\202092__spookymodem__chest-opening_D5231F70.wem</Path>
+				</File>
+				<File Id="963384710" Language="SFX">
+					<ShortName>8--Downstairs_3--Vintage Keys.wav</ShortName>
+					<Path>SFX\8--Downstairs_3--Vintage Keys_469574DC.wem</Path>
+				</File>
+				<File Id="978907180" Language="SFX">
+					<ShortName>2-Minimalistic Loop_4L_PEX-Piano_4_WAV.wav</ShortName>
+					<Path>SFX\2-Minimalistic Loop_4L_PEX-Piano_4_WAV_469574DC.wem</Path>
+				</File>
+				<File Id="983719699" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_75A89DBE.wem</Path>
+				</File>
+				<File Id="994962256" Language="SFX">
+					<ShortName>Drawer, Wood, Open, Close, Rails, Hard 1 SND0910.wav</ShortName>
+					<Path>SFX\Drawer, Wood, Open, Close, Rails, Hard 1 SND0910_B38F3999.wem</Path>
+				</File>
+				<File Id="995338654" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_90A3160D.wem</Path>
+				</File>
+				<File Id="1000097452" Language="SFX">
+					<ShortName>distant-thunder-03.wav</ShortName>
+					<Path>SFX\distant-thunder-03_E22F8502.wem</Path>
+				</File>
+				<File Id="1000279046" Language="SFX">
+					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
+					<Path>SFX\FootstepsCement_BW.7548_0BD931D0.wem</Path>
+				</File>
+				<File Id="1000829707" Language="SFX">
+					<ShortName>Switches\switch-4.wav</ShortName>
+					<Path>SFX\Switches\switch-4_11697732.wem</Path>
+				</File>
+				<File Id="1032422741" Language="SFX">
+					<ShortName>CreekyWood_Barefoot_Sneaking.wav</ShortName>
+					<Path>SFX\CreekyWood_Barefoot_Sneaking_EAB33FEE.wem</Path>
+				</File>
+				<File Id="1040567144" Language="SFX">
+					<ShortName>369926__mephisto-egmont__curtains-heavy.wav</ShortName>
+					<Path>SFX\369926__mephisto-egmont__curtains-heavy_D2CE9A8E.wem</Path>
+				</File>
+				<File Id="1042308158" Language="SFX">
+					<ShortName>footstep_wood_3.wav</ShortName>
+					<Path>SFX\footstep_wood_3_A749E2AB.wem</Path>
+				</File>
+				<File Id="1044357346" Language="SFX">
+					<ShortName>Door_Open_Close_2.wav</ShortName>
+					<Path>SFX\Door_Open_Close_2_6E07CADE.wem</Path>
+				</File>
+				<File Id="1048240824" Language="SFX">
+					<ShortName>Ambience, Suburb, Night, Distant Traffic 1 SND1172 1.wav</ShortName>
+					<Path>SFX\Ambience, Suburb, Night, Distant Traffic 1 SND1172 1_BB03B6FE.wem</Path>
+				</File>
+				<File Id="1049007970" Language="SFX">
+					<ShortName>Page_Turn-Mark_DiAngelo-1304638748.wav</ShortName>
+					<Path>SFX\Page_Turn-Mark_DiAngelo-1304638748_F86EE02F.wem</Path>
+				</File>
+				<File Id="1052659594" Language="SFX">
+					<ShortName>90936__robinhood76__01497-brawling-2.wav</ShortName>
+					<Path>SFX\90936__robinhood76__01497-brawling-2_108E7C1E.wem</Path>
+				</File>
+				<File Id="1060297384" Language="SFX">
+					<ShortName>distant-thunder-02.wav</ShortName>
+					<Path>SFX\distant-thunder-02_62AFC4EE.wem</Path>
+				</File>
+				<File Id="1060705485" Language="SFX">
+					<ShortName>Door, Cupboard, Sliding, Close, Hard SND2989 1.wav</ShortName>
+					<Path>SFX\Door, Cupboard, Sliding, Close, Hard SND2989 1_01950B21.wem</Path>
+				</File>
+				<File Id="1062111600" Language="SFX">
+					<ShortName>12--after_dolls--Padshop Pro.wav</ShortName>
+					<Path>SFX\12--after_dolls--Padshop Pro_469574DC.wem</Path>
+				</File>
+				<File Id="1072508109" Language="SFX">
+					<ShortName>door-1-open.wav</ShortName>
+					<Path>SFX\door-1-open_907494DA.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

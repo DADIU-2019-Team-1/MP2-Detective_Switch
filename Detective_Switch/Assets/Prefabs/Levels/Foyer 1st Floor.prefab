@@ -675,6 +675,16 @@ PrefabInstance:
       propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7355969905471345245, guid: 1c6572f29b710c74b807937acd1913ff,
+        type: 3}
+      propertyPath: soundOnInteract
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7355969905471345245, guid: 1c6572f29b710c74b807937acd1913ff,
+        type: 3}
+      propertyPath: playSound
+      value: Play_Door_Unlock_Open
+      objectReference: {fileID: 0}
     - target: {fileID: 6410101026641254807, guid: 1c6572f29b710c74b807937acd1913ff,
         type: 3}
       propertyPath: m_Layer
@@ -901,6 +911,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2165745224440796653}
     m_Modifications:
+    - target: {fileID: 4986702992794739437, guid: bc234605e96a9324186b814a725e5d41,
+        type: 3}
+      propertyPath: m_Name
+      value: Chair01 Variant (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8317878218363146494, guid: bc234605e96a9324186b814a725e5d41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -955,11 +970,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 98.204
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986702992794739437, guid: bc234605e96a9324186b814a725e5d41,
-        type: 3}
-      propertyPath: m_Name
-      value: Chair01 Variant (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc234605e96a9324186b814a725e5d41, type: 3}
@@ -1489,6 +1499,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2165745224440796653}
     m_Modifications:
+    - target: {fileID: 2197152256499691425, guid: 242c003de33748648b451cba7fcf63c6,
+        type: 3}
+      propertyPath: m_Name
+      value: Carpet Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 2893144460727311794, guid: 242c003de33748648b451cba7fcf63c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1543,11 +1558,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2197152256499691425, guid: 242c003de33748648b451cba7fcf63c6,
-        type: 3}
-      propertyPath: m_Name
-      value: Carpet Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 242c003de33748648b451cba7fcf63c6, type: 3}
@@ -1652,6 +1662,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2165745224440796653}
     m_Modifications:
+    - target: {fileID: 922099330223855049, guid: 71335a49e4fedaf40acd715ad8a89384,
+        type: 3}
+      propertyPath: m_Name
+      value: WallLantern (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 4220063807206631386, guid: 71335a49e4fedaf40acd715ad8a89384,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1706,11 +1721,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 922099330223855049, guid: 71335a49e4fedaf40acd715ad8a89384,
-        type: 3}
-      propertyPath: m_Name
-      value: WallLantern (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71335a49e4fedaf40acd715ad8a89384, type: 3}
@@ -1889,6 +1899,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2165745224440796653}
     m_Modifications:
+    - target: {fileID: 4986702992794739437, guid: bc234605e96a9324186b814a725e5d41,
+        type: 3}
+      propertyPath: m_Name
+      value: Chair01 Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 8317878218363146494, guid: bc234605e96a9324186b814a725e5d41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1943,11 +1958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986702992794739437, guid: bc234605e96a9324186b814a725e5d41,
-        type: 3}
-      propertyPath: m_Name
-      value: Chair01 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc234605e96a9324186b814a725e5d41, type: 3}
@@ -2522,6 +2532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 3.833711
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205482889280227601, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9203a560010344cbdf5a5cccf48777, type: 3}
@@ -3640,6 +3655,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1713067142468758279}
     m_Modifications:
+    - target: {fileID: 2441279668373935437, guid: 2151b0876caf5214cabe8051f4959b9a,
+        type: 3}
+      propertyPath: m_Name
+      value: Cosmetrics
+      objectReference: {fileID: 0}
     - target: {fileID: 6593873911205176723, guid: 2151b0876caf5214cabe8051f4959b9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3694,11 +3714,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2441279668373935437, guid: 2151b0876caf5214cabe8051f4959b9a,
-        type: 3}
-      propertyPath: m_Name
-      value: Cosmetrics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2151b0876caf5214cabe8051f4959b9a, type: 3}
@@ -3784,6 +3799,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1713067142468758279}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 73769c5103612244fa54fa8e3ce57f75,
+        type: 3}
+      propertyPath: m_Name
+      value: StairsDouble5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 73769c5103612244fa54fa8e3ce57f75,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 73769c5103612244fa54fa8e3ce57f75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3838,16 +3863,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 73769c5103612244fa54fa8e3ce57f75,
-        type: 3}
-      propertyPath: m_Name
-      value: StairsDouble5
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 73769c5103612244fa54fa8e3ce57f75,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 73769c5103612244fa54fa8e3ce57f75,
         type: 3}
@@ -4024,11 +4039,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1205482889280227601, guid: db9203a560010344cbdf5a5cccf48777,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2431708057522167653, guid: db9203a560010344cbdf5a5cccf48777,
         type: 3}
       propertyPath: m_Size.z
@@ -4044,6 +4054,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.78264874
       objectReference: {fileID: 0}
+    - target: {fileID: 1205482889280227601, guid: db9203a560010344cbdf5a5cccf48777,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9203a560010344cbdf5a5cccf48777, type: 3}
 --- !u!1001 &5873714223237478199
@@ -4053,6 +4068,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1713067142468758279}
     m_Modifications:
+    - target: {fileID: 6457679159613389208, guid: 5d0c4b81e2ca40c448efcc4786e7e754,
+        type: 3}
+      propertyPath: m_Name
+      value: Exterior
+      objectReference: {fileID: 0}
     - target: {fileID: 5060085432954222919, guid: 5d0c4b81e2ca40c448efcc4786e7e754,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4107,11 +4127,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457679159613389208, guid: 5d0c4b81e2ca40c448efcc4786e7e754,
-        type: 3}
-      propertyPath: m_Name
-      value: Exterior
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d0c4b81e2ca40c448efcc4786e7e754, type: 3}
@@ -4427,6 +4442,16 @@ PrefabInstance:
         type: 3}
       propertyPath: triggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7355969905471345245, guid: 1c6572f29b710c74b807937acd1913ff,
+        type: 3}
+      propertyPath: soundOnInteract
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7355969905471345245, guid: 1c6572f29b710c74b807937acd1913ff,
+        type: 3}
+      propertyPath: playSound
+      value: Play_Door_Unlock_Open
       objectReference: {fileID: 0}
     - target: {fileID: 6410101026641254807, guid: 1c6572f29b710c74b807937acd1913ff,
         type: 3}
@@ -4920,6 +4945,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1713067142468758279}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 74cde32f4d770de4ea95609b49ffe070,
+        type: 3}
+      propertyPath: m_Name
+      value: StairsDouble1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 74cde32f4d770de4ea95609b49ffe070,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 74cde32f4d770de4ea95609b49ffe070,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4974,16 +5009,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 74cde32f4d770de4ea95609b49ffe070,
-        type: 3}
-      propertyPath: m_Name
-      value: StairsDouble1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 74cde32f4d770de4ea95609b49ffe070,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 74cde32f4d770de4ea95609b49ffe070,
         type: 3}
@@ -5180,6 +5205,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1713067142468758279}
     m_Modifications:
+    - target: {fileID: 5543617659492239351, guid: c6c6ab2d9065d7443bf90ec9ced7ebdc,
+        type: 3}
+      propertyPath: m_Name
+      value: Back Light Sprites
+      objectReference: {fileID: 0}
     - target: {fileID: 8102905321585407141, guid: c6c6ab2d9065d7443bf90ec9ced7ebdc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5234,11 +5264,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543617659492239351, guid: c6c6ab2d9065d7443bf90ec9ced7ebdc,
-        type: 3}
-      propertyPath: m_Name
-      value: Back Light Sprites
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6c6ab2d9065d7443bf90ec9ced7ebdc, type: 3}
