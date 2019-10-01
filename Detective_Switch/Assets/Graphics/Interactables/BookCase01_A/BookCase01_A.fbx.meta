@@ -3,7 +3,27 @@ guid: 9e4cf8fc55975bf45a599f40cd3c54e7
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue_M
+    second: {fileID: 2100000, guid: 295a3271b96a86343a6ae070d09f66ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CupboardLarge_M
+    second: {fileID: 2100000, guid: 6fa0e2e51bb959144b708bde905658c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green_M
+    second: {fileID: 2100000, guid: 372d76bf171c325469244a446af62b01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red_M
+    second: {fileID: 2100000, guid: 127b2345ea963524b88d4eed3b19e4e8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
