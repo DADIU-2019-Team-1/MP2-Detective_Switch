@@ -4085,6 +4085,16 @@ PrefabInstance:
       propertyPath: BlackLightObject
       value: 
       objectReference: {fileID: 277225729}
+    - target: {fileID: 3572708696423680035, guid: 7f567e7b907ba284c9c65510c073e277,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734925609709253699, guid: 7f567e7b907ba284c9c65510c073e277,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f567e7b907ba284c9c65510c073e277, type: 3}
 --- !u!4 &1555730333 stripped
@@ -5413,6 +5423,11 @@ PrefabInstance:
       propertyPath: maxPlayerSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3653083261744341169, guid: 5d11b793a64845540951a46e373fa48d,
+        type: 3}
+      propertyPath: maxDragToMove
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3653083261744341174, guid: 5d11b793a64845540951a46e373fa48d,
         type: 3}
       propertyPath: m_Enabled
@@ -6084,6 +6099,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Foyer 1st Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 4286721129376713431, guid: 102082d68e6fadf4a86f285f217c538e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1713067142468758279, guid: 102082d68e6fadf4a86f285f217c538e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6334,6 +6354,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 595667170896759348, guid: 861d94d6b149df24482849b2e31a0e20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 595667170837029606, guid: 861d94d6b149df24482849b2e31a0e20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 595667170510958552, guid: 861d94d6b149df24482849b2e31a0e20,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 595667170510958552, guid: 861d94d6b149df24482849b2e31a0e20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 595667169698260851, guid: 861d94d6b149df24482849b2e31a0e20,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 595667169698260851, guid: 861d94d6b149df24482849b2e31a0e20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861d94d6b149df24482849b2e31a0e20, type: 3}
 --- !u!1 &4286721130444346568 stripped
@@ -6427,6 +6477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dining Hall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633407644432534219, guid: faeebafd2bec0fe4db09239b8034f3bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8337209353069103350, guid: faeebafd2bec0fe4db09239b8034f3bc,
         type: 3}
