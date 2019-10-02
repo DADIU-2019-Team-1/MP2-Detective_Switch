@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class TrajectoryTest : MonoBehaviour
 {
-    // TODO: Get the trajectory (x points) based on the movement, then pass it to the MM class
-
     // --- References
     Rigidbody rb;
     [HideInInspector] public TrajectoryPoint[] trajectoryPoints;

@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 using System;
 using System.Linq;
 
+[RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(MMPreProcessing))]
 public class MM : MonoBehaviour
 {
     /* Main script for handling Motion Matching.
@@ -17,7 +19,7 @@ public class MM : MonoBehaviour
 
     // --- References
     private MMPreProcessing preprocess;
-    private TrajectoryTest movement;
+    private CharacterMovement movement;
     private List<Trajectory> animTrajectories;
     Trajectory[] animTrajectoriesInCharSpace;
     private Trajectory movementTrajectory;
@@ -33,8 +35,8 @@ public class MM : MonoBehaviour
     // --- Private variables
     [SerializeField] bool isMMRunning, isCurTrajSameAsDesired, isIdling;
     [SerializeField] int framesToCull = 10;
-    private AnimationClip[] allClips;
     [SerializeField] private int candidateId;
+    private AnimationClip[] allClips;
     private List<Trajectory> candidates;
     private Queue<int> culledIDs;
 
@@ -42,9 +44,10 @@ public class MM : MonoBehaviour
     {
         // --- Loading references
         preprocess = GetComponent<MMPreProcessing>();
-        movement = GetComponent<TrajectoryTest>();
+        movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
         animator.applyRootMotion = false;
+        movementTrajectory = new Trajectory(new TrajectoryPoint[preprocess.trajectoryPointsToUse]);
 
         // --- Initializing collections
         allClips = animator.runtimeAnimatorController.animationClips;
@@ -65,7 +68,6 @@ public class MM : MonoBehaviour
 
     private void Update()
     {
-        movementTrajectory = new Trajectory(movement.GetMovementTrajectoryPoints());
         if (movement.rootVel.sqrMagnitude >= 0.0001f)
         {
             float angle = 0;

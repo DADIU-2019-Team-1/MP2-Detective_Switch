@@ -19,32 +19,34 @@ public class MMPreProcessing : MonoBehaviour
      */
 
     // --- References
-    private Animator animator;
+
+    // --- Public 
     [HideInInspector] public List<MMPose> poses;
     [HideInInspector] public List<TrajectoryPoint> trajectoryPoints;
     [HideInInspector] public List<Trajectory> trajectories;
-
-    // --- Inspector
+    [HideInInspector] public List<string> clipNames;
+    [HideInInspector] public List<int> clipFrames;
     public List<AnimationClip> clips;
     public List<string> jointNames;
     public bool preprocess = false;
-    public int trajectoryPointsToUse = 5;
+    public int trajectoryPointsToUse = 4;
     public int frameStepSize = 25;
 
-    // --- Not in Inspector
-    [HideInInspector]
-    public List<string> clipNames;
-    [HideInInspector]
-    public List<int> clipFrames;
-
+    // --- Private
     private List<Vector3> rootPos, lFootPos, rFootPos;
     private List<Quaternion> rootQ, lFootQ, rFootQ;
     // Note: We are having trouble tracking the position of the neck, since it is in muscle space.
 
     private void Awake()
     {
-        InitCollections();
-        CSVReaderWriter csvHandler = new CSVReaderWriter();
+	    InitCollections();
+        clips.AddRange(GetComponent<Animator>().runtimeAnimatorController.animationClips);
+        for (int i = 0; i < clips.Count; i++)
+        {
+	        if (clips[i].name.Contains("Loop")) // We cull loop animations from the csv
+				clips.RemoveAt(i);
+        }
+		CSVReaderWriter csvHandler = new CSVReaderWriter();
         if (preprocess)
         {
             foreach (AnimationClip clip in clips)
