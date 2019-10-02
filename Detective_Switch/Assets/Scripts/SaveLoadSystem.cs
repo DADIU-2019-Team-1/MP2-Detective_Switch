@@ -68,10 +68,7 @@ public class SaveLoadSystem : MonoBehaviour
                 {
                     rooms[i].SetActive(false);
                 }
-                else if (rooms[i].name == "BasementWalkWay")
-                {
-                    rooms[i].SetActive(false);
-                }
+
             }
         }
     }
@@ -222,10 +219,6 @@ public class SaveLoadSystem : MonoBehaviour
                 {
                     rooms[i].SetActive(tempRoomCon.foyer1st);
                 }
-                else if (rooms[i].name == "BasementWalkWay")
-                {
-                    rooms[i].SetActive(tempRoomCon.basementWalkway);
-                }
                 else if (rooms[i].name == "Foyer Ground Floor")
                 {
                     rooms[i].SetActive(tempRoomCon.foyerGround);
@@ -368,10 +361,6 @@ public class SaveLoadSystem : MonoBehaviour
             {
                 tempRoomCon.foyer1st = rooms[i].activeSelf;
             }
-            else if (rooms[i].name == "BasementWalkWay")
-            {
-                tempRoomCon.basementWalkway = rooms[i].activeSelf;
-            }
             else if (rooms[i].name == "Foyer Ground Floor")
             {
                 tempRoomCon.foyerGround = rooms[i].activeSelf;
@@ -427,5 +416,4 @@ public class RoomContainer
     public bool entrance;
     public bool foyer1st;
     public bool foyerGround;
-    public bool basementWalkway;
 }
