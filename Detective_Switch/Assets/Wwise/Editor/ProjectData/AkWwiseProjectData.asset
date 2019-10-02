@@ -184,7 +184,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 6f0215d87963454cb77c37e1cdd774dc
     GuidInternal: 
-    m_lastTime: -8586316782370443003
+    m_lastTime: -8586316082782125950
     List:
     - name: Non_World_Verb
       guid: aa0eb7215c869d44b38dbd9845ad2ce2
@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586316673179169519
+    m_lastTime: -8586316076728005979
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -710,6 +710,20 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.997923
       minDuration: 1.997923
+    - name: Set_Menu_State
+      guid: 23248ea8d08c194b98d5e7a86c93a2e8
+      id: 2140568981
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Set_Menu_State
+        ObjectType: 3
+      Path: Default Work Unit\Music\Set_Menu_State
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Stop_Object_Move
       guid: bde79ee4cc6b2e468cab627a99aa69b6
       id: 3975567679
@@ -1147,8 +1161,5 @@ MonoBehaviour:
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
   - /MG2_WwiseProject/Events/Default Work Unit/Music
-  - /MG2_WwiseProject/States
-  - /MG2_WwiseProject/States/Default Work Unit
-  - /MG2_WwiseProject/States/Default Work Unit/GameState
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
