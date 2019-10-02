@@ -9,9 +9,6 @@ public class CharacterMovement : MonoBehaviour
     Rigidbody playerRB;
     MMPreProcessing preProcessing;
 
-
-
-
     // --- Public
     public float maxPlayerSpeed = 8.5f, minDragToMove = 70, maxDragToMove = 250, maxPressTime = 0.15f, minPlayerSpeed = 5, 
 	    moveReactionTime = 0.3f, turnReactionTime = 2.5f, globalPlayerSpeed, gizmoSphereSize = 0.2f;
@@ -19,8 +16,6 @@ public class CharacterMovement : MonoBehaviour
 
 	public Transform root, lFoot, rFoot;
 	[HideInInspector] public Vector3 rootVel, lFootVel, rFootVel;
-
-
 
     // --- Private
     private Vector2 joyAnchor;

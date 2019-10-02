@@ -40,72 +40,66 @@ public class MMPreProcessing : MonoBehaviour
     private void Awake()
     {
 	    InitCollections();
-        clips.AddRange(GetComponent<Animator>().runtimeAnimatorController.animationClips);
-        for (int i = 0; i < clips.Count; i++)
-        {
-	        if (clips[i].name.Contains("Loop")) // We cull loop animations from the csv
-				clips.RemoveAt(i);
-        }
 		CSVReaderWriter csvHandler = new CSVReaderWriter();
         if (preprocess)
         {
-            foreach (AnimationClip clip in clips)
-            {
-                // Initialize lists again to avoid reusing previous data
-                clipNames = new List<string>();
-                clipFrames = new List<int>();
-                rootPos = new List<Vector3>();
-                lFootPos = new List<Vector3>();
-                rFootPos = new List<Vector3>();
-                rootQ = new List<Quaternion>();
-                lFootQ = new List<Quaternion>();
-                rFootQ = new List<Quaternion>();
-                for (int i = 0; i < clip.length * clip.frameRate; i++)
-                {
-                    clipNames.Add(clip.name);
-                    clipFrames.Add(i);
-                    // Adding root data to list
-                    rootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[0] + "T"));
-                    rootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[0] + "Q"));
-                    /// The approach below sounds good in theory, but in this implementation did not yield expected results.
-                    /// Upon further inspection, simply removing the root would suffice for the desired result.
-                    //// Creating a root transform matrix, then multiplying its inverse to transform joints to character space
-                    //Matrix4x4 rootTrans = Matrix4x4.identity;
-                    //Quaternion quart = rootQ[i];
-                    //quart.eulerAngles = new Vector3(rootQ[i].eulerAngles.x, rootQ[i].eulerAngles.y, rootQ[i].eulerAngles.z);
-                    //rootTrans.SetTRS(rootPos[i], quart, new Vector3(1, 1, 1));
-                    //rootQ[i] = quart;
-                    //lFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[2])));
-                    //rFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[3])));
-                    lFootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[1] + "T") - rootPos[i]);
-                    lFootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[1] + "Q"));
-                    rFootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[2] + "T") - rootPos[i]);
-                    rFootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[2] + "Q"));
+            //foreach (AnimationClip clip in clips)
+            //{
+            //    // Initialize lists again to avoid reusing previous data
+            //    clipNames = new List<string>();
+            //    clipFrames = new List<int>();
+            //    rootPos = new List<Vector3>();
+            //    lFootPos = new List<Vector3>();
+            //    rFootPos = new List<Vector3>();
+            //    rootQ = new List<Quaternion>();
+            //    lFootQ = new List<Quaternion>();
+            //    rFootQ = new List<Quaternion>();
+            //    for (int i = 0; i < clip.length * clip.frameRate; i++)
+            //    {
+            //        clipNames.Add(clip.name);
+            //        clipFrames.Add(i);
+            //        // Adding root data to list
+            //        rootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[0] + "T"));
+            //        rootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[0] + "Q"));
+            //        /// The approach below sounds good in theory, but in this implementation did not yield expected results.
+            //        /// Upon further inspection, simply removing the root would suffice for the desired result.
+            //        //// Creating a root transform matrix, then multiplying its inverse to transform joints to character space
+            //        //Matrix4x4 rootTrans = Matrix4x4.identity;
+            //        //Quaternion quart = rootQ[i];
+            //        //quart.eulerAngles = new Vector3(rootQ[i].eulerAngles.x, rootQ[i].eulerAngles.y, rootQ[i].eulerAngles.z);
+            //        //rootTrans.SetTRS(rootPos[i], quart, new Vector3(1, 1, 1));
+            //        //rootQ[i] = quart;
+            //        //lFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[2])));
+            //        //rFootPos.Add(rootTrans.inverse.MultiplyPoint3x4(GetJointPositionAtFrame(clip, i, jointNames[3])));
+            //        lFootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[1] + "T") - rootPos[i]);
+            //        lFootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[1] + "Q"));
+            //        rFootPos.Add(GetJointPositionAtFrame(clip, i, jointNames[2] + "T") - rootPos[i]);
+            //        rFootQ.Add(GetJointQuaternionAtFrame(clip, i, jointNames[2] + "Q"));
 
 
-                    // Add pose data to list
-                    if (i >= frameStepSize)
-                    {
-                        poses.Add(new MMPose(clip.name, i,
-                            rootPos[i], lFootPos[i], rFootPos[i],
-                            CalculateVelocityFromVectors(rootPos[i], rootPos[i - frameStepSize]),
-                            CalculateVelocityFromVectors(lFootPos[i], lFootPos[i - frameStepSize]),
-                            CalculateVelocityFromVectors(rFootPos[i], rFootPos[i - frameStepSize]),
-                            rootQ[i],lFootQ[i],rFootQ[i]));
-                    }
-                    else // There is no previous position for velocity calculation at frame 0
-                    {
-                        poses.Add(new MMPose(clip.name, i,
-                            rootPos[i], lFootPos[i], rFootPos[i],
-                            CalculateVelocityFromVectors(rootPos[i], Vector3.zero),
-                            CalculateVelocityFromVectors(lFootPos[i], Vector3.zero),
-                            CalculateVelocityFromVectors(rFootPos[i], Vector3.zero),
-                            rootQ[i], lFootQ[i], rFootQ[i]));
-                    }
-                    trajectoryPoints.Add(new TrajectoryPoint(rootPos[i] - rootPos[0], rootQ[i] * Vector3.forward)); // subtract 0 pos, which sets the starting point to 0.
-                }
-            }
-            csvHandler.WriteCSV(poses, trajectoryPoints);
+            //        // Add pose data to list
+            //        if (i >= frameStepSize)
+            //        {
+            //            poses.Add(new MMPose(clip.name, i,
+            //                rootPos[i], lFootPos[i], rFootPos[i],
+            //                CalculateVelocityFromVectors(rootPos[i], rootPos[i - frameStepSize]),
+            //                CalculateVelocityFromVectors(lFootPos[i], lFootPos[i - frameStepSize]),
+            //                CalculateVelocityFromVectors(rFootPos[i], rFootPos[i - frameStepSize]),
+            //                rootQ[i],lFootQ[i],rFootQ[i]));
+            //        }
+            //        else // There is no previous position for velocity calculation at frame 0
+            //        {
+            //            poses.Add(new MMPose(clip.name, i,
+            //                rootPos[i], lFootPos[i], rFootPos[i],
+            //                CalculateVelocityFromVectors(rootPos[i], Vector3.zero),
+            //                CalculateVelocityFromVectors(lFootPos[i], Vector3.zero),
+            //                CalculateVelocityFromVectors(rFootPos[i], Vector3.zero),
+            //                rootQ[i], lFootQ[i], rFootQ[i]));
+            //        }
+            //        trajectoryPoints.Add(new TrajectoryPoint(rootPos[i] - rootPos[0], rootQ[i] * Vector3.forward)); // subtract 0 pos, which sets the starting point to 0.
+            //    }
+            //}
+            //csvHandler.WriteCSV(poses, trajectoryPoints);
         }
 
         InitCollections();
@@ -160,40 +154,40 @@ public class MMPreProcessing : MonoBehaviour
         return trajectories;
     }
 
-    public Vector3 GetJointPositionAtFrame(AnimationClip clip, int frame, string jointName)
-    {
-        // Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        float[] vectorValues = new float[3];
-        int arrayEnumerator = 0;
-        foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
-        {
-            if (binding.propertyName.Contains(jointName))
-            {
-                var curve = AnimationUtility.GetEditorCurve(clip, binding);
-                vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
-                arrayEnumerator++;
-            }
-        }
-        return new Vector3(vectorValues[0], vectorValues[1], vectorValues[2]);
-    }
+    //public Vector3 GetJointPositionAtFrame(AnimationClip clip, int frame, string jointName)
+    //{
+    //    // Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
+    //    float[] vectorValues = new float[3];
+    //    int arrayEnumerator = 0;
+    //    foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
+    //    {
+    //        if (binding.propertyName.Contains(jointName))
+    //        {
+    //            var curve = AnimationUtility.GetEditorCurve(clip, binding);
+    //            vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
+    //            arrayEnumerator++;
+    //        }
+    //    }
+    //    return new Vector3(vectorValues[0], vectorValues[1], vectorValues[2]);
+    //}
 
-    public Quaternion GetJointQuaternionAtFrame(AnimationClip clip, int frame, string jointName)
-    {
-        // Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
-        AnimationCurve curve = new AnimationCurve();
-        float[] vectorValues = new float[4];
-        int arrayEnumerator = 0;
-        foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
-        {
-            if (binding.propertyName.Contains(jointName))
-            {
-                curve = AnimationUtility.GetEditorCurve(clip, binding);
-                vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
-                arrayEnumerator++;
-            }
-        }
-        return new Quaternion(vectorValues[0], vectorValues[1], vectorValues[2], vectorValues[3]);
-    }
+    //public Quaternion GetJointQuaternionAtFrame(AnimationClip clip, int frame, string jointName)
+    //{
+    //    // Bindings are inherited from a clip, and the AnimationCurve is inherited from the clip's binding
+    //    AnimationCurve curve = new AnimationCurve();
+    //    float[] vectorValues = new float[4];
+    //    int arrayEnumerator = 0;
+    //    foreach (EditorCurveBinding binding in AnimationUtility.GetCurveBindings(clip))
+    //    {
+    //        if (binding.propertyName.Contains(jointName))
+    //        {
+    //            curve = AnimationUtility.GetEditorCurve(clip, binding);
+    //            vectorValues[arrayEnumerator] = curve.Evaluate(frame / clip.frameRate);
+    //            arrayEnumerator++;
+    //        }
+    //    }
+    //    return new Quaternion(vectorValues[0], vectorValues[1], vectorValues[2], vectorValues[3]);
+    //}
 
     public Vector3 CalculateVelocityFromVectors(Vector3 currentPos, Vector3 prevPos)
     {

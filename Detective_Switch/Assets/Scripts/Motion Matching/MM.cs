@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
-using UnityEditor.Animations;
 using UnityEngine.UIElements;
 using System;
 using System.Linq;
@@ -27,6 +26,7 @@ public class MM : MonoBehaviour
 
     // --- Public variables
     public AnimationClip currentClip;
+    public AnimationClip loopWalk;
     public int currentFrame;
     public int currentAnimId;
     public float queryRate;
@@ -46,11 +46,19 @@ public class MM : MonoBehaviour
         preprocess = GetComponent<MMPreProcessing>();
         movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
+        allClips = new AnimationClip[preprocess.clips.Count+1];
+        for (int i = 0; i < allClips.Length; i++)
+        {
+            if (i < allClips.Length - 1)
+                allClips[i] = preprocess.clips[i];
+            else
+                allClips[i] = loopWalk;
+        }
+        
         animator.applyRootMotion = false;
         movementTrajectory = new Trajectory(new TrajectoryPoint[preprocess.trajectoryPointsToUse]);
 
         // --- Initializing collections
-        allClips = animator.runtimeAnimatorController.animationClips;
         animTrajectories = preprocess.GetTrajectories();
 		animTrajectoriesInCharSpace = new Trajectory[animTrajectories.Count];
         culledIDs = new Queue<int>();

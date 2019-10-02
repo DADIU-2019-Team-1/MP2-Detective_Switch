@@ -228,22 +228,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5199285043371583775, guid: 6d324b1d66206a145af914ed258a25da,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117043560162965833, guid: 6d324b1d66206a145af914ed258a25da,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9203911946813209541, guid: 6d324b1d66206a145af914ed258a25da,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5047381797369263729, guid: 6d324b1d66206a145af914ed258a25da,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5199285043371583775, guid: 6d324b1d66206a145af914ed258a25da,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117043560162965833, guid: 6d324b1d66206a145af914ed258a25da,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -525,16 +525,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2344078323726685525, guid: e7cb6e9001a3bae4ebf4103c9dddec13,
+    - target: {fileID: 686846338826973816, guid: e7cb6e9001a3bae4ebf4103c9dddec13,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7027000260043486065}
+      propertyPath: m_SizeDelta.y
+      value: 2220
+      objectReference: {fileID: 0}
     - target: {fileID: 992461037788531021, guid: e7cb6e9001a3bae4ebf4103c9dddec13,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 536188570768987539}
+    - target: {fileID: 2344078323726685525, guid: e7cb6e9001a3bae4ebf4103c9dddec13,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7027000260043486065}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7cb6e9001a3bae4ebf4103c9dddec13, type: 3}
 --- !u!224 &2489005888209609048 stripped

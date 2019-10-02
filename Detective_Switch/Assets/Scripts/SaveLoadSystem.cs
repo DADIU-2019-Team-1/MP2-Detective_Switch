@@ -79,13 +79,13 @@ public class SaveLoadSystem : MonoBehaviour
                     tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
                     tempIntScript.hasItem = IntObjConList[j].hasItem;
                     tempIntScript.toggleState = IntObjConList[j].toggleState;
-                    tempIntScript.hasBeenClicked = IntObjConList[j].hasBeenClicked;
 
                     if (IntObjConList[j].hasBeenClicked)
                     {
                         tempIntScript.soundOnInteract = false;
                         tempIntScript.Interact();
                     }
+                    tempIntScript.hasBeenClicked = IntObjConList[j].hasBeenClicked;
                 }
             }
         }
