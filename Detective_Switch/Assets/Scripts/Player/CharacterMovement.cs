@@ -11,19 +11,22 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 oldPos;
     private bool canMove;
     private bool mouseDown;
+    private Animator anim;
 
     public float currentPlayerSpeed;
     Vector3 prevLocation;
 
     public float interactDistance = 4.0f;
+    private readonly int animWalk = Animator.StringToHash("SpeedAnimator");
 
     //private Quaternion lookAtPosition;
-    
+
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         //lookAtPosition = Quaternion.LookRotation(transform.position + new Vector3(1000, 0, 0));
         playerRB = GetComponent<Rigidbody>();
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
@@ -52,6 +55,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         prevLocation = transform.position;
+        anim.SetFloat(animWalk, Mathf.Clamp(currentPlayerSpeed, 0.0000f, 1.0f));
     }
 
     void HandleInput() {
