@@ -43,6 +43,7 @@ namespace AK
         static const AkUniqueID PLAY_TABLE_LAMP_ON = 1211107685U;
         static const AkUniqueID PLAY_WRITING_DESK_OPEN = 2047012289U;
         static const AkUniqueID SET_MENU_STATE = 2140568981U;
+        static const AkUniqueID SET_PLAYING_STATE = 3483337346U;
         static const AkUniqueID STOP_OBJECT_MOVE = 3975567679U;
     } // namespace EVENTS
 
