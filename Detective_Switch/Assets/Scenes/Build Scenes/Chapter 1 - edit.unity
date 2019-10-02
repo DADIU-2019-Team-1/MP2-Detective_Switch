@@ -6476,6 +6476,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Foyer Ground Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 6259006158486571285, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: animationAction
+      value: Still
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259006158486571285, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: soundOnInteract
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259006158486571285, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: playSound
+      value: Play_Door_Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259006158486571285, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: singleUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 343889576952888117, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: singleUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 343889576952888117, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: animationAction
+      value: Still
+      objectReference: {fileID: 0}
     - target: {fileID: 1206528249865054621, guid: b86870907ec257446a8369a37ee5b380,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6548,8 +6578,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5030446103345611725, guid: b86870907ec257446a8369a37ee5b380,
         type: 3}
-      propertyPath: soundOnInteract
-      value: 0
+      propertyPath: animationAction
+      value: StillLonger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030446103345611725, guid: b86870907ec257446a8369a37ee5b380,
+        type: 3}
+      propertyPath: hasAnimation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86870907ec257446a8369a37ee5b380, type: 3}
