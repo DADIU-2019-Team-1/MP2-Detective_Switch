@@ -15,8 +15,10 @@ public class SoundManager : MonoBehaviour
     // in menu
     public AK.Wwise.State MenuOpen;
     public AK.Wwise.State MenuClose;
-    //public UnityEvent EventMenuOpen;
-    //public UnityEvent EventMenuClose;
+
+    public AK.Wwise.Event EventMenuOpen;
+    public AK.Wwise.Event EventMenuClose;
+
     public bool menuIsOpen;
     private bool wwiseMenuIsOpen;
 
@@ -121,10 +123,12 @@ public class SoundManager : MonoBehaviour
         wwiseMenuIsOpen = menuIsOpen;
         if (menuIsOpen)
         {
-            MenuOpen.SetValue();
+            EventMenuOpen.Post(gameObject);
+            //MenuOpen.SetValue();
         } else
         {
-            MenuClose.SetValue();
+            EventMenuClose.Post(gameObject);
+            //MenuClose.SetValue();
         }
     }
 
