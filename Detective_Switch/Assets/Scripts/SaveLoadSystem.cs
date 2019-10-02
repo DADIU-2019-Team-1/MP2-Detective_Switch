@@ -24,14 +24,56 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    public void ExitGame()
     {
-        SaveGame();
+        Application.Quit();
     }
+
+    //private void OnApplicationQuit()
+    //{
+    //    SaveGame();
+    //}
 
     public void NewGame()
     {
         PlayerPrefs.SetInt("previousGame", 1);
+
+        GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
+
+        if (rooms != null)
+        {
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                if (rooms[i].name == "Dining Hall")
+                {
+                    rooms[i].SetActive(false);
+                }
+                else if (rooms[i].name == "BedRoom")
+                {
+                    rooms[i].SetActive(false);
+                }
+                else if (rooms[i].name == "Living Room")
+                {
+                    rooms[i].SetActive(false);
+                }
+                else if (rooms[i].name == "Hallway")
+                {
+                    rooms[i].SetActive(false);
+                }
+                else if (rooms[i].name == "Entrance")
+                {
+                    rooms[i].SetActive(true);
+                }
+                else if (rooms[i].name == "Foyer 1st Floor")
+                {
+                    rooms[i].SetActive(false);
+                }
+                else if (rooms[i].name == "BasementWalkWay")
+                {
+                    rooms[i].SetActive(false);
+                }
+            }
+        }
     }
 
     public void ContinueGame()
@@ -145,6 +187,47 @@ public class SaveLoadSystem : MonoBehaviour
             tempSlotScript.greyedOutImage = tempKeyItemSlotContList[i].greyedOutImage;
         }
 
+        //// Room state save: ////
+        tempLoadString = "";
+        RoomContainer tempRoomCon = new RoomContainer();
+        tempLoadString = PlayerPrefs.GetString("roomSave");
+        tempRoomCon = JsonUtility.FromJson<RoomContainer>(tempLoadString);
+
+        GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
+        
+        if (rooms != null)
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            if (rooms[i].name == "Dining Hall")
+            {
+                rooms[i].SetActive(tempRoomCon.diningHall);
+            }
+            else if (rooms[i].name == "BedRoom")
+            {
+                rooms[i].SetActive(tempRoomCon.bedRoom);
+            }
+            else if (rooms[i].name == "Living Room")
+            {
+                rooms[i].SetActive(tempRoomCon.livingRoom);
+            }
+            else if (rooms[i].name == "Hallway")
+            {
+                rooms[i].SetActive(tempRoomCon.hallWay);
+            }
+            else if (rooms[i].name == "Entrance")
+            {
+                rooms[i].SetActive(tempRoomCon.entrance);
+            }
+            else if (rooms[i].name == "Foyer 1st Floor")
+            {
+                rooms[i].SetActive(tempRoomCon.foyer1st);
+            }
+            else if (rooms[i].name == "BasementWalkWay")
+            {
+                rooms[i].SetActive(tempRoomCon.basementWalkway);
+            }
+        }
+
     }
 
     public bool GetNewGameBool()
@@ -165,6 +248,7 @@ public class SaveLoadSystem : MonoBehaviour
             Debug.LogError("SaveGame failed: tags missing or player, interactables, journal or key item slots not found");
             return;
         }
+
         Debug.Log("Saving Game");
         // Find gameobjects:
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -198,7 +282,7 @@ public class SaveLoadSystem : MonoBehaviour
             tempIntObjCon.toggleState = tempIntScript.toggleState;
             tempIntObjCon.hasBeenClicked = tempIntScript.hasBeenClicked;
 
-    IntObjConList.Add(tempIntObjCon);
+            IntObjConList.Add(tempIntObjCon);
             tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(IntObjConList[i]);
         }
         PlayerPrefs.SetString("interactableSave", tempSaveString);
@@ -249,6 +333,45 @@ public class SaveLoadSystem : MonoBehaviour
         }
         PlayerPrefs.SetString("keyItemSave", tempSaveString);
 
+        //// Room state save: ////
+        tempSaveString = "";
+        RoomContainer tempRoomCon = new RoomContainer();
+        GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
+
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            if (rooms[i].name == "Dining Hall")
+            {
+                tempRoomCon.diningHall = rooms[i].activeSelf;
+            }
+            else if (rooms[i].name == "BedRoom")
+            {
+                tempRoomCon.bedRoom = rooms[i].activeSelf;
+            }
+            else if (rooms[i].name == "Living Room")
+            {
+                tempRoomCon.livingRoom = rooms[i].activeSelf;
+            }
+            else if (rooms[i].name == "Hallway")
+            {
+                tempRoomCon.hallWay = rooms[i].activeSelf;
+            }
+            else if (rooms[i].name == "Entrance")
+            {
+                tempRoomCon.entrance = rooms[i].activeSelf;
+            }
+            else if (rooms[i].name == "Foyer 1st Floor")
+            {
+                tempRoomCon.foyer1st = rooms[i].activeSelf;
+            }
+            else if (rooms[i].name == "BasementWalkWay")
+            {
+                tempRoomCon.basementWalkway = rooms[i].activeSelf;
+            }
+        }
+
+        tempSaveString = JsonUtility.ToJson(tempRoomCon);
+        PlayerPrefs.SetString("roomSave", tempSaveString);
     }
 }
 
@@ -285,4 +408,15 @@ public class KeyItemSlotContainer
     public Sprite icon;
     public Sprite emptyIcon;
     public Sprite greyedOutImage;
+}
+
+public class RoomContainer
+{
+    public bool diningHall;
+    public bool bedRoom;
+    public bool livingRoom;
+    public bool hallWay;
+    public bool entrance;
+    public bool foyer1st;
+    public bool basementWalkway;
 }

@@ -10,6 +10,7 @@ public class MenuHandler : MonoBehaviour
     public Text continueBtnText;
     public Text newGameBtnText;
     public Text optionsBtnText;
+    public Text exitBtnText;
 
     // Options menu:
     public Text optionsBackBtnText;
@@ -52,6 +53,7 @@ public class MenuHandler : MonoBehaviour
             languageText.text = "language";
             tutorialFlashText.text = "tap to change the flashlight mode";
             tutorialSlideText.text = "hold and drag to move";
+            exitBtnText.text = "exit";
 }
         else
         {
@@ -63,6 +65,7 @@ public class MenuHandler : MonoBehaviour
             languageText.text = "sprog";
             tutorialFlashText.text = "tryk for at skifte lommelygte tilstand";
             tutorialSlideText.text = "hold og træk for at gå";
+            exitBtnText.text = "luk ned";
         }
     }
 
