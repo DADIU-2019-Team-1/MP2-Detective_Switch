@@ -54,11 +54,11 @@ public class SaveLoadSystem : MonoBehaviour
                 }
                 else if (rooms[i].name == "Living Room")
                 {
-                    rooms[i].SetActive(false);
+                    rooms[i].SetActive(true);
                 }
                 else if (rooms[i].name == "Hallway")
                 {
-                    rooms[i].SetActive(false);
+                    rooms[i].SetActive(true);
                 }
                 else if (rooms[i].name == "Entrance")
                 {
@@ -196,37 +196,41 @@ public class SaveLoadSystem : MonoBehaviour
         GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
         
         if (rooms != null)
-        for (int i = 0; i < rooms.Length; i++)
-        {
-            if (rooms[i].name == "Dining Hall")
+            for (int i = 0; i < rooms.Length; i++)
             {
-                rooms[i].SetActive(tempRoomCon.diningHall);
+                if (rooms[i].name == "Dining Hall")
+                {
+                    rooms[i].SetActive(tempRoomCon.diningHall);
+                }
+                else if (rooms[i].name == "BedRoom")
+                {
+                    rooms[i].SetActive(tempRoomCon.bedRoom);
+                }
+                else if (rooms[i].name == "Living Room")
+                {
+                    rooms[i].SetActive(tempRoomCon.livingRoom);
+                }
+                else if (rooms[i].name == "Hallway")
+                {
+                    rooms[i].SetActive(tempRoomCon.hallWay);
+                }
+                else if (rooms[i].name == "Entrance")
+                {
+                    rooms[i].SetActive(tempRoomCon.entrance);
+                }
+                else if (rooms[i].name == "Foyer 1st Floor")
+                {
+                    rooms[i].SetActive(tempRoomCon.foyer1st);
+                }
+                else if (rooms[i].name == "BasementWalkWay")
+                {
+                    rooms[i].SetActive(tempRoomCon.basementWalkway);
+                }
+                else if (rooms[i].name == "Foyer Ground Floor")
+                {
+                    rooms[i].SetActive(tempRoomCon.foyerGround);
+                }
             }
-            else if (rooms[i].name == "BedRoom")
-            {
-                rooms[i].SetActive(tempRoomCon.bedRoom);
-            }
-            else if (rooms[i].name == "Living Room")
-            {
-                rooms[i].SetActive(tempRoomCon.livingRoom);
-            }
-            else if (rooms[i].name == "Hallway")
-            {
-                rooms[i].SetActive(tempRoomCon.hallWay);
-            }
-            else if (rooms[i].name == "Entrance")
-            {
-                rooms[i].SetActive(tempRoomCon.entrance);
-            }
-            else if (rooms[i].name == "Foyer 1st Floor")
-            {
-                rooms[i].SetActive(tempRoomCon.foyer1st);
-            }
-            else if (rooms[i].name == "BasementWalkWay")
-            {
-                rooms[i].SetActive(tempRoomCon.basementWalkway);
-            }
-        }
 
     }
 
@@ -368,6 +372,10 @@ public class SaveLoadSystem : MonoBehaviour
             {
                 tempRoomCon.basementWalkway = rooms[i].activeSelf;
             }
+            else if (rooms[i].name == "Foyer Ground Floor")
+            {
+                tempRoomCon.foyerGround = rooms[i].activeSelf;
+            }
         }
 
         tempSaveString = JsonUtility.ToJson(tempRoomCon);
@@ -418,5 +426,6 @@ public class RoomContainer
     public bool hallWay;
     public bool entrance;
     public bool foyer1st;
+    public bool foyerGround;
     public bool basementWalkway;
 }
