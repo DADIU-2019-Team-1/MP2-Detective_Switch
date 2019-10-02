@@ -8,7 +8,7 @@ public class SaveLoadSystem : MonoBehaviour
 {
     private const string SAVE_SEPERATOR = "#SAVE-VALUE#";
     public bool newGame = true;
-    public string saveLocation = "Assets/Resources/SaveFiles/";
+    // public string saveLocation = "Assets/Resources/SaveFiles/";
 
     private void Start()
     {
@@ -52,10 +52,6 @@ public class SaveLoadSystem : MonoBehaviour
             return;
 
         string tempLoadString = "";
-
-        //if (File.Exists(saveLocation + "interactables.txt") && File.Exists(saveLocation + "player.txt")
-        //    && File.Exists(saveLocation + "activeJournal.txt") && File.Exists(saveLocation + "keyItems.txt"))
-        //{
 
         tempLoadString = PlayerPrefs.GetString("interactableSave"); // File.ReadAllText(saveLocation + "interactables.txt");
 
@@ -128,7 +124,7 @@ public class SaveLoadSystem : MonoBehaviour
         tempLoadString = PlayerPrefs.GetString("keyItemSave");
         List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
         GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
-        tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+        tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
 
         for (int i = 1; i < tempDataString.Length; i++) // Start from 1
         {
@@ -145,13 +141,10 @@ public class SaveLoadSystem : MonoBehaviour
             tempSlotScript.text = tempKeyItemSlotContList[i].text;
             tempSlotScript.empty = tempKeyItemSlotContList[i].empty;
             tempSlotScript.icon = tempKeyItemSlotContList[i].icon;
+            tempSlotScript.emptyIcon = tempKeyItemSlotContList[i].emptyIcon;
+            tempSlotScript.greyedOutImage = tempKeyItemSlotContList[i].greyedOutImage;
         }
 
-        //}
-        //else
-        //{
-        //    Debug.LogError("LoadGame Error: could not load game due to one or more loadfiles missing. Make sure you have saved a game before loading");
-        //}
     }
 
     public bool GetNewGameBool()
@@ -172,7 +165,7 @@ public class SaveLoadSystem : MonoBehaviour
             Debug.LogError("SaveGame failed: tags missing or player, interactables, journal or key item slots not found");
             return;
         }
-     
+        Debug.Log("Saving Game");
         // Find gameobjects:
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
@@ -246,9 +239,12 @@ public class SaveLoadSystem : MonoBehaviour
                 tempIntObjCon.text = tempSlotScript.text;
                 tempIntObjCon.empty = tempSlotScript.empty;
                 tempIntObjCon.icon = tempSlotScript.icon;
+                tempIntObjCon.emptyIcon = tempSlotScript.emptyIcon;
+                tempIntObjCon.greyedOutImage = tempSlotScript.greyedOutImage;
 
                 tempKeyItemSlotContList.Add(tempIntObjCon);
                 tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(tempKeyItemSlotContList[i]);
+
             }
         }
         PlayerPrefs.SetString("keyItemSave", tempSaveString);
@@ -287,4 +283,6 @@ public class KeyItemSlotContainer
     public string text;
     public bool empty;
     public Sprite icon;
+    public Sprite emptyIcon;
+    public Sprite greyedOutImage;
 }
