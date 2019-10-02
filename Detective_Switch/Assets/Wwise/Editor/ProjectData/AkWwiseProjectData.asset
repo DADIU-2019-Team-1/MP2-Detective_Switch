@@ -184,7 +184,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 6f0215d87963454cb77c37e1cdd774dc
     GuidInternal: 
-    m_lastTime: -8586316082782125950
+    m_lastTime: -8586316070413454701
     List:
     - name: Non_World_Verb
       guid: aa0eb7215c869d44b38dbd9845ad2ce2
@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586316076728005979
+    m_lastTime: -8586316062266691314
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -721,6 +721,20 @@ MonoBehaviour:
       - ElementName: Set_Menu_State
         ObjectType: 3
       Path: Default Work Unit\Music\Set_Menu_State
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Set_Playing_State
+      guid: 21510c6778a38f4a90ad02c81521acfe
+      id: 3483337346
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Set_Playing_State
+        ObjectType: 3
+      Path: Default Work Unit\Music\Set_Playing_State
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0

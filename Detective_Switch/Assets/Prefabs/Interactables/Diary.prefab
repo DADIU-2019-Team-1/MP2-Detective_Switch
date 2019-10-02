@@ -25,7 +25,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iD: 0
   singleUse: 1
+  hasBeenClicked: 0
   soundOnInteract: 1
   playSound: Play_Page_Turn
   rotateOnInteract: 0
@@ -34,21 +36,36 @@ MonoBehaviour:
   rotateDegreesZ: 0
   rotateOverTime: 0
   rotationDuration: 0.5
+  isRotating: 0
+  oldRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  rotationStartTime: 0
+  rotationEndTime: 0
   toggleGameObject: 0
   toggleObject: {fileID: 0}
-  toggleAfterDelay: 0
-  toggleDelay: 0
-  hasItem: 0
+  toggleObject2: {fileID: 0}
+  toggleObject3: {fileID: 0}
+  toggleState: 0
+  hasItem: 1
   hasClue: 0
-  clueKeyString: 
+  clueKeyAmount: 0
+  clueKeyInt: 
   hasNote: 0
-  noteKeyString: 
+  noteKeyAmount: 0
+  noteKeyInt: 
   hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 1
   switchBetweenAnimations: 0
   animationDefault: 
   animationAction: Diary_A_Skeleton|Diary_Interact
+  isTriggerOnKeyPress: 0
+  triggerKey: 
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   testLog: 0
   testLogText: 
 --- !u!1001 &4961671596456876961
@@ -74,16 +91,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7969572395545725294, guid: e5cec96de0d27a54596c420fbafac6c8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: e5cec96de0d27a54596c420fbafac6c8,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: a02a51e772a77474f89510d5008eae08, type: 2}
-    - target: {fileID: -5707146031404780418, guid: e5cec96de0d27a54596c420fbafac6c8,
         type: 3}
       propertyPath: m_Layer
       value: 10
@@ -143,6 +150,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e5cec96de0d27a54596c420fbafac6c8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a02a51e772a77474f89510d5008eae08, type: 2}
+    - target: {fileID: -1905333747359187138, guid: e5cec96de0d27a54596c420fbafac6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121063750183690423, guid: e5cec96de0d27a54596c420fbafac6c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4036454477734787816, guid: e5cec96de0d27a54596c420fbafac6c8,
         type: 3}
       propertyPath: m_Layer
@@ -153,27 +175,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: -1905333747359187138, guid: e5cec96de0d27a54596c420fbafac6c8,
+    - target: {fileID: -5707146031404780418, guid: e5cec96de0d27a54596c420fbafac6c8,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.09
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176167231292107562, guid: e5cec96de0d27a54596c420fbafac6c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -1557152935864053024, guid: e5cec96de0d27a54596c420fbafac6c8,
         type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1121063750183690423, guid: e5cec96de0d27a54596c420fbafac6c8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1181921752652805215, guid: e5cec96de0d27a54596c420fbafac6c8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5176167231292107562, guid: e5cec96de0d27a54596c420fbafac6c8,
         type: 3}
       propertyPath: m_Layer
       value: 10
