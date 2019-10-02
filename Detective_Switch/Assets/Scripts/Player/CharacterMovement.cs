@@ -11,24 +11,47 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 oldPos;
     private bool canMove;
     private bool mouseDown;
+
+    public float currentPlayerSpeed;
+    Vector3 prevLocation;
+
+    public float interactDistance = 4.0f;
+
+    //private Quaternion lookAtPosition;
     
     private float joyDisplacementAngle = -0.25f * Mathf.PI; // This converts radians, turning by 45 degrees for isometric view.
     private float playerSpeedInterval, timeAtTouchDown, distanceTravelled;
-    [SerializeField]
-    private InventoryUpdater _invUpdater;
     // Start is called before the first frame update
     void Start()
     {
+        //lookAtPosition = Quaternion.LookRotation(transform.position + new Vector3(1000, 0, 0));
         playerRB = GetComponent<Rigidbody>();
         playerSpeedInterval = (maxPlayerSpeed / maxDragToMove) * 100;
         oldPos = transform.position;
+        prevLocation = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         //playerRB.AddForce();
-        HandleInput();
+        if (!GameMaster.instance.GetMenuIsOpen() && !GameMaster.instance.GetJournalIsOpen())
+        {
+            HandleInput();
+            //transform.rotation = Quaternion.Lerp(transform.rotation, lookAtPosition, turnReactionTime * Time.deltaTime);
+        }
+
+        float tempPlayerSpeed = (transform.position - prevLocation).magnitude / Time.deltaTime;
+        if (tempPlayerSpeed < 0.15f)
+        {
+            currentPlayerSpeed = 0;
+        }
+        else
+        {
+            currentPlayerSpeed = tempPlayerSpeed;
+        }
+
+        prevLocation = transform.position;
     }
 
     void HandleInput() {
@@ -57,6 +80,9 @@ public class CharacterMovement : MonoBehaviour
                 if (!canMove || Time.time - timeAtTouchDown < maxPressTime)
                 {
                     MouseClick();
+                } else
+                {
+                    //lookAtPosition = transform.rotation;
                 }
             }
             mouseDown = false;
@@ -68,11 +94,17 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log("MOUSE CLICK");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        LayerMask mask = LayerMask.GetMask("Interactable");
+        LayerMask mask = LayerMask.GetMask("Interactable", "SolidBlock");
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-            hit.transform.gameObject.GetComponent<Interactable>().Interact();
-            //_invUpdater.AddItemToSlot();
+            GameObject clickedObject = hit.transform.gameObject;
+            if (clickedObject.GetComponent<Interactable>())
+            {
+                if ((clickedObject.transform.position - transform.position).magnitude <= interactDistance)
+                {
+                    clickedObject.GetComponent<Interactable>().Interact();
+                }
+            }
         }
     }
 
@@ -86,28 +118,40 @@ public class CharacterMovement : MonoBehaviour
     }
 
     void MovePlayer(Vector3 moVector) {
-/*         Vector3 poelse = moVector;
-        if(poelse.magnitude  * playerSpeedInterval < minPlayerSpeed) {
-            poelse = moVector.normalized * minPlayerSpeed;
-        }
-        print("Can move: " + canMove + ", speed" + poelse.magnitude);
-        playerRB.AddForce(poelse * playerSpeedInterval * Time.deltaTime); */
-        //print("Move vector is: " + moVector);
-        Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
+
+        /*Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
         if(speedMove.magnitude < minPlayerSpeed) {
             speedMove = speedMove.normalized * minPlayerSpeed;
         }
-        //playerRB.AddForce(speedMove * Time.deltaTime * 100);
+
         playerRB.velocity = Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
-        //print(speedMove);
-        
+
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(speedMove), turnReactionTime * Time.deltaTime);
-        //globalPlayerSpeed = playerRB.velocity.magnitude;
-        
+
+        distanceTravelled = (oldPos - transform.position).magnitude;
+        oldPos = transform.position;
+        GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);*/
+
+
+        //lookAtPosition = Quaternion.LookRotation(transform.position + moVector);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.position + moVector), turnReactionTime * Time.deltaTime);
+
+        Vector3 speedMove = (moVector / maxDragToMove) * maxPlayerSpeed;
+
+        if (speedMove.magnitude < minPlayerSpeed)
+        {
+            speedMove = speedMove.normalized * minPlayerSpeed;
+        }
+
+        speedMove.y = playerRB.velocity.y;
+
+        playerRB.velocity = speedMove; // Vector3.Lerp(playerRB.velocity, speedMove * 10, moveReactionTime * Time.deltaTime);
+
         distanceTravelled = (oldPos - transform.position).magnitude;
         oldPos = transform.position;
         GameMaster.instance.SetMoveSpeed(globalPlayerSpeed);
-        //Debug.Log(distanceTravelled);
-        //Debug.Log(globalPlayerSpeed);
+
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }

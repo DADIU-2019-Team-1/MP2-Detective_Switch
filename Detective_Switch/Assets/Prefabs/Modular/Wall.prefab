@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &2431708057522167653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614295229604707789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14971615, y: 5.399301, z: 2.0100007}
+  m_Center: {x: -0.041769613, y: 2.5991504, z: -1.0050013}
 --- !u!114 &6972593605114476790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,19 +58,6 @@ MonoBehaviour:
     type: 3}
   Mat2: {fileID: 0}
   Mat3: {fileID: 0}
---- !u!65 &2431708057522167653
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614295229604707789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.14971615, y: 5.399301, z: 2.0100007}
-  m_Center: {x: -0.041769613, y: 2.5991504, z: -1.0050013}
 --- !u!1001 &8910239199228159172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,6 +80,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: d4099b8dfc210944f88024c70d55185f, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 84afd465eb7f3af42a8ae9cfa20a9a4e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 393d5b57abeba4b4588a154fb93c1126, type: 2}
     - target: {fileID: -4216859302048453862, guid: 84afd465eb7f3af42a8ae9cfa20a9a4e,
         type: 3}
       propertyPath: m_LocalPosition.x

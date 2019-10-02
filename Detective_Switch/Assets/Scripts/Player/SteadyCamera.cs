@@ -10,6 +10,7 @@ public class SteadyCamera : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.FindGameObjectsWithTag("Player")[0];
         offset = new Vector3(-11, 9, -11);
     }
 

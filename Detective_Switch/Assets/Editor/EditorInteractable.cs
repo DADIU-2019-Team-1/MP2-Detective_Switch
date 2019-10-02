@@ -20,6 +20,18 @@ public class InteractableEditor : Editor
 
         var dis = target as Interactable;
 
+        if (dis.clueKeyAmount != dis.clueKeyInt.Length && dis.clueKeyAmount != 0)
+        {
+            dis.clueKeyArrayInit();
+        }
+
+        if (dis.noteKeyAmount != dis.noteKeyInt.Length && dis.noteKeyAmount != 0)
+        {
+            dis.noteKeyArrayInit();
+        }
+
+        dis.iD = EditorGUILayout.IntField("Unique ID", dis.iD);
+
         DrawUILine();
 
         dis.singleUse = GUILayout.Toggle(dis.singleUse, "Single Use");
@@ -48,24 +60,39 @@ public class InteractableEditor : Editor
 
         dis.toggleGameObject = GUILayout.Toggle(dis.toggleGameObject, "Toggle Game Object");
         if (dis.toggleGameObject)
-            dis.toggleObject = (GameObject)EditorGUILayout.ObjectField("Toggle Object:", dis.toggleObject, typeof(GameObject), true);
+        {
+            dis.toggleObject = (GameObject)EditorGUILayout.ObjectField("Toggle Object 1:", dis.toggleObject, typeof(GameObject), true);
+            dis.toggleObject2 = (GameObject)EditorGUILayout.ObjectField("Toggle Object 2:", dis.toggleObject2, typeof(GameObject), true);
+            dis.toggleObject3 = (GameObject)EditorGUILayout.ObjectField("Toggle Object 3:", dis.toggleObject3, typeof(GameObject), true);
+        }
 
         DrawUILine();
 
         dis.hasItem = GUILayout.Toggle(dis.hasItem, "Has Item");
         if (dis.hasItem) {
             dis.hasClue = GUILayout.Toggle(dis.hasClue, "Has Clue");
-            if(dis.hasClue) 
-                dis.clueKeyString = EditorGUILayout.TextField("Clue Key: ", dis.clueKeyString);
+            if (dis.hasClue)
+            {
+                dis.clueKeyAmount = EditorGUILayout.IntField("Key amount:", dis.clueKeyAmount);
+                for (int i = 0; i < dis.clueKeyInt.Length; i++)
+                {
+                    dis.clueKeyInt[i] = EditorGUILayout.IntField("Clue Key: ", dis.clueKeyInt[i]);
+                }
+            }   
             dis.hasNote = GUILayout.Toggle(dis.hasNote, "Has Note");
-            if(dis.hasNote) 
-                dis.noteKeyString = EditorGUILayout.TextField("Note Key: ", dis.noteKeyString);
+            if(dis.hasNote)
+            {
+                dis.noteKeyAmount = EditorGUILayout.IntField("Key amount:", dis.noteKeyAmount);
+                for (int i = 0; i < dis.noteKeyInt.Length; i++)
+                {
+                    dis.noteKeyInt[i] = EditorGUILayout.IntField("Note Key: ", dis.noteKeyInt[i]);
+                }
+            }
             dis.hasKeyItem = GUILayout.Toggle(dis.hasKeyItem, "Has KeyItem");
             if(dis.hasKeyItem) 
                 dis.item = (Item)EditorGUILayout.ObjectField("Item:", dis.item, typeof(Item), true);
         }
-
-            
+  
 
         DrawUILine();
 
@@ -78,6 +105,13 @@ public class InteractableEditor : Editor
                 dis.animationDefault = EditorGUILayout.TextField("Animation Default:", dis.animationDefault);
             dis.animationAction = EditorGUILayout.TextField("Animation Action:", dis.animationAction);
         }
+
+        DrawUILine();
+
+        dis.isTriggerOnKeyPress = GUILayout.Toggle(dis.isTriggerOnKeyPress, "Is trigger on key press?");
+        dis.triggerKey = EditorGUILayout.TextField("Trigger Key:", dis.triggerKey);
+        SerializedProperty eventProp = serializedObject.FindProperty("triggerEvent");
+        EditorGUILayout.PropertyField(eventProp);
 
         DrawUILine();
 
@@ -108,5 +142,6 @@ public class InteractableEditor : Editor
         r.width += 6;
         EditorGUI.DrawRect(r, color);
     }
+
 }
 #endif
