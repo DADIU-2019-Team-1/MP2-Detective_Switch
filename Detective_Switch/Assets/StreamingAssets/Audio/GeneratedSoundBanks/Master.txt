@@ -12,7 +12,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	990055725	Play_Inventory_Button			\Default Work Unit\UI\Play_Inventory_Button	
 	1109058446	Play_Menu_Button			\Default Work Unit\UI\Play_Menu_Button	
 	1211107685	Play_Table_Lamp_ON			\Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Table_Lamp_ON	
-	1501216439	Play_Fireplace			\Default Work Unit\Play_Fireplace	
+	1501216439	Play_Fireplace			\Default Work Unit\Ambience\Amb_Emitters\Play_Fireplace	
 	1559052575	Play_Open_J_Box			\Default Work Unit\SFX\Jewelry Box\Play_Open_J_Box	
 	1585582443	Play_Blacklight_OFF			\Default Work Unit\Player\Play_Blacklight_OFF	
 	1643668981	Play_Amb_Basic_Room			\Default Work Unit\Ambience\Amb_Environment\Play_Amb_Basic_Room	
@@ -24,6 +24,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2362235562	Play_Painting_Falling			\Default Work Unit\SFX\Paintings\Play_Painting_Falling	
 	2407964245	Play_Open_Drawer_Big			\Default Work Unit\SFX\Drawers\Play_Open_Drawer_Big	
 	2410086214	Play_Case_File_Button			\Default Work Unit\UI\Play_Case_File_Button	
+	2464589613	Stop_Fireplace			\Default Work Unit\Ambience\Amb_Emitters\Stop_Fireplace	
 	2612059735	Play_Pillow_Move			\Default Work Unit\SFX\Sofa\Play_Pillow_Move	
 	3153651208	Play_Stander_Lamp_ON			\Default Work Unit\Ambience\Amb_Emitters\Lamps\Play_Stander_Lamp_ON	
 	3483337346	Set_Playing_State			\Default Work Unit\Music\Set_Playing_State	
@@ -123,11 +124,12 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	181377603	switch-8	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\Switches\switch-8_A1F09404.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Ambiences\Amb_Emitters\Lamps\Table Lamp_Switch\switch-8		10185
 	205361062	421902__chazzravenelle__pillow-foley	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\421902__chazzravenelle__pillow-foley_A4169D36.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\SFX\SFX\Interactables\Sofa\Pillow_Move\421902__chazzravenelle__pillow-foley		18508
 	206840085	cabinet-door-open-2	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\cabinet-door-open-2_605A89AA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\SFX\SFX\Interactables\Grand_Clock\Clock_Door_Open\Clock_Door_Open_Sequence\cabinet-door-open-2		25636
-	217464879	Lamp_Buzz_Loop	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\218725__an-tony__lamp-buzz_143F82DE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Ambiences\Amb_Emitters\Lamps\Lamp_Buzz_Loop		192913
+	217464879	Lamp_Buzz_Loop_Table	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\218725__an-tony__lamp-buzz_143F82DE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Ambiences\Amb_Emitters\Lamps\Lamp_Buzz_Loop_Table		192913
 	224362045	Hinge_Open1	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\342873__pfannkuchn__wooden-door-1-opening-and-closing-with-different-speeds-and-articulations_8D5EC837.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\SFX\SFX\Interactables\Door\Door_Open\Comp_Door_open\Hinge_Open\Hinge_Open1		36324
 	224450579	switch-17	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\Switches\switch-17_A1F09404.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Ambiences\Amb_Emitters\Lamps\Table Lamp_Switch\switch-17		10256
 	226888399	7--Downstairs_2--Thrill Aqua Scape	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\6--Downstairs_1--Thrill Cymbal Mysterious_143F82DE.wem		\Interactive Music Hierarchy\Default Work Unit\Music\GameFlow_01\GameFlow_Music\Explore\Lvl0-2_Downstairs_Normal\Lvl2_Downstairs_Normal\Lvl3_D\7--Downstairs_2--Thrill Aqua Scape		552311
 	228045506	FootstepsCement_BW_04	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\FootstepsCement_BW.7548_1D11C1B0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Player\Player\Movement\Footstep_Surface\FS_Marble\FootstepsCement_BW_04		8917
+	251254750	Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1_143F82DE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Ambiences\Amb_Emitters\Fireplace\Fireplace\Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1		783150
 	254186454	FootstepsCement_BW_7548	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\FootstepsCement_BW.7548_0978DC73.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Player\Player\Movement\Footstep_Surface\FS_Marble\FootstepsCement_BW_7548		8459
 	261602269	6--Downstairs_1--Harp & Vibraphone BHCT	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\7--Downstairs_2--Harp & Vibraphone BHCT_143F82DE.wem		\Interactive Music Hierarchy\Default Work Unit\Music\GameFlow_01\GameFlow_Music\Explore\Lvl0-2_Downstairs_Normal\Lvl0_Downstairs_Normal\Lvl1_D\6--Downstairs_1--Harp & Vibraphone BHCT		353992
 	269097066	pencil_short	C:\Users\jonas\OneDrive\Dokumenter\Historie-DD\9. semseter - AD DADIU\MG2\MG2_WwiseProject\.cache\Windows\SFX\writing-signature-2_A1F09404.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master SFX Mixer\Player\Player\Scribble\Scribble_random\Pencil\pencil_short		82786

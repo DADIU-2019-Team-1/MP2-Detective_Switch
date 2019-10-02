@@ -16,7 +16,7 @@ MonoBehaviour:
   singleUse: 1
   hasBeenClicked: 0
   soundOnInteract: 1
-  playSound: Play_Fireplace
+  playSound: Stop_Fireplace
   rotateOnInteract: 0
   rotateDegreesX: 0
   rotateDegreesY: 90
@@ -30,12 +30,16 @@ MonoBehaviour:
   rotationEndTime: 0
   toggleGameObject: 1
   toggleObject: {fileID: 0}
+  toggleObject2: {fileID: 0}
+  toggleObject3: {fileID: 0}
   toggleState: 0
   hasItem: 0
   hasClue: 0
-  clueKeyInt: 0
+  clueKeyAmount: 0
+  clueKeyInt: 
   hasNote: 0
-  noteKeyInt: 0
+  noteKeyAmount: 0
+  noteKeyInt: 
   hasKeyItem: 0
   item: {fileID: 0}
   hasAnimation: 0
@@ -58,21 +62,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
-        type: 3}
-      propertyPath: m_Name
-      value: Fireplace Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f4188eb2eaf49bb4db24abac73dc5007,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -127,6 +116,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
+        type: 3}
+      propertyPath: m_Name
+      value: Fireplace Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4188eb2eaf49bb4db24abac73dc5007, type: 3}

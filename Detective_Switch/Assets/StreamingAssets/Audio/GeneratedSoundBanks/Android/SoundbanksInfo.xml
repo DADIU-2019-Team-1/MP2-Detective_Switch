@@ -29,7 +29,7 @@
 				<Event Id="4011491198" Name="Play_Clock_Door_Open" ObjectPath="\Events\Default Work Unit\SFX\Grand_Clock\Play_Clock_Door_Open" DurationType="OneShot" DurationMin="1.556266" DurationMax="1.625729"/>
 				<Event Id="1660008929" Name="Play_Door_Open" ObjectPath="\Events\Default Work Unit\SFX\Door\Play_Door_Open" DurationType="OneShot" DurationMin="0.813166" DurationMax="4.203213"/>
 				<Event Id="2081382800" Name="Play_Door_Unlock_Open" ObjectPath="\Events\Default Work Unit\SFX\Door\Play_Door_Unlock_Open" DurationType="OneShot" DurationMin="1.813166" DurationMax="5.203213"/>
-				<Event Id="1501216439" Name="Play_Fireplace" ObjectPath="\Events\Default Work Unit\Play_Fireplace" MaxAttenuation="30.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1501216439" Name="Play_Fireplace" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Play_Fireplace" MaxAttenuation="30.000000" DurationType="Infinite"/>
 				<Event Id="709824872" Name="Play_Footstep_Surface" ObjectPath="\Events\Default Work Unit\Player\Play_Footstep_Surface" DurationType="OneShot" DurationMin="0.175774" DurationMax="0.657467"/>
 				<Event Id="2096200520" Name="Play_GameFlow_Music" ObjectPath="\Events\Default Work Unit\Music\Play_GameFlow_Music" DurationType="Infinite"/>
 				<Event Id="560436547" Name="Play_Grand_Clock_Ticking" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Play_Grand_Clock_Ticking" MaxAttenuation="30.000000" DurationType="Infinite"/>
@@ -52,6 +52,7 @@
 				<Event Id="2047012289" Name="Play_Writing_Desk_Open" ObjectPath="\Events\Default Work Unit\SFX\Writing_Desk\Play_Writing_Desk_Open" DurationType="OneShot" DurationMin="1.997923" DurationMax="1.997923"/>
 				<Event Id="2140568981" Name="Set_Menu_State" ObjectPath="\Events\Default Work Unit\Music\Set_Menu_State" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3483337346" Name="Set_Playing_State" ObjectPath="\Events\Default Work Unit\Music\Set_Playing_State" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2464589613" Name="Stop_Fireplace" ObjectPath="\Events\Default Work Unit\Ambience\Amb_Emitters\Stop_Fireplace" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3975567679" Name="Stop_Object_Move" ObjectPath="\Events\Default Work Unit\SFX\Move_Objects\Stop_Object_Move" DurationType="OneShot" DurationMin="0.620004" DurationMax="0.896950"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -154,6 +155,10 @@
 				<File Id="228045506" Language="SFX">
 					<ShortName>FootstepsCement_BW.7548.wav</ShortName>
 					<Path>SFX\FootstepsCement_BW.7548_1D11C1B0.wem</Path>
+				</File>
+				<File Id="251254750" Language="SFX">
+					<ShortName>Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1.wav</ShortName>
+					<Path>SFX\Fire, In Fireplace, Spit, Rumble, Crackle 3 SND31381 1_143F82DE.wem</Path>
 				</File>
 				<File Id="254186454" Language="SFX">
 					<ShortName>FootstepsCement_BW.7548.wav</ShortName>

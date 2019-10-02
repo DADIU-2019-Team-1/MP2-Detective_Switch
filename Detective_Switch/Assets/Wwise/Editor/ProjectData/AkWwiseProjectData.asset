@@ -240,7 +240,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 1b205a1e2a93554fb9a65ad659138619
     GuidInternal: 
-    m_lastTime: -8586316660157315862
+    m_lastTime: -8586316010929242457
     List:
     - name: Master
       guid: 110895f9c58a5c4c878ed6a3c8276531
@@ -256,7 +256,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: f3c5b3d46943c74f83edfca345d5ad6c
     GuidInternal: 
-    m_lastTime: -8586316062266691314
+    m_lastTime: -8586316014744795482
     List:
     - name: Play_Amb_Basic_Room
       guid: ffda4d0042fc3c4d80ffa98bdd07ace5
@@ -381,17 +381,21 @@ MonoBehaviour:
       maxDuration: 5.203213
       minDuration: 1.813166
     - name: Play_Fireplace
-      guid: d4cf93e6d78b164ea47184df2f8b4d8c
+      guid: a1a2e7b35699af41a425d6bb24c811ce
       id: 1501216439
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
       - ElementName: Play_Fireplace
         ObjectType: 3
-      Path: Default Work Unit\Play_Fireplace
+      Path: Default Work Unit\Ambience\Amb_Emitters\Play_Fireplace
       maxAttenuation: 30
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Footstep_Surface
       guid: c1afc499c9e1d34094cd7183899ace79
       id: 709824872
@@ -735,6 +739,22 @@ MonoBehaviour:
       - ElementName: Set_Playing_State
         ObjectType: 3
       Path: Default Work Unit\Music\Set_Playing_State
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Fireplace
+      guid: ee2f9601b45bcd4ab1c467312a832b50
+      id: 2464589613
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Amb_Emitters
+        ObjectType: 4
+      - ElementName: Stop_Fireplace
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Amb_Emitters\Stop_Fireplace
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -1173,7 +1193,7 @@ MonoBehaviour:
   - /MG2_WwiseProject/Events
   - /MG2_WwiseProject/Events/Default Work Unit
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience
+  - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Emitters
   - /MG2_WwiseProject/Events/Default Work Unit/Ambience/Amb_Environment
-  - /MG2_WwiseProject/Events/Default Work Unit/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
