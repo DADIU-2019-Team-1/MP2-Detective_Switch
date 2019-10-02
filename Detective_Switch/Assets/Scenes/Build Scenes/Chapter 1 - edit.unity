@@ -994,6 +994,55 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1533874284}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &266168084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3460911103449830538, guid: 5d11b793a64845540951a46e373fa48d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1829017670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &266168086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266168084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6350db9ecc2739d4f9a863aabb8ea75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepPlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  carpetPlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  marblePlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  woodPlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  currentMatFootStep: {fileID: 0}
+  lastMaterial: 
+--- !u!65 &266168087
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266168084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07812002, y: 0.09388639, z: 0.09999992}
+  m_Center: {x: 0.16093832, y: 0.04694027, z: 0.049999274}
 --- !u!1001 &277225728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2165,6 +2214,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &860059376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6561326202825317401, guid: 5d11b793a64845540951a46e373fa48d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1829017670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &860059378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860059376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6350db9ecc2739d4f9a863aabb8ea75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepPlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  carpetPlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  marblePlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  woodPlay:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  currentMatFootStep: {fileID: 0}
+  lastMaterial: 
+--- !u!65 &860059379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860059376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07957828, y: 0.09899009, z: 0.09999962}
+  m_Center: {x: -0.16021039, y: 0.049495015, z: 0.050000094}
 --- !u!1001 &863222892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4975,6 +5073,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1005628156}
     m_Modifications:
+    - target: {fileID: 340598922993046121, guid: 68360329845261b48bdcaa34beef22f7,
+        type: 3}
+      propertyPath: m_Name
+      value: BasementWalkWay
+      objectReference: {fileID: 0}
     - target: {fileID: 4374395282119221472, guid: 68360329845261b48bdcaa34beef22f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5029,11 +5132,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 340598922993046121, guid: 68360329845261b48bdcaa34beef22f7,
-        type: 3}
-      propertyPath: m_Name
-      value: BasementWalkWay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68360329845261b48bdcaa34beef22f7, type: 3}
@@ -6460,6 +6558,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488850882810497516, guid: 39ab2a2edcf38f5479ed89eb30a74c79,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569560113560054447, guid: 39ab2a2edcf38f5479ed89eb30a74c79,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39ab2a2edcf38f5479ed89eb30a74c79, type: 3}
