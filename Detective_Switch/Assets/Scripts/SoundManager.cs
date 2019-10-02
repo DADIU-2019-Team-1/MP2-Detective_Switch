@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SoundManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SoundManager : MonoBehaviour
     // in menu
     public AK.Wwise.State MenuOpen;
     public AK.Wwise.State MenuClose;
+    //public UnityEvent EventMenuOpen;
+    //public UnityEvent EventMenuClose;
     public bool menuIsOpen;
     private bool wwiseMenuIsOpen;
 
