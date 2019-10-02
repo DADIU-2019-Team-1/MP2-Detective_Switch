@@ -53,104 +53,105 @@ public class SaveLoadSystem : MonoBehaviour
 
         string tempLoadString = "";
 
-        if (File.Exists(saveLocation + "interactables.txt") && File.Exists(saveLocation + "player.txt")
-            && File.Exists(saveLocation + "activeJournal.txt") && File.Exists(saveLocation + "keyItems.txt"))
+        //if (File.Exists(saveLocation + "interactables.txt") && File.Exists(saveLocation + "player.txt")
+        //    && File.Exists(saveLocation + "activeJournal.txt") && File.Exists(saveLocation + "keyItems.txt"))
+        //{
+
+        tempLoadString = PlayerPrefs.GetString("interactableSave"); // File.ReadAllText(saveLocation + "interactables.txt");
+
+        //// Load interactables: ////
+        List<InteractableObjectContainer> IntObjConList = new List<InteractableObjectContainer>();
+        GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
+        string[] tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
+
+        for (int i = 1; i < tempDataString.Length; i++) // Start from 1
         {
-            tempLoadString = File.ReadAllText(saveLocation + "interactables.txt");
+            IntObjConList.Add(JsonUtility.FromJson<InteractableObjectContainer>(tempDataString[i]));
+        }
 
-            //// Load interactables: ////
-            List<InteractableObjectContainer> IntObjConList = new List<InteractableObjectContainer>();
-            GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
-            string[] tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
-
-            for (int i = 1; i < tempDataString.Length; i++) // Start from 1
+        for (int i = 0; i < interactables.Length; i++)
+        {
+            Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
+            for (int j = 0; j < IntObjConList.Count; j++)
             {
-                IntObjConList.Add(JsonUtility.FromJson<InteractableObjectContainer>(tempDataString[i]));               
-            }
-
-            for (int i = 0; i < interactables.Length; i++)
-            {
-                Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
-                for (int j = 0; j < IntObjConList.Count; j++)
+                if (tempIntScript.iD == IntObjConList[j].uniqueID)
                 {
-                    if (tempIntScript.iD == IntObjConList[j].uniqueID)
+                    // interactables[i].transform.position = IntObjConList[j].position;
+                    interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
+                    tempIntScript.hasClue = IntObjConList[j].hasClue;
+                    tempIntScript.hasNote = IntObjConList[j].hasNote;
+                    tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
+                    tempIntScript.hasItem = IntObjConList[j].hasItem;
+                    tempIntScript.toggleState = IntObjConList[j].toggleState;
+                    tempIntScript.hasBeenClicked = IntObjConList[j].hasBeenClicked;
+
+                    if (IntObjConList[j].hasBeenClicked)
                     {
-                        // interactables[i].transform.position = IntObjConList[j].position;
-                        interactables[i].transform.rotation = Quaternion.Euler(IntObjConList[j].rotation);
-                        tempIntScript.hasClue = IntObjConList[j].hasClue;
-                        tempIntScript.hasNote = IntObjConList[j].hasNote;
-                        tempIntScript.hasKeyItem = IntObjConList[j].hasKeyItem;
-                        tempIntScript.hasItem = IntObjConList[j].hasItem;
-                        tempIntScript.toggleState = IntObjConList[j].toggleState;
-                        tempIntScript.hasBeenClicked = IntObjConList[j].hasBeenClicked;
-
-                        if (IntObjConList[j].hasBeenClicked)
-                        {
-                            tempIntScript.soundOnInteract = false;
-                            tempIntScript.Interact();
-                        }
+                        tempIntScript.soundOnInteract = false;
+                        tempIntScript.Interact();
                     }
-                }               
+                }
             }
+        }
 
-            //// Load player pos and rot: ////
-            tempLoadString = File.ReadAllText(saveLocation + "player.txt");
-            tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.transform.position = JsonUtility.FromJson<Vector3>(tempDataString[0]);
-            player.transform.rotation = Quaternion.Euler(JsonUtility.FromJson<Vector3>(tempDataString[1]));
+        //// Load player pos and rot: ////
+        tempLoadString = PlayerPrefs.GetString("playerSave");
+        tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = JsonUtility.FromJson<Vector3>(tempDataString[0]);
+        player.transform.rotation = Quaternion.Euler(JsonUtility.FromJson<Vector3>(tempDataString[1]));
 
-            //// Load journal data: ////
-            tempLoadString = File.ReadAllText(saveLocation + "activeJournal.txt");
-            JournalContainer journalCon = new JournalContainer();
-            journalCon = JsonUtility.FromJson<JournalContainer>(tempLoadString);
-            if (GameObject.FindGameObjectWithTag("Journal") != null)
+        //// Load journal data: ////
+        tempLoadString = PlayerPrefs.GetString("journalSave");
+        JournalContainer journalCon = new JournalContainer();
+        journalCon = JsonUtility.FromJson<JournalContainer>(tempLoadString);
+        if (GameObject.FindGameObjectWithTag("Journal") != null)
+        {
+            GameObject journal = GameObject.FindGameObjectWithTag("Journal");
+            if (journal.GetComponent<UI_Journal>() != null)
             {
-                GameObject journal = GameObject.FindGameObjectWithTag("Journal");
-                if (journal.GetComponent<UI_Journal>() != null)
-                {
-                    UI_Journal journalScript = journal.GetComponent<UI_Journal>();
-                    journalScript.clueTexts = journalCon.activeClues;
-                    journalScript.noteTexts = journalCon.activeNotes;
-                }
-                else
-                {
-                    Debug.LogError("Load error: journal not found, or journal tag not on correct object!");
-                }
+                UI_Journal journalScript = journal.GetComponent<UI_Journal>();
+                journalScript.clueTexts = journalCon.activeClues;
+                journalScript.noteTexts = journalCon.activeNotes;
             }
             else
             {
                 Debug.LogError("Load error: journal not found, or journal tag not on correct object!");
             }
-
-            //// Load key items: ////
-            tempLoadString = File.ReadAllText(saveLocation + "keyItems.txt");
-            List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
-            GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
-            tempDataString = tempLoadString.Split(new[] {SAVE_SEPERATOR}, System.StringSplitOptions.None);
-
-            for (int i = 1; i < tempDataString.Length; i++) // Start from 1
-            {
-                tempKeyItemSlotContList.Add(JsonUtility.FromJson<KeyItemSlotContainer>(tempDataString[i]));
-            }
-
-            for (int i = 0; i < tempKeyItemSlotContList.Count; i++)
-            {
-                Slot tempSlotScript = keyItemSlots[i].GetComponent<Slot>();
-
-                keyItemSlots[i].GetComponent<Image>().sprite = tempKeyItemSlotContList[i].sourceImage;
-                tempSlotScript.item = tempKeyItemSlotContList[i].item;
-                tempSlotScript.id = tempKeyItemSlotContList[i].id;
-                tempSlotScript.text = tempKeyItemSlotContList[i].text;
-                tempSlotScript.empty = tempKeyItemSlotContList[i].empty;
-                tempSlotScript.icon = tempKeyItemSlotContList[i].icon;
-            }
-
         }
         else
         {
-            Debug.LogError("LoadGame Error: could not load game due to one or more loadfiles missing. Make sure you have saved a game before loading");
+            Debug.LogError("Load error: journal not found, or journal tag not on correct object!");
         }
+
+        //// Load key items: ////
+        tempLoadString = PlayerPrefs.GetString("keyItemSave");
+        List<KeyItemSlotContainer> tempKeyItemSlotContList = new List<KeyItemSlotContainer>();
+        GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
+        tempDataString = tempLoadString.Split(new[] { SAVE_SEPERATOR }, System.StringSplitOptions.None);
+
+        for (int i = 1; i < tempDataString.Length; i++) // Start from 1
+        {
+            tempKeyItemSlotContList.Add(JsonUtility.FromJson<KeyItemSlotContainer>(tempDataString[i]));
+        }
+
+        for (int i = 0; i < tempKeyItemSlotContList.Count; i++)
+        {
+            Slot tempSlotScript = keyItemSlots[i].GetComponent<Slot>();
+
+            keyItemSlots[i].GetComponent<Image>().sprite = tempKeyItemSlotContList[i].sourceImage;
+            tempSlotScript.item = tempKeyItemSlotContList[i].item;
+            tempSlotScript.id = tempKeyItemSlotContList[i].id;
+            tempSlotScript.text = tempKeyItemSlotContList[i].text;
+            tempSlotScript.empty = tempKeyItemSlotContList[i].empty;
+            tempSlotScript.icon = tempKeyItemSlotContList[i].icon;
+        }
+
+        //}
+        //else
+        //{
+        //    Debug.LogError("LoadGame Error: could not load game due to one or more loadfiles missing. Make sure you have saved a game before loading");
+        //}
     }
 
     public bool GetNewGameBool()
@@ -207,13 +208,13 @@ public class SaveLoadSystem : MonoBehaviour
     IntObjConList.Add(tempIntObjCon);
             tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(IntObjConList[i]);
         }
-        File.WriteAllText(saveLocation + "interactables.txt", tempSaveString);
+        PlayerPrefs.SetString("interactableSave", tempSaveString);
 
         //// Save player position and rotation: ////
         tempSaveString = "";
 
         tempSaveString = JsonUtility.ToJson(playerPos) + SAVE_SEPERATOR + JsonUtility.ToJson(playerRot);
-        File.WriteAllText(saveLocation + "player.txt", tempSaveString);
+        PlayerPrefs.SetString("playerSave", tempSaveString);
 
         //// Save journal data: ////
         tempSaveString = "";
@@ -225,7 +226,7 @@ public class SaveLoadSystem : MonoBehaviour
             tempJournal.activeNotes = journal.GetComponent<UI_Journal>().noteTexts;
 
             tempSaveString = JsonUtility.ToJson(tempJournal);
-            File.WriteAllText(saveLocation + "activeJournal.txt", tempSaveString);
+            PlayerPrefs.SetString("journalSave", tempSaveString);
         }
 
         //// Save key items: ////
@@ -250,7 +251,7 @@ public class SaveLoadSystem : MonoBehaviour
                 tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(tempKeyItemSlotContList[i]);
             }
         }
-        File.WriteAllText(saveLocation + "keyItems.txt", tempSaveString);
+        PlayerPrefs.SetString("keyItemSave", tempSaveString);
 
     }
 }
