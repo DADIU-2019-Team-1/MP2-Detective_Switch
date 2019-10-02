@@ -6340,6 +6340,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2240068107719653342, guid: 046562e5325a5144193b71a6747427e3,
+        type: 3}
+      propertyPath: roomSize
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240068107719653342, guid: 046562e5325a5144193b71a6747427e3,
+        type: 3}
+      propertyPath: largestRoomSize
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2240068107719653343, guid: 046562e5325a5144193b71a6747427e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6394,16 +6404,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2240068107719653342, guid: 046562e5325a5144193b71a6747427e3,
-        type: 3}
-      propertyPath: roomSize
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2240068107719653342, guid: 046562e5325a5144193b71a6747427e3,
-        type: 3}
-      propertyPath: largestRoomSize
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046562e5325a5144193b71a6747427e3, type: 3}

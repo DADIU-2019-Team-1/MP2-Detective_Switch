@@ -40,7 +40,7 @@ public class Countdown : MonoBehaviour
             seconds = 0;
             minutes += 1;
         }
-        Debug.Log(minutes.ToString("00") + ":" + seconds.ToString("00"));
+
         if (seconds < 0)
         {
             Self.SetActive(false);
