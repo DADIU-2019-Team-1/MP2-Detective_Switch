@@ -67,6 +67,11 @@ public class TrajectoryTest : MonoBehaviour
         rFootPrePos = rFoot.position;
     }
 
+    public MMPose GetMovementPose()
+    {
+        return new MMPose(root.position,lFoot.position,rFoot.position,rootVel,lFootVel,rFootVel);
+    }
+
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)

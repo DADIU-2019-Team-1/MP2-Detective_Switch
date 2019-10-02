@@ -17,9 +17,9 @@ public class CSVReaderWriter // : MonoBehaviour
     private string[] labels;
     private List<string> clipNames;
     private List<int> frames;
-    private List<Vector3> rootPositions, leftFootPositions, rightFootPositions, 
-        leftFootVelocity, rightFootVelocity, rootVelocity, trajPositions, trajForwards;
-    private List<Quaternion> rootQuaternions;
+    private List<Vector3> rootPositions, lFootPositions, rFootPositions, 
+        lFootVelocities, rFootVelocities, rootVelocities, trajPositions, trajForwards;
+    private List<Quaternion> rootQs, lFootQs, rFootQs;
 
 #if UNITY_EDITOR
     void Awake()
@@ -79,11 +79,10 @@ public class CSVReaderWriter // : MonoBehaviour
                 for (int i = 1; i < dataValues.Length; i++)
                     dataValues[i] = float.Parse(tempDataValues[i], CultureInfo.InvariantCulture.NumberFormat);
 
-                /// Populate the quaternion, position and timestamp arrays/lists:
-                //QuaternionCreator(dataValues); // We no longer store Quaternions
+                // Populate the quaternion, position and timestamp arrays/lists:
+                QuaternionCreator(dataValues);
                 PositionCreator(dataValues);
                 FloatIntCreator(dataValues);
-
             }
 
         }
@@ -94,47 +93,20 @@ public class CSVReaderWriter // : MonoBehaviour
     {
         for (int i = 0; i < labels.Length; i++)   // Vector starts from position 1
         {
-            if (labels[i].Contains("FootLeftT.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                // Debug.Log(data[i] + " " + data[i + 1] + " " + data[i + 2]);  // For debugging (very performance heavy)
-                leftFootPositions.Add(tempPosition);
-            }
-            else if (labels[i].Contains("FootRightT.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                rightFootPositions.Add(tempPosition);
-            }
-            else if (labels[i].Contains("RootT.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                rootPositions.Add(tempPosition);
-            }
-            else if (labels[i].Contains("RootV.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                rootVelocity.Add(tempPosition);
-            }
-            else if (labels[i].Contains("FootLeftV.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                leftFootVelocity.Add(tempPosition);
-            }
-            else if (labels[i].Contains("FootRightV.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                rightFootVelocity.Add(tempPosition);
-            }
+            if (labels[i].Contains("RootT.x"))
+                rootPositions.Add(      new Vector3(data[i], 0.0f, data[i + 1]));
+            else if (labels[i].Contains("LFootT.x"))
+                lFootPositions.Add(  new Vector3(data[i], 0.0f, data[i + 1]));
+            else if (labels[i].Contains("LFootV.x"))
+                lFootVelocities.Add(   new Vector3(data[i], 0.0f, data[i + 1]));
+            else if (labels[i].Contains("RFootT.x"))
+                rFootPositions.Add( new Vector3(data[i], 0.0f, data[i + 1]));
+            else if (labels[i].Contains("RFootV.x"))
+                rFootVelocities.Add(  new Vector3(data[i], 0.0f, data[i + 1]));
             else if (labels[i].Contains("TrajPos.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                trajPositions.Add(tempPosition);
-            }
+                trajPositions.Add(      new Vector3(data[i], 0.0f, data[i + 1]));
             else if (labels[i].Contains("TrajForward.x"))
-            {
-                Vector3 tempPosition = new Vector3(data[i], 0.0f, data[i + 1]);
-                trajForwards.Add(tempPosition);
-            }
+                trajForwards.Add(       new Vector3(data[i], 0.0f, data[i + 1]));
         }
     }
 
@@ -143,10 +115,11 @@ public class CSVReaderWriter // : MonoBehaviour
         for (int i = 0; i < labels.Length; i++)
         {
             if (labels[i].Contains("RootQ.x"))
-            {
-                Quaternion tempQuaternion = new Quaternion(data[i], data[i + 1], data[i + 2], data[i + 3]);
-                rootQuaternions.Add(tempQuaternion);
-            }
+                rootQs.Add(new Quaternion(data[i], data[i + 1], data[i + 2], data[i + 3]));
+            else if (labels[i].Contains("LFootQ.x"))
+                lFootQs.Add(new Quaternion(data[i], data[i + 1], data[i + 2], data[i + 3]));
+            else if (labels[i].Contains("RFootQ.x"))
+                rFootQs.Add(new Quaternion(data[i], data[i + 1], data[i + 2], data[i + 3]));
         }
     }
 
@@ -179,15 +152,16 @@ public class CSVReaderWriter // : MonoBehaviour
 
             using (var file = File.CreateText(CSVWritePath))
             {
-	            labels = new string[18]
+	            labels = new string[24]
 	            {
 		            "ClipName", "Frame",
 		            "RootT.x", "RootT.z",
-		            "FootLeftT.x", "FootLeftT.z",
-		            "FootRightT.x", "FootRightT.z",
-		            "FootLeftV.x", "FootLeftV.z",
-		            "FootRightV.x", "FootRightV.z",
-		            "RootV.x", "RootV.z",
+                    "LFootT.x", "LFootT.z",
+                    "LFootQ.x","LFootQ.y","LFootQ.z","LFootQ.w",
+                    "LFootV.x", "LFootV.z",
+                    "RFootT.x", "RFootT.z",
+                    "RFootQ.x","RFootQ.y","RFootQ.z","RFootQ.w",
+                    "RFootV.x", "RFootV.z",
 		            "TrajPos.x", "TrajPos.z",
 		            "TrajForward.x", "TrajForward.z"
 	            };
@@ -201,15 +175,18 @@ public class CSVReaderWriter // : MonoBehaviour
 
                 for (int i = 0; i < poseData.Count; i++)
                 {
-                    string[] tempLine = new string[18] {poseData[i].clipName, poseData[i].frame.ToString(),
-                        poseData[i].rootPos.x.ToString(spec, cul),poseData[i].rootPos.z.ToString(spec, cul),
-                        poseData[i].lFootPos.x.ToString(spec, cul),poseData[i].lFootPos.z.ToString(spec, cul),
-                        poseData[i].rFootPos.x.ToString(spec, cul),poseData[i].rFootPos.z.ToString(spec, cul),
-                        poseData[i].rootVel.x.ToString(spec, cul), poseData[i].rootVel.z.ToString(spec, cul),
+                    string[] tempLine = new string[24] {poseData[i].clipName, poseData[i].frame.ToString(),
+                        poseData[i].rootPos.x.ToString(spec, cul),  poseData[i].rootPos.z.ToString(spec, cul),
+                        poseData[i].lFootPos.x.ToString(spec, cul), poseData[i].lFootPos.z.ToString(spec, cul),
+                        poseData[i].lFootQ.x.ToString(spec, cul),   poseData[i].lFootQ.y.ToString(spec, cul),
+                        poseData[i].lFootQ.z.ToString(spec, cul),   poseData[i].lFootQ.w.ToString(spec, cul),
                         poseData[i].lFootVel.x.ToString(spec, cul), poseData[i].lFootVel.z.ToString(spec, cul),
-                        poseData[i].rFootVel.x.ToString(spec, cul), poseData[i].rFootVel.z.ToString(spec, cul),
-                        trajectoryData[i].position.x.ToString(spec, cul), trajectoryData[i].position.z.ToString(spec, cul),
-                        trajectoryData[i].forward.x.ToString(spec, cul), trajectoryData[i].forward.z.ToString(spec, cul),};
+                        poseData[i].rFootPos.x.ToString(spec, cul), poseData[i].rFootPos.z.ToString(spec, cul),
+                        poseData[i].rFootQ.x.ToString(spec, cul),   poseData[i].rFootQ.y.ToString(spec, cul),
+                        poseData[i].rFootQ.z.ToString(spec, cul),   poseData[i].rFootQ.w.ToString(spec, cul),
+                        poseData[i].rFootVel.x.ToString(spec, cul),  poseData[i].rFootVel.z.ToString(spec, cul),
+                        trajectoryData[i].position.x.ToString(spec, cul),   trajectoryData[i].position.z.ToString(spec, cul),
+                        trajectoryData[i].forward.x.ToString(spec, cul),    trajectoryData[i].forward.z.ToString(spec, cul),};
 
                     file.WriteLine(string.Join(",", tempLine));
                 }
@@ -222,15 +199,15 @@ public class CSVReaderWriter // : MonoBehaviour
         clipNames = new List<string>();
         frames = new List<int>();
         rootPositions = new List<Vector3>();
-        leftFootPositions = new List<Vector3>();
-        rightFootPositions = new List<Vector3>();
-        leftFootVelocity = new List<Vector3>();
-        rightFootVelocity = new List<Vector3>();
-        rootVelocity = new List<Vector3>();
-        rootQuaternions = new List<Quaternion>();
+        rootQs = new List<Quaternion>();
+        lFootPositions = new List<Vector3>();
+        lFootQs = new List<Quaternion>();
+        lFootVelocities = new List<Vector3>();
+        rFootPositions = new List<Vector3>();
+        rFootQs = new List<Quaternion>();
+        rFootVelocities = new List<Vector3>();
         trajPositions = new List<Vector3>();
         trajForwards = new List<Vector3>();
-
     }
 
     public string GetCSVReadPath()
@@ -265,12 +242,12 @@ public class CSVReaderWriter // : MonoBehaviour
 
     public List<Vector3> GetLeftFootPos()
     {
-        return leftFootPositions;
+        return lFootPositions;
     }
 
     public List<Vector3> GetRightFootPos()
     {
-        return rightFootPositions;
+        return rFootPositions;
     }
 
     public List<Vector3> GetRootPos()
@@ -280,22 +257,30 @@ public class CSVReaderWriter // : MonoBehaviour
 
     public List<Quaternion> GetRootQ()
     {
-        return rootQuaternions;
+        return rootQs;
+    }
+    public List<Quaternion> GetLeftFootQs()
+    {
+        return lFootQs;
+    }
+    public List<Quaternion> GetRightFootQs()
+    {
+        return rFootQs;
     }
 
     public List<Vector3> GetLeftFootVel()
     {
-        return leftFootVelocity;
+        return lFootVelocities;
     }
 
     public List<Vector3> GetRightFootVel()
     {
-        return rightFootVelocity;
+        return rFootVelocities;
     }
 
     public List<Vector3> GetRootVel()
     {
-        return rootVelocity;
+        return rootVelocities;
     }
 
     public List<Vector3> GetTrajectoryPos()
