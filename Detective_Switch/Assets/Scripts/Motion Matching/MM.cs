@@ -31,7 +31,7 @@ public class MM : MonoBehaviour
     public float comparisonThreshold = 50;
 
     // --- Private variables
-    [SerializeField] bool isMMRunning;
+    [SerializeField] bool isMMRunning, isCurTrajSameAsDesired, isIdling;
     [SerializeField] int framesToCull = 10;
     private AnimationClip[] allClips;
     [SerializeField] private int candidateId;
@@ -50,7 +50,6 @@ public class MM : MonoBehaviour
         allClips = animator.runtimeAnimatorController.animationClips;
         animTrajectories = preprocess.GetTrajectories();
 		animTrajectoriesInCharSpace = new Trajectory[animTrajectories.Count];
-        movementTrajectory = new Trajectory(movement.GetMovementTrajectoryPoints());
         culledIDs = new Queue<int>();
 
         // Play the default animation and update the reference
@@ -59,43 +58,48 @@ public class MM : MonoBehaviour
         currentAnimId = 0;
         PlayAnimationAtFrame(currentClip.name, currentFrame / currentClip.frameRate, 0);
 
-		// Start the idle coroutine
+		// Starting MM to avoid gizmo errors, otherwise we would start Idle
         StartCoroutine(StartMM());
-        StartCoroutine(UpdateAnimationFrame());
+        //StartCoroutine(UpdateAnimationFrame());
     }
 
     private void Update()
     {
+        movementTrajectory = new Trajectory(movement.GetMovementTrajectoryPoints());
         if (movement.rootVel.sqrMagnitude >= 0.0001f)
         {
-            movementTrajectory = new Trajectory(movement.GetMovementTrajectoryPoints());
             float angle = 0;
             foreach (var point in movementTrajectory.GetTrajectoryPoints())
             {
                 angle += Vector3.Angle(transform.forward, point.forward);
             }
-            if (angle < Mathf.Epsilon)
+            if (angle <= 0.05f && !isCurTrajSameAsDesired)
             {
-                Debug.Log("Start Movement Coroutine because angle is: " + angle + "!");
+                //Debug.Log("Start Movement Coroutine because angle is: " + angle + "!");
                 StopAllCoroutines();
                 isMMRunning = false;
+                isIdling = false;
                 StartCoroutine(StartMovement());
-                StartCoroutine(UpdateAnimationFrame());
+               //StartCoroutine(UpdateAnimationFrame());
             }
-            else if (!isMMRunning)
+            else if (angle > 0.05f && !isMMRunning)
             {
-                Debug.Log("Starting MM Coroutine!");
+                //Debug.Log("Starting MM Coroutine!");
                 StopAllCoroutines();
+                isIdling = false;
+                isCurTrajSameAsDesired = false;
                 StartCoroutine(StartMM());
-                StartCoroutine(UpdateAnimationFrame());
+                //StartCoroutine(UpdateAnimationFrame());
             }
         }
-        else if (movement.rootVel.sqrMagnitude < 0.0001f && isMMRunning)
+        else if (movement.rootVel.sqrMagnitude < 0.0001f && !isIdling)
         {
-            Debug.Log("Starting Idle Coroutine!");
+            //Debug.Log("Starting Idle Coroutine!");
             StopAllCoroutines();
+            isCurTrajSameAsDesired = false;
             isMMRunning = false;
             StartCoroutine(StartIdle());
+            //StartCoroutine(UpdateAnimationFrame());
         }
         //currentAnimId++;
         currentFrame = Mathf.RoundToInt(animator.GetCurrentAnimatorStateInfo(0).normalizedTime * currentClip.frameRate);
@@ -181,9 +185,10 @@ public class MM : MonoBehaviour
     {
         for (int i = 0; i < allClips.Length; i++)
         {
-            if (allClips[i].name == nameOfNewClip)
+            if (allClips[i].name == nameOfNewClip && clipId >= 0)
             {
-                Debug.Log("Current clip has changed from " + currentClip.name + " to " + allClips[i].name + " (" + currentAnimId + "->" + clipId + ")!"); // Keep
+                //if (allClips[0] != currentClip)
+                //    Debug.Log("Current clip has changed from " + currentClip.name + " to " + allClips[i].name + " (" + currentAnimId + "->" + clipId + ")!");
                 currentClip = allClips[i];
                 currentAnimId = clipId;
 				if (isMMRunning)
@@ -227,7 +232,8 @@ public class MM : MonoBehaviour
     }
     private IEnumerator StartIdle()
     {
-	    while (true)
+        isIdling = true;
+        while (true)
 	    {
 		    PlayAnimationAtFrame(preprocess.poses[0].GetClipName(), (float)preprocess.poses[0].GetFrame() / 1 / 30, 0);
 		    yield return new WaitForSeconds(currentClip.length);
@@ -242,7 +248,20 @@ public class MM : MonoBehaviour
     }
     private IEnumerator StartMovement()
     {
-        PlayAnimationAtFrame("WalkForward",0,1126);
-        yield return new WaitForSeconds(currentClip.length);
+        isCurTrajSameAsDesired = true;
+        while (true)
+        {
+            PlayAnimationAtFrame("WalkLoop", 0, -1);
+            int i = -1;
+            for (int j = 0; j < allClips.Length; j++)
+            {
+                if (allClips[j].name == "WalkLoop")
+                {
+                    i = j;
+                    break;
+                }
+            }
+            yield return new WaitForSeconds(allClips[i].length);
+        }
     }
 }
