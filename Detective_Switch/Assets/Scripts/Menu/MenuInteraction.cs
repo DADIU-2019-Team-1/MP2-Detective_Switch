@@ -5,18 +5,10 @@ using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour
 {
-    public GameObject FlashLightDay;
-    public GameObject FlashLightNight;
-    public GameObject BlackLightObject;
-    private int childIterator = 0;
-    private InventoryUpdater _invUpdate;
-    private GameObject flashlightDay;
-    private GameObject flashlightNight;
     // Start is called before the first frame update
     void Start()
     {
-        _invUpdate = GameMaster.instance.GetComponent<InventoryUpdater>();
-             
+        
     }
 
     // Update is called once per frame
@@ -28,53 +20,24 @@ public class MenuInteraction : MonoBehaviour
     public void InventoryButton(Button button) {
         Debug.Log(button.name);
         Transform invChild = button.transform.GetChild(0);
-        
-        //childIterator = 0;
-
-        // Have a slotList.count instead of 5 here.
-        if(!invChild.gameObject.activeInHierarchy && button.transform.childCount <=  10 /*  _invUpdate.slotList.Count */) {
-            /* childIterator = 0;
-            foreach(Transform child in transform) {
-                button.transform.GetChild(childIterator).gameObject.SetActive(true);
-                childIterator++;
-            } */
-            for(int i = 0; i < button.transform.childCount; i++) {
-                button.transform.GetChild(i).gameObject.SetActive(true);
-            } 
-            //invChild.gameObject.SetActive(true);
+        if(!invChild.gameObject.activeInHierarchy) {
+            invChild.gameObject.SetActive(true);
         }
-        else {            
-            
-            for(int i = 0; i < button.transform.childCount; i++) {
-                //Debug.Log("Childcount is: " + button.transform.childCount);
-                button.transform.GetChild(i).gameObject.SetActive(false);                
-            }
- 
-
-            
-            /* childIterator = 0;
-            foreach(Transform child in transform) {
-                button.transform.GetChild(childIterator).gameObject.SetActive(false);
-                childIterator++; 
-            } */
-
+        else {
+            invChild.gameObject.SetActive(false);
         }
 
 
     }
 
     public void CaseFileButton(Button caseFileButton) {
-        GameObject journalRef = GameMaster.instance.FindObjectFromParentName("UI Object", "Journal");
-        if(!journalRef.activeInHierarchy)
-            journalRef.SetActive(true);
-
-        //Debug.Log(caseFileButton.name);
+        Debug.Log(caseFileButton.name);
         // Code to open the casefile.
     }
 
     public void OptionsButton(Button optionsButton) {
         Debug.Log(optionsButton.name);
-        GameObject optsChild = GameMaster.instance.FindObjectFromParentName("MainUI", "Options");
+        Transform optsChild = optionsButton.transform.parent.parent.GetChild(1);
         if(!optsChild.gameObject.activeInHierarchy) {
             optsChild.gameObject.SetActive(true);
             RemoveMenuButtons();
@@ -88,18 +51,10 @@ public class MenuInteraction : MonoBehaviour
         if(flashLightSwitch.GetChild(0).gameObject.activeInHierarchy) {
             flashLightSwitch.GetChild(0).gameObject.SetActive(false);
             flashLightSwitch.GetChild(1).gameObject.SetActive(true);
-
-            FlashLightDay.SetActive(true);
-            FlashLightNight.SetActive(false);
-            BlackLightObject.SetActive(false);
         }
         else {
             flashLightSwitch.GetChild(0).gameObject.SetActive(true);
             flashLightSwitch.GetChild(1).gameObject.SetActive(false);
-
-            FlashLightDay.SetActive(false);
-            FlashLightNight.SetActive(true);
-            BlackLightObject.SetActive(true);
         }
     }
 
@@ -119,28 +74,27 @@ public class MenuInteraction : MonoBehaviour
 
     // Update RemoveMenuButtons with Sebastian's code to get child from last production.
     public void RemoveMenuButtons() {
-        GameObject canvasGO = GameMaster.instance.FindObjectFromParentName("MainUI", "OnScreenUI"); //transform.GetChild(1).gameObject;
+       /*  GameObject canvasGO = transform.GetChild(1).gameObject;
         Debug.Log(canvasGO.name);
         // Switch case made to differentiate between a game options press, where OnScreenGUI has to be turned off, and a main menu options press.
-        if(canvasGO.gameObject.activeInHierarchy) {
-            canvasGO.SetActive(false);
-            /* canvasGO.transform.GetChild(0).gameObject.SetActive(false);
+        if(canvasGO.transform.GetChild(0).gameObject.activeInHierarchy) {
+            canvasGO.transform.GetChild(0).gameObject.SetActive(false);
             canvasGO.transform.GetChild(3).gameObject.SetActive(false);
             canvasGO.transform.GetChild(2).gameObject.SetActive(true);
             
-            Debug.Log(canvasGO.transform.GetChild(3).gameObject.name); */
+            Debug.Log(canvasGO.transform.GetChild(3).gameObject.name);
         }
         
-        else if(GameMaster.instance.FindObjectFromParentName("MainUI", "Options").gameObject.activeInHierarchy){
-            GameMaster.instance.FindObjectFromParentName("MainUI", "Options").SetActive(false);
-            canvasGO.SetActive(true);
+        else if(canvasGO.transform.GetChild(2).gameObject.activeInHierarchy){
+            canvasGO.transform.GetChild(2).gameObject.SetActive(false);
+            canvasGO.transform.GetChild(0).gameObject.SetActive(true);
         }
 
 
         else {
             canvasGO.transform.GetChild(1).gameObject.SetActive(false);
             canvasGO.transform.GetChild(2).gameObject.SetActive(true);
-        } 
+        } */
 
 
     }

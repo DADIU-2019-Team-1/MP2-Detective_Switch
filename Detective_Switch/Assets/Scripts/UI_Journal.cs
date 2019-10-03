@@ -7,18 +7,15 @@ using System.IO;
 public class UI_Journal : MonoBehaviour
 {
     // Text content of the journal:
-    [HideInInspector]
-    public List<string> clueTexts, noteTexts;
-    [TextArea]
-    public List<string> notesEN, cluesEN, notesDA, cluesDA;
-    [TextArea]
-    public string caseEN = "", caseDA = "";
+    List<string> clueTexts, noteTexts;
+    List<string> notesEN, cluesEN, notesDA, cluesDA;
+    string caseEN = "", caseDA = "";
 
-    public bool readCSV = false;
+    public bool readCSV = true;
     [Tooltip("Must contain the full path, filename and filetype!")]
     public string filePathCSV = "Assets/Resources/CSV/JournalData.csv";
-    string defaultNoteText = "You have no notes.";
-    string defaultClueText = "You don't have any clues at the moment.";
+    public string defaultNoteText = "You have no notes.";
+    public string defaultClueText = "You don't have any clues at the moment.";
     private string defaultCount = "0/0";
     private int currentClueIndex = 0;
     private int currentNoteIndex = 0;
@@ -32,11 +29,13 @@ public class UI_Journal : MonoBehaviour
     {
         clueTexts = new List<string>();
         noteTexts = new List<string>();
+        notesDA = new List<string>();
+        cluesDA = new List<string>();
+        notesEN = new List<string>();
+        cluesEN = new List<string>();
 
         if (readCSV)
-        {
-            // ReadJournalCSV();    // Not functional
-        }
+            ReadJournalCSV();
     }
 
     private void Start()
@@ -133,8 +132,7 @@ public class UI_Journal : MonoBehaviour
 
     public void RemoveClueFromJournal(int index)
     {
-        if (clueTexts[index] != null)
-            clueTexts.RemoveAt(index);
+        clueTexts.RemoveAt(index);
     }
 
     public void RemoveClueFromJournal(string specificText)
@@ -155,26 +153,18 @@ public class UI_Journal : MonoBehaviour
         {
             caseTextObj.text = caseEN;
             caseBtnTextObj.text = "Case"; clueBtnTextObj.text = "Clues"; noteBtnTextObj.text = "Notes";
-            defaultNoteText = "You have no notes.";
-            defaultClueText = "You don't have any clues at the moment.";
         }
         else
         {
             caseTextObj.text = caseDA;
             caseBtnTextObj.text = "Sag"; clueBtnTextObj.text = "Spor"; noteBtnTextObj.text = "Noter";
-            defaultNoteText = "Du har ingen noter.";
-            defaultClueText = "Du har ingen spor lige nu.";
         }
     }
 
     public string GetClue(int index)
     {
         if (index > cluesEN.Count || index < 0)
-        {
-            Debug.LogError("Journal error! - get out of bounds");
             return null;
-        }
-
 
         if (isEnglish)
         {
@@ -189,10 +179,7 @@ public class UI_Journal : MonoBehaviour
     public string GetNote(int index)
     {
         if (index > notesEN.Count || index < 0)
-        {
-            Debug.LogError("Journal error! - get out of bounds");
             return null;
-        }
 
         if (isEnglish)
         {
@@ -216,7 +203,6 @@ public class UI_Journal : MonoBehaviour
 
         bool endOfFile = false;
         bool firstRun = true;
-        bool secondRun = true;
 
         while (!endOfFile)
         {
@@ -235,15 +221,7 @@ public class UI_Journal : MonoBehaviour
             }
             else
             {
-
                 string[] tempDataValues = dataString.Split(';');
-                
-                if(secondRun) 
-                {
-                    caseEN = tempDataValues[4];
-                    caseDA = tempDataValues[5];
-                    secondRun = false;
-                }
 
                 cluesEN.Add(tempDataValues[0]);
                 cluesDA.Add(tempDataValues[1]);

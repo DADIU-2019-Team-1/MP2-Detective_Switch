@@ -8,6 +8,4 @@ public class Item : MonoBehaviour
     public string type;
     public string text;
     public Sprite clueImage;
-
-    public Sprite greyedOutImage;
 }

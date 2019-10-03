@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [System.Serializable]
 public class Interactable : MonoBehaviour
 {
     // main
     [HideInInspector]
-    public int iD;
-    [HideInInspector]
     public bool singleUse;
-    [HideInInspector]
-    public bool hasBeenClicked;
+    private bool hasBeenClicked;
 
     // sound
     [HideInInspector]
@@ -34,16 +30,11 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public float rotationDuration = 0.5f;
 
-    [HideInInspector]
-    public bool isRotating;
-    [HideInInspector]
-    public Vector3 oldRotation;
-    [HideInInspector]
-    public Vector3 newRotation;
-    [HideInInspector]
-    public float rotationStartTime;
-    [HideInInspector]
-    public float rotationEndTime;
+    private bool isRotating;
+    private Vector3 oldRotation;
+    private Vector3 newRotation;
+    private float rotationStartTime;
+    private float rotationEndTime;
 
     // toggle
     [HideInInspector]
@@ -51,11 +42,9 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public GameObject toggleObject;
     [HideInInspector]
-    public GameObject toggleObject2;
+    public bool toggleAfterDelay;
     [HideInInspector]
-    public GameObject toggleObject3;
-    [HideInInspector]
-    public bool toggleState;
+    public float toggleDelay;
 
     // item
     [HideInInspector]
@@ -64,16 +53,12 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public bool hasClue;
     [HideInInspector]
-    public int clueKeyAmount = 0;
-    [HideInInspector]
-    public int[] clueKeyInt;
+    public string clueKeyString;
 
     [HideInInspector]
     public bool hasNote;
     [HideInInspector]
-    public int noteKeyAmount = 0;
-    [HideInInspector]
-    public int[] noteKeyInt;
+    public string noteKeyString;
 
     [HideInInspector]
     public bool hasKeyItem;
@@ -92,14 +77,6 @@ public class Interactable : MonoBehaviour
     private Animator anim;
     private bool animationState;
 
-    // trigger
-    [HideInInspector]
-    public bool isTriggerOnKeyPress = false;
-    [HideInInspector]
-    public string triggerKey = "";
-    [HideInInspector]
-    public UnityEvent triggerEvent;
-
     // test
     [HideInInspector]
     public bool testLog;
@@ -108,11 +85,9 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        //Vector3 interactResponse = new Vector3(-1, -1, -1);
-
         if (isRotating)
         {
-            return;// interactResponse;
+            return;
         }
 
         // reclickable
@@ -120,7 +95,7 @@ public class Interactable : MonoBehaviour
         {
             if (hasBeenClicked)
             {
-                return;// interactResponse;
+                return;
             }
             hasBeenClicked = true;
         }
@@ -164,51 +139,22 @@ public class Interactable : MonoBehaviour
             {
                 toggleObject.SetActive(!toggleObject.activeSelf);
             }
-            if (toggleObject2 != null)
-            {
-                toggleObject2.SetActive(!toggleObject2.activeSelf);
-            }
-            if (toggleObject3 != null)
-            {
-                toggleObject3.SetActive(!toggleObject3.activeSelf);
-            }
-            toggleState = !toggleState;
         }
 
         // item
         if (hasItem)
         {
-            GameObject tempJournal = GameObject.FindGameObjectWithTag("Journal");
-
             if (hasKeyItem && item != null)
             {
-                hasKeyItem = false;
                 GameMaster.instance.GetComponent<InventoryUpdater>().AddItemToSlot(item);
             } 
-            if(hasClue && clueKeyInt != null && clueKeyAmount != 0) {
-
-                if (tempJournal != null)
-                {
-                    hasClue = false;
-                    UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
-                    for (int i = 0; i < clueKeyInt.Length; i++)
-                    {
-                        tempScript.AddClueToJournal(tempScript.GetClue(clueKeyInt[i]));
-                    }
-                }
+            if(hasClue && !string.IsNullOrEmpty(clueKeyString)) {
+                // Insert Jakob's load string function
             }
-            if(hasNote && noteKeyInt != null && noteKeyAmount != 0) {
-
-                if (tempJournal != null)
-                {
-                    hasNote = false;
-                    UI_Journal tempScript = tempJournal.GetComponent<UI_Journal>();
-                    for (int i = 0; i < noteKeyInt.Length; i++)
-                    {
-                        tempScript.AddNoteToJournal(tempScript.GetNote(noteKeyInt[i]));
-                    }
-                }
+            if(hasNote && !string.IsNullOrEmpty(noteKeyString)) {
+                // Insert load string for note function
             }
+            
         }
 
         // animation
@@ -224,8 +170,6 @@ public class Interactable : MonoBehaviour
                 anim.Play(animationAction);
             }
         }
-
-        //return gameObject.transform.position;
     }
 
     void Start()
@@ -246,20 +190,5 @@ public class Interactable : MonoBehaviour
                 transform.eulerAngles = newRotation;
             }
         }
-    }
-
-    public void triggerEventInteractable()
-    {
-        triggerEvent.Invoke();
-    }
-
-    public void noteKeyArrayInit()
-    {
-        noteKeyInt = new int[noteKeyAmount];
-    }
-
-    public void clueKeyArrayInit()
-    {
-        clueKeyInt = new int[clueKeyAmount];
     }
 }

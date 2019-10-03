@@ -11,59 +11,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.2369833, z: 0.5}
-  m_Center: {x: -0.00000014901161, y: -0.0016435385, z: 0.000000029802322}
---- !u!114 &8964868308743015840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600855077532195037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iD: 0
-  singleUse: 0
-  hasBeenClicked: 0
-  soundOnInteract: 1
-  playSound: Play_Moving_Object_Interactive
-  rotateOnInteract: 1
-  rotateDegreesX: 0
-  rotateDegreesY: 90
-  rotateDegreesZ: 0
-  rotateOverTime: 1
-  rotationDuration: 0.5
-  isRotating: 0
-  oldRotation: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0}
-  rotationStartTime: 0
-  rotationEndTime: 0
-  toggleGameObject: 0
-  toggleObject: {fileID: 0}
-  toggleState: 0
-  hasItem: 0
-  hasClue: 0
-  clueKeyInt: 0
-  hasNote: 0
-  noteKeyInt: 0
-  hasKeyItem: 0
-  item: {fileID: 0}
-  hasAnimation: 0
-  switchBetweenAnimations: 0
-  animationDefault: 
-  animationAction: 
-  isTriggerOnKeyPress: 0
-  triggerKey: 
-  triggerEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  testLog: 0
-  testLogText: 
+  m_Size: {x: 0.32313362, y: 0.6156306, z: 0.3231337}
+  m_Center: {x: -0.00000014901161, y: 0.30903274, z: 0.000000029802322}
 --- !u!1001 &2934974415155003860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,12 +23,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: dd9f5ac267eed7c488a10a7a61593f24,
         type: 3}
       propertyPath: m_Name
-      value: BustGirl Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: dd9f5ac267eed7c488a10a7a61593f24,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
+      value: BustGirl
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd9f5ac267eed7c488a10a7a61593f24,
         type: 3}

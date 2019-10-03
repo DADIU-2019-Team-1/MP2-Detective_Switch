@@ -1,56 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2985225232930852090
-MonoBehaviour:
+--- !u!65 &7324814770078071002
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8789647779027795794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea8afd54b77c1a4fa5fef6ffbc1378c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iD: 0
-  singleUse: 1
-  hasBeenClicked: 0
-  soundOnInteract: 1
-  playSound: Play_Fireplace
-  rotateOnInteract: 0
-  rotateDegreesX: 0
-  rotateDegreesY: 90
-  rotateDegreesZ: 0
-  rotateOverTime: 0
-  rotationDuration: 0.5
-  isRotating: 0
-  oldRotation: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0}
-  rotationStartTime: 0
-  rotationEndTime: 0
-  toggleGameObject: 1
-  toggleObject: {fileID: 0}
-  toggleState: 0
-  hasItem: 0
-  hasClue: 0
-  clueKeyInt: 0
-  hasNote: 0
-  noteKeyInt: 0
-  hasKeyItem: 0
-  item: {fileID: 0}
-  hasAnimation: 0
-  switchBetweenAnimations: 0
-  animationDefault: 
-  animationAction: 
-  isTriggerOnKeyPress: 0
-  triggerKey: 
-  triggerEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  testLog: 0
-  testLogText: 
+  serializedVersion: 2
+  m_Size: {x: 2.307726, y: 4.226508, z: 1.2726365}
+  m_Center: {x: 0.00000029802322, y: 2.091979, z: -0.13882469}
 --- !u!1001 &782209079971931739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,17 +23,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
         type: 3}
       propertyPath: m_Name
-      value: Fireplace Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: f4188eb2eaf49bb4db24abac73dc5007,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: Fireplace
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f4188eb2eaf49bb4db24abac73dc5007,
         type: 3}
