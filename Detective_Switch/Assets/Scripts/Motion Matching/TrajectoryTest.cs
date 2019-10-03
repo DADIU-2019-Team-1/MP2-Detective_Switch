@@ -29,7 +29,7 @@ public class TrajectoryTest : MonoBehaviour
     private bool mouseDown;
     private Vector3 moveVector;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         preProcessing = GetComponent<MMPreProcessing>();
