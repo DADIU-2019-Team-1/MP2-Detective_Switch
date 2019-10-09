@@ -6,6 +6,7 @@ using System.IO;
 
 public class UI_Journal : MonoBehaviour
 {
+    public MyScriptableObject _TestJournalData;
     // Text content of the journal:
     [HideInInspector]
     public List<string> clueTexts, noteTexts;
@@ -32,6 +33,8 @@ public class UI_Journal : MonoBehaviour
     {
         clueTexts = new List<string>();
         noteTexts = new List<string>();
+
+        caseEN = _TestJournalData.caseEN;
 
         if (readCSV)
         {

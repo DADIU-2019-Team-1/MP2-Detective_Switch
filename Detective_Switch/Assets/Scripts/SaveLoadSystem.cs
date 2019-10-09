@@ -249,7 +249,8 @@ public class SaveLoadSystem : MonoBehaviour
         Debug.Log("Saving Game");
         // Find gameobjects:
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
+        Interactable[] interactables = gameObject.GetComponentsInChildren<Interactable>(true);
+        // GameObject[] interactables = GameObject.FindGameObjectsWithTag("interactable");
         GameObject journal = GameObject.FindGameObjectWithTag("Journal");
         GameObject[] keyItemSlots = GameObject.FindGameObjectsWithTag("KeyItemSlot");
 
@@ -266,10 +267,10 @@ public class SaveLoadSystem : MonoBehaviour
         for (int i = 0; i < interactables.Length; i++)
         {
             InteractableObjectContainer tempIntObjCon = new InteractableObjectContainer();
-            Interactable tempIntScript = interactables[i].GetComponent<Interactable>();
+            Interactable tempIntScript = interactables[i];
 
             tempIntObjCon.uniqueID = tempIntScript.iD;
-            tempIntObjCon.position = interactables[i].transform.position;
+            tempIntObjCon.position = interactables[i].transform.position; // interactables[0].transform;
             tempIntObjCon.rotation = interactables[i].transform.rotation.eulerAngles;
 
             tempIntObjCon.hasItem = tempIntScript.hasItem;
@@ -281,6 +282,7 @@ public class SaveLoadSystem : MonoBehaviour
 
             IntObjConList.Add(tempIntObjCon);
             tempSaveString = tempSaveString + SAVE_SEPERATOR + JsonUtility.ToJson(IntObjConList[i]);
+            Debug.Log(tempSaveString);
         }
         PlayerPrefs.SetString("interactableSave", tempSaveString);
 

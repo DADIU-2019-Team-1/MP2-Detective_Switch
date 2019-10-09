@@ -9,7 +9,6 @@ using UnityEditor;
 
 public class EventManager : MonoBehaviour
 {
-
     public ThisEventSystem[] events;
 
     void Start()
@@ -25,7 +24,6 @@ public class EventManager : MonoBehaviour
             {
                 Debug.Log("EventManager Notice: event number " + i + " is not set up correctly!");
             }
-
         }
         
     }
@@ -97,6 +95,10 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void FireScriptableObjectEvent(GameEvent myEvent)
+    {
+        myEvent.Raise();
+    }
 }
 
 [System.Serializable]
@@ -315,8 +317,6 @@ public class ThisEventSystem
                 }
             }
         }
-
-
     }
 
     public IEnumerator OnObjectMoving()
@@ -384,6 +384,7 @@ public class ThisEventSystem
         theseGameObjects = new GameObject[amount];
         specificRotations = new int[amount];
     }
+
 }
 
 #if UNITY_EDITOR
@@ -405,6 +406,13 @@ public class EventManager_Editor : Editor
 
             if (script.events[i].activeInInspector)
             {
+                if (GUILayout.Button("Test Fire '" + script.events[i].eventName + "' Event"))
+                {
+                    script.events[i].eventToFire.Invoke();
+                }
+
+                GUILayout.Space(10);
+
                 script.events[i].eventName = EditorGUILayout.TextField("Event Name:", script.events[i].eventName);
 
                 SerializedProperty functionProp = serializedObject.FindProperty("events.Array.data[" + i + "].function");
@@ -429,7 +437,7 @@ public class EventManager_Editor : Editor
                     script.events[i].fireCooldown = EditorGUILayout.FloatField("Fire Cooldown", script.events[i].fireCooldown);
                     script.events[i].isTrigger = EditorGUILayout.Toggle("Is Trigger?", script.events[i].isTrigger);
                     script.events[i].thisGameObject = EditorGUILayout.ObjectField("Collider Object", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
-                    EditorGUILayout.HelpBox("This fires an event when the selected object collides with anything. Please use 'is trigger' depending on the nature of the collision. Not fully tested yet.", MessageType.Warning);
+                    EditorGUILayout.HelpBox("This fires an event when the selected object collides with anything. Please use 'is trigger' depending on the nature of the collision", MessageType.Info);
                 }
                 if ((int)script.events[i].function == 2)
                 {
@@ -439,7 +447,7 @@ public class EventManager_Editor : Editor
                     script.events[i].collisionTag = EditorGUILayout.TextField("Collision Tag Name", script.events[i].collisionTag);
                     script.events[i].isTrigger = EditorGUILayout.Toggle("Is Trigger?", script.events[i].isTrigger);
                     script.events[i].thisGameObject = EditorGUILayout.ObjectField("Collider Object", script.events[i].thisGameObject, typeof(GameObject), true) as GameObject;
-                    EditorGUILayout.HelpBox("This fires an event when the selected object collides with a specific tag. NOTICE, the names are case sensitive!. Please use 'is trigger' depending on the nature of the collision. Not fully tested yet.", MessageType.Warning);
+                    EditorGUILayout.HelpBox("This fires an event when the selected object collides with a specific tag. NOTICE, the names are case sensitive!. Please use 'is trigger' depending on the nature of the collision.", MessageType.Info);
                 }
                 if ((int)script.events[i].function == 3)
                 {
@@ -502,7 +510,9 @@ public class EventManager_Editor : Editor
                     EditorGUILayout.HelpBox("Specify the amount of interactable gameobjects you want to check. The event will fire when they all their states are true.", MessageType.Info);
                 }
 
-                    SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
+                GUILayout.Space(10);
+
+                SerializedProperty fireProp = serializedObject.FindProperty("events.Array.data[" + i + "].eventToFire");
                 EditorGUILayout.PropertyField(fireProp);
                 serializedObject.ApplyModifiedProperties();
             }
